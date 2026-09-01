@@ -2,7 +2,6 @@
 <html lang="ms">
 
 <head>
-
 <meta charset="utf-8">
 
 <meta
@@ -10,18 +9,14 @@
   content="width=device-width,initial-scale=1,viewport-fit=cover"
 >
 
-<meta
-  name="theme-color"
-  content="#07100c"
->
+<meta name="theme-color" content="#07100c">
 
 <meta
   name="description"
   content="Undangan Digital"
 >
 
-<title>Adam & Hawa — Undangan Digital</title>
-
+<title>Undangan Digital</title>
 
 <style>
 
@@ -30,7 +25,6 @@
 ═══════════════════════════════════════ */
 
 :root{
-
   --tone1:#234E70;
   --tone2:#4F8CC9;
   --tone3:#D9EAF8;
@@ -44,7 +38,6 @@
   --border:rgba(255,255,255,.12);
 
   --radius:30px;
-
 }
 
 
@@ -61,9 +54,7 @@ html{
 }
 
 body{
-
   margin:0;
-
   min-height:100vh;
 
   background:
@@ -83,7 +74,6 @@ body{
     Roboto,
     Arial,
     sans-serif;
-
 }
 
 button,
@@ -104,15 +94,10 @@ a{
 ═══════════════════════════════════════ */
 
 .app{
-
   width:100%;
-
   max-width:460px;
-
   margin:auto;
-
   padding:14px;
-
 }
 
 
@@ -121,18 +106,13 @@ a{
 ═══════════════════════════════════════ */
 
 .wedding-card{
-
   position:relative;
-
   min-height:680px;
-
   overflow:hidden;
 
   padding:42px 20px 26px;
 
-  border:
-    1px solid
-    rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.12);
 
   border-radius:var(--radius);
 
@@ -144,9 +124,7 @@ a{
     );
 
   box-shadow:
-    0 35px 90px
-    rgba(0,0,0,.68);
-
+    0 35px 90px rgba(0,0,0,.68);
 }
 
 
@@ -155,18 +133,12 @@ a{
 ═══════════════════════════════════════ */
 
 .card-bg{
-
   position:absolute;
-
   inset:-5%;
-
   z-index:0;
 
-  background-image:
-    var(--poster-image,none);
-
+  background-image:var(--poster-image,none);
   background-size:cover;
-
   background-position:center;
 
   opacity:.095;
@@ -179,7 +151,6 @@ a{
   transform:scale(1.05);
 
   pointer-events:none;
-
 }
 
 
@@ -188,11 +159,8 @@ a{
 ═══════════════════════════════════════ */
 
 .aurora{
-
   position:absolute;
-
   inset:-30%;
-
   z-index:1;
 
   overflow:hidden;
@@ -204,11 +172,9 @@ a{
   filter:
     blur(25px)
     saturate(1.2);
-
 }
 
 .aurora::before{
-
   content:"";
 
   position:absolute;
@@ -224,19 +190,8 @@ a{
   background:
     radial-gradient(
       ellipse at center,
-
-      color-mix(
-        in srgb,
-        var(--tone1) 55%,
-        transparent
-      ) 0%,
-
-      color-mix(
-        in srgb,
-        var(--tone1) 30%,
-        transparent
-      ) 30%,
-
+      color-mix(in srgb,var(--tone1) 55%,transparent) 0%,
+      color-mix(in srgb,var(--tone1) 30%,transparent) 30%,
       transparent 73%
     );
 
@@ -248,11 +203,9 @@ a{
     ease-in-out
     infinite
     alternate;
-
 }
 
 .aurora-middle{
-
   position:absolute;
 
   width:100%;
@@ -266,19 +219,8 @@ a{
   background:
     radial-gradient(
       ellipse at center,
-
-      color-mix(
-        in srgb,
-        var(--tone2) 48%,
-        transparent
-      ) 0%,
-
-      color-mix(
-        in srgb,
-        var(--tone2) 25%,
-        transparent
-      ) 30%,
-
+      color-mix(in srgb,var(--tone2) 48%,transparent) 0%,
+      color-mix(in srgb,var(--tone2) 25%,transparent) 30%,
       transparent 73%
     );
 
@@ -290,11 +232,9 @@ a{
     ease-in-out
     infinite
     alternate;
-
 }
 
 .aurora-bottom{
-
   position:absolute;
 
   width:95%;
@@ -308,19 +248,8 @@ a{
   background:
     radial-gradient(
       ellipse at center,
-
-      color-mix(
-        in srgb,
-        var(--tone3) 50%,
-        transparent
-      ) 0%,
-
-      color-mix(
-        in srgb,
-        var(--tone3) 25%,
-        transparent
-      ) 30%,
-
+      color-mix(in srgb,var(--tone3) 50%,transparent) 0%,
+      color-mix(in srgb,var(--tone3) 25%,transparent) 30%,
       transparent 73%
     );
 
@@ -332,85 +261,48 @@ a{
     ease-in-out
     infinite
     alternate;
-
 }
-
 
 @keyframes auroraOne{
-
   0%{
-    transform:
-      translate(-30px,20px)
-      rotate(-20deg)
-      scale(1);
+    transform:translate(-30px,20px) rotate(-20deg) scale(1);
   }
 
   50%{
-    transform:
-      translate(35px,-25px)
-      rotate(-5deg)
-      scale(1.15);
+    transform:translate(35px,-25px) rotate(-5deg) scale(1.15);
   }
 
   100%{
-    transform:
-      translate(70px,15px)
-      rotate(8deg)
-      scale(1.08);
+    transform:translate(70px,15px) rotate(8deg) scale(1.08);
   }
-
 }
-
 
 @keyframes auroraTwo{
-
   0%{
-    transform:
-      translate(-35px,15px)
-      rotate(5deg)
-      scale(1);
+    transform:translate(-35px,15px) rotate(5deg) scale(1);
   }
 
   50%{
-    transform:
-      translate(30px,-30px)
-      rotate(-8deg)
-      scale(1.14);
+    transform:translate(30px,-30px) rotate(-8deg) scale(1.14);
   }
 
   100%{
-    transform:
-      translate(-10px,35px)
-      rotate(12deg)
-      scale(1.08);
+    transform:translate(-10px,35px) rotate(12deg) scale(1.08);
   }
-
 }
 
-
 @keyframes auroraThree{
-
   0%{
-    transform:
-      translate(40px,-25px)
-      rotate(25deg)
-      scale(1);
+    transform:translate(40px,-25px) rotate(25deg) scale(1);
   }
 
   50%{
-    transform:
-      translate(-30px,25px)
-      rotate(8deg)
-      scale(1.18);
+    transform:translate(-30px,25px) rotate(8deg) scale(1.18);
   }
 
   100%{
-    transform:
-      translate(-70px,-10px)
-      rotate(-8deg)
-      scale(1.07);
+    transform:translate(-70px,-10px) rotate(-8deg) scale(1.07);
   }
-
 }
 
 
@@ -419,7 +311,6 @@ a{
 ═══════════════════════════════════════ */
 
 .aurora-ribbon{
-
   position:absolute;
 
   z-index:2;
@@ -435,29 +326,11 @@ a{
   background:
     linear-gradient(
       105deg,
-
       transparent 4%,
-
-      color-mix(
-        in srgb,
-        var(--tone1) 18%,
-        transparent
-      ) 20%,
-
-      color-mix(
-        in srgb,
-        var(--tone3) 35%,
-        transparent
-      ) 37%,
-
+      color-mix(in srgb,var(--tone1) 18%,transparent) 20%,
+      color-mix(in srgb,var(--tone3) 35%,transparent) 37%,
       rgba(255,255,255,.08) 49%,
-
-      color-mix(
-        in srgb,
-        var(--tone2) 35%,
-        transparent
-      ) 63%,
-
+      color-mix(in srgb,var(--tone2) 35%,transparent) 63%,
       transparent 96%
     );
 
@@ -475,24 +348,16 @@ a{
     alternate;
 
   pointer-events:none;
-
 }
 
-
 @keyframes ribbonMove{
-
   from{
-    transform:
-      translateX(-25px)
-      rotate(-13deg);
+    transform:translateX(-25px) rotate(-13deg);
   }
 
   to{
-    transform:
-      translateX(35px)
-      rotate(-7deg);
+    transform:translateX(35px) rotate(-7deg);
   }
-
 }
 
 
@@ -501,7 +366,6 @@ a{
 ═══════════════════════════════════════ */
 
 .aurora-line{
-
   position:absolute;
 
   z-index:3;
@@ -514,19 +378,11 @@ a{
 
   border-top:
     1px solid
-    color-mix(
-      in srgb,
-      var(--tone3) 25%,
-      transparent
-    );
+    color-mix(in srgb,var(--tone3) 25%,transparent);
 
   border-bottom:
     1px solid
-    color-mix(
-      in srgb,
-      var(--tone2) 22%,
-      transparent
-    );
+    color-mix(in srgb,var(--tone2) 22%,transparent);
 
   filter:blur(7px);
 
@@ -542,24 +398,16 @@ a{
     alternate;
 
   pointer-events:none;
-
 }
 
-
 @keyframes lineFloat{
-
   from{
-    transform:
-      translateX(-20px)
-      rotate(-12deg);
+    transform:translateX(-20px) rotate(-12deg);
   }
 
   to{
-    transform:
-      translateX(30px)
-      rotate(-8deg);
+    transform:translateX(30px) rotate(-8deg);
   }
-
 }
 
 
@@ -568,11 +416,8 @@ a{
 ═══════════════════════════════════════ */
 
 .vignette{
-
   position:absolute;
-
   inset:0;
-
   z-index:3;
 
   pointer-events:none;
@@ -584,7 +429,6 @@ a{
       rgba(0,0,0,.16) 65%,
       rgba(0,0,0,.48) 100%
     );
-
 }
 
 
@@ -593,19 +437,13 @@ a{
 ═══════════════════════════════════════ */
 
 .cover{
-
   position:absolute;
-
   inset:0;
-
   z-index:100;
 
   display:flex;
-
   flex-direction:column;
-
   justify-content:center;
-
   align-items:center;
 
   padding:25px;
@@ -615,28 +453,15 @@ a{
   overflow:hidden;
 
   background:
-
     radial-gradient(
       ellipse at 20% 15%,
-
-      color-mix(
-        in srgb,
-        var(--tone1) 30%,
-        transparent
-      ),
-
+      color-mix(in srgb,var(--tone1) 30%,transparent),
       transparent 38%
     ),
 
     radial-gradient(
       ellipse at 90% 85%,
-
-      color-mix(
-        in srgb,
-        var(--tone2) 27%,
-        transparent
-      ),
-
+      color-mix(in srgb,var(--tone2) 27%,transparent),
       transparent 40%
     ),
 
@@ -653,24 +478,16 @@ a{
     opacity .85s ease;
 
   touch-action:pan-y;
-
 }
-
 
 .cover.opened{
-
   transform:translateY(-100%);
-
   opacity:0;
-
   pointer-events:none;
-
 }
-
 
 .cover::before,
 .cover::after{
-
   content:"";
 
   position:absolute;
@@ -680,12 +497,9 @@ a{
   filter:blur(40px);
 
   pointer-events:none;
-
 }
 
-
 .cover::before{
-
   width:270px;
   height:270px;
 
@@ -693,11 +507,7 @@ a{
   left:-100px;
 
   background:
-    color-mix(
-      in srgb,
-      var(--tone1) 16%,
-      transparent
-    );
+    color-mix(in srgb,var(--tone1) 16%,transparent);
 
   animation:
     coverPink
@@ -705,12 +515,9 @@ a{
     ease-in-out
     infinite
     alternate;
-
 }
 
-
 .cover::after{
-
   width:280px;
   height:280px;
 
@@ -718,11 +525,7 @@ a{
   right:-100px;
 
   background:
-    color-mix(
-      in srgb,
-      var(--tone2) 15%,
-      transparent
-    );
+    color-mix(in srgb,var(--tone2) 15%,transparent);
 
   animation:
     coverGreen
@@ -730,29 +533,18 @@ a{
     ease-in-out
     infinite
     alternate;
-
 }
-
 
 @keyframes coverPink{
-
   to{
-    transform:
-      translate(70px,40px)
-      scale(1.18);
+    transform:translate(70px,40px) scale(1.18);
   }
-
 }
 
-
 @keyframes coverGreen{
-
   to{
-    transform:
-      translate(-55px,-45px)
-      scale(1.15);
+    transform:translate(-55px,-45px) scale(1.15);
   }
-
 }
 
 
@@ -761,7 +553,6 @@ a{
 ═══════════════════════════════════════ */
 
 .envelope{
-
   position:relative;
 
   width:84px;
@@ -770,13 +561,10 @@ a{
   margin-bottom:25px;
 
   display:flex;
-
   justify-content:center;
-
   align-items:center;
 
-  background:
-    rgba(255,244,232,.92);
+  background:rgba(255,244,232,.92);
 
   border:
     2px solid
@@ -787,11 +575,7 @@ a{
   box-shadow:
     0 15px 45px rgba(0,0,0,.4),
     0 0 35px
-    color-mix(
-      in srgb,
-      var(--tone1) 18%,
-      transparent
-    );
+    color-mix(in srgb,var(--tone1) 18%,transparent);
 
   cursor:pointer;
 
@@ -801,12 +585,9 @@ a{
     ease-in-out
     infinite
     alternate;
-
 }
 
-
 .envelope::before{
-
   content:"";
 
   position:absolute;
@@ -822,19 +603,11 @@ a{
 
   border-top:
     30px solid
-    color-mix(
-      in srgb,
-      var(--tone1) 70%,
-      white
-    );
-
+    color-mix(in srgb,var(--tone1) 70%,white);
 }
 
-
 .envelope span{
-
   position:relative;
-
   z-index:2;
 
   font-size:23px;
@@ -845,25 +618,18 @@ a{
     ease-in-out
     infinite
     alternate;
-
 }
 
-
 @keyframes envelopeFloat{
-
   to{
     transform:translateY(-8px);
   }
-
 }
 
-
 @keyframes heartBeat{
-
   to{
     transform:scale(1.12);
   }
-
 }
 
 
@@ -872,9 +638,7 @@ a{
 ═══════════════════════════════════════ */
 
 .cover-label{
-
   position:relative;
-
   z-index:2;
 
   margin:0 0 8px;
@@ -882,20 +646,15 @@ a{
   color:rgba(255,255,255,.70);
 
   font-size:10px;
-
   font-weight:700;
 
   letter-spacing:3px;
 
   text-transform:uppercase;
-
 }
 
-
 .cover-names{
-
   position:relative;
-
   z-index:2;
 
   margin:0;
@@ -908,18 +667,13 @@ a{
   font-size:38px;
 
   font-style:italic;
-
   font-weight:400;
 
   line-height:1.15;
-
 }
 
-
 .cover-subtitle{
-
   position:relative;
-
   z-index:2;
 
   margin:10px 0 34px;
@@ -929,22 +683,15 @@ a{
   color:rgba(255,255,255,.62);
 
   font-size:12px;
-
   line-height:1.5;
-
 }
 
-
 .open-button{
-
   position:relative;
-
   z-index:2;
 
   display:flex;
-
   flex-direction:column;
-
   align-items:center;
 
   gap:9px;
@@ -958,7 +705,6 @@ a{
   cursor:pointer;
 
   font-size:9px;
-
   font-weight:800;
 
   letter-spacing:2px;
@@ -968,12 +714,9 @@ a{
     1.5s
     ease-in-out
     infinite;
-
 }
 
-
 @keyframes openPulse{
-
   0%,100%{
     opacity:.55;
   }
@@ -981,7 +724,6 @@ a{
   50%{
     opacity:1;
   }
-
 }
 
 
@@ -990,18 +732,13 @@ a{
 ═══════════════════════════════════════ */
 
 .content{
-
   position:relative;
-
   z-index:6;
 
   text-align:center;
-
 }
 
-
 .opening{
-
   margin:0;
 
   color:rgba(231,238,232,.78);
@@ -1011,12 +748,9 @@ a{
   letter-spacing:3px;
 
   text-transform:uppercase;
-
 }
 
-
 .sparkles{
-
   margin:8px 0;
 
   color:var(--tone3);
@@ -1024,18 +758,14 @@ a{
   font-size:9px;
 
   letter-spacing:3px;
-
 }
 
-
 .invitation-subtitle{
-
   margin:0 0 15px;
 
   color:var(--muted);
 
   font-size:12px;
-
 }
 
 
@@ -1044,9 +774,7 @@ a{
 ═══════════════════════════════════════ */
 
 .poster-wrapper{
-
   width:90%;
-
   max-width:300px;
 
   margin:0 auto 17px;
@@ -1062,33 +790,23 @@ a{
   box-shadow:
     0 20px 50px rgba(0,0,0,.5),
     0 0 30px
-    color-mix(
-      in srgb,
-      var(--tone1) 6%,
-      transparent
-    );
+    color-mix(in srgb,var(--tone1) 6%,transparent);
 
   background:
     rgba(255,255,255,.025);
-
 }
-
 
 .poster-wrapper.hidden{
   display:none;
 }
 
-
 .poster{
-
   width:100%;
-
   height:180px;
 
   display:block;
 
   object-fit:cover;
-
 }
 
 
@@ -1097,7 +815,6 @@ a{
 ═══════════════════════════════════════ */
 
 .name{
-
   margin:5px 0;
 
   color:white;
@@ -1110,7 +827,6 @@ a{
   font-size:40px;
 
   font-style:italic;
-
   font-weight:400;
 
   line-height:1.03;
@@ -1119,12 +835,9 @@ a{
 
   text-shadow:
     0 3px 25px rgba(0,0,0,.5);
-
 }
 
-
 .and{
-
   margin:5px 0;
 
   color:var(--tone3);
@@ -1134,7 +847,6 @@ a{
   font-size:16px;
 
   font-style:italic;
-
 }
 
 
@@ -1143,7 +855,6 @@ a{
 ═══════════════════════════════════════ */
 
 .date{
-
   display:inline-flex;
 
   align-items:center;
@@ -1168,7 +879,6 @@ a{
   color:#eef2ed;
 
   font-size:11px;
-
 }
 
 
@@ -1177,40 +887,29 @@ a{
 ═══════════════════════════════════════ */
 
 .countdown{
-
   margin:7px 0 27px;
-
 }
 
-
 .countdown-title{
-
   margin:0 0 11px;
 
   color:var(--muted);
 
   font-size:8px;
-
   font-weight:700;
 
   letter-spacing:2px;
-
 }
 
-
 .countdown-grid{
-
   display:flex;
 
   justify-content:center;
 
   gap:7px;
-
 }
 
-
 .time{
-
   min-width:57px;
 
   padding:9px 3px;
@@ -1225,23 +924,16 @@ a{
     rgba(255,255,255,.035);
 
   backdrop-filter:blur(12px);
-
 }
 
-
 .time-number{
-
   font-size:18px;
-
   font-weight:800;
 
   font-variant-numeric:tabular-nums;
-
 }
 
-
 .time-label{
-
   display:block;
 
   margin-top:2px;
@@ -1251,7 +943,6 @@ a{
   font-size:7px;
 
   text-transform:uppercase;
-
 }
 
 
@@ -1260,7 +951,6 @@ a{
 ═══════════════════════════════════════ */
 
 .nav{
-
   width:100%;
 
   margin-bottom:10px;
@@ -1293,25 +983,17 @@ a{
   font-size:12px;
 
   transition:.2s ease;
-
 }
-
 
 .nav:active{
   transform:scale(.98);
 }
 
-
 .nav-left{
-
   display:flex;
-
   align-items:center;
-
   gap:10px;
-
 }
-
 
 .nav-arrow{
   color:var(--tone3);
@@ -1323,7 +1005,6 @@ a{
 ═══════════════════════════════════════ */
 
 .emoji-container{
-
   position:absolute;
 
   inset:0;
@@ -1335,12 +1016,9 @@ a{
   pointer-events:none;
 
   border-radius:var(--radius);
-
 }
 
-
 .falling{
-
   position:absolute;
 
   top:-30px;
@@ -1355,20 +1033,15 @@ a{
       0 3px 5px
       rgba(0,0,0,.35)
     );
-
 }
 
-
 @keyframes fall{
-
   0%{
-
     transform:
       translateY(0)
       rotate(0deg);
 
     opacity:0;
-
   }
 
   10%,85%{
@@ -1376,15 +1049,12 @@ a{
   }
 
   100%{
-
     transform:
       translateY(700px)
       rotate(360deg);
 
     opacity:0;
-
   }
-
 }
 
 
@@ -1393,9 +1063,7 @@ a{
 ═══════════════════════════════════════ */
 
 .footer{
-
   position:relative;
-
   z-index:5;
 
   padding:23px 0 4px;
@@ -1407,9 +1075,7 @@ a{
   font-size:9px;
 
   letter-spacing:1.4px;
-
 }
-
 
 .footer strong{
   color:#c8d5cc;
@@ -1421,7 +1087,6 @@ a{
 ═══════════════════════════════════════ */
 
 .overlay{
-
   position:fixed;
 
   inset:0;
@@ -1440,16 +1105,11 @@ a{
     visibility .3s ease;
 
   backdrop-filter:blur(3px);
-
 }
 
-
 .overlay.active{
-
   opacity:1;
-
   visibility:visible;
-
 }
 
 
@@ -1458,17 +1118,14 @@ a{
 ═══════════════════════════════════════ */
 
 .drawer{
-
   position:fixed;
 
   top:8%;
-
   right:-100%;
 
   z-index:999;
 
   width:88%;
-
   max-width:380px;
 
   height:84%;
@@ -1482,18 +1139,8 @@ a{
   background:
     linear-gradient(
       160deg,
-
-      color-mix(
-        in srgb,
-        var(--tone1) 6%,
-        #09110d
-      ),
-
-      color-mix(
-        in srgb,
-        var(--tone2) 4%,
-        #07100c
-      ) 70%
+      color-mix(in srgb,var(--tone1) 6%,#09110d),
+      color-mix(in srgb,var(--tone2) 4%,#07100c) 70%
     );
 
   border-left:
@@ -1511,28 +1158,20 @@ a{
     transform .25s ease;
 
   transform:translateY(6px);
-
 }
-
 
 .drawer.active{
-
   right:0;
-
   transform:translateY(0);
-
 }
-
 
 .drawer::before,
 .drawer::after{
-
   content:"";
 
   position:absolute;
 
   width:220px;
-
   height:220px;
 
   border-radius:50%;
@@ -1540,43 +1179,26 @@ a{
   filter:blur(40px);
 
   pointer-events:none;
-
 }
 
-
 .drawer::before{
-
   top:-100px;
-
   right:-70px;
 
   background:
-    color-mix(
-      in srgb,
-      var(--tone1) 18%,
-      transparent
-    );
+    color-mix(in srgb,var(--tone1) 18%,transparent);
 
   opacity:.85;
-
 }
 
-
 .drawer::after{
-
   bottom:-100px;
-
   left:-80px;
 
   background:
-    color-mix(
-      in srgb,
-      var(--tone2) 14%,
-      transparent
-    );
+    color-mix(in srgb,var(--tone2) 14%,transparent);
 
   opacity:.75;
-
 }
 
 
@@ -1585,9 +1207,7 @@ a{
 ═══════════════════════════════════════ */
 
 .drawer-header{
-
   position:relative;
-
   z-index:2;
 
   display:flex;
@@ -1616,11 +1236,12 @@ a{
   box-shadow:
     0 8px 24px
     rgba(0,0,0,.45);
-
 }
 
-
 .drawer-title{
+  display:flex;
+  align-items:center;
+  gap:7px;
 
   font-size:15px;
 
@@ -1629,14 +1250,10 @@ a{
   color:white;
 
   letter-spacing:.4px;
-
 }
 
-
 .drawer-description{
-
   position:relative;
-
   z-index:2;
 
   margin:0 0 12px;
@@ -1646,20 +1263,15 @@ a{
   font-size:9px;
 
   line-height:1.5;
-
 }
 
-
 .close{
-
   width:36px;
-
   height:36px;
 
   display:flex;
 
   align-items:center;
-
   justify-content:center;
 
   border:
@@ -1676,7 +1288,6 @@ a{
   cursor:pointer;
 
   font-size:20px;
-
 }
 
 
@@ -1685,9 +1296,7 @@ a{
 ═══════════════════════════════════════ */
 
 .schedule-item{
-
   position:relative;
-
   z-index:2;
 
   margin-bottom:12px;
@@ -1712,12 +1321,9 @@ a{
   gap:12px;
 
   align-items:flex-start;
-
 }
 
-
 .schedule-time{
-
   color:var(--tone3);
 
   font-weight:700;
@@ -1727,12 +1333,9 @@ a{
   min-width:70px;
 
   flex-shrink:0;
-
 }
 
-
 .schedule-text{
-
   color:rgba(255,255,255,.78);
 
   font-size:11px;
@@ -1740,7 +1343,6 @@ a{
   line-height:1.4;
 
   flex:1;
-
 }
 
 
@@ -1749,9 +1351,7 @@ a{
 ═══════════════════════════════════════ */
 
 .field{
-
   position:relative;
-
   z-index:2;
 
   margin-bottom:12px;
@@ -1770,12 +1370,9 @@ a{
   border:
     1px solid
     rgba(255,255,255,.04);
-
 }
 
-
 .field label{
-
   display:block;
 
   margin-bottom:5px;
@@ -1783,16 +1380,12 @@ a{
   color:rgba(255,255,255,.68);
 
   font-size:9px;
-
   font-weight:700;
-
 }
-
 
 .field input,
 .field select,
 .field textarea{
-
   width:100%;
 
   padding:11px;
@@ -1811,58 +1404,31 @@ a{
   color:white;
 
   font-size:11px;
-
 }
-
 
 .field input:focus,
 .field select:focus,
 .field textarea:focus{
-
   border-color:
-    color-mix(
-      in srgb,
-      var(--tone3) 55%,
-      transparent
-    );
+    color-mix(in srgb,var(--tone3) 55%,transparent);
 
   box-shadow:
     0 0 0 3px
-    color-mix(
-      in srgb,
-      var(--tone3) 8%,
-      transparent
-    );
-
+    color-mix(in srgb,var(--tone3) 8%,transparent);
 }
-
 
 .field textarea{
-
   min-height:80px;
-
   resize:vertical;
-
 }
-
 
 .field select option{
-
   color:#111;
-
   background:white;
-
 }
 
-
-/* ═══════════════════════════════════════
-   RSVP NOTE
-═══════════════════════════════════════ */
-
 .rsvp-note{
-
   position:relative;
-
   z-index:2;
 
   margin:4px 4px 12px;
@@ -1876,18 +1442,10 @@ a{
   line-height:1.5;
 
   text-align:center;
-
 }
 
-
-/* ═══════════════════════════════════════
-   SUBMIT
-═══════════════════════════════════════ */
-
 .submit{
-
   position:relative;
-
   z-index:2;
 
   width:100%;
@@ -1914,7 +1472,6 @@ a{
   font-size:11px;
 
   font-weight:800;
-
 }
 
 
@@ -1923,33 +1480,24 @@ a{
 ═══════════════════════════════════════ */
 
 .family-section{
-
   position:relative;
-
   z-index:2;
 
   margin-bottom:14px;
-
 }
 
-
 .family-heading{
-
   margin:0 0 5px;
 
   color:white;
 
   font-size:13px;
-
   font-weight:800;
 
   letter-spacing:.2px;
-
 }
 
-
 .family-parents{
-
   margin:0 0 10px;
 
   color:var(--muted);
@@ -1957,12 +1505,9 @@ a{
   font-size:9px;
 
   line-height:1.5;
-
 }
 
-
 .contact-item{
-
   position:relative;
 
   display:flex;
@@ -1989,12 +1534,9 @@ a{
   border:
     1px solid
     rgba(255,255,255,.04);
-
 }
 
-
 .contact-name{
-
   min-width:0;
 
   flex:1;
@@ -2006,12 +1548,9 @@ a{
   line-height:1.4;
 
   font-weight:700;
-
 }
 
-
 .contact-button{
-
   flex-shrink:0;
 
   display:inline-flex;
@@ -2044,16 +1583,67 @@ a{
   font-weight:800;
 
   transition:.2s ease;
-
 }
-
 
 .contact-button:active{
-
   transform:scale(.97);
-
 }
 
+
+/* ═══════════════════════════════════════
+   LOADING / ERROR
+═══════════════════════════════════════ */
+
+#loadingScreen{
+  position:fixed;
+
+  inset:0;
+
+  z-index:2000;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:25px;
+
+  background:#07100c;
+
+  color:white;
+
+  text-align:center;
+}
+
+#loadingScreen.hidden{
+  display:none;
+}
+
+.loading-box{
+  max-width:300px;
+}
+
+.loading-icon{
+  font-size:38px;
+  margin-bottom:15px;
+}
+
+.loading-title{
+  margin:0 0 7px;
+
+  font-size:16px;
+  font-weight:800;
+}
+
+.loading-text{
+  margin:0;
+
+  color:#9eaaa2;
+
+  font-size:11px;
+
+  line-height:1.5;
 }
 
 
@@ -2083,7 +1673,6 @@ a{
   .time{
     min-width:51px;
   }
-
 }
 
 
@@ -2096,23 +1685,44 @@ a{
   *,
   *::before,
   *::after{
-
     animation-duration:.01ms !important;
 
     animation-iteration-count:1 !important;
 
     transition-duration:.01ms !important;
-
   }
-
 }
 
 </style>
-
 </head>
 
 
 <body>
+
+
+<!-- ═══════════════════════════════════════
+     LOADING
+═══════════════════════════════════════ -->
+
+<div id="loadingScreen">
+
+  <div class="loading-box">
+
+    <div class="loading-icon">
+      💌
+    </div>
+
+    <p class="loading-title">
+      Memuatkan Undangan
+    </p>
+
+    <p class="loading-text">
+      Sila tunggu sebentar...
+    </p>
+
+  </div>
+
+</div>
 
 
 <div class="app">
@@ -2140,7 +1750,9 @@ a{
     aria-label="Buka kad"
   >
 
-    <span>🍓</span>
+    <span id="coverEmoji">
+      🍓
+    </span>
 
   </div>
 
@@ -2538,9 +2150,9 @@ a{
 </div>
 
 
-<!-- ═════════════════════════════════════
+<!-- ═══════════════════════════════════════
      OVERLAY
-═════════════════════════════════════ -->
+═══════════════════════════════════════ -->
 
 <div
   class="overlay"
@@ -2548,9 +2160,9 @@ a{
 ></div>
 
 
-<!-- ═════════════════════════════════════
+<!-- ═══════════════════════════════════════
      SCHEDULE DRAWER
-═════════════════════════════════════ -->
+═══════════════════════════════════════ -->
 
 <aside
   class="drawer"
@@ -2586,9 +2198,9 @@ a{
 </aside>
 
 
-<!-- ═════════════════════════════════════
+<!-- ═══════════════════════════════════════
      RSVP DRAWER
-═════════════════════════════════════ -->
+═══════════════════════════════════════ -->
 
 <aside
   class="drawer"
@@ -2695,35 +2307,101 @@ a{
 </aside>
 
 
-<!-- FAMILY DRAWER -->
-<aside class="drawer" id="familyDrawer" aria-hidden="true">
+<!-- ═══════════════════════════════════════
+     FAMILY DRAWER
+═══════════════════════════════════════ -->
+
+<aside
+  class="drawer"
+  id="familyDrawer"
+  aria-hidden="true"
+>
+
   <div class="drawer-header">
+
     <div class="drawer-title">
-      <span class="drawer-icon">📞</span>
-      <span>HUBUNGI KELUARGA</span>
+
+      <span>
+        📞
+      </span>
+
+      <span>
+        HUBUNGI KELUARGA
+      </span>
+
     </div>
-    <button class="close" type="button" data-close aria-label="Tutup">×</button>
+
+    <button
+      class="close"
+      type="button"
+      data-close
+      aria-label="Tutup"
+    >
+      ×
+    </button>
+
   </div>
+
 
   <p class="drawer-description">
-    Sebarang pertanyaan berkaitan majlis boleh diajukan kepada keluarga pengantin.
+
+    Sebarang pertanyaan berkaitan majlis
+    boleh diajukan kepada keluarga pengantin.
+
   </p>
 
+
   <div class="drawer-body">
-    <!-- KUMPULAN 1: PENGANTIN LELAKI -->
+
     <div class="family-section">
-      <h3 class="family-heading" id="groomTitle">👨‍💼 Pengantin Lelaki</h3>
-      <p class="family-parents" id="groomParents">Putera kepada Encik Ahmad & Puan Aminah</p>
-      <div class="contact-list" id="groomContacts"></div>
+
+      <h3
+        class="family-heading"
+        id="groomTitle"
+      >
+        👨‍💼 Pengantin Lelaki
+      </h3>
+
+      <p
+        class="family-parents"
+        id="groomParents"
+      >
+        Putera kepada keluarga pengantin
+      </p>
+
+      <div
+        class="contact-list"
+        id="groomContacts"
+      ></div>
+
     </div>
 
-    <!-- KUMPULAN 2: PENGANTIN PEREMPUAN -->
+
     <div class="family-section">
-      <h3 class="family-heading" id="brideTitle">👩‍💼 Pengantin Perempuan</h3>
-      <p class="family-parents" id="brideParents">Puteri kepada Encik Rahman & Puan Aisyah</p>
-      <div class="contact-list" id="brideContacts"></div>
+
+      <h3
+        class="family-heading"
+        id="brideTitle"
+      >
+        👩‍💼 Pengantin Perempuan
+      </h3>
+
+      <p
+        class="family-parents"
+        id="brideParents"
+      >
+        Puteri kepada keluarga pengantin
+      </p>
+
+      <div
+        class="contact-list"
+        id="brideContacts"
+      ></div>
+
     </div>
+
   </div>
+
 </aside>
 
 
@@ -2732,223 +2410,87 @@ a{
 "use strict";
 
 
-/* ╔══════════════════════════════════════╗
-   ║                                      ║
-   ║        💍 EDIT KAD DI SINI           ║
-   ║                                      ║
-   ╚══════════════════════════════════════╝ */
+/* ═══════════════════════════════════════
+   SUPABASE
+═══════════════════════════════════════
+
+   GANTI 2 NILAI INI DENGAN:
+
+   1. Supabase Project URL
+   2. Supabase anon/public key
+
+   JANGAN letak service_role key di sini.
+═══════════════════════════════════════ */
+
+const SUPABASE_URL =
+  "YOUR_SUPABASE_PROJECT_URL";
+
+const SUPABASE_ANON_KEY =
+  "YOUR_SUPABASE_ANON_KEY";
 
 
 /* ═══════════════════════════════════════
-   CONFIG
+   DEFAULT
 ═══════════════════════════════════════ */
 
-const CONFIG = {
+const DEFAULT_DATA = {
 
-
-  /* 🎨 WARNA */
+  slug:
+    "default",
 
   theme:
     "classicBlue",
 
-
-  /* 💍 NAMA PENGANTIN */
-
   couple:{
-
-    name1:
-      "Adam",
-
-    name2:
-      "Hawa"
-
+    name1:"Adam",
+    name2:"Hawa"
   },
-
-
-  /* ✨ TEKS */
 
   text:{
-
-    opening:
-      "Dengan Penuh Kesyukuran",
-
-    subtitle:
-      "Majlis Kesyukuran & Walimatulurus"
-
+    opening:"Dengan Penuh Kesyukuran",
+    subtitle:"Majlis Kesyukuran & Walimatulurus"
   },
-
-
-  /* 📅 TARIKH & MASA */
 
   wedding:{
-
-    date:
-      "2027-10-11",
-
-    time:
-      "11:00"
-
+    date:"2027-10-11",
+    time:"11:00"
   },
 
-
-  /* 🖼️ GAMBAR */
-
-  poster:
-    "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=85",
-
-
-  /* 📍 LOKASI */
+  poster:"",
 
   location:{
-
-    name:
-      "Lokasi Majlis",
-
-    url:
-      "https://maps.google.com/"
-
+    name:"Lokasi Majlis",
+    url:"https://maps.google.com/"
   },
 
-
-  /* ✨ EFFECT */
-
   effects:{
-
-    aurora:
-      true,
-
-    fallingEmoji:
-      true,
-
+    aurora:true,
+    fallingEmoji:true,
     emojis:[
       "🍓",
       "🍃",
       "✨",
       "🌸"
     ]
-
   },
 
-
-  /* 📋 ATUR CARA */
-
-  schedule:[
-
-    {
-      time:
-        "11:00 AM",
-
-      text:
-        "Ketibaan Para Tetamu & Jemputan"
-    },
-
-    {
-      time:
-        "12:00 PM",
-
-      text:
-        "Bacaan Doa & Acara Pembukaan"
-    },
-
-    {
-      time:
-        "12:30 PM",
-
-      text:
-        "Ketibaan Pengantin & Makan Beradab"
-    },
-
-    {
-      time:
-        "02:30 PM",
-
-      text:
-        "Sesi Bergambar & Ramah Mesra"
-    },
-
-    {
-      time:
-        "04:00 PM",
-
-      text:
-        "Majlis Bersurai & Ucapan Penutup"
-    }
-
-  ],
-
-
-  /* 📞 KELUARGA */
+  schedule:[],
 
   family:{
-
     groom:{
-
-      title:
-        "Pengantin Lelaki",
-
-      parents:
-        "Putera kepada Encik Ahmad & Puan Aminah",
-
-      contacts:[
-
-        {
-          name:
-            "Encik Ahmad",
-
-          phone:
-            "60123456789"
-        },
-
-        {
-          name:
-            "Puan Aminah",
-
-          phone:
-            "60123456789"
-        }
-
-      ]
-
+      title:"Pengantin Lelaki",
+      parents:"",
+      contacts:[]
     },
 
-
     bride:{
-
-      title:
-        "Pengantin Perempuan",
-
-      parents:
-        "Puteri kepada Encik Abdullah & Puan Fatimah",
-
-      contacts:[
-
-        {
-          name:
-            "Encik Abdullah",
-
-          phone:
-            "60123456789"
-        },
-
-        {
-          name:
-            "Puan Fatimah",
-
-          phone:
-            "60123456789"
-        }
-
-      ]
-
+      title:"Pengantin Perempuan",
+      parents:"",
+      contacts:[]
     }
-
   },
 
-
-  /* 💌 WHATSAPP RSVP */
-
-  ownerWhatsApp:
-    "601139517845"
+  ownerWhatsApp:""
 
 };
 
@@ -2960,132 +2502,236 @@ const CONFIG = {
 const THEMES = {
 
   classicBlue:{
-
-    name:
-      "Classic Blue",
-
-    tone1:
-      "#234E70",
-
-    tone2:
-      "#4F8CC9",
-
-    tone3:
-      "#D9EAF8"
-
+    tone1:"#234E70",
+    tone2:"#4F8CC9",
+    tone3:"#D9EAF8"
   },
-
 
   slateCharcoal:{
-
-    name:
-      "Slate Charcoal",
-
-    tone1:
-      "#333A40",
-
-    tone2:
-      "#6D7680",
-
-    tone3:
-      "#DDE1E4"
-
+    tone1:"#333A40",
+    tone2:"#6D7680",
+    tone3:"#DDE1E4"
   },
-
 
   champagneRose:{
-
-    name:
-      "Champagne Rose",
-
-    tone1:
-      "#8C6B69",
-
-    tone2:
-      "#D9BFBF",
-
-    tone3:
-      "#FFF6F5"
-
+    tone1:"#8C6B69",
+    tone2:"#D9BFBF",
+    tone3:"#FFF6F5"
   },
-
 
   sageGreen:{
-
-    name:
-      "Sage Green",
-
-    tone1:
-      "#526B5A",
-
-    tone2:
-      "#89A88F",
-
-    tone3:
-      "#DCE9DE"
-
+    tone1:"#526B5A",
+    tone2:"#89A88F",
+    tone3:"#DCE9DE"
   },
-
 
   strawberryMatcha:{
-
-    name:
-      "Strawberry Matcha",
-
-    tone1:
-      "#D98B9A",
-
-    tone2:
-      "#7FA58A",
-
-    tone3:
-      "#F7C8D0"
-
+    tone1:"#D98B9A",
+    tone2:"#7FA58A",
+    tone3:"#F7C8D0"
   },
-
 
   coralMint:{
-
-    name:
-      "Coral Mint",
-
-    tone1:
-      "#F07C74",
-
-    tone2:
-      "#7ED3B3",
-
-    tone3:
-      "#FFF0E6"
-
+    tone1:"#F07C74",
+    tone2:"#7ED3B3",
+    tone3:"#FFF0E6"
   },
 
-
   lavenderSky:{
-
-    name:
-      "Lavender Sky",
-
-    tone1:
-      "#8C7AE6",
-
-    tone2:
-      "#93D1FF",
-
-    tone3:
-      "#EDE7FF"
-
+    tone1:"#8C7AE6",
+    tone2:"#93D1FF",
+    tone3:"#EDE7FF"
   }
 
 };
 
 
 /* ═══════════════════════════════════════
+   ACTIVE CONFIG
+═══════════════════════════════════════ */
+
+let CONFIG =
+  structuredClone
+    ? structuredClone(DEFAULT_DATA)
+    : JSON.parse(
+        JSON.stringify(DEFAULT_DATA)
+      );
+
+
+/* ═══════════════════════════════════════
    HELPER
 ═══════════════════════════════════════ */
 
-const $ = id =>
-  document.getElementById(id);
+const $ =
+  id =>
+    document.getElementById(id);
+
+
+/* ═══════════════════════════════════════
+   URL SLUG
+═══════════════════════════════════════ */
+
+function getSlug(){
+
+  const path =
+    window.location.pathname
+      .replace(/^\/+|\/+$/g,"");
+
+  if(!path){
+    return "default";
+  }
+
+  return decodeURIComponent(
+    path.split("/")[0]
+  ).trim().toLowerCase();
+
+}
+
+
+/* ═══════════════════════════════════════
+   SUPABASE FETCH
+═══════════════════════════════════════ */
+
+async function loadCustomer(){
+
+  const slug =
+    getSlug();
+
+
+  if(
+    !SUPABASE_URL ||
+    SUPABASE_URL.includes(
+      "YOUR_SUPABASE"
+    ) ||
+    !SUPABASE_ANON_KEY ||
+    SUPABASE_ANON_KEY.includes(
+      "YOUR_SUPABASE"
+    )
+  ){
+
+    console.warn(
+      "Supabase belum dikonfigurasi."
+    );
+
+    return {
+      ...DEFAULT_DATA,
+      slug
+    };
+
+  }
+
+
+  const endpoint =
+    `${SUPABASE_URL}/rest/v1/wedding_cards`
+    +
+    `?select=*`
+    +
+    `&slug=eq.${encodeURIComponent(slug)}`
+    +
+    `&limit=1`;
+
+
+  const response =
+    await fetch(
+      endpoint,
+      {
+        method:"GET",
+
+        headers:{
+          apikey:
+            SUPABASE_ANON_KEY,
+
+          Authorization:
+            `Bearer ${SUPABASE_ANON_KEY}`
+        }
+      }
+    );
+
+
+  if(!response.ok){
+
+    throw new Error(
+      `Supabase error: ${response.status}`
+    );
+
+  }
+
+
+  const rows =
+    await response.json();
+
+
+  if(
+    !Array.isArray(rows) ||
+    rows.length === 0
+  ){
+
+    throw new Error(
+      `Kad "${slug}" tidak dijumpai.`
+    );
+
+  }
+
+
+  return normalizeCustomer(
+    rows[0]
+  );
+
+}
+
+
+/* ═══════════════════════════════════════
+   NORMALIZE CUSTOMER
+═══════════════════════════════════════ */
+
+function normalizeCustomer(row){
+
+  const data =
+    {
+      ...DEFAULT_DATA,
+      ...row
+    };
+
+
+  if(typeof row.couple === "string"){
+    data.couple =
+      JSON.parse(row.couple);
+  }
+
+  if(typeof row.text === "string"){
+    data.text =
+      JSON.parse(row.text);
+  }
+
+  if(typeof row.wedding === "string"){
+    data.wedding =
+      JSON.parse(row.wedding);
+  }
+
+  if(typeof row.location === "string"){
+    data.location =
+      JSON.parse(row.location);
+  }
+
+  if(typeof row.effects === "string"){
+    data.effects =
+      JSON.parse(row.effects);
+  }
+
+  if(typeof row.schedule === "string"){
+    data.schedule =
+      JSON.parse(row.schedule);
+  }
+
+  if(typeof row.family === "string"){
+    data.family =
+      JSON.parse(row.family);
+  }
+
+
+  return data;
+
+}
 
 
 /* ═══════════════════════════════════════
@@ -3095,7 +2741,9 @@ const $ = id =>
 function applyTheme(){
 
   const theme =
-    THEMES[CONFIG.theme]
+    THEMES[
+      CONFIG.theme
+    ]
     ||
     THEMES.classicBlue;
 
@@ -3144,45 +2792,35 @@ function updateWeddingText(){
     ).trim();
 
 
-  if($("displayName1"))
-    $("displayName1").textContent =
-      name1;
+  $("displayName1").textContent =
+    name1;
+
+  $("displayName2").textContent =
+    name2;
+
+  $("coverName1").textContent =
+    name1;
+
+  $("coverName2").textContent =
+    name2;
 
 
-  if($("displayName2"))
-    $("displayName2").textContent =
-      name2;
+  $("openingText").textContent =
+    CONFIG.text?.opening
+    ||
+    "";
 
 
-  if($("coverName1"))
-    $("coverName1").textContent =
-      name1;
+  $("invitationSubtitle").textContent =
+    CONFIG.text?.subtitle
+    ||
+    "";
 
 
-  if($("coverName2"))
-    $("coverName2").textContent =
-      name2;
-
-
-  if($("openingText"))
-    $("openingText").textContent =
-      CONFIG.text?.opening
-      ||
-      "";
-
-
-  if($("invitationSubtitle"))
-    $("invitationSubtitle").textContent =
-      CONFIG.text?.subtitle
-      ||
-      "";
-
-
-  if($("coverSubtitle"))
-    $("coverSubtitle").textContent =
-      CONFIG.text?.subtitle
-      ||
-      "";
+  $("coverSubtitle").textContent =
+    CONFIG.text?.subtitle
+    ||
+    "";
 
 
   document.title =
@@ -3198,16 +2836,8 @@ function updateWeddingText(){
 function escapeCssUrl(value){
 
   return String(value)
-
-    .replace(
-      /\\/g,
-      "\\\\"
-    )
-
-    .replace(
-      /"/g,
-      '\\"'
-    );
+    .replace(/\\/g,"\\\\")
+    .replace(/"/g,'\\"');
 
 }
 
@@ -3217,14 +2847,8 @@ function setupPoster(){
   const poster =
     $("weddingPoster");
 
-
   const wrapper =
     $("posterWrapper");
-
-
-  if(!poster || !wrapper){
-    return;
-  }
 
 
   const image =
@@ -3280,7 +2904,6 @@ function setupPoster(){
       "hidden"
     );
 
-
     document.documentElement
       .style
       .removeProperty(
@@ -3302,7 +2925,7 @@ function setupPoster(){
 
 function getEventDate(){
 
-  const dateValue =
+  const value =
     String(
       CONFIG.wedding?.date
       ||
@@ -3310,14 +2933,14 @@ function getEventDate(){
     ).trim();
 
 
-  if(!dateValue){
+  if(!value){
     return null;
   }
 
 
   const date =
     new Date(
-      `${dateValue}T00:00:00`
+      `${value}T00:00:00`
     );
 
 
@@ -3347,11 +2970,6 @@ function formatDate(){
     $("displayDate");
 
 
-  if(!display){
-    return;
-  }
-
-
   if(!date){
 
     display.textContent =
@@ -3363,7 +2981,6 @@ function formatDate(){
 
 
   display.textContent =
-
     new Intl.DateTimeFormat(
       "ms-MY",
       {
@@ -3457,21 +3074,17 @@ function updateCountdown(){
 
   if(diff <= 0){
 
-    if($("days"))
-      $("days").textContent =
-        "00";
+    $("days").textContent =
+      "00";
 
-    if($("hours"))
-      $("hours").textContent =
-        "00";
+    $("hours").textContent =
+      "00";
 
-    if($("minutes"))
-      $("minutes").textContent =
-        "00";
+    $("minutes").textContent =
+      "00";
 
-    if($("seconds"))
-      $("seconds").textContent =
-        "00";
+    $("seconds").textContent =
+      "00";
 
     return;
 
@@ -3524,24 +3137,17 @@ function updateCountdown(){
     );
 
 
-  if($("days"))
-    $("days").textContent =
-      pad(days);
+  $("days").textContent =
+    pad(days);
 
+  $("hours").textContent =
+    pad(hours);
 
-  if($("hours"))
-    $("hours").textContent =
-      pad(hours);
+  $("minutes").textContent =
+    pad(minutes);
 
-
-  if($("minutes"))
-    $("minutes").textContent =
-      pad(minutes);
-
-
-  if($("seconds"))
-    $("seconds").textContent =
-      pad(seconds);
+  $("seconds").textContent =
+    pad(seconds);
 
 }
 
@@ -3583,11 +3189,6 @@ function buildSchedule(){
     $("scheduleContainer");
 
 
-  if(!container){
-    return;
-  }
-
-
   container.innerHTML =
     "";
 
@@ -3611,7 +3212,6 @@ function buildSchedule(){
           "div"
         );
 
-
       wrap.className =
         "schedule-item";
 
@@ -3621,10 +3221,8 @@ function buildSchedule(){
           "div"
         );
 
-
       time.className =
         "schedule-time";
-
 
       time.textContent =
         item?.time
@@ -3637,10 +3235,8 @@ function buildSchedule(){
           "div"
         );
 
-
       text.className =
         "schedule-text";
-
 
       text.textContent =
         item?.text
@@ -3652,11 +3248,9 @@ function buildSchedule(){
         time
       );
 
-
       wrap.appendChild(
         text
       );
-
 
       container.appendChild(
         wrap
@@ -3680,34 +3274,13 @@ function updateLocation(){
     {};
 
 
-  const button =
-    $("locationButton");
-
-
-  const text =
-    $("locationText");
-
-
-  if(!button || !text){
-    return;
-  }
-
-
-  const url =
-    String(
-      location.url
-      ||
-      ""
-    ).trim();
-
-
-  button.href =
-    url
+  $("locationButton").href =
+    location.url
     ||
     "#";
 
 
-  text.textContent =
+  $("locationText").textContent =
     location.name
     ||
     "Lokasi Majlis";
@@ -3725,64 +3298,38 @@ function setupAurora(){
     CONFIG.effects?.aurora !== false;
 
 
-  const aurora =
-    document.querySelector(
-      ".aurora"
-    );
+  [
+    ".aurora",
+    ".aurora-ribbon",
+    ".aurora-line"
+  ].forEach(
+    selector => {
+
+      const element =
+        document.querySelector(
+          selector
+        );
 
 
-  const ribbon =
-    document.querySelector(
-      ".aurora-ribbon"
-    );
+      if(element){
 
+        element.style.display =
+          enabled
+          ?
+          ""
+          :
+          "none";
 
-  const line =
-    document.querySelector(
-      ".aurora-line"
-    );
+      }
 
-
-  if(aurora){
-
-    aurora.style.display =
-      enabled
-      ?
-      ""
-      :
-      "none";
-
-  }
-
-
-  if(ribbon){
-
-    ribbon.style.display =
-      enabled
-      ?
-      ""
-      :
-      "none";
-
-  }
-
-
-  if(line){
-
-    line.style.display =
-      enabled
-      ?
-      ""
-      :
-      "none";
-
-  }
+    }
+  );
 
 }
 
 
 /* ═══════════════════════════════════════
-   FAMILY DRAWER
+   FAMILY
 ═══════════════════════════════════════ */
 
 function normalizePhone(phone){
@@ -3811,29 +3358,16 @@ function renderFamilyGroup(
   }
 
 
-  if(titleElement){
-
-    titleElement.textContent =
-      group.title
-      ||
-      "";
-
-  }
+  titleElement.textContent =
+    group.title
+    ||
+    "";
 
 
-  if(parentsElement){
-
-    parentsElement.textContent =
-      group.parents
-      ||
-      "";
-
-  }
-
-
-  if(!contactsElement){
-    return;
-  }
+  parentsElement.textContent =
+    group.parents
+    ||
+    "";
 
 
   contactsElement.innerHTML =
@@ -3946,28 +3480,18 @@ function buildFamily(){
 
 
   renderFamilyGroup(
-
     family.groom,
-
-    $("groomFamilyTitle"),
-
-    $("groomFamilyParents"),
-
+    $("groomTitle"),
+    $("groomParents"),
     $("groomContacts")
-
   );
 
 
   renderFamilyGroup(
-
     family.bride,
-
-    $("brideFamilyTitle"),
-
-    $("brideFamilyParents"),
-
+    $("brideTitle"),
+    $("brideParents"),
     $("brideContacts")
-
   );
 
 }
@@ -3980,14 +3504,11 @@ function buildFamily(){
 const overlay =
   $("overlay");
 
-
 const scheduleDrawer =
   $("scheduleDrawer");
 
-
 const rsvpDrawer =
   $("rsvpDrawer");
-
 
 const familyDrawer =
   $("familyDrawer");
@@ -3996,16 +3517,13 @@ const familyDrawer =
 function closeDrawers(){
 
   document
-    .querySelectorAll(
-      ".drawer"
-    )
+    .querySelectorAll(".drawer")
     .forEach(
       drawer => {
 
         drawer.classList.remove(
           "active"
         );
-
 
         drawer.setAttribute(
           "aria-hidden",
@@ -4016,13 +3534,9 @@ function closeDrawers(){
     );
 
 
-  if(overlay){
-
-    overlay.classList.remove(
-      "active"
-    );
-
-  }
+  overlay.classList.remove(
+    "active"
+  );
 
 
   document.body.style.overflow =
@@ -4052,13 +3566,9 @@ function openDrawer(drawer){
   );
 
 
-  if(overlay){
-
-    overlay.classList.add(
-      "active"
-    );
-
-  }
+  overlay.classList.add(
+    "active"
+  );
 
 
   document.body.style.overflow =
@@ -4067,72 +3577,44 @@ function openDrawer(drawer){
 }
 
 
-/* SCHEDULE */
-
-if($("openSchedule")){
-
-  $("openSchedule")
-    .addEventListener(
-      "click",
-      () =>
-        openDrawer(
-          scheduleDrawer
-        )
-    );
-
-}
-
-
-/* RSVP */
-
-if($("openRsvp")){
-
-  $("openRsvp")
-    .addEventListener(
-      "click",
-      () =>
-        openDrawer(
-          rsvpDrawer
-        )
-    );
-
-}
-
-
-/* FAMILY */
-
-if($("openFamily")){
-
-  $("openFamily")
-    .addEventListener(
-      "click",
-      () =>
-        openDrawer(
-          familyDrawer
-        )
-    );
-
-}
-
-
-/* OVERLAY */
-
-if(overlay){
-
-  overlay.addEventListener(
+$("openSchedule")
+  .addEventListener(
     "click",
-    closeDrawers
+    () =>
+      openDrawer(
+        scheduleDrawer
+      )
   );
 
-}
+
+$("openRsvp")
+  .addEventListener(
+    "click",
+    () =>
+      openDrawer(
+        rsvpDrawer
+      )
+  );
 
 
-/* CLOSE */
+$("openFamily")
+  .addEventListener(
+    "click",
+    () =>
+      openDrawer(
+        familyDrawer
+      )
+  );
+
+
+overlay.addEventListener(
+  "click",
+  closeDrawers
+);
+
 
 document
-  .querySelectorAll(
-    "[data-close]"
-  )
+  .querySelectorAll("[data-close]")
   .forEach(
     button => {
 
@@ -4144,8 +3626,6 @@ document
     }
   );
 
-
-/* ESC */
 
 document.addEventListener(
   "keydown",
@@ -4188,23 +3668,22 @@ function sendRsvp(){
 
 
   const name =
-    $("guestName")?.value
-      ?.trim()
-    ||
-    "";
+    $("guestName")
+      .value
+      .trim();
 
 
   const attendance =
-    $("attendance")?.value
-    ||
-    "Hadir";
+    $("attendance")
+      .value
+      ||
+      "Hadir";
 
 
   const message =
-    $("guestMessage")?.value
-      ?.trim()
-    ||
-    "";
+    $("guestMessage")
+      .value
+      .trim();
 
 
   const guestName =
@@ -4254,9 +3733,11 @@ Terima kasih 🤍`;
 
 
   const url =
-    `https://wa.me/${phone}?text=${encodeURIComponent(
-      whatsappText
-    )}`;
+    `https://wa.me/${phone}?text=${
+      encodeURIComponent(
+        whatsappText
+      )
+    }`;
 
 
   window.open(
@@ -4268,15 +3749,11 @@ Terima kasih 🤍`;
 }
 
 
-if($("sendRsvp")){
-
-  $("sendRsvp")
-    .addEventListener(
-      "click",
-      sendRsvp
-    );
-
-}
+$("sendRsvp")
+  .addEventListener(
+    "click",
+    sendRsvp
+  );
 
 
 /* ═══════════════════════════════════════
@@ -4298,71 +3775,48 @@ function openCard(){
     true;
 
 
-  const cover =
-    $("coverPage");
-
-
-  if(cover){
-
-    cover.classList.add(
-      "opened"
-    );
-
-  }
+  $("coverPage")
+    .classList
+    .add("opened");
 
 }
 
 
-if($("openEnvelope")){
-
-  $("openEnvelope")
-    .addEventListener(
-      "click",
-      openCard
-    );
-
-}
+$("openEnvelope")
+  .addEventListener(
+    "click",
+    openCard
+  );
 
 
-if($("openButton")){
-
-  $("openButton")
-    .addEventListener(
-      "click",
-      openCard
-    );
-
-}
+$("openButton")
+  .addEventListener(
+    "click",
+    openCard
+  );
 
 
-if($("openEnvelope")){
+$("openEnvelope")
+  .addEventListener(
+    "keydown",
+    event => {
 
-  $("openEnvelope")
-    .addEventListener(
-      "keydown",
-      event => {
+      if(
+        event.key === "Enter"
+        ||
+        event.key === " "
+        ||
+        event.key === "Spacebar"
+      ){
 
-        if(
-          event.key ===
-          "Enter"
-          ||
-          event.key ===
-          " "
-          ||
-          event.key ===
-          "Spacebar"
-        ){
+        event.preventDefault();
 
-          event.preventDefault();
-
-          openCard();
-
-        }
+        openCard();
 
       }
-    );
 
-}
+    }
+  );
 
 
 /* ═══════════════════════════════════════
@@ -4373,70 +3827,63 @@ let touchStartY =
   null;
 
 
-if($("coverPage")){
+$("coverPage")
+  .addEventListener(
+    "touchstart",
+    event => {
 
-  $("coverPage")
-    .addEventListener(
-      "touchstart",
-      event => {
+      touchStartY =
+        event
+          .changedTouches[0]
+          .clientY;
 
-        touchStartY =
-          event
-            .changedTouches[0]
-            .clientY;
+    },
+    {
+      passive:true
+    }
+  );
 
-      },
-      {
-        passive:true
+
+$("coverPage")
+  .addEventListener(
+    "touchend",
+    event => {
+
+      if(
+        touchStartY === null
+      ){
+
+        return;
+
       }
-    );
 
 
-  $("coverPage")
-    .addEventListener(
-      "touchend",
-      event => {
-
-        if(
-          touchStartY ===
-          null
-        ){
-
-          return;
-
-        }
+      const endY =
+        event
+          .changedTouches[0]
+          .clientY;
 
 
-        const endY =
-          event
-            .changedTouches[0]
-            .clientY;
+      const distance =
+        touchStartY -
+        endY;
 
 
-        const distance =
-          touchStartY -
-          endY;
+      if(distance > 60){
 
+        openCard();
 
-        if(
-          distance > 60
-        ){
-
-          openCard();
-
-        }
-
-
-        touchStartY =
-          null;
-
-      },
-      {
-        passive:true
       }
-    );
 
-}
+
+      touchStartY =
+        null;
+
+    },
+    {
+      passive:true
+    }
+  );
 
 
 /* ═══════════════════════════════════════
@@ -4464,20 +3911,13 @@ function createEmoji(){
     $("emojiContainer");
 
 
-  if(!container){
-    return;
-  }
-
-
   const emojis =
     CONFIG.effects
       ?.emojis;
 
 
   if(
-    !Array.isArray(
-      emojis
-    )
+    !Array.isArray(emojis)
     ||
     emojis.length === 0
   ){
@@ -4512,9 +3952,7 @@ function createEmoji(){
 
 
   const duration =
-    Math.random() * 3
-    +
-    3;
+    Math.random() * 3 + 3;
 
 
   element.style.animationDuration =
@@ -4531,11 +3969,7 @@ function createEmoji(){
 
 
   setTimeout(
-    () => {
-
-      element.remove();
-
-    },
+    () => element.remove(),
     duration * 1000 + 300
   );
 
@@ -4590,34 +4024,6 @@ function stopEmojiLoop(){
 }
 
 
-if(
-  CONFIG.effects
-    ?.fallingEmoji !== false
-){
-
-  startEmojiLoop();
-
-}
-
-
-document.addEventListener(
-  "visibilitychange",
-  () => {
-
-    if(document.hidden){
-
-      stopEmojiLoop();
-
-    }else{
-
-      startEmojiLoop();
-
-    }
-
-  }
-);
-
-
 /* ═══════════════════════════════════════
    LANGUAGE
 ═══════════════════════════════════════ */
@@ -4660,7 +4066,6 @@ const translations = {
       "Crafted with ✦ by"
 
   },
-
 
   en:{
 
@@ -4714,9 +4119,7 @@ function setLanguage(lang){
 
 
   document
-    .querySelectorAll(
-      "[data-i18n]"
-    )
+    .querySelectorAll("[data-i18n]")
     .forEach(
       element => {
 
@@ -4747,29 +4150,93 @@ function setLanguage(lang){
    INITIALIZE
 ═══════════════════════════════════════ */
 
-function initialize(){
+async function initialize(){
 
-  applyTheme();
+  try{
 
-  updateWeddingText();
+    CONFIG =
+      await loadCustomer();
 
-  setupPoster();
 
-  setupAurora();
+    applyTheme();
 
-  formatDate();
+    updateWeddingText();
 
-  buildSchedule();
+    setupPoster();
 
-  buildFamily();
+    setupAurora();
 
-  updateLocation();
+    formatDate();
 
-  startCountdown();
+    buildSchedule();
 
-  setLanguage("ms");
+    buildFamily();
+
+    updateLocation();
+
+    startCountdown();
+
+    setLanguage("ms");
+
+
+    if(
+      CONFIG.effects
+        ?.fallingEmoji !== false
+    ){
+
+      startEmojiLoop();
+
+    }
+
+
+    $("loadingScreen")
+      .classList
+      .add("hidden");
+
+
+  }catch(error){
+
+    console.error(
+      error
+    );
+
+
+    document
+      .querySelector(
+        ".loading-title"
+      )
+      .textContent =
+        "Undangan Tidak Dijumpai";
+
+
+    document
+      .querySelector(
+        ".loading-text"
+      )
+      .textContent =
+        `Link "${getSlug()}" tidak mempunyai data kad.`;
+
+  }
 
 }
+
+
+document.addEventListener(
+  "visibilitychange",
+  () => {
+
+    if(document.hidden){
+
+      stopEmojiLoop();
+
+    }else{
+
+      startEmojiLoop();
+
+    }
+
+  }
+);
 
 
 initialize();
@@ -4777,5 +4244,4 @@ initialize();
 </script>
 
 </body>
-
 </html>
