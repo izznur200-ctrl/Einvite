@@ -1,0 +1,4781 @@
+<!DOCTYPE html>
+<html lang="ms">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1,viewport-fit=cover"
+>
+
+<meta
+  name="theme-color"
+  content="#07100c"
+>
+
+<meta
+  name="description"
+  content="Undangan Digital"
+>
+
+<title>Adam & Hawa — Undangan Digital</title>
+
+
+<style>
+
+/* ═══════════════════════════════════════
+   ROOT
+═══════════════════════════════════════ */
+
+:root{
+
+  --tone1:#234E70;
+  --tone2:#4F8CC9;
+  --tone3:#D9EAF8;
+
+  --bg:#07100C;
+  --card:#0D1712;
+
+  --text:#FFFaf7;
+  --muted:#AEBBB1;
+
+  --border:rgba(255,255,255,.12);
+
+  --radius:30px;
+
+}
+
+
+/* ═══════════════════════════════════════
+   RESET
+═══════════════════════════════════════ */
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+
+  margin:0;
+
+  min-height:100vh;
+
+  background:
+    radial-gradient(
+      circle at 20% 0%,
+      rgba(255,255,255,.035),
+      transparent 30%
+    ),
+    var(--bg);
+
+  color:var(--text);
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+
+}
+
+button,
+input,
+textarea,
+select{
+  font:inherit;
+}
+
+button,
+a{
+  -webkit-tap-highlight-color:transparent;
+}
+
+
+/* ═══════════════════════════════════════
+   APP
+═══════════════════════════════════════ */
+
+.app{
+
+  width:100%;
+
+  max-width:460px;
+
+  margin:auto;
+
+  padding:14px;
+
+}
+
+
+/* ═══════════════════════════════════════
+   WEDDING CARD
+═══════════════════════════════════════ */
+
+.wedding-card{
+
+  position:relative;
+
+  min-height:680px;
+
+  overflow:hidden;
+
+  padding:42px 20px 26px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.12);
+
+  border-radius:var(--radius);
+
+  background:
+    linear-gradient(
+      160deg,
+      rgba(17,29,22,.96),
+      rgba(7,15,11,.98)
+    );
+
+  box-shadow:
+    0 35px 90px
+    rgba(0,0,0,.68);
+
+}
+
+
+/* ═══════════════════════════════════════
+   CARD BACKGROUND
+═══════════════════════════════════════ */
+
+.card-bg{
+
+  position:absolute;
+
+  inset:-5%;
+
+  z-index:0;
+
+  background-image:
+    var(--poster-image,none);
+
+  background-size:cover;
+
+  background-position:center;
+
+  opacity:.095;
+
+  filter:
+    saturate(.65)
+    brightness(.65)
+    blur(7px);
+
+  transform:scale(1.05);
+
+  pointer-events:none;
+
+}
+
+
+/* ═══════════════════════════════════════
+   AURORA
+═══════════════════════════════════════ */
+
+.aurora{
+
+  position:absolute;
+
+  inset:-30%;
+
+  z-index:1;
+
+  overflow:hidden;
+
+  pointer-events:none;
+
+  opacity:.95;
+
+  filter:
+    blur(25px)
+    saturate(1.2);
+
+}
+
+.aurora::before{
+
+  content:"";
+
+  position:absolute;
+
+  width:90%;
+  height:55%;
+
+  left:-28%;
+  top:-3%;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+
+      color-mix(
+        in srgb,
+        var(--tone1) 55%,
+        transparent
+      ) 0%,
+
+      color-mix(
+        in srgb,
+        var(--tone1) 30%,
+        transparent
+      ) 30%,
+
+      transparent 73%
+    );
+
+  transform:rotate(-18deg);
+
+  animation:
+    auroraOne
+    10s
+    ease-in-out
+    infinite
+    alternate;
+
+}
+
+.aurora-middle{
+
+  position:absolute;
+
+  width:100%;
+  height:55%;
+
+  left:-2%;
+  top:23%;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+
+      color-mix(
+        in srgb,
+        var(--tone2) 48%,
+        transparent
+      ) 0%,
+
+      color-mix(
+        in srgb,
+        var(--tone2) 25%,
+        transparent
+      ) 30%,
+
+      transparent 73%
+    );
+
+  transform:rotate(8deg);
+
+  animation:
+    auroraTwo
+    12s
+    ease-in-out
+    infinite
+    alternate;
+
+}
+
+.aurora-bottom{
+
+  position:absolute;
+
+  width:95%;
+  height:58%;
+
+  right:-28%;
+  bottom:-4%;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+
+      color-mix(
+        in srgb,
+        var(--tone3) 50%,
+        transparent
+      ) 0%,
+
+      color-mix(
+        in srgb,
+        var(--tone3) 25%,
+        transparent
+      ) 30%,
+
+      transparent 73%
+    );
+
+  transform:rotate(22deg);
+
+  animation:
+    auroraThree
+    11s
+    ease-in-out
+    infinite
+    alternate;
+
+}
+
+
+@keyframes auroraOne{
+
+  0%{
+    transform:
+      translate(-30px,20px)
+      rotate(-20deg)
+      scale(1);
+  }
+
+  50%{
+    transform:
+      translate(35px,-25px)
+      rotate(-5deg)
+      scale(1.15);
+  }
+
+  100%{
+    transform:
+      translate(70px,15px)
+      rotate(8deg)
+      scale(1.08);
+  }
+
+}
+
+
+@keyframes auroraTwo{
+
+  0%{
+    transform:
+      translate(-35px,15px)
+      rotate(5deg)
+      scale(1);
+  }
+
+  50%{
+    transform:
+      translate(30px,-30px)
+      rotate(-8deg)
+      scale(1.14);
+  }
+
+  100%{
+    transform:
+      translate(-10px,35px)
+      rotate(12deg)
+      scale(1.08);
+  }
+
+}
+
+
+@keyframes auroraThree{
+
+  0%{
+    transform:
+      translate(40px,-25px)
+      rotate(25deg)
+      scale(1);
+  }
+
+  50%{
+    transform:
+      translate(-30px,25px)
+      rotate(8deg)
+      scale(1.18);
+  }
+
+  100%{
+    transform:
+      translate(-70px,-10px)
+      rotate(-8deg)
+      scale(1.07);
+  }
+
+}
+
+
+/* ═══════════════════════════════════════
+   AURORA RIBBON
+═══════════════════════════════════════ */
+
+.aurora-ribbon{
+
+  position:absolute;
+
+  z-index:2;
+
+  width:155%;
+  height:28%;
+
+  left:-28%;
+  top:29%;
+
+  border-radius:50%;
+
+  background:
+    linear-gradient(
+      105deg,
+
+      transparent 4%,
+
+      color-mix(
+        in srgb,
+        var(--tone1) 18%,
+        transparent
+      ) 20%,
+
+      color-mix(
+        in srgb,
+        var(--tone3) 35%,
+        transparent
+      ) 37%,
+
+      rgba(255,255,255,.08) 49%,
+
+      color-mix(
+        in srgb,
+        var(--tone2) 35%,
+        transparent
+      ) 63%,
+
+      transparent 96%
+    );
+
+  filter:blur(15px);
+
+  transform:rotate(-13deg);
+
+  opacity:.9;
+
+  animation:
+    ribbonMove
+    9s
+    ease-in-out
+    infinite
+    alternate;
+
+  pointer-events:none;
+
+}
+
+
+@keyframes ribbonMove{
+
+  from{
+    transform:
+      translateX(-25px)
+      rotate(-13deg);
+  }
+
+  to{
+    transform:
+      translateX(35px)
+      rotate(-7deg);
+  }
+
+}
+
+
+/* ═══════════════════════════════════════
+   AURORA LINE
+═══════════════════════════════════════ */
+
+.aurora-line{
+
+  position:absolute;
+
+  z-index:3;
+
+  width:145%;
+  height:90px;
+
+  left:-22%;
+  top:42%;
+
+  border-top:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--tone3) 25%,
+      transparent
+    );
+
+  border-bottom:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--tone2) 22%,
+      transparent
+    );
+
+  filter:blur(7px);
+
+  transform:rotate(-12deg);
+
+  opacity:.65;
+
+  animation:
+    lineFloat
+    8s
+    ease-in-out
+    infinite
+    alternate;
+
+  pointer-events:none;
+
+}
+
+
+@keyframes lineFloat{
+
+  from{
+    transform:
+      translateX(-20px)
+      rotate(-12deg);
+  }
+
+  to{
+    transform:
+      translateX(30px)
+      rotate(-8deg);
+  }
+
+}
+
+
+/* ═══════════════════════════════════════
+   VIGNETTE
+═══════════════════════════════════════ */
+
+.vignette{
+
+  position:absolute;
+
+  inset:0;
+
+  z-index:3;
+
+  pointer-events:none;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 30%,
+      rgba(0,0,0,.16) 65%,
+      rgba(0,0,0,.48) 100%
+    );
+
+}
+
+
+/* ═══════════════════════════════════════
+   COVER
+═══════════════════════════════════════ */
+
+.cover{
+
+  position:absolute;
+
+  inset:0;
+
+  z-index:100;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:center;
+
+  align-items:center;
+
+  padding:25px;
+
+  text-align:center;
+
+  overflow:hidden;
+
+  background:
+
+    radial-gradient(
+      ellipse at 20% 15%,
+
+      color-mix(
+        in srgb,
+        var(--tone1) 30%,
+        transparent
+      ),
+
+      transparent 38%
+    ),
+
+    radial-gradient(
+      ellipse at 90% 85%,
+
+      color-mix(
+        in srgb,
+        var(--tone2) 27%,
+        transparent
+      ),
+
+      transparent 40%
+    ),
+
+    linear-gradient(
+      145deg,
+      #101b15,
+      #07100c
+    );
+
+  border-radius:var(--radius);
+
+  transition:
+    transform .85s cubic-bezier(.4,0,.2,1),
+    opacity .85s ease;
+
+  touch-action:pan-y;
+
+}
+
+
+.cover.opened{
+
+  transform:translateY(-100%);
+
+  opacity:0;
+
+  pointer-events:none;
+
+}
+
+
+.cover::before,
+.cover::after{
+
+  content:"";
+
+  position:absolute;
+
+  border-radius:50%;
+
+  filter:blur(40px);
+
+  pointer-events:none;
+
+}
+
+
+.cover::before{
+
+  width:270px;
+  height:270px;
+
+  top:-130px;
+  left:-100px;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--tone1) 16%,
+      transparent
+    );
+
+  animation:
+    coverPink
+    8s
+    ease-in-out
+    infinite
+    alternate;
+
+}
+
+
+.cover::after{
+
+  width:280px;
+  height:280px;
+
+  bottom:-140px;
+  right:-100px;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--tone2) 15%,
+      transparent
+    );
+
+  animation:
+    coverGreen
+    10s
+    ease-in-out
+    infinite
+    alternate;
+
+}
+
+
+@keyframes coverPink{
+
+  to{
+    transform:
+      translate(70px,40px)
+      scale(1.18);
+  }
+
+}
+
+
+@keyframes coverGreen{
+
+  to{
+    transform:
+      translate(-55px,-45px)
+      scale(1.15);
+  }
+
+}
+
+
+/* ═══════════════════════════════════════
+   ENVELOPE
+═══════════════════════════════════════ */
+
+.envelope{
+
+  position:relative;
+
+  width:84px;
+  height:59px;
+
+  margin-bottom:25px;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  background:
+    rgba(255,244,232,.92);
+
+  border:
+    2px solid
+    rgba(255,255,255,.65);
+
+  border-radius:8px;
+
+  box-shadow:
+    0 15px 45px rgba(0,0,0,.4),
+    0 0 35px
+    color-mix(
+      in srgb,
+      var(--tone1) 18%,
+      transparent
+    );
+
+  cursor:pointer;
+
+  animation:
+    envelopeFloat
+    2.4s
+    ease-in-out
+    infinite
+    alternate;
+
+}
+
+
+.envelope::before{
+
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  left:0;
+
+  border-left:
+    41px solid transparent;
+
+  border-right:
+    41px solid transparent;
+
+  border-top:
+    30px solid
+    color-mix(
+      in srgb,
+      var(--tone1) 70%,
+      white
+    );
+
+}
+
+
+.envelope span{
+
+  position:relative;
+
+  z-index:2;
+
+  font-size:23px;
+
+  animation:
+    heartBeat
+    .8s
+    ease-in-out
+    infinite
+    alternate;
+
+}
+
+
+@keyframes envelopeFloat{
+
+  to{
+    transform:translateY(-8px);
+  }
+
+}
+
+
+@keyframes heartBeat{
+
+  to{
+    transform:scale(1.12);
+  }
+
+}
+
+
+/* ═══════════════════════════════════════
+   COVER TEXT
+═══════════════════════════════════════ */
+
+.cover-label{
+
+  position:relative;
+
+  z-index:2;
+
+  margin:0 0 8px;
+
+  color:rgba(255,255,255,.70);
+
+  font-size:10px;
+
+  font-weight:700;
+
+  letter-spacing:3px;
+
+  text-transform:uppercase;
+
+}
+
+
+.cover-names{
+
+  position:relative;
+
+  z-index:2;
+
+  margin:0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:38px;
+
+  font-style:italic;
+
+  font-weight:400;
+
+  line-height:1.15;
+
+}
+
+
+.cover-subtitle{
+
+  position:relative;
+
+  z-index:2;
+
+  margin:10px 0 34px;
+
+  max-width:270px;
+
+  color:rgba(255,255,255,.62);
+
+  font-size:12px;
+
+  line-height:1.5;
+
+}
+
+
+.open-button{
+
+  position:relative;
+
+  z-index:2;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  gap:9px;
+
+  border:0;
+
+  background:transparent;
+
+  color:rgba(255,255,255,.82);
+
+  cursor:pointer;
+
+  font-size:9px;
+
+  font-weight:800;
+
+  letter-spacing:2px;
+
+  animation:
+    openPulse
+    1.5s
+    ease-in-out
+    infinite;
+
+}
+
+
+@keyframes openPulse{
+
+  0%,100%{
+    opacity:.55;
+  }
+
+  50%{
+    opacity:1;
+  }
+
+}
+
+
+/* ═══════════════════════════════════════
+   CONTENT
+═══════════════════════════════════════ */
+
+.content{
+
+  position:relative;
+
+  z-index:6;
+
+  text-align:center;
+
+}
+
+
+.opening{
+
+  margin:0;
+
+  color:rgba(231,238,232,.78);
+
+  font-size:10px;
+
+  letter-spacing:3px;
+
+  text-transform:uppercase;
+
+}
+
+
+.sparkles{
+
+  margin:8px 0;
+
+  color:var(--tone3);
+
+  font-size:9px;
+
+  letter-spacing:3px;
+
+}
+
+
+.invitation-subtitle{
+
+  margin:0 0 15px;
+
+  color:var(--muted);
+
+  font-size:12px;
+
+}
+
+
+/* ═══════════════════════════════════════
+   PHOTO
+═══════════════════════════════════════ */
+
+.poster-wrapper{
+
+  width:90%;
+
+  max-width:300px;
+
+  margin:0 auto 17px;
+
+  overflow:hidden;
+
+  border:
+    1px solid
+    rgba(255,255,255,.13);
+
+  border-radius:18px;
+
+  box-shadow:
+    0 20px 50px rgba(0,0,0,.5),
+    0 0 30px
+    color-mix(
+      in srgb,
+      var(--tone1) 6%,
+      transparent
+    );
+
+  background:
+    rgba(255,255,255,.025);
+
+}
+
+
+.poster-wrapper.hidden{
+  display:none;
+}
+
+
+.poster{
+
+  width:100%;
+
+  height:180px;
+
+  display:block;
+
+  object-fit:cover;
+
+}
+
+
+/* ═══════════════════════════════════════
+   NAMES
+═══════════════════════════════════════ */
+
+.name{
+
+  margin:5px 0;
+
+  color:white;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:40px;
+
+  font-style:italic;
+
+  font-weight:400;
+
+  line-height:1.03;
+
+  overflow-wrap:anywhere;
+
+  text-shadow:
+    0 3px 25px rgba(0,0,0,.5);
+
+}
+
+
+.and{
+
+  margin:5px 0;
+
+  color:var(--tone3);
+
+  font-family:Georgia,serif;
+
+  font-size:16px;
+
+  font-style:italic;
+
+}
+
+
+/* ═══════════════════════════════════════
+   DATE
+═══════════════════════════════════════ */
+
+.date{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:7px;
+
+  margin:20px 0;
+
+  padding:8px 17px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.11);
+
+  border-radius:30px;
+
+  background:
+    rgba(255,255,255,.035);
+
+  backdrop-filter:blur(12px);
+
+  color:#eef2ed;
+
+  font-size:11px;
+
+}
+
+
+/* ═══════════════════════════════════════
+   COUNTDOWN
+═══════════════════════════════════════ */
+
+.countdown{
+
+  margin:7px 0 27px;
+
+}
+
+
+.countdown-title{
+
+  margin:0 0 11px;
+
+  color:var(--muted);
+
+  font-size:8px;
+
+  font-weight:700;
+
+  letter-spacing:2px;
+
+}
+
+
+.countdown-grid{
+
+  display:flex;
+
+  justify-content:center;
+
+  gap:7px;
+
+}
+
+
+.time{
+
+  min-width:57px;
+
+  padding:9px 3px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.10);
+
+  border-radius:12px;
+
+  background:
+    rgba(255,255,255,.035);
+
+  backdrop-filter:blur(12px);
+
+}
+
+
+.time-number{
+
+  font-size:18px;
+
+  font-weight:800;
+
+  font-variant-numeric:tabular-nums;
+
+}
+
+
+.time-label{
+
+  display:block;
+
+  margin-top:2px;
+
+  color:var(--muted);
+
+  font-size:7px;
+
+  text-transform:uppercase;
+
+}
+
+
+/* ═══════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════ */
+
+.nav{
+
+  width:100%;
+
+  margin-bottom:10px;
+
+  padding:13px 16px;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  border:
+    1px solid
+    rgba(255,255,255,.10);
+
+  border-radius:30px;
+
+  background:
+    rgba(255,255,255,.035);
+
+  backdrop-filter:blur(14px);
+
+  color:white;
+
+  text-decoration:none;
+
+  cursor:pointer;
+
+  font-size:12px;
+
+  transition:.2s ease;
+
+}
+
+
+.nav:active{
+  transform:scale(.98);
+}
+
+
+.nav-left{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+}
+
+
+.nav-arrow{
+  color:var(--tone3);
+}
+
+
+/* ═══════════════════════════════════════
+   FALLING EMOJI
+═══════════════════════════════════════ */
+
+.emoji-container{
+
+  position:absolute;
+
+  inset:0;
+
+  z-index:4;
+
+  overflow:hidden;
+
+  pointer-events:none;
+
+  border-radius:var(--radius);
+
+}
+
+
+.falling{
+
+  position:absolute;
+
+  top:-30px;
+
+  animation:
+    fall
+    linear
+    forwards;
+
+  filter:
+    drop-shadow(
+      0 3px 5px
+      rgba(0,0,0,.35)
+    );
+
+}
+
+
+@keyframes fall{
+
+  0%{
+
+    transform:
+      translateY(0)
+      rotate(0deg);
+
+    opacity:0;
+
+  }
+
+  10%,85%{
+    opacity:1;
+  }
+
+  100%{
+
+    transform:
+      translateY(700px)
+      rotate(360deg);
+
+    opacity:0;
+
+  }
+
+}
+
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+
+.footer{
+
+  position:relative;
+
+  z-index:5;
+
+  padding:23px 0 4px;
+
+  text-align:center;
+
+  color:#65746b;
+
+  font-size:9px;
+
+  letter-spacing:1.4px;
+
+}
+
+
+.footer strong{
+  color:#c8d5cc;
+}
+
+
+/* ═══════════════════════════════════════
+   OVERLAY
+═══════════════════════════════════════ */
+
+.overlay{
+
+  position:fixed;
+
+  inset:0;
+
+  z-index:998;
+
+  background:
+    rgba(0,0,0,.55);
+
+  opacity:0;
+
+  visibility:hidden;
+
+  transition:
+    opacity .3s ease,
+    visibility .3s ease;
+
+  backdrop-filter:blur(3px);
+
+}
+
+
+.overlay.active{
+
+  opacity:1;
+
+  visibility:visible;
+
+}
+
+
+/* ═══════════════════════════════════════
+   DRAWER
+═══════════════════════════════════════ */
+
+.drawer{
+
+  position:fixed;
+
+  top:8%;
+
+  right:-100%;
+
+  z-index:999;
+
+  width:88%;
+
+  max-width:380px;
+
+  height:84%;
+
+  padding:22px 18px;
+
+  overflow-y:auto;
+
+  overscroll-behavior:contain;
+
+  background:
+    linear-gradient(
+      160deg,
+
+      color-mix(
+        in srgb,
+        var(--tone1) 6%,
+        #09110d
+      ),
+
+      color-mix(
+        in srgb,
+        var(--tone2) 4%,
+        #07100c
+      ) 70%
+    );
+
+  border-left:
+    1px solid
+    rgba(255,255,255,.08);
+
+  border-radius:18px;
+
+  box-shadow:
+    -10px 20px 60px
+    rgba(0,0,0,.6);
+
+  transition:
+    right .35s cubic-bezier(.4,0,.2,1),
+    transform .25s ease;
+
+  transform:translateY(6px);
+
+}
+
+
+.drawer.active{
+
+  right:0;
+
+  transform:translateY(0);
+
+}
+
+
+.drawer::before,
+.drawer::after{
+
+  content:"";
+
+  position:absolute;
+
+  width:220px;
+
+  height:220px;
+
+  border-radius:50%;
+
+  filter:blur(40px);
+
+  pointer-events:none;
+
+}
+
+
+.drawer::before{
+
+  top:-100px;
+
+  right:-70px;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--tone1) 18%,
+      transparent
+    );
+
+  opacity:.85;
+
+}
+
+
+.drawer::after{
+
+  bottom:-100px;
+
+  left:-80px;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--tone2) 14%,
+      transparent
+    );
+
+  opacity:.75;
+
+}
+
+
+/* ═══════════════════════════════════════
+   DRAWER HEADER
+═══════════════════════════════════════ */
+
+.drawer-header{
+
+  position:relative;
+
+  z-index:2;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  padding:12px 10px;
+
+  margin-bottom:14px;
+
+  border-radius:12px;
+
+  background:
+    linear-gradient(
+      120deg,
+      rgba(255,255,255,.03),
+      rgba(255,255,255,.01)
+    );
+
+  border:
+    1px solid
+    rgba(255,255,255,.06);
+
+  box-shadow:
+    0 8px 24px
+    rgba(0,0,0,.45);
+
+}
+
+
+.drawer-title{
+
+  font-size:15px;
+
+  font-weight:900;
+
+  color:white;
+
+  letter-spacing:.4px;
+
+}
+
+
+.drawer-description{
+
+  position:relative;
+
+  z-index:2;
+
+  margin:0 0 12px;
+
+  color:var(--muted);
+
+  font-size:9px;
+
+  line-height:1.5;
+
+}
+
+
+.close{
+
+  width:36px;
+
+  height:36px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:
+    1px solid
+    rgba(255,255,255,.06);
+
+  border-radius:10px;
+
+  background:
+    rgba(255,255,255,.03);
+
+  color:white;
+
+  cursor:pointer;
+
+  font-size:20px;
+
+}
+
+
+/* ═══════════════════════════════════════
+   SCHEDULE
+═══════════════════════════════════════ */
+
+.schedule-item{
+
+  position:relative;
+
+  z-index:2;
+
+  margin-bottom:12px;
+
+  padding:10px;
+
+  border-radius:10px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.02),
+      rgba(255,255,255,.01)
+    );
+
+  border:
+    1px solid
+    rgba(255,255,255,.04);
+
+  display:flex;
+
+  gap:12px;
+
+  align-items:flex-start;
+
+}
+
+
+.schedule-time{
+
+  color:var(--tone3);
+
+  font-weight:700;
+
+  font-size:11px;
+
+  min-width:70px;
+
+  flex-shrink:0;
+
+}
+
+
+.schedule-text{
+
+  color:rgba(255,255,255,.78);
+
+  font-size:11px;
+
+  line-height:1.4;
+
+  flex:1;
+
+}
+
+
+/* ═══════════════════════════════════════
+   RSVP FORM
+═══════════════════════════════════════ */
+
+.field{
+
+  position:relative;
+
+  z-index:2;
+
+  margin-bottom:12px;
+
+  padding:10px;
+
+  border-radius:10px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.02),
+      rgba(255,255,255,.01)
+    );
+
+  border:
+    1px solid
+    rgba(255,255,255,.04);
+
+}
+
+
+.field label{
+
+  display:block;
+
+  margin-bottom:5px;
+
+  color:rgba(255,255,255,.68);
+
+  font-size:9px;
+
+  font-weight:700;
+
+}
+
+
+.field input,
+.field select,
+.field textarea{
+
+  width:100%;
+
+  padding:11px;
+
+  border-radius:10px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.11);
+
+  outline:none;
+
+  background:
+    rgba(255,255,255,.045);
+
+  color:white;
+
+  font-size:11px;
+
+}
+
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+
+  border-color:
+    color-mix(
+      in srgb,
+      var(--tone3) 55%,
+      transparent
+    );
+
+  box-shadow:
+    0 0 0 3px
+    color-mix(
+      in srgb,
+      var(--tone3) 8%,
+      transparent
+    );
+
+}
+
+
+.field textarea{
+
+  min-height:80px;
+
+  resize:vertical;
+
+}
+
+
+.field select option{
+
+  color:#111;
+
+  background:white;
+
+}
+
+
+/* ═══════════════════════════════════════
+   RSVP NOTE
+═══════════════════════════════════════ */
+
+.rsvp-note{
+
+  position:relative;
+
+  z-index:2;
+
+  margin:4px 4px 12px;
+
+  padding:0 4px;
+
+  color:rgba(255,255,255,.55);
+
+  font-size:9px;
+
+  line-height:1.5;
+
+  text-align:center;
+
+}
+
+
+/* ═══════════════════════════════════════
+   SUBMIT
+═══════════════════════════════════════ */
+
+.submit{
+
+  position:relative;
+
+  z-index:2;
+
+  width:100%;
+
+  padding:13px;
+
+  border-radius:30px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.12);
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--tone1),
+      var(--tone2)
+    );
+
+  color:white;
+
+  cursor:pointer;
+
+  font-size:11px;
+
+  font-weight:800;
+
+}
+
+
+/* ═══════════════════════════════════════
+   FAMILY CONTACT
+═══════════════════════════════════════ */
+
+.family-section{
+
+  position:relative;
+
+  z-index:2;
+
+  margin-bottom:14px;
+
+}
+
+
+.family-heading{
+
+  margin:0 0 5px;
+
+  color:white;
+
+  font-size:13px;
+
+  font-weight:800;
+
+  letter-spacing:.2px;
+
+}
+
+
+.family-parents{
+
+  margin:0 0 10px;
+
+  color:var(--muted);
+
+  font-size:9px;
+
+  line-height:1.5;
+
+}
+
+
+.contact-item{
+
+  position:relative;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:12px;
+
+  margin-bottom:10px;
+
+  padding:10px;
+
+  border-radius:10px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.02),
+      rgba(255,255,255,.01)
+    );
+
+  border:
+    1px solid
+    rgba(255,255,255,.04);
+
+}
+
+
+.contact-name{
+
+  min-width:0;
+
+  flex:1;
+
+  color:rgba(255,255,255,.78);
+
+  font-size:10px;
+
+  line-height:1.4;
+
+  font-weight:700;
+
+}
+
+
+.contact-button{
+
+  flex-shrink:0;
+
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:8px 11px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.10);
+
+  border-radius:20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--tone1),
+      var(--tone2)
+    );
+
+  color:white;
+
+  text-decoration:none;
+
+  font-size:9px;
+
+  font-weight:800;
+
+  transition:.2s ease;
+
+}
+
+
+.contact-button:active{
+
+  transform:scale(.97);
+
+}
+
+}
+
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+
+@media(max-width:350px){
+
+  .app{
+    padding:10px;
+  }
+
+  .wedding-card{
+    padding-left:15px;
+    padding-right:15px;
+  }
+
+  .name{
+    font-size:34px;
+  }
+
+  .cover-names{
+    font-size:33px;
+  }
+
+  .time{
+    min-width:51px;
+  }
+
+}
+
+
+/* ═══════════════════════════════════════
+   REDUCED MOTION
+═══════════════════════════════════════ */
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+
+    animation-duration:.01ms !important;
+
+    animation-iteration-count:1 !important;
+
+    transition-duration:.01ms !important;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+<main
+  class="wedding-card"
+  id="weddingCard"
+>
+
+
+<!-- ═════════════════════════════════════
+     COVER
+═════════════════════════════════════ -->
+
+<section
+  class="cover"
+  id="coverPage"
+>
+
+  <div
+    class="envelope"
+    id="openEnvelope"
+    role="button"
+    tabindex="0"
+    aria-label="Buka kad"
+  >
+
+    <span>🍓</span>
+
+  </div>
+
+
+  <p
+    class="cover-label"
+    data-i18n="digitalInvitation"
+  >
+    Undangan Digital
+  </p>
+
+
+  <h1 class="cover-names">
+
+    <span id="coverName1">
+      Adam
+    </span>
+
+    &amp;
+
+    <span id="coverName2">
+      Hawa
+    </span>
+
+  </h1>
+
+
+  <p
+    class="cover-subtitle"
+    id="coverSubtitle"
+  >
+    Majlis Kesyukuran &amp; Walimatulurus
+  </p>
+
+
+  <button
+    class="open-button"
+    id="openButton"
+    type="button"
+  >
+
+    <span data-i18n="openCard">
+      KLIK ATAU LERET KE ATAS UNTUK BUKA
+    </span>
+
+    <span>▲</span>
+
+  </button>
+
+</section>
+
+
+<!-- ═════════════════════════════════════
+     VISUAL EFFECTS
+═════════════════════════════════════ -->
+
+<div
+  class="card-bg"
+  aria-hidden="true"
+></div>
+
+
+<div
+  class="aurora"
+  aria-hidden="true"
+>
+
+  <div class="aurora-middle"></div>
+
+  <div class="aurora-bottom"></div>
+
+</div>
+
+
+<div
+  class="aurora-ribbon"
+  aria-hidden="true"
+></div>
+
+
+<div
+  class="aurora-line"
+  aria-hidden="true"
+></div>
+
+
+<div
+  class="vignette"
+  aria-hidden="true"
+></div>
+
+
+<div
+  class="emoji-container"
+  id="emojiContainer"
+  aria-hidden="true"
+></div>
+
+
+<!-- ═════════════════════════════════════
+     CONTENT
+═════════════════════════════════════ -->
+
+<section class="content">
+
+
+  <p
+    class="opening"
+    id="openingText"
+  >
+    Dengan Penuh Kesyukuran
+  </p>
+
+
+  <p class="sparkles">
+    ✦ 🍓 ✦
+  </p>
+
+
+  <p
+    class="invitation-subtitle"
+    id="invitationSubtitle"
+  >
+    Majlis Kesyukuran &amp; Walimatulurus
+  </p>
+
+
+  <!-- PHOTO -->
+
+  <div
+    class="poster-wrapper hidden"
+    id="posterWrapper"
+  >
+
+    <img
+      class="poster"
+      id="weddingPoster"
+      alt="Foto pengantin"
+    >
+
+  </div>
+
+
+  <!-- NAMES -->
+
+  <h2
+    class="name"
+    id="displayName1"
+  >
+    Adam
+  </h2>
+
+
+  <p class="and">
+    &amp;
+  </p>
+
+
+  <h2
+    class="name"
+    id="displayName2"
+  >
+    Hawa
+  </h2>
+
+
+  <!-- DATE -->
+
+  <div class="date">
+
+    <span>🍓</span>
+
+    <span id="displayDate">
+      Tarikh Majlis
+    </span>
+
+  </div>
+
+
+  <!-- COUNTDOWN -->
+
+  <section class="countdown">
+
+    <p
+      class="countdown-title"
+      data-i18n="countdown"
+    >
+      MAJLIS BERMULA DALAM
+    </p>
+
+
+    <div class="countdown-grid">
+
+      <div class="time">
+
+        <div
+          class="time-number"
+          id="days"
+        >
+          00
+        </div>
+
+        <span
+          class="time-label"
+          data-i18n="days"
+        >
+          Hari
+        </span>
+
+      </div>
+
+
+      <div class="time">
+
+        <div
+          class="time-number"
+          id="hours"
+        >
+          00
+        </div>
+
+        <span
+          class="time-label"
+          data-i18n="hours"
+        >
+          Jam
+        </span>
+
+      </div>
+
+
+      <div class="time">
+
+        <div
+          class="time-number"
+          id="minutes"
+        >
+          00
+        </div>
+
+        <span
+          class="time-label"
+          data-i18n="minutes"
+        >
+          Min
+        </span>
+
+      </div>
+
+
+      <div class="time">
+
+        <div
+          class="time-number"
+          id="seconds"
+        >
+          00
+        </div>
+
+        <span
+          class="time-label"
+          data-i18n="seconds"
+        >
+          Saat
+        </span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SCHEDULE -->
+
+  <button
+    class="nav"
+    id="openSchedule"
+    type="button"
+  >
+
+    <span class="nav-left">
+
+      📋
+
+      <span data-i18n="scheduleButton">
+        Atur Cara Majlis
+      </span>
+
+    </span>
+
+    <span class="nav-arrow">
+      ➔
+    </span>
+
+  </button>
+
+
+  <!-- LOCATION -->
+
+  <a
+    class="nav"
+    id="locationButton"
+    href="#"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+
+    <span class="nav-left">
+
+      📍
+
+      <span id="locationText">
+        Lokasi Majlis
+      </span>
+
+    </span>
+
+    <span class="nav-arrow">
+      ➔
+    </span>
+
+  </a>
+
+
+  <!-- RSVP -->
+
+  <button
+    class="nav"
+    id="openRsvp"
+    type="button"
+  >
+
+    <span class="nav-left">
+
+      💌
+
+      <span data-i18n="rsvpButton">
+        RSVP &amp; Ucapan
+      </span>
+
+    </span>
+
+    <span class="nav-arrow">
+      ➔
+    </span>
+
+  </button>
+
+
+  <!-- FAMILY -->
+
+  <button
+    class="nav"
+    id="openFamily"
+    type="button"
+  >
+
+    <span class="nav-left">
+
+      📞
+
+      <span data-i18n="familyButton">
+        Hubungi Keluarga
+      </span>
+
+    </span>
+
+    <span class="nav-arrow">
+      ➔
+    </span>
+
+  </button>
+
+
+  <!-- FOOTER -->
+
+  <footer class="footer">
+
+    <span data-i18n="crafted">
+      Crafted with ✦ by
+    </span>
+
+    <strong>
+      NUR NONA
+    </strong>
+
+  </footer>
+
+
+</section>
+
+</main>
+
+</div>
+
+
+<!-- ═════════════════════════════════════
+     OVERLAY
+═════════════════════════════════════ -->
+
+<div
+  class="overlay"
+  id="overlay"
+></div>
+
+
+<!-- ═════════════════════════════════════
+     SCHEDULE DRAWER
+═════════════════════════════════════ -->
+
+<aside
+  class="drawer"
+  id="scheduleDrawer"
+  aria-hidden="true"
+>
+
+  <div class="drawer-header">
+
+    <div class="drawer-title">
+      📋 ATUR CARA MAJLIS
+    </div>
+
+    <button
+      class="close"
+      type="button"
+      data-close
+      aria-label="Tutup"
+    >
+      ×
+    </button>
+
+  </div>
+
+
+  <p class="drawer-description">
+    Susunan acara majlis.
+  </p>
+
+
+  <div id="scheduleContainer"></div>
+
+</aside>
+
+
+<!-- ═════════════════════════════════════
+     RSVP DRAWER
+═════════════════════════════════════ -->
+
+<aside
+  class="drawer"
+  id="rsvpDrawer"
+  aria-hidden="true"
+>
+
+  <div class="drawer-header">
+
+    <div class="drawer-title">
+      💌 RSVP &amp; UCAPAN
+    </div>
+
+    <button
+      class="close"
+      type="button"
+      data-close
+      aria-label="Tutup"
+    >
+      ×
+    </button>
+
+  </div>
+
+
+  <p class="drawer-description">
+
+    Sila isi maklumat anda untuk menghantar
+    RSVP dan ucapan kepada pengantin.
+
+  </p>
+
+
+  <div class="field">
+
+    <label for="guestName">
+      Nama
+    </label>
+
+    <input
+      id="guestName"
+      type="text"
+      autocomplete="name"
+      placeholder="Nama anda"
+    >
+
+  </div>
+
+
+  <div class="field">
+
+    <label for="attendance">
+      Kehadiran
+    </label>
+
+    <select id="attendance">
+
+      <option value="Hadir">
+        Hadir
+      </option>
+
+      <option value="Tidak dapat hadir">
+        Tidak dapat hadir
+      </option>
+
+    </select>
+
+  </div>
+
+
+  <div class="field">
+
+    <label for="guestMessage">
+      Ucapan &amp; Doa
+    </label>
+
+    <textarea
+      id="guestMessage"
+      placeholder="Tulis ucapan dan doa anda di sini..."
+    ></textarea>
+
+  </div>
+
+
+  <p class="rsvp-note">
+
+    Setelah lengkap, tekan butang di bawah
+    untuk menghantar maklumat RSVP terus
+    kepada pengantin melalui WhatsApp.
+
+  </p>
+
+
+  <button
+    class="submit"
+    id="sendRsvp"
+    type="button"
+  >
+
+    💬 Hantar Melalui WhatsApp
+
+  </button>
+
+</aside>
+
+
+<!-- FAMILY DRAWER -->
+<aside class="drawer" id="familyDrawer" aria-hidden="true">
+  <div class="drawer-header">
+    <div class="drawer-title">
+      <span class="drawer-icon">📞</span>
+      <span>HUBUNGI KELUARGA</span>
+    </div>
+    <button class="close" type="button" data-close aria-label="Tutup">×</button>
+  </div>
+
+  <p class="drawer-description">
+    Sebarang pertanyaan berkaitan majlis boleh diajukan kepada keluarga pengantin.
+  </p>
+
+  <div class="drawer-body">
+    <!-- KUMPULAN 1: PENGANTIN LELAKI -->
+    <div class="family-section">
+      <h3 class="family-heading" id="groomTitle">👨‍💼 Pengantin Lelaki</h3>
+      <p class="family-parents" id="groomParents">Putera kepada Encik Ahmad & Puan Aminah</p>
+      <div class="contact-list" id="groomContacts"></div>
+    </div>
+
+    <!-- KUMPULAN 2: PENGANTIN PEREMPUAN -->
+    <div class="family-section">
+      <h3 class="family-heading" id="brideTitle">👩‍💼 Pengantin Perempuan</h3>
+      <p class="family-parents" id="brideParents">Puteri kepada Encik Rahman & Puan Aisyah</p>
+      <div class="contact-list" id="brideContacts"></div>
+    </div>
+  </div>
+</aside>
+
+
+<script>
+
+"use strict";
+
+
+/* ╔══════════════════════════════════════╗
+   ║                                      ║
+   ║        💍 EDIT KAD DI SINI           ║
+   ║                                      ║
+   ╚══════════════════════════════════════╝ */
+
+
+/* ═══════════════════════════════════════
+   CONFIG
+═══════════════════════════════════════ */
+
+const CONFIG = {
+
+
+  /* 🎨 WARNA */
+
+  theme:
+    "classicBlue",
+
+
+  /* 💍 NAMA PENGANTIN */
+
+  couple:{
+
+    name1:
+      "Adam",
+
+    name2:
+      "Hawa"
+
+  },
+
+
+  /* ✨ TEKS */
+
+  text:{
+
+    opening:
+      "Dengan Penuh Kesyukuran",
+
+    subtitle:
+      "Majlis Kesyukuran & Walimatulurus"
+
+  },
+
+
+  /* 📅 TARIKH & MASA */
+
+  wedding:{
+
+    date:
+      "2027-10-11",
+
+    time:
+      "11:00"
+
+  },
+
+
+  /* 🖼️ GAMBAR */
+
+  poster:
+    "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=85",
+
+
+  /* 📍 LOKASI */
+
+  location:{
+
+    name:
+      "Lokasi Majlis",
+
+    url:
+      "https://maps.google.com/"
+
+  },
+
+
+  /* ✨ EFFECT */
+
+  effects:{
+
+    aurora:
+      true,
+
+    fallingEmoji:
+      true,
+
+    emojis:[
+      "🍓",
+      "🍃",
+      "✨",
+      "🌸"
+    ]
+
+  },
+
+
+  /* 📋 ATUR CARA */
+
+  schedule:[
+
+    {
+      time:
+        "11:00 AM",
+
+      text:
+        "Ketibaan Para Tetamu & Jemputan"
+    },
+
+    {
+      time:
+        "12:00 PM",
+
+      text:
+        "Bacaan Doa & Acara Pembukaan"
+    },
+
+    {
+      time:
+        "12:30 PM",
+
+      text:
+        "Ketibaan Pengantin & Makan Beradab"
+    },
+
+    {
+      time:
+        "02:30 PM",
+
+      text:
+        "Sesi Bergambar & Ramah Mesra"
+    },
+
+    {
+      time:
+        "04:00 PM",
+
+      text:
+        "Majlis Bersurai & Ucapan Penutup"
+    }
+
+  ],
+
+
+  /* 📞 KELUARGA */
+
+  family:{
+
+    groom:{
+
+      title:
+        "Pengantin Lelaki",
+
+      parents:
+        "Putera kepada Encik Ahmad & Puan Aminah",
+
+      contacts:[
+
+        {
+          name:
+            "Encik Ahmad",
+
+          phone:
+            "60123456789"
+        },
+
+        {
+          name:
+            "Puan Aminah",
+
+          phone:
+            "60123456789"
+        }
+
+      ]
+
+    },
+
+
+    bride:{
+
+      title:
+        "Pengantin Perempuan",
+
+      parents:
+        "Puteri kepada Encik Abdullah & Puan Fatimah",
+
+      contacts:[
+
+        {
+          name:
+            "Encik Abdullah",
+
+          phone:
+            "60123456789"
+        },
+
+        {
+          name:
+            "Puan Fatimah",
+
+          phone:
+            "60123456789"
+        }
+
+      ]
+
+    }
+
+  },
+
+
+  /* 💌 WHATSAPP RSVP */
+
+  ownerWhatsApp:
+    "601139517845"
+
+};
+
+
+/* ═══════════════════════════════════════
+   THEMES
+═══════════════════════════════════════ */
+
+const THEMES = {
+
+  classicBlue:{
+
+    name:
+      "Classic Blue",
+
+    tone1:
+      "#234E70",
+
+    tone2:
+      "#4F8CC9",
+
+    tone3:
+      "#D9EAF8"
+
+  },
+
+
+  slateCharcoal:{
+
+    name:
+      "Slate Charcoal",
+
+    tone1:
+      "#333A40",
+
+    tone2:
+      "#6D7680",
+
+    tone3:
+      "#DDE1E4"
+
+  },
+
+
+  champagneRose:{
+
+    name:
+      "Champagne Rose",
+
+    tone1:
+      "#8C6B69",
+
+    tone2:
+      "#D9BFBF",
+
+    tone3:
+      "#FFF6F5"
+
+  },
+
+
+  sageGreen:{
+
+    name:
+      "Sage Green",
+
+    tone1:
+      "#526B5A",
+
+    tone2:
+      "#89A88F",
+
+    tone3:
+      "#DCE9DE"
+
+  },
+
+
+  strawberryMatcha:{
+
+    name:
+      "Strawberry Matcha",
+
+    tone1:
+      "#D98B9A",
+
+    tone2:
+      "#7FA58A",
+
+    tone3:
+      "#F7C8D0"
+
+  },
+
+
+  coralMint:{
+
+    name:
+      "Coral Mint",
+
+    tone1:
+      "#F07C74",
+
+    tone2:
+      "#7ED3B3",
+
+    tone3:
+      "#FFF0E6"
+
+  },
+
+
+  lavenderSky:{
+
+    name:
+      "Lavender Sky",
+
+    tone1:
+      "#8C7AE6",
+
+    tone2:
+      "#93D1FF",
+
+    tone3:
+      "#EDE7FF"
+
+  }
+
+};
+
+
+/* ═══════════════════════════════════════
+   HELPER
+═══════════════════════════════════════ */
+
+const $ = id =>
+  document.getElementById(id);
+
+
+/* ═══════════════════════════════════════
+   APPLY THEME
+═══════════════════════════════════════ */
+
+function applyTheme(){
+
+  const theme =
+    THEMES[CONFIG.theme]
+    ||
+    THEMES.classicBlue;
+
+
+  const root =
+    document.documentElement;
+
+
+  root.style.setProperty(
+    "--tone1",
+    theme.tone1
+  );
+
+  root.style.setProperty(
+    "--tone2",
+    theme.tone2
+  );
+
+  root.style.setProperty(
+    "--tone3",
+    theme.tone3
+  );
+
+}
+
+
+/* ═══════════════════════════════════════
+   UPDATE TEXT
+═══════════════════════════════════════ */
+
+function updateWeddingText(){
+
+  const name1 =
+    String(
+      CONFIG.couple?.name1
+      ||
+      "Adam"
+    ).trim();
+
+
+  const name2 =
+    String(
+      CONFIG.couple?.name2
+      ||
+      "Hawa"
+    ).trim();
+
+
+  if($("displayName1"))
+    $("displayName1").textContent =
+      name1;
+
+
+  if($("displayName2"))
+    $("displayName2").textContent =
+      name2;
+
+
+  if($("coverName1"))
+    $("coverName1").textContent =
+      name1;
+
+
+  if($("coverName2"))
+    $("coverName2").textContent =
+      name2;
+
+
+  if($("openingText"))
+    $("openingText").textContent =
+      CONFIG.text?.opening
+      ||
+      "";
+
+
+  if($("invitationSubtitle"))
+    $("invitationSubtitle").textContent =
+      CONFIG.text?.subtitle
+      ||
+      "";
+
+
+  if($("coverSubtitle"))
+    $("coverSubtitle").textContent =
+      CONFIG.text?.subtitle
+      ||
+      "";
+
+
+  document.title =
+    `${name1} & ${name2} — Undangan Digital`;
+
+}
+
+
+/* ═══════════════════════════════════════
+   POSTER
+═══════════════════════════════════════ */
+
+function escapeCssUrl(value){
+
+  return String(value)
+
+    .replace(
+      /\\/g,
+      "\\\\"
+    )
+
+    .replace(
+      /"/g,
+      '\\"'
+    );
+
+}
+
+
+function setupPoster(){
+
+  const poster =
+    $("weddingPoster");
+
+
+  const wrapper =
+    $("posterWrapper");
+
+
+  if(!poster || !wrapper){
+    return;
+  }
+
+
+  const image =
+    String(
+      CONFIG.poster
+      ||
+      ""
+    ).trim();
+
+
+  wrapper.classList.add(
+    "hidden"
+  );
+
+
+  poster.removeAttribute(
+    "src"
+  );
+
+
+  document.documentElement
+    .style
+    .removeProperty(
+      "--poster-image"
+    );
+
+
+  if(!image){
+    return;
+  }
+
+
+  poster.onload = () => {
+
+    wrapper.classList.remove(
+      "hidden"
+    );
+
+
+    document.documentElement
+      .style
+      .setProperty(
+        "--poster-image",
+        `url("${escapeCssUrl(image)}")`
+      );
+
+  };
+
+
+  poster.onerror = () => {
+
+    wrapper.classList.add(
+      "hidden"
+    );
+
+
+    document.documentElement
+      .style
+      .removeProperty(
+        "--poster-image"
+      );
+
+  };
+
+
+  poster.src =
+    image;
+
+}
+
+
+/* ═══════════════════════════════════════
+   DATE
+═══════════════════════════════════════ */
+
+function getEventDate(){
+
+  const dateValue =
+    String(
+      CONFIG.wedding?.date
+      ||
+      ""
+    ).trim();
+
+
+  if(!dateValue){
+    return null;
+  }
+
+
+  const date =
+    new Date(
+      `${dateValue}T00:00:00`
+    );
+
+
+  if(
+    Number.isNaN(
+      date.getTime()
+    )
+  ){
+
+    return null;
+
+  }
+
+
+  return date;
+
+}
+
+
+function formatDate(){
+
+  const date =
+    getEventDate();
+
+
+  const display =
+    $("displayDate");
+
+
+  if(!display){
+    return;
+  }
+
+
+  if(!date){
+
+    display.textContent =
+      "Tarikh Majlis";
+
+    return;
+
+  }
+
+
+  display.textContent =
+
+    new Intl.DateTimeFormat(
+      "ms-MY",
+      {
+        weekday:"long",
+        day:"numeric",
+        month:"long",
+        year:"numeric"
+      }
+    ).format(date);
+
+}
+
+
+/* ═══════════════════════════════════════
+   COUNTDOWN
+═══════════════════════════════════════ */
+
+function getTargetDate(){
+
+  const date =
+    String(
+      CONFIG.wedding?.date
+      ||
+      ""
+    ).trim();
+
+
+  if(!date){
+    return null;
+  }
+
+
+  const time =
+    String(
+      CONFIG.wedding?.time
+      ||
+      "00:00"
+    ).trim();
+
+
+  const target =
+    new Date(
+      `${date}T${time}:00`
+    );
+
+
+  if(
+    Number.isNaN(
+      target.getTime()
+    )
+  ){
+
+    return null;
+
+  }
+
+
+  return target;
+
+}
+
+
+function pad(number){
+
+  return String(
+    number
+  ).padStart(
+    2,
+    "0"
+  );
+
+}
+
+
+function updateCountdown(){
+
+  const target =
+    getTargetDate();
+
+
+  if(!target){
+    return;
+  }
+
+
+  let diff =
+    target.getTime()
+    -
+    Date.now();
+
+
+  if(diff <= 0){
+
+    if($("days"))
+      $("days").textContent =
+        "00";
+
+    if($("hours"))
+      $("hours").textContent =
+        "00";
+
+    if($("minutes"))
+      $("minutes").textContent =
+        "00";
+
+    if($("seconds"))
+      $("seconds").textContent =
+        "00";
+
+    return;
+
+  }
+
+
+  const second =
+    1000;
+
+  const minute =
+    second * 60;
+
+  const hour =
+    minute * 60;
+
+  const day =
+    hour * 24;
+
+
+  const days =
+    Math.floor(
+      diff / day
+    );
+
+
+  diff %= day;
+
+
+  const hours =
+    Math.floor(
+      diff / hour
+    );
+
+
+  diff %= hour;
+
+
+  const minutes =
+    Math.floor(
+      diff / minute
+    );
+
+
+  diff %= minute;
+
+
+  const seconds =
+    Math.floor(
+      diff / second
+    );
+
+
+  if($("days"))
+    $("days").textContent =
+      pad(days);
+
+
+  if($("hours"))
+    $("hours").textContent =
+      pad(hours);
+
+
+  if($("minutes"))
+    $("minutes").textContent =
+      pad(minutes);
+
+
+  if($("seconds"))
+    $("seconds").textContent =
+      pad(seconds);
+
+}
+
+
+let countdownTimer =
+  null;
+
+
+function startCountdown(){
+
+  updateCountdown();
+
+
+  if(countdownTimer){
+
+    clearInterval(
+      countdownTimer
+    );
+
+  }
+
+
+  countdownTimer =
+    setInterval(
+      updateCountdown,
+      1000
+    );
+
+}
+
+
+/* ═══════════════════════════════════════
+   SCHEDULE
+═══════════════════════════════════════ */
+
+function buildSchedule(){
+
+  const container =
+    $("scheduleContainer");
+
+
+  if(!container){
+    return;
+  }
+
+
+  container.innerHTML =
+    "";
+
+
+  if(
+    !Array.isArray(
+      CONFIG.schedule
+    )
+  ){
+
+    return;
+
+  }
+
+
+  CONFIG.schedule.forEach(
+    item => {
+
+      const wrap =
+        document.createElement(
+          "div"
+        );
+
+
+      wrap.className =
+        "schedule-item";
+
+
+      const time =
+        document.createElement(
+          "div"
+        );
+
+
+      time.className =
+        "schedule-time";
+
+
+      time.textContent =
+        item?.time
+        ||
+        "";
+
+
+      const text =
+        document.createElement(
+          "div"
+        );
+
+
+      text.className =
+        "schedule-text";
+
+
+      text.textContent =
+        item?.text
+        ||
+        "";
+
+
+      wrap.appendChild(
+        time
+      );
+
+
+      wrap.appendChild(
+        text
+      );
+
+
+      container.appendChild(
+        wrap
+      );
+
+    }
+  );
+
+}
+
+
+/* ═══════════════════════════════════════
+   LOCATION
+═══════════════════════════════════════ */
+
+function updateLocation(){
+
+  const location =
+    CONFIG.location
+    ||
+    {};
+
+
+  const button =
+    $("locationButton");
+
+
+  const text =
+    $("locationText");
+
+
+  if(!button || !text){
+    return;
+  }
+
+
+  const url =
+    String(
+      location.url
+      ||
+      ""
+    ).trim();
+
+
+  button.href =
+    url
+    ||
+    "#";
+
+
+  text.textContent =
+    location.name
+    ||
+    "Lokasi Majlis";
+
+}
+
+
+/* ═══════════════════════════════════════
+   AURORA
+═══════════════════════════════════════ */
+
+function setupAurora(){
+
+  const enabled =
+    CONFIG.effects?.aurora !== false;
+
+
+  const aurora =
+    document.querySelector(
+      ".aurora"
+    );
+
+
+  const ribbon =
+    document.querySelector(
+      ".aurora-ribbon"
+    );
+
+
+  const line =
+    document.querySelector(
+      ".aurora-line"
+    );
+
+
+  if(aurora){
+
+    aurora.style.display =
+      enabled
+      ?
+      ""
+      :
+      "none";
+
+  }
+
+
+  if(ribbon){
+
+    ribbon.style.display =
+      enabled
+      ?
+      ""
+      :
+      "none";
+
+  }
+
+
+  if(line){
+
+    line.style.display =
+      enabled
+      ?
+      ""
+      :
+      "none";
+
+  }
+
+}
+
+
+/* ═══════════════════════════════════════
+   FAMILY DRAWER
+═══════════════════════════════════════ */
+
+function normalizePhone(phone){
+
+  return String(
+    phone
+    ||
+    ""
+  ).replace(
+    /\D/g,
+    ""
+  );
+
+}
+
+
+function renderFamilyGroup(
+  group,
+  titleElement,
+  parentsElement,
+  contactsElement
+){
+
+  if(!group){
+    return;
+  }
+
+
+  if(titleElement){
+
+    titleElement.textContent =
+      group.title
+      ||
+      "";
+
+  }
+
+
+  if(parentsElement){
+
+    parentsElement.textContent =
+      group.parents
+      ||
+      "";
+
+  }
+
+
+  if(!contactsElement){
+    return;
+  }
+
+
+  contactsElement.innerHTML =
+    "";
+
+
+  if(
+    !Array.isArray(
+      group.contacts
+    )
+  ){
+
+    return;
+
+  }
+
+
+  group.contacts.forEach(
+    contact => {
+
+      const phone =
+        normalizePhone(
+          contact?.phone
+        );
+
+
+      if(!phone){
+        return;
+      }
+
+
+      const item =
+        document.createElement(
+          "div"
+        );
+
+
+      item.className =
+        "contact-item";
+
+
+      const name =
+        document.createElement(
+          "div"
+        );
+
+
+      name.className =
+        "contact-name";
+
+
+      name.textContent =
+        contact?.name
+        ||
+        "Keluarga";
+
+
+      const link =
+        document.createElement(
+          "a"
+        );
+
+
+      link.className =
+        "contact-button";
+
+
+      link.href =
+        `https://wa.me/${phone}`;
+
+
+      link.target =
+        "_blank";
+
+
+      link.rel =
+        "noopener noreferrer";
+
+
+      link.textContent =
+        "📞 Hubungi";
+
+
+      item.appendChild(
+        name
+      );
+
+
+      item.appendChild(
+        link
+      );
+
+
+      contactsElement.appendChild(
+        item
+      );
+
+    }
+  );
+
+}
+
+
+function buildFamily(){
+
+  const family =
+    CONFIG.family
+    ||
+    {};
+
+
+  renderFamilyGroup(
+
+    family.groom,
+
+    $("groomFamilyTitle"),
+
+    $("groomFamilyParents"),
+
+    $("groomContacts")
+
+  );
+
+
+  renderFamilyGroup(
+
+    family.bride,
+
+    $("brideFamilyTitle"),
+
+    $("brideFamilyParents"),
+
+    $("brideContacts")
+
+  );
+
+}
+
+
+/* ═══════════════════════════════════════
+   DRAWERS
+═══════════════════════════════════════ */
+
+const overlay =
+  $("overlay");
+
+
+const scheduleDrawer =
+  $("scheduleDrawer");
+
+
+const rsvpDrawer =
+  $("rsvpDrawer");
+
+
+const familyDrawer =
+  $("familyDrawer");
+
+
+function closeDrawers(){
+
+  document
+    .querySelectorAll(
+      ".drawer"
+    )
+    .forEach(
+      drawer => {
+
+        drawer.classList.remove(
+          "active"
+        );
+
+
+        drawer.setAttribute(
+          "aria-hidden",
+          "true"
+        );
+
+      }
+    );
+
+
+  if(overlay){
+
+    overlay.classList.remove(
+      "active"
+    );
+
+  }
+
+
+  document.body.style.overflow =
+    "";
+
+}
+
+
+function openDrawer(drawer){
+
+  if(!drawer){
+    return;
+  }
+
+
+  closeDrawers();
+
+
+  drawer.classList.add(
+    "active"
+  );
+
+
+  drawer.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+
+  if(overlay){
+
+    overlay.classList.add(
+      "active"
+    );
+
+  }
+
+
+  document.body.style.overflow =
+    "hidden";
+
+}
+
+
+/* SCHEDULE */
+
+if($("openSchedule")){
+
+  $("openSchedule")
+    .addEventListener(
+      "click",
+      () =>
+        openDrawer(
+          scheduleDrawer
+        )
+    );
+
+}
+
+
+/* RSVP */
+
+if($("openRsvp")){
+
+  $("openRsvp")
+    .addEventListener(
+      "click",
+      () =>
+        openDrawer(
+          rsvpDrawer
+        )
+    );
+
+}
+
+
+/* FAMILY */
+
+if($("openFamily")){
+
+  $("openFamily")
+    .addEventListener(
+      "click",
+      () =>
+        openDrawer(
+          familyDrawer
+        )
+    );
+
+}
+
+
+/* OVERLAY */
+
+if(overlay){
+
+  overlay.addEventListener(
+    "click",
+    closeDrawers
+  );
+
+}
+
+
+/* CLOSE */
+
+document
+  .querySelectorAll(
+    "[data-close]"
+  )
+  .forEach(
+    button => {
+
+      button.addEventListener(
+        "click",
+        closeDrawers
+      );
+
+    }
+  );
+
+
+/* ESC */
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if(
+      event.key ===
+      "Escape"
+    ){
+
+      closeDrawers();
+
+    }
+
+  }
+);
+
+
+/* ═══════════════════════════════════════
+   RSVP
+═══════════════════════════════════════ */
+
+function sendRsvp(){
+
+  const phone =
+    normalizePhone(
+      CONFIG.ownerWhatsApp
+    );
+
+
+  if(!phone){
+
+    alert(
+      "Nombor WhatsApp belum ditetapkan."
+    );
+
+    return;
+
+  }
+
+
+  const name =
+    $("guestName")?.value
+      ?.trim()
+    ||
+    "";
+
+
+  const attendance =
+    $("attendance")?.value
+    ||
+    "Hadir";
+
+
+  const message =
+    $("guestMessage")?.value
+      ?.trim()
+    ||
+    "";
+
+
+  const guestName =
+    name
+    ||
+    "Tetamu";
+
+
+  const guestMessage =
+    message
+    ||
+    "Tahniah dan semoga berbahagia selalu! 🤍";
+
+
+  const name1 =
+    CONFIG.couple?.name1
+    ||
+    "Adam";
+
+
+  const name2 =
+    CONFIG.couple?.name2
+    ||
+    "Hawa";
+
+
+  const whatsappText =
+
+`Assalamualaikum ${name1} & ${name2} 🤍
+
+Saya ingin memberikan RSVP untuk majlis anda.
+
+━━━━━━━━━━━━━━━━
+💌 MAKLUMAT RSVP
+━━━━━━━━━━━━━━━━
+
+👤 Nama:
+${guestName}
+
+💌 Kehadiran:
+${attendance}
+
+📝 Ucapan & Doa:
+${guestMessage}
+
+Terima kasih 🤍`;
+
+
+  const url =
+    `https://wa.me/${phone}?text=${encodeURIComponent(
+      whatsappText
+    )}`;
+
+
+  window.open(
+    url,
+    "_blank",
+    "noopener,noreferrer"
+  );
+
+}
+
+
+if($("sendRsvp")){
+
+  $("sendRsvp")
+    .addEventListener(
+      "click",
+      sendRsvp
+    );
+
+}
+
+
+/* ═══════════════════════════════════════
+   OPEN COVER
+═══════════════════════════════════════ */
+
+let opened =
+  false;
+
+
+function openCard(){
+
+  if(opened){
+    return;
+  }
+
+
+  opened =
+    true;
+
+
+  const cover =
+    $("coverPage");
+
+
+  if(cover){
+
+    cover.classList.add(
+      "opened"
+    );
+
+  }
+
+}
+
+
+if($("openEnvelope")){
+
+  $("openEnvelope")
+    .addEventListener(
+      "click",
+      openCard
+    );
+
+}
+
+
+if($("openButton")){
+
+  $("openButton")
+    .addEventListener(
+      "click",
+      openCard
+    );
+
+}
+
+
+if($("openEnvelope")){
+
+  $("openEnvelope")
+    .addEventListener(
+      "keydown",
+      event => {
+
+        if(
+          event.key ===
+          "Enter"
+          ||
+          event.key ===
+          " "
+          ||
+          event.key ===
+          "Spacebar"
+        ){
+
+          event.preventDefault();
+
+          openCard();
+
+        }
+
+      }
+    );
+
+}
+
+
+/* ═══════════════════════════════════════
+   SWIPE COVER
+═══════════════════════════════════════ */
+
+let touchStartY =
+  null;
+
+
+if($("coverPage")){
+
+  $("coverPage")
+    .addEventListener(
+      "touchstart",
+      event => {
+
+        touchStartY =
+          event
+            .changedTouches[0]
+            .clientY;
+
+      },
+      {
+        passive:true
+      }
+    );
+
+
+  $("coverPage")
+    .addEventListener(
+      "touchend",
+      event => {
+
+        if(
+          touchStartY ===
+          null
+        ){
+
+          return;
+
+        }
+
+
+        const endY =
+          event
+            .changedTouches[0]
+            .clientY;
+
+
+        const distance =
+          touchStartY -
+          endY;
+
+
+        if(
+          distance > 60
+        ){
+
+          openCard();
+
+        }
+
+
+        touchStartY =
+          null;
+
+      },
+      {
+        passive:true
+      }
+    );
+
+}
+
+
+/* ═══════════════════════════════════════
+   FALLING EMOJI
+═══════════════════════════════════════ */
+
+function createEmoji(){
+
+  if(document.hidden){
+    return;
+  }
+
+
+  if(
+    CONFIG.effects
+      ?.fallingEmoji === false
+  ){
+
+    return;
+
+  }
+
+
+  const container =
+    $("emojiContainer");
+
+
+  if(!container){
+    return;
+  }
+
+
+  const emojis =
+    CONFIG.effects
+      ?.emojis;
+
+
+  if(
+    !Array.isArray(
+      emojis
+    )
+    ||
+    emojis.length === 0
+  ){
+
+    return;
+
+  }
+
+
+  const element =
+    document.createElement(
+      "span"
+    );
+
+
+  element.className =
+    "falling";
+
+
+  element.textContent =
+    emojis[
+      Math.floor(
+        Math.random()
+        *
+        emojis.length
+      )
+    ];
+
+
+  element.style.left =
+    `${Math.random() * 100}%`;
+
+
+  const duration =
+    Math.random() * 3
+    +
+    3;
+
+
+  element.style.animationDuration =
+    `${duration}s`;
+
+
+  element.style.fontSize =
+    `${Math.random() * 8 + 12}px`;
+
+
+  container.appendChild(
+    element
+  );
+
+
+  setTimeout(
+    () => {
+
+      element.remove();
+
+    },
+    duration * 1000 + 300
+  );
+
+}
+
+
+let emojiInterval =
+  null;
+
+
+function startEmojiLoop(){
+
+  if(
+    CONFIG.effects
+      ?.fallingEmoji === false
+  ){
+
+    return;
+
+  }
+
+
+  if(emojiInterval){
+    return;
+  }
+
+
+  emojiInterval =
+    setInterval(
+      createEmoji,
+      700
+    );
+
+}
+
+
+function stopEmojiLoop(){
+
+  if(!emojiInterval){
+    return;
+  }
+
+
+  clearInterval(
+    emojiInterval
+  );
+
+
+  emojiInterval =
+    null;
+
+}
+
+
+if(
+  CONFIG.effects
+    ?.fallingEmoji !== false
+){
+
+  startEmojiLoop();
+
+}
+
+
+document.addEventListener(
+  "visibilitychange",
+  () => {
+
+    if(document.hidden){
+
+      stopEmojiLoop();
+
+    }else{
+
+      startEmojiLoop();
+
+    }
+
+  }
+);
+
+
+/* ═══════════════════════════════════════
+   LANGUAGE
+═══════════════════════════════════════ */
+
+const translations = {
+
+  ms:{
+
+    digitalInvitation:
+      "Undangan Digital",
+
+    openCard:
+      "KLIK ATAU LERET KE ATAS UNTUK BUKA",
+
+    countdown:
+      "MAJLIS BERMULA DALAM",
+
+    days:
+      "Hari",
+
+    hours:
+      "Jam",
+
+    minutes:
+      "Min",
+
+    seconds:
+      "Saat",
+
+    scheduleButton:
+      "Atur Cara Majlis",
+
+    rsvpButton:
+      "RSVP & Ucapan",
+
+    familyButton:
+      "Hubungi Keluarga",
+
+    crafted:
+      "Crafted with ✦ by"
+
+  },
+
+
+  en:{
+
+    digitalInvitation:
+      "Digital Invitation",
+
+    openCard:
+      "CLICK OR SWIPE UP TO OPEN",
+
+    countdown:
+      "EVENT STARTS IN",
+
+    days:
+      "Days",
+
+    hours:
+      "Hours",
+
+    minutes:
+      "Min",
+
+    seconds:
+      "Sec",
+
+    scheduleButton:
+      "Event Schedule",
+
+    rsvpButton:
+      "RSVP & Wishes",
+
+    familyButton:
+      "Contact Family",
+
+    crafted:
+      "Crafted with ✦ by"
+
+  }
+
+};
+
+
+function setLanguage(lang){
+
+  const dictionary =
+    translations[lang];
+
+
+  if(!dictionary){
+    return;
+  }
+
+
+  document
+    .querySelectorAll(
+      "[data-i18n]"
+    )
+    .forEach(
+      element => {
+
+        const key =
+          element.dataset.i18n;
+
+
+        if(
+          Object.prototype.hasOwnProperty
+            .call(
+              dictionary,
+              key
+            )
+        ){
+
+          element.textContent =
+            dictionary[key];
+
+        }
+
+      }
+    );
+
+}
+
+
+/* ═══════════════════════════════════════
+   INITIALIZE
+═══════════════════════════════════════ */
+
+function initialize(){
+
+  applyTheme();
+
+  updateWeddingText();
+
+  setupPoster();
+
+  setupAurora();
+
+  formatDate();
+
+  buildSchedule();
+
+  buildFamily();
+
+  updateLocation();
+
+  startCountdown();
+
+  setLanguage("ms");
+
+}
+
+
+initialize();
+
+</script>
+
+</body>
+
+</html>
