@@ -2343,8 +2343,6 @@ input[type="file"]::file-selector-button{
         value="60123456789"
         inputmode="tel"
 
-        >
-
     </div>
 
   </div>
@@ -2536,13 +2534,31 @@ input[type="file"]::file-selector-button{
   </div>
 
 
-  <button
-    class="primary-btn"
-    id="orderButton"
-    type="button"
-  >
-    💬 Hantar Tempahan Melalui WhatsApp
-  </button>
+<button
+  class="primary-btn"
+  id="orderButton"
+  type="button"
+>
+  💬 Hantar Tempahan Melalui WhatsApp
+</button>
+
+<div
+  id="supabaseStatus"
+  style="
+    margin-top:9px;
+    padding:10px 12px;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:12px;
+    background:rgba(255,255,255,.025);
+    color:var(--muted);
+    font-size:9px;
+    line-height:1.45;
+    text-align:center;
+    display:none;
+  "
+  role="status"
+  aria-live="polite"
+></div>
 
 </div>
 
@@ -3166,7 +3182,7 @@ const SUPABASE_URL =
   JANGAN GUNA service_role key dalam browser.
 */
 const SUPABASE_ANON_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVkcHhlZ2V6bmZzbHdvbWd5cnBhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc5OTQzMDAsImV4cCI6MjEwMzU3MDMwMH0.rBtmGUvGap2TcHTK8mqGyv8gGrkeuddg_pmEvgTSKI0";
+  "PASTE_YOUR_SUPABASE_ANON_KEY_HERE";
 
 const SUPABASE_TABLE =
   "wedding_invitations";
@@ -3558,6 +3574,386 @@ async function loadInvitationFromSupabase(){
     return null;
 
   }
+
+}
+/* =========================================================
+   SUPABASE SAVE / UPSERT
+========================================================= */
+
+function setSupabaseStatus(
+  message,
+  type="info"
+){
+
+  const status =
+    $("supabaseStatus");
+
+  if(!status){
+    return;
+  }
+
+  status.style.display =
+    "block";
+
+  if(type === "success"){
+
+    status.textContent =
+      `✅ ${message}`;
+
+    status.style.color =
+      "#b9e6c5";
+
+  }else if(type === "error"){
+
+    status.textContent =
+      `❌ ${message}`;
+
+    status.style.color =
+      "#ffb4b4";
+
+  }else{
+
+    status.textContent =
+      `⏳ ${message}`;
+
+    status.style.color =
+      "var(--muted)";
+
+  }
+
+}
+
+
+function getCurrentInvitationPayload(){
+
+  const slug =
+    getSlugFromPath();
+
+
+  if(!slug){
+
+    throw new Error(
+      "Slug URL tidak dijumpai. Contoh: /adam-hawa"
+    );
+
+  }
+
+
+  if(
+    !SUPABASE_ANON_KEY ||
+    SUPABASE_ANON_KEY ===
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVkcHhlZ2V6bmZzbHdvbWd5cnBhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc5OTQzMDAsImV4cCI6MjEwMzU3MDMwMH0.rBtmGUvGap2TcHTK8mqGyv8gGrkeuddg_pmEvgTSKI0"
+  ){
+
+    throw new Error(
+      "SUPABASE_ANON_KEY belum diisi."
+    );
+
+  }
+
+
+  const withImage =
+    $("imageToggle")?.checked ??
+    false;
+
+
+  const music =
+    $("musicToggle")?.checked ??
+    false;
+
+
+  /*
+    Penting:
+    uploadedImage ialah data URL tempatan.
+
+    Kita TIDAK simpan data URL tersebut ke Supabase.
+    Hanya remoteImage yang sudah berupa URL boleh disimpan.
+  */
+
+  const posterUrl =
+    safeUrl(
+      remoteImage
+    ) || null;
+
+
+  /*
+    uploadedMusic pula hanya nama fail tempatan.
+
+    Jadi hanya remoteMusic yang berupa URL
+    boleh disimpan sebagai music_url.
+  */
+
+  const musicUrl =
+    safeUrl(
+      remoteMusic
+    ) || null;
+
+
+  return {
+
+    slug,
+
+    partner_1:
+      cleanText(
+        $("name1Input")?.value,
+        "Adam"
+      ),
+
+    partner_2:
+      cleanText(
+        $("name2Input")?.value,
+        "Hawa"
+      ),
+
+    opening_text:
+      cleanText(
+        $("subtitleInput")?.value,
+        "Majlis Kesyukuran & Walimatulurus"
+      ),
+
+    event_date:
+      $("dateInput")?.value ||
+      null,
+
+    event_time:
+      $("timeInput")?.value ||
+      null,
+
+    theme:
+      $("themeInput")?.value ||
+      "aurora",
+
+    emoji_1:
+      getEmojis()[0] ||
+      null,
+
+    emoji_2:
+      getEmojis()[1] ||
+      null,
+
+    emoji_enabled:
+      $("emojiToggle")?.checked ??
+      true,
+
+    show_poster:
+      withImage,
+
+    poster_url:
+      posterUrl,
+
+    location_name:
+      cleanText(
+        $("locationNameInput")?.value,
+        "Lokasi Majlis"
+      ),
+
+    map_type:
+      $("mapTypeInput")?.value ||
+      "google",
+
+    map_url:
+      safeUrl(
+        $("mapUrlInput")?.value
+      ) || null,
+
+    whatsapp_number:
+      normalizePhone(
+        $("rsvpPhoneInput")?.value ||
+        ""
+      ) || null,
+
+    groom_parents:
+      cleanText(
+        $("groomParentsInput")?.value,
+        ""
+      ),
+
+    groom_father_name:
+      cleanText(
+        $("groomFatherName")?.value,
+        ""
+      ),
+
+    groom_father_phone:
+      normalizePhone(
+        $("groomFatherPhone")?.value ||
+        ""
+      ) || null,
+
+    groom_mother_name:
+      cleanText(
+        $("groomMotherName")?.value,
+        ""
+      ),
+
+    groom_mother_phone:
+      normalizePhone(
+        $("groomMotherPhone")?.value ||
+        ""
+      ) || null,
+
+    bride_parents:
+      cleanText(
+        $("brideParentsInput")?.value,
+        ""
+      ),
+
+    bride_father_name:
+      cleanText(
+        $("brideFatherName")?.value,
+        ""
+      ),
+
+    bride_father_phone:
+      normalizePhone(
+        $("brideFatherPhone")?.value ||
+        ""
+      ) || null,
+
+    bride_mother_name:
+      cleanText(
+        $("brideMotherName")?.value,
+        ""
+      ),
+
+    bride_mother_phone:
+      normalizePhone(
+        $("brideMotherPhone")?.value ||
+        ""
+      ) || null,
+
+    schedule:
+      Array.isArray(schedule)
+        ? schedule.map(
+            item => ({
+              time:
+                cleanText(
+                  item?.time,
+                  ""
+                ),
+
+              text:
+                cleanText(
+                  item?.text,
+                  ""
+                )
+            })
+          )
+        : [],
+
+    music_enabled:
+      music,
+
+    music_url:
+      musicUrl
+
+  };
+
+}
+
+
+async function saveInvitationToSupabase(){
+
+  const payload =
+    getCurrentInvitationPayload();
+
+
+  const endpoint =
+    `${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}` +
+    `?on_conflict=slug`;
+
+
+  console.log(
+    "NUR NONA → Supabase payload:",
+    payload
+  );
+
+
+  const response =
+    await fetch(
+      endpoint,
+      {
+        method:"POST",
+
+        headers:{
+
+          apikey:
+            SUPABASE_ANON_KEY,
+
+          Authorization:
+            `Bearer ${SUPABASE_ANON_KEY}`,
+
+          "Content-Type":
+            "application/json",
+
+          Prefer:
+            "resolution=merge-duplicates,return=representation"
+
+        },
+
+        body:
+          JSON.stringify(
+            payload
+          )
+
+      }
+    );
+
+
+  const raw =
+    await response.text();
+
+
+  let result = null;
+
+
+  try{
+
+    result =
+      raw
+        ? JSON.parse(raw)
+        : null;
+
+  }catch{
+
+    result =
+      raw;
+
+  }
+
+
+  if(!response.ok){
+
+    console.error(
+      "NUR NONA → SUPABASE SAVE ERROR:",
+      response.status,
+      result
+    );
+
+
+    const detail =
+      result?.message ||
+      result?.details ||
+      result?.hint ||
+      result?.error ||
+      raw ||
+      "Gagal menyimpan data.";
+
+
+    throw new Error(
+      `Supabase ${response.status}: ${detail}`
+    );
+
+  }
+
+
+  console.log(
+    "NUR NONA → Supabase berjaya:",
+    result
+  );
+
+
+  return result;
 
 }
 
@@ -5445,79 +5841,168 @@ $("emojiToggle").addEventListener(
 
 
 /* =========================================================
-   ORDER WHATSAPP
+   ORDER
+   SUPABASE SAVE → SUCCESS → WHATSAPP
 ========================================================= */
+
+let orderSubmitting = false;
+
 
 $("orderButton").addEventListener(
   "click",
-  () => {
+  async () => {
 
-    const name1 =
-      cleanText(
-        $("name1Input").value,
-        "Adam"
+    /*
+      Elak user tekan banyak kali.
+    */
+
+    if(orderSubmitting){
+      return;
+    }
+
+
+    const button =
+      $("orderButton");
+
+
+    orderSubmitting =
+      true;
+
+
+    /*
+      Simpan teks asal button.
+    */
+
+    const originalText =
+      button.textContent;
+
+
+    /*
+      Disable sementara.
+    */
+
+    button.disabled =
+      true;
+
+    button.style.opacity =
+      ".65";
+
+
+    setSupabaseStatus(
+      "Menyimpan tempahan ke Supabase...",
+      "info"
+    );
+
+
+    try{
+
+      /*
+        =====================================================
+        STEP 1
+        SAVE SUPABASE
+        =====================================================
+      */
+
+      const saved =
+        await saveInvitationToSupabase();
+
+
+      console.log(
+        "Supabase save result:",
+        saved
       );
 
 
-    const name2 =
-      cleanText(
-        $("name2Input").value,
-        "Hawa"
+      /*
+        =====================================================
+        STEP 2
+        SUPABASE BERJAYA
+        =====================================================
+      */
+
+      setSupabaseStatus(
+        "Data berjaya disimpan. Membuka WhatsApp...",
+        "success"
       );
 
 
-    const withImage =
-      $("imageToggle").checked;
+      /*
+        =====================================================
+        STEP 3
+        BINA MESEJ WHATSAPP
+        =====================================================
+      */
+
+      const name1 =
+        cleanText(
+          $("name1Input").value,
+          "Adam"
+        );
 
 
-    const music =
-      $("musicToggle").checked;
+      const name2 =
+        cleanText(
+          $("name2Input").value,
+          "Hawa"
+        );
 
 
-    const base =
-      withImage
-        ? 176
-        : 136;
+      const withImage =
+        $("imageToggle").checked;
 
 
-    const total =
-      base +
-      (music ? 60 : 0);
+      const music =
+        $("musicToggle").checked;
 
 
-    const themeName =
-      $("themeInput")
-        .selectedOptions[0]
-        .textContent
-        .trim();
+      const base =
+        withImage
+          ? 176
+          : 136;
 
 
-    const mapType =
-      $("mapTypeInput")
-        .selectedOptions[0]
-        .textContent
-        .trim();
+      const total =
+        base +
+        (music ? 60 : 0);
 
 
-    const location =
-      cleanText(
-        $("locationNameInput").value,
-        "Lokasi Majlis"
-      );
+      const themeName =
+        $("themeInput")
+          .selectedOptions[0]
+          .textContent
+          .trim();
 
 
-    const rsvp =
-      cleanText(
-        $("rsvpPhoneInput").value,
-        "Belum diisi"
-      );
+      const mapType =
+        $("mapTypeInput")
+          .selectedOptions[0]
+          .textContent
+          .trim();
 
 
-    const emojis =
-      getEmojis();
+      const location =
+        cleanText(
+          $("locationNameInput").value,
+          "Lokasi Majlis"
+        );
 
 
-    const text =
+      const rsvp =
+        cleanText(
+          $("rsvpPhoneInput").value,
+          "Belum diisi"
+        );
+
+
+      const emojis =
+        getEmojis();
+
+
+      const slug =
+        getSlugFromPath();
+
+
+      const text =
 `Assalamualaikum NUR NONA 🤍
 
 Saya nak tempah Undangan Digital.
@@ -5529,6 +6014,9 @@ Saya nak tempah Undangan Digital.
 👰 Pengantin:
 ${name1} & ${name2}
 
+🔗 Link:
+${window.location.origin}/${slug}
+
 🖼️ Gambar:
 ${withImage ? "Ya — RM176" : "Tidak — RM136"}
 
@@ -5539,7 +6027,9 @@ ${music ? "Ya — +RM60" : "Tidak"}
 ${themeName}
 
 ✨ Emoji:
-${emojis.length ? emojis.join(" & ") : "🤍"}
+${emojis.length
+  ? emojis.join(" & ")
+  : "🤍"}
 
 📍 Peta:
 ${mapType}
@@ -5555,22 +6045,103 @@ RM${total}
 📱 WhatsApp RSVP Pengantin:
 ${rsvp}
 
+💾 Data tempahan telah berjaya disimpan ke sistem NUR NONA.
+
 Saya telah buat pilihan melalui Live Editor. 😊`;
 
 
-    const url =
-      `https://wa.me/${SELLER_WHATSAPP}?text=${encodeURIComponent(text)}`;
+      /*
+        =====================================================
+        STEP 4
+        BUKA WHATSAPP HANYA SELEPAS SAVE BERJAYA
+        =====================================================
+      */
+
+      const url =
+        `https://wa.me/${SELLER_WHATSAPP}` +
+        `?text=${encodeURIComponent(text)}`;
 
 
-    window.open(
-      url,
-      "_blank",
-      "noopener,noreferrer"
-    );
+      /*
+        Sedikit delay supaya user sempat nampak
+        status "Data berjaya disimpan".
+      */
+
+      window.setTimeout(
+        () => {
+
+          window.open(
+            url,
+            "_blank",
+            "noopener,noreferrer"
+          );
+
+        },
+        350
+      );
+
+
+    }catch(error){
+
+      /*
+        =====================================================
+        SUPABASE GAGAL
+        =====================================================
+      */
+
+      console.error(
+        "NUR NONA → Tempahan gagal:",
+        error
+      );
+
+
+      setSupabaseStatus(
+        error?.message ||
+        "Gagal menyimpan tempahan ke Supabase.",
+        "error"
+      );
+
+
+      /*
+        PENTING:
+        WhatsApp TIDAK dibuka.
+      */
+
+      alert(
+        "Tempahan belum dihantar.\n\n" +
+        "Data gagal disimpan ke Supabase.\n\n" +
+        (
+          error?.message ||
+          "Sila cuba lagi."
+        )
+      );
+
+
+    }finally{
+
+      /*
+        Kembalikan button.
+      */
+
+      orderSubmitting =
+        false;
+
+
+      button.disabled =
+        false;
+
+
+      button.style.opacity =
+        "";
+
+
+      button.textContent =
+        originalText;
+
+    }
 
   }
 );
-
 
 /* =========================================================
    SUPABASE → EDITOR
