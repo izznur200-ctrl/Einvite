@@ -117,7 +117,7 @@ button{
 
   color:var(--muted);
 
-  font-size:10px;
+  font-size:11px;
   font-weight:500;
 }
 
@@ -193,7 +193,7 @@ button{
 
   color:rgba(255,255,255,.7);
 
-  font-size:10px;
+  font-size:11px;
   font-weight:700;
 }
 
@@ -216,7 +216,7 @@ select{
 
   color:white;
 
-  font-size:11px;
+  font-size:13px;
 
   transition:
     border-color .2s,
@@ -264,7 +264,7 @@ input[type="file"]::file-selector-button{
   color:white;
 
   cursor:pointer;
-  font-size:10px;
+  font-size:11px;
 }
 
 /* =========================================================
@@ -302,7 +302,7 @@ input[type="file"]::file-selector-button{
 
 .toggle-info strong{
   display:block;
-  font-size:11px;
+  font-size:12px;
 }
 
 .toggle-info span{
@@ -312,7 +312,7 @@ input[type="file"]::file-selector-button{
 
   color:var(--muted);
 
-  font-size:9px;
+  font-size:11px;
 }
 
 .switch{
@@ -427,7 +427,7 @@ input[type="file"]::file-selector-button{
 }
 
 /* =========================================================
-   SCHEDULE
+   SCHEDULE EDITOR
 ========================================================= */
 
 .schedule-editor{
@@ -488,14 +488,14 @@ input[type="file"]::file-selector-button{
 
   cursor:pointer;
 
-  font-size:11px;
+  font-size:12px;
   font-weight:800;
 
   transition:
     transform .15s,
     opacity .15s;
 }
-
+ 
 .small-btn:active,
 .primary-btn:active,
 .nav:active{
@@ -527,54 +527,52 @@ input[type="file"]::file-selector-button{
   color:white;
 }
 
-.primary-btn:disabled{
-  cursor:not-allowed;
-}
-
 /* =========================================================
-   ORDER INFO
+   PRICE
 ========================================================= */
 
-.order-note{
-  margin-top:9px;
-  padding:10px 12px;
+.price-box{
+  padding:14px;
 
   border:
-    1px solid rgba(255,255,255,.07);
+    1px solid rgba(255,255,255,.1);
 
-  border-radius:12px;
+  border-radius:16px;
 
   background:
-    rgba(255,255,255,.025);
-
-  color:var(--muted);
-
-  font-size:9px;
-  line-height:1.5;
-
-  text-align:center;
+    linear-gradient(
+      135deg,
+      rgba(217,139,154,.12),
+      rgba(127,165,138,.1)
+    );
 }
 
-.order-status{
-  display:none;
+.price-line{
+  display:flex;
 
-  margin-top:9px;
-  padding:10px 12px;
+  justify-content:space-between;
 
-  border:
-    1px solid rgba(255,255,255,.08);
+  gap:10px;
 
-  border-radius:12px;
+  margin-bottom:7px;
 
-  background:
-    rgba(127,165,138,.08);
+  color:rgba(255,255,255,.72);
 
-  color:#ccebd5;
+  font-size:11px;
+}
 
-  font-size:9px;
-  line-height:1.5;
+.price-total{
+  display:flex;
 
-  text-align:center;
+  justify-content:space-between;
+
+  padding-top:9px;
+
+  border-top:
+    1px solid rgba(255,255,255,.1);
+
+  font-size:15px;
+  font-weight:900;
 }
 
 /* =========================================================
@@ -591,7 +589,7 @@ input[type="file"]::file-selector-button{
 
   color:var(--muted);
 
-  font-size:9px;
+  font-size:10px;
   font-weight:800;
 
   letter-spacing:1px;
@@ -991,7 +989,7 @@ input[type="file"]::file-selector-button{
 
   color:rgba(255,255,255,.7);
 
-  font-size:10px;
+  font-size:11px;
   font-weight:700;
 
   letter-spacing:3px;
@@ -1007,7 +1005,7 @@ input[type="file"]::file-selector-button{
     "Times New Roman",
     serif;
 
-  font-size:38px;
+  font-size:36px;
 
   font-style:italic;
   font-weight:400;
@@ -1098,7 +1096,7 @@ input[type="file"]::file-selector-button{
 
   color:var(--tone3);
 
-  font-size:9px;
+  font-size:10px;
 
   letter-spacing:3px;
 }
@@ -1153,7 +1151,7 @@ input[type="file"]::file-selector-button{
     "Times New Roman",
     serif;
 
-  font-size:40px;
+  font-size:36px;
 
   font-style:italic;
   font-weight:400;
@@ -1175,32 +1173,24 @@ input[type="file"]::file-selector-button{
   font-style:italic;
 }
 
-.date{
-  display:inline-flex;
+.date {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Tambah sedikit ruang antara ikon dan teks tarikh */
 
-  align-items:center;
+  margin: 18px 0;
+  padding: 10px 20px; /* Besarkan sedikit ruang dalam supaya kelihatan seperti pill badge yang seimbang */
 
-  gap:7px;
+  border: 1px solid rgba(255, 255, 255, .15);
+  border-radius: 30px;
 
-  margin:
-    20px
-    0;
+  background: rgba(255, 255, 255, .05);
+  color: #eef2ed;
 
-  padding:
-    8px
-    17px;
-
-  border:
-    1px solid rgba(255,255,255,.11);
-
-  border-radius:30px;
-
-  background:
-    rgba(255,255,255,.035);
-
-  color:#eef2ed;
-
-  font-size:11px;
+  font-size: 13px; /* Naikkan dari 11px supaya selaras dengan saiz teks utama & nav */
+  font-weight: 600; /* Tambah ketebalan supaya tarikh lebih menonjol */
+  letter-spacing: 0.3px;
 }
 
 /* =========================================================
@@ -1222,7 +1212,7 @@ input[type="file"]::file-selector-button{
 
   color:var(--muted);
 
-  font-size:8px;
+  font-size:10px;
   font-weight:700;
 
   letter-spacing:2px;
@@ -1267,7 +1257,7 @@ input[type="file"]::file-selector-button{
 
   color:var(--muted);
 
-  font-size:7px;
+  font-size:9px;
 
   text-transform:uppercase;
 }
@@ -1316,10 +1306,6 @@ input[type="file"]::file-selector-button{
     rgba(255,255,255,.055);
 }
 
-.nav[aria-disabled="true"]{
-  opacity:.45;
-}
-
 .nav-left{
   display:flex;
 
@@ -1344,7 +1330,7 @@ input[type="file"]::file-selector-button{
 
   color:#65746b;
 
-  font-size:9px;
+  font-size:10px;
 
   letter-spacing:1.4px;
 }
@@ -1501,50 +1487,46 @@ input[type="file"]::file-selector-button{
 .drawer-description{
   color:var(--muted);
 
-  font-size:9px;
+  font-size:12px;
 
   line-height:1.5;
 }
 
 /* =========================================================
-   SCHEDULE DRAWER
+   DRAWER SCHEDULE
 ========================================================= */
 
-.schedule-item{
-  display:flex;
-
-  gap:12px;
-
-  margin-bottom:10px;
-
-  padding:10px;
-
+.schedule-item {
+  display: flex;
+  
+  gap: 12px;
+  
+  margin-bottom: 10px;
+  
+  padding: 10px;
+  
   border:
-    1px solid rgba(255,255,255,.05);
-
-  border-radius:10px;
-
+    1px solid rgba(255, 255, 255, .05);
+  
+  border-radius: 10px;
+  
   background:
-    rgba(255,255,255,.02);
+    rgba(255, 255, 255, .02);
 }
 
 .schedule-time{
-  min-width:70px;
-
+  min-width:80px;
   color:var(--tone3);
-
-  font-size:11px;
+  font-size:13px;
   font-weight:700;
 }
 
 .schedule-text{
-  color:
-    rgba(255,255,255,.78);
-
-  font-size:11px;
-
-  line-height:1.4;
+  color:rgba(255,255,255,.78);
+  font-size:13px;
+  line-height:1.5;
 }
+
 
 /* =========================================================
    FAMILY
@@ -1575,14 +1557,14 @@ input[type="file"]::file-selector-button{
   color:
     rgba(255,255,255,.78);
 
-  font-size:10px;
+  font-size:13px;
   font-weight:700;
 }
 
 .contact-button{
   padding:
     8px
-    11px;
+    12px;
 
   border-radius:20px;
 
@@ -1607,7 +1589,7 @@ input[type="file"]::file-selector-button{
     0
     5px;
 
-  font-size:13px;
+  font-size:14px;
 }
 
 .family-parents{
@@ -1618,55 +1600,37 @@ input[type="file"]::file-selector-button{
 
   color:var(--muted);
 
-  font-size:9px;
+  font-size:12px;
 
   line-height:1.5;
 }
 
 /* =========================================================
-   MUSIC PLAYER
+   OVERLAY
 ========================================================= */
 
-.music-player{
-  display:flex;
-  align-items:center;
-  gap:9px;
+.overlay{
+  position:fixed;
 
-  margin-top:9px;
-  padding:10px;
+  inset:0;
 
-  border:
-    1px solid rgba(255,255,255,.07);
-
-  border-radius:12px;
+  z-index:998;
 
   background:
-    rgba(255,255,255,.025);
+    rgba(0,0,0,.55);
 
-  color:var(--muted);
+  opacity:0;
 
-  font-size:9px;
+  visibility:hidden;
+
+  transition:.3s;
+
+  backdrop-filter:blur(3px);
 }
 
-.music-player button{
-  width:32px;
-  height:32px;
-
-  flex-shrink:0;
-
-  border:0;
-  border-radius:50%;
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--tone1),
-      var(--tone2)
-    );
-
-  color:white;
-
-  cursor:pointer;
+.overlay.active{
+  opacity:1;
+  visibility:visible;
 }
 
 /* =========================================================
@@ -1722,11 +1686,13 @@ input[type="file"]::file-selector-button{
 <header class="topbar">
 
   <div class="brand">
+
     NUR NONA ✦ Live Editor
 
     <small>
       Edit → Preview → Hantar Tempahan WhatsApp
     </small>
+
   </div>
 
 </header>
@@ -1734,10 +1700,14 @@ input[type="file"]::file-selector-button{
 
 <div class="editor-layout">
 
+<!-- =======================================================
+     EDITOR
+======================================================= -->
+
 <section class="editor">
 
 <!-- =====================================================
-     PENGANTIN
+     MAKLUMAT PENGANTIN
 ===================================================== -->
 
 <div class="section">
@@ -1749,56 +1719,80 @@ input[type="file"]::file-selector-button{
   <div class="row">
 
     <div class="field">
-      <label>Nama Pengantin Lelaki</label>
+
+      <label>
+        Nama Pengantin Lelaki
+      </label>
 
       <input
         id="name1Input"
         value="Adam"
         autocomplete="off"
       >
+
     </div>
 
+
     <div class="field">
-      <label>Nama Pengantin Perempuan</label>
+
+      <label>
+        Nama Pengantin Perempuan
+      </label>
 
       <input
         id="name2Input"
         value="Hawa"
         autocomplete="off"
       >
+
     </div>
 
   </div>
 
+
   <div class="field">
-    <label>Teks Majlis</label>
+
+    <label>
+      Teks Majlis
+    </label>
 
     <input
       id="subtitleInput"
       value="Majlis Kesyukuran & Walimatulurus"
     >
+
   </div>
+
 
   <div class="row">
 
     <div class="field">
-      <label>Tarikh</label>
+
+      <label>
+        Tarikh
+      </label>
 
       <input
         id="dateInput"
         type="date"
         value="2027-10-11"
       >
+
     </div>
 
+
     <div class="field">
-      <label>Masa</label>
+
+      <label>
+        Masa
+      </label>
 
       <input
         id="timeInput"
         type="time"
         value="11:00"
       >
+
     </div>
 
   </div>
@@ -1816,15 +1810,21 @@ input[type="file"]::file-selector-button{
     🖼️ Gambar
   </h2>
 
+
   <div class="toggle-row">
 
     <div class="toggle-info">
-      <strong>Guna gambar pengantin</strong>
+
+      <strong>
+        Guna gambar pengantin
+      </strong>
 
       <span>
         Aktifkan jika customer mahu gambar.
       </span>
+
     </div>
+
 
     <label class="switch">
 
@@ -1838,6 +1838,7 @@ input[type="file"]::file-selector-button{
     </label>
 
   </div>
+
 
   <div
     id="imageArea"
@@ -1858,6 +1859,7 @@ input[type="file"]::file-selector-button{
       >
 
     </div>
+
 
     <button
       class="small-btn"
@@ -1882,28 +1884,44 @@ input[type="file"]::file-selector-button{
     🎨 Warna Kad
   </h2>
 
+
   <div class="field">
 
-    <label>Pilih Tema</label>
+    <label>
+      Pilih Tema
+    </label>
 
-    <select id="themeInput">
+  <select id="themeInput">
 
-      <option value="aurora">🌌 Aurora</option>
-
-      <option value="blueSky">☁️ Blue Sky</option>
-
-      <option value="evergreen">🌿 Evergreen</option>
-
-      <option value="sunrise">🌅 Sunrise</option>
-
-      <option value="burgundy">🍷 Burgundy</option>
-
-      <option value="lavender">💜 Lavender</option>
-
-      <option value="rose">🌸 Rose</option>
-
-    </select>
-
+  <option value="aurora">
+    🌌 Aurora
+  </option>
+  
+  <option value="blueSky">
+    ☁️ Blue Sky
+  </option>
+  
+  <option value="evergreen">
+    🌿 Evergreen
+  </option>
+  
+  <option value="sunrise">
+    🌅 Sunrise
+  </option>
+  
+  <option value="burgundy">
+    🍷 Burgundy
+  </option>
+  
+  <option value="lavender">
+    💜 Lavender
+  </option>
+  
+  <option value="rose">
+    🌸 Rose
+  </option>
+  
+</select>
   </div>
 
 </div>
@@ -1919,100 +1937,139 @@ input[type="file"]::file-selector-button{
     ✨ Emoji
   </h2>
 
+
   <div class="field">
 
-    <label>Pilih sehingga 2 emoji</label>
+    <label>
+      Pilih sehingga 2 emoji
+    </label>
+
 
     <div class="emoji-grid">
 
       <label class="emoji-choice">
+
         <input
           class="emoji-check"
           type="checkbox"
           value="🤍"
           checked
         >
+
         <span>🤍</span>
+
       </label>
 
+
       <label class="emoji-choice">
+
         <input
           class="emoji-check"
           type="checkbox"
           value="✨"
         >
+
         <span>✨</span>
+
       </label>
 
+
       <label class="emoji-choice">
+
         <input
           class="emoji-check"
           type="checkbox"
           value="🌸"
         >
+
         <span>🌸</span>
+
       </label>
 
+
       <label class="emoji-choice">
+
         <input
           class="emoji-check"
           type="checkbox"
           value="🍃"
         >
+
         <span>🍃</span>
+
       </label>
 
+
       <label class="emoji-choice">
+
         <input
           class="emoji-check"
           type="checkbox"
           value="🍓"
         >
+
         <span>🍓</span>
+
       </label>
 
+
       <label class="emoji-choice">
+
         <input
           class="emoji-check"
           type="checkbox"
           value="💙"
         >
+
         <span>💙</span>
+
       </label>
 
+
       <label class="emoji-choice">
+
         <input
           class="emoji-check"
           type="checkbox"
           value="🌿"
         >
+
         <span>🌿</span>
+
       </label>
 
+
       <label class="emoji-choice">
+
         <input
           class="emoji-check"
           type="checkbox"
           value="💐"
         >
+
         <span>💐</span>
+
       </label>
 
     </div>
 
   </div>
 
+
   <div class="toggle-row">
 
     <div class="toggle-info">
 
-      <strong>Emoji jatuh</strong>
+      <strong>
+        Emoji jatuh
+      </strong>
 
       <span>
         Animasi emoji di dalam kad.
       </span>
 
     </div>
+
 
     <label class="switch">
 
@@ -2041,9 +2098,12 @@ input[type="file"]::file-selector-button{
     📍 Lokasi
   </h2>
 
+
   <div class="field">
 
-    <label>Nama Lokasi</label>
+    <label>
+      Nama Lokasi
+    </label>
 
     <input
       id="locationNameInput"
@@ -2052,9 +2112,12 @@ input[type="file"]::file-selector-button{
 
   </div>
 
+
   <div class="field">
 
-    <label>Pilihan Peta</label>
+    <label>
+      Pilihan Peta
+    </label>
 
     <select id="mapTypeInput">
 
@@ -2070,9 +2133,12 @@ input[type="file"]::file-selector-button{
 
   </div>
 
+
   <div class="field">
 
-    <label>Link Lokasi</label>
+    <label>
+      Link Lokasi
+    </label>
 
     <input
       id="mapUrlInput"
@@ -2095,6 +2161,7 @@ input[type="file"]::file-selector-button{
     💌 WhatsApp RSVP
   </h2>
 
+
   <div class="field">
 
     <label>
@@ -2109,15 +2176,24 @@ input[type="file"]::file-selector-button{
 
   </div>
 
-  <div
-    style="
-      color:var(--muted);
-      font-size:9px;
-      line-height:1.5
-    "
-  >
-    Nombor ini ialah nombor customer/pengantin.
-    Ia berbeza daripada nombor WhatsApp tempahan NUR NONA.
+
+  <div class="field">
+
+    <label>
+      WhatsApp Khas Untuk RSVP
+    </label>
+
+    <div
+      style="
+        color:var(--muted);
+        font-size:9px;
+        line-height:1.5
+      "
+    >
+      Nombor ini adalah nombor customer/pengantin.
+    
+    </div>
+
   </div>
 
 </div>
@@ -2133,6 +2209,7 @@ input[type="file"]::file-selector-button{
     📞 Hubungi Keluarga
   </h2>
 
+
   <div class="field">
 
     <label>
@@ -2146,11 +2223,14 @@ input[type="file"]::file-selector-button{
 
   </div>
 
+
   <div class="row">
 
     <div class="field">
 
-      <label>Nama Ayah</label>
+      <label>
+        Nama Ayah
+      </label>
 
       <input
         id="groomFatherName"
@@ -2159,9 +2239,12 @@ input[type="file"]::file-selector-button{
 
     </div>
 
+
     <div class="field">
 
-      <label>No. WhatsApp</label>
+      <label>
+        No. WhatsApp
+      </label>
 
       <input
         id="groomFatherPhone"
@@ -2173,11 +2256,14 @@ input[type="file"]::file-selector-button{
 
   </div>
 
+
   <div class="row">
 
     <div class="field">
 
-      <label>Nama Ibu</label>
+      <label>
+        Nama Ibu
+      </label>
 
       <input
         id="groomMotherName"
@@ -2186,9 +2272,12 @@ input[type="file"]::file-selector-button{
 
     </div>
 
+
     <div class="field">
 
-      <label>No. WhatsApp</label>
+      <label>
+        No. WhatsApp
+      </label>
 
       <input
         id="groomMotherPhone"
@@ -2199,6 +2288,7 @@ input[type="file"]::file-selector-button{
     </div>
 
   </div>
+
 
   <div class="field">
 
@@ -2213,11 +2303,14 @@ input[type="file"]::file-selector-button{
 
   </div>
 
+
   <div class="row">
 
     <div class="field">
 
-      <label>Nama Ayah</label>
+      <label>
+        Nama Ayah
+      </label>
 
       <input
         id="brideFatherName"
@@ -2226,25 +2319,30 @@ input[type="file"]::file-selector-button{
 
     </div>
 
+
     <div class="field">
 
-      <label>No. WhatsApp</label>
+      <label>
+        No. WhatsApp
+      </label>
 
       <input
         id="brideFatherPhone"
         value="60123456789"
         inputmode="tel"
-      >
 
     </div>
 
   </div>
 
+
   <div class="row">
 
     <div class="field">
 
-      <label>Nama Ibu</label>
+      <label>
+        Nama Ibu
+      </label>
 
       <input
         id="brideMotherName"
@@ -2253,9 +2351,12 @@ input[type="file"]::file-selector-button{
 
     </div>
 
+
     <div class="field">
 
-      <label>No. WhatsApp</label>
+      <label>
+        No. WhatsApp
+      </label>
 
       <input
         id="brideMotherPhone"
@@ -2280,10 +2381,12 @@ input[type="file"]::file-selector-button{
     📋 Atur Cara Majlis
   </h2>
 
+
   <div
     id="scheduleEditor"
     class="schedule-editor"
   ></div>
+
 
   <button
     class="small-btn"
@@ -2306,6 +2409,7 @@ input[type="file"]::file-selector-button{
     🎵 Muzik
   </h2>
 
+
   <div class="toggle-row">
 
     <div class="toggle-info">
@@ -2320,6 +2424,7 @@ input[type="file"]::file-selector-button{
 
     </div>
 
+
     <label class="switch">
 
       <input
@@ -2332,6 +2437,7 @@ input[type="file"]::file-selector-button{
     </label>
 
   </div>
+
 
   <div
     id="musicArea"
@@ -2353,25 +2459,6 @@ input[type="file"]::file-selector-button{
 
     </div>
 
-    <div
-      id="musicPlayer"
-      class="music-player hidden"
-    >
-
-      <button
-        id="musicPlayButton"
-        type="button"
-        aria-label="Mainkan muzik"
-      >
-        ▶
-      </button>
-
-      <span id="musicFileName">
-        Tiada fail muzik
-      </span>
-
-    </div>
-
   </div>
 
 </div>
@@ -2387,6 +2474,7 @@ input[type="file"]::file-selector-button{
     💰 Harga
   </h2>
 
+
   <div class="price-box">
 
     <div class="price-line">
@@ -2401,21 +2489,29 @@ input[type="file"]::file-selector-button{
 
     </div>
 
+
     <div
       class="price-line"
       id="musicPriceLine"
       style="display:none"
     >
 
-      <span>Muzik</span>
+      <span>
+        Muzik
+      </span>
 
-      <strong>RM60</strong>
+      <strong>
+        RM60
+      </strong>
 
     </div>
 
+
     <div class="price-total">
 
-      <span>Jumlah</span>
+      <span>
+        Jumlah
+      </span>
 
       <span id="totalPrice">
         RM136
@@ -2425,25 +2521,32 @@ input[type="file"]::file-selector-button{
 
   </div>
 
-  <button
-    class="primary-btn"
-    id="orderButton"
-    type="button"
-  >
-    💬 Hantar Tempahan Melalui WhatsApp
-  </button>
 
-  <div class="order-note">
-    Data yang anda isi akan dimasukkan terus ke dalam
-    mesej WhatsApp tempahan. Tiada akaun atau Supabase diperlukan.
-  </div>
+<button
+  class="primary-btn"
+  id="orderButton"
+  type="button"
+>
+  💬 Hantar Tempahan Melalui WhatsApp
+</button>
 
-  <div
-    class="order-status"
-    id="orderStatus"
-    role="status"
-    aria-live="polite"
-  ></div>
+<div
+  id="supabaseStatus"
+  style="
+    margin-top:9px;
+    padding:10px 12px;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:12px;
+    background:rgba(255,255,255,.025);
+    color:var(--muted);
+    font-size:9px;
+    line-height:1.45;
+    text-align:center;
+    display:none;
+  "
+  role="status"
+  aria-live="polite"
+></div>
 
 </div>
 
@@ -2459,6 +2562,7 @@ input[type="file"]::file-selector-button{
   <p class="preview-label">
     Live Preview
   </p>
+
 
   <div class="phone">
 
@@ -2484,13 +2588,17 @@ input[type="file"]::file-selector-button{
             aria-label="Buka undangan"
           >
 
-            <span>🤍</span>
+            <span>
+              🤍
+            </span>
 
           </div>
+
 
           <p class="cover-label">
             Undangan Digital
           </p>
+
 
           <h1 class="cover-names">
 
@@ -2506,12 +2614,14 @@ input[type="file"]::file-selector-button{
 
           </h1>
 
+
           <p
             class="cover-subtitle"
             id="coverSubtitle"
           >
             Majlis Kesyukuran & Walimatulurus
           </p>
+
 
           <button
             class="open-button"
@@ -2523,7 +2633,9 @@ input[type="file"]::file-selector-button{
               KLIK ATAU LERET KE ATAS UNTUK BUKA
             </span>
 
-            <span>▲</span>
+            <span>
+              ▲
+            </span>
 
           </button>
 
@@ -2531,6 +2643,7 @@ input[type="file"]::file-selector-button{
 
 
         <div class="card-bg"></div>
+
 
         <div class="aurora">
 
@@ -2540,11 +2653,13 @@ input[type="file"]::file-selector-button{
 
         </div>
 
+
         <div class="aurora-ribbon"></div>
 
         <div class="aurora-line"></div>
 
         <div class="vignette"></div>
+
 
         <div
           class="emoji-container"
@@ -2560,6 +2675,7 @@ input[type="file"]::file-selector-button{
             Dengan Penuh Kesyukuran
           </p>
 
+
           <p
             class="sparkles"
             id="sparkleText"
@@ -2567,12 +2683,14 @@ input[type="file"]::file-selector-button{
             ✦ 🤍 ✦
           </p>
 
+
           <p
             class="invitation-subtitle"
             id="invitationSubtitle"
           >
             Majlis Kesyukuran & Walimatulurus
           </p>
+
 
           <div
             class="poster-wrapper hidden"
@@ -2587,6 +2705,7 @@ input[type="file"]::file-selector-button{
 
           </div>
 
+
           <h2
             class="name"
             id="displayName1"
@@ -2594,7 +2713,11 @@ input[type="file"]::file-selector-button{
             Adam
           </h2>
 
-          <p class="and">&amp;</p>
+
+          <p class="and">
+            &amp;
+          </p>
+
 
           <h2
             class="name"
@@ -2602,6 +2725,7 @@ input[type="file"]::file-selector-button{
           >
             Hawa
           </h2>
+
 
           <div class="date">
 
@@ -2624,6 +2748,7 @@ input[type="file"]::file-selector-button{
               MAJLIS BERMULA DALAM
             </p>
 
+
             <div class="countdown-grid">
 
               <div class="time">
@@ -2641,6 +2766,7 @@ input[type="file"]::file-selector-button{
 
               </div>
 
+
               <div class="time">
 
                 <div
@@ -2656,6 +2782,7 @@ input[type="file"]::file-selector-button{
 
               </div>
 
+
               <div class="time">
 
                 <div
@@ -2670,6 +2797,7 @@ input[type="file"]::file-selector-button{
                 </span>
 
               </div>
+
 
               <div class="time">
 
@@ -2790,7 +2918,6 @@ input[type="file"]::file-selector-button{
           <footer class="footer">
 
             Crafted with ✦ by
-
             <strong>
               NUR NONA
             </strong>
@@ -2848,9 +2975,11 @@ input[type="file"]::file-selector-button{
 
   </div>
 
+
   <p class="drawer-description">
     Susunan acara majlis.
   </p>
+
 
   <div id="scheduleContainer"></div>
 
@@ -2883,13 +3012,17 @@ input[type="file"]::file-selector-button{
 
   </div>
 
+
   <p class="drawer-description">
     Isi maklumat untuk menghantar RSVP kepada pengantin.
   </p>
 
+
   <div class="field">
 
-    <label>Nama</label>
+    <label>
+      Nama
+    </label>
 
     <input
       id="guestName"
@@ -2898,23 +3031,33 @@ input[type="file"]::file-selector-button{
 
   </div>
 
+
   <div class="field">
 
-    <label>Kehadiran</label>
+    <label>
+      Kehadiran
+    </label>
 
     <select id="attendance">
 
-      <option>Hadir</option>
+      <option>
+        Hadir
+      </option>
 
-      <option>Tidak dapat hadir</option>
+      <option>
+        Tidak dapat hadir
+      </option>
 
     </select>
 
   </div>
 
+
   <div class="field">
 
-    <label>Ucapan & Doa</label>
+    <label>
+      Ucapan & Doa
+    </label>
 
     <textarea
       id="guestMessage"
@@ -2922,6 +3065,7 @@ input[type="file"]::file-selector-button{
     ></textarea>
 
   </div>
+
 
   <button
     class="primary-btn"
@@ -2960,14 +3104,17 @@ input[type="file"]::file-selector-button{
 
   </div>
 
+
   <p class="drawer-description">
     Sebarang pertanyaan berkaitan majlis boleh diajukan
     kepada keluarga pengantin.
   </p>
 
+
   <h3 class="family-heading">
     👨‍💼 Pengantin Lelaki
   </h3>
+
 
   <p
     class="family-parents"
@@ -2976,11 +3123,14 @@ input[type="file"]::file-selector-button{
     Putera kepada Encik Ahmad & Puan Aminah
   </p>
 
+
   <div id="previewGroomContacts"></div>
+
 
   <h3 class="family-heading">
     👩‍💼 Pengantin Perempuan
   </h3>
+
 
   <p
     class="family-parents"
@@ -2988,6 +3138,7 @@ input[type="file"]::file-selector-button{
   >
     Puteri kepada Encik Abdullah & Puan Fatimah
   </p>
+
 
   <div id="previewBrideContacts"></div>
 
@@ -2999,8 +3150,8 @@ input[type="file"]::file-selector-button{
 
 /* =========================================================
    NUR NONA — LIVE EDITOR
-   SINGLE FILE
-   NO SUPABASE
+   ORIGINAL DESIGN PRESERVED
+   SUPABASE / SLUG LOADING ENABLED
 ========================================================= */
 
 
@@ -3008,8 +3159,21 @@ input[type="file"]::file-selector-button{
    CONFIG
 ========================================================= */
 
-const SELLER_WHATSAPP =
-  "601139517845";
+const SELLER_WHATSAPP = "601139517845";
+
+const SUPABASE_URL =
+  "https://bfqyyboemqrdpyjkszoy.supabase.co";
+
+/*
+  MASUKKAN ANON / PUBLISHABLE KEY SUPABASE AWAK DI SINI.
+
+  JANGAN GUNA service_role key dalam browser.
+*/
+const SUPABASE_ANON_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVkcHhlZ2V6bmZzbHdvbWd5cnBhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc5OTQzMDAsImV4cCI6MjEwMzU3MDMwMH0.rBtmGUvGap2TcHTK8mqGyv8gGrkeuddg_pmEvgTSKI0";
+
+const SUPABASE_TABLE =
+  "wedding_invitations";
 
 
 /* =========================================================
@@ -3067,9 +3231,8 @@ const THEMES = {
    HELPERS
 ========================================================= */
 
-const $ =
-  id =>
-    document.getElementById(id);
+const $ = id =>
+  document.getElementById(id);
 
 
 function cleanText(
@@ -3078,45 +3241,31 @@ function cleanText(
 ){
 
   const text =
-    String(
-      value ?? ""
-    ).trim();
+    String(value ?? "").trim();
 
   return text || fallback;
 
 }
 
 
-function normalizePhone(
-  phone
-){
+function normalizePhone(phone){
 
   let p =
-    String(
-      phone ?? ""
-    )
-      .replace(
-        /\D/g,
-        ""
-      );
+    String(phone ?? "")
+      .replace(/\D/g,"");
 
-  if(
-    p.startsWith("00")
-  ){
-
-    p =
-      p.slice(2);
-
+  if(p.startsWith("00")){
+    p = p.slice(2);
   }
 
-  if(
-    p.startsWith("0")
-  ){
+  /*
+    0123456789
+    ↓
+    60123456789
+  */
 
-    p =
-      "60" +
-      p.slice(1);
-
+  if(p.startsWith("0")){
+    p = "60" + p.slice(1);
   }
 
   return p;
@@ -3124,14 +3273,10 @@ function normalizePhone(
 }
 
 
-function safeUrl(
-  value
-){
+function safeUrl(value){
 
   const raw =
-    String(
-      value ?? ""
-    ).trim();
+    String(value ?? "").trim();
 
   if(!raw){
     return "";
@@ -3146,9 +3291,7 @@ function safeUrl(
       url.protocol !== "http:" &&
       url.protocol !== "https:"
     ){
-
       return "";
-
     }
 
     return url.href;
@@ -3162,17 +3305,88 @@ function safeUrl(
 }
 
 
+function firstValue(
+  object,
+  keys,
+  fallback=""
+){
+
+  for(const key of keys){
+
+    if(
+      object &&
+      object[key] !== undefined &&
+      object[key] !== null &&
+      String(object[key]).trim() !== ""
+    ){
+
+      return object[key];
+
+    }
+
+  }
+
+  return fallback;
+
+}
+
+
+function toBoolean(
+  value,
+  fallback=false
+){
+
+  if(value === undefined || value === null){
+    return fallback;
+  }
+
+  if(typeof value === "boolean"){
+    return value;
+  }
+
+  const text =
+    String(value)
+      .trim()
+      .toLowerCase();
+
+  if(
+    [
+      "true",
+      "1",
+      "yes",
+      "ya",
+      "on"
+    ].includes(text)
+  ){
+    return true;
+  }
+
+  if(
+    [
+      "false",
+      "0",
+      "no",
+      "tidak",
+      "off"
+    ].includes(text)
+  ){
+    return false;
+  }
+
+  return fallback;
+
+}
+
+
 /* =========================================================
    STATE
 ========================================================= */
 
 let uploadedImage = "";
-
 let uploadedMusic = "";
 
-let musicObjectUrl = "";
-
-let musicAudio = null;
+let remoteImage = "";
+let remoteMusic = "";
 
 let countdownTimer = null;
 
@@ -3180,42 +3394,556 @@ let emojiTimer = null;
 
 let opened = false;
 
-let orderSubmitting = false;
-
-
 let schedule = [
 
   {
     time:"11:00 AM",
-    text:
-      "Ketibaan Para Tetamu & Jemputan"
+    text:"Ketibaan Para Tetamu & Jemputan"
   },
 
   {
     time:"12:00 PM",
-    text:
-      "Bacaan Doa & Acara Pembukaan"
+    text:"Bacaan Doa & Acara Pembukaan"
   },
 
   {
     time:"12:30 PM",
-    text:
-      "Ketibaan Pengantin & Makan Beradab"
+    text:"Ketibaan Pengantin & Makan Beradab"
   },
 
   {
     time:"02:30 PM",
-    text:
-      "Sesi Bergambar & Ramah Mesra"
+    text:"Sesi Bergambar & Ramah Mesra"
   },
 
   {
     time:"04:00 PM",
-    text:
-      "Majlis Bersurai & Ucapan Penutup"
+    text:"Majlis Bersurai & Ucapan Penutup"
   }
 
 ];
+
+
+/* =========================================================
+   GET SLUG
+========================================================= */
+
+function getSlugFromPath(){
+
+  const parts =
+    window.location.pathname
+      .split("/")
+      .filter(Boolean);
+
+  if(!parts.length){
+    return "";
+  }
+
+  return decodeURIComponent(
+    parts[0]
+  )
+    .trim()
+    .toLowerCase();
+
+}
+
+
+/* =========================================================
+   SUPABASE REQUEST
+========================================================= */
+
+async function loadInvitationFromSupabase(){
+
+  const slug =
+    getSlugFromPath();
+
+  /*
+    Root:
+      /
+
+    kekalkan demo/default editor.
+  */
+
+  if(!slug){
+    return null;
+  }
+
+
+  /*
+    Elak request jika key belum dimasukkan.
+  */
+
+  if(
+    !SUPABASE_ANON_KEY ||
+    SUPABASE_ANON_KEY ===
+      "PASTE_YOUR_SUPABASE_ANON_KEY_HERE"
+  ){
+
+    console.warn(
+      "NUR NONA: Supabase anon/publishable key belum dimasukkan."
+    );
+
+    return null;
+
+  }
+
+
+  const endpoint =
+    `${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}` +
+    `?slug=eq.${encodeURIComponent(slug)}` +
+    `&select=*` +
+    `&limit=1`;
+
+
+  try{
+
+    const response =
+      await fetch(
+        endpoint,
+        {
+          method:"GET",
+
+          headers:{
+            apikey:
+              SUPABASE_ANON_KEY,
+
+            Authorization:
+              `Bearer ${SUPABASE_ANON_KEY}`,
+
+            Accept:
+              "application/json"
+          }
+        }
+      );
+
+
+    if(!response.ok){
+
+      const errorText =
+        await response.text();
+
+      console.error(
+        "Supabase error:",
+        response.status,
+        errorText
+      );
+
+      throw new Error(
+        `Supabase HTTP ${response.status}`
+      );
+
+    }
+
+
+    const rows =
+      await response.json();
+
+
+    if(!Array.isArray(rows) || !rows.length){
+
+      console.warn(
+        `Tiada data Supabase untuk /${slug}`
+      );
+
+      return null;
+
+    }
+
+
+    return rows[0];
+
+  }catch(error){
+
+    console.error(
+      "Gagal membaca Supabase:",
+      error
+    );
+
+    return null;
+
+  }
+
+}
+/* =========================================================
+   SUPABASE SAVE / UPSERT
+========================================================= */
+
+function setSupabaseStatus(
+  message,
+  type="info"
+){
+
+  const status =
+    $("supabaseStatus");
+
+  if(!status){
+    return;
+  }
+
+  status.style.display =
+    "block";
+
+  if(type === "success"){
+
+    status.textContent =
+      `✅ ${message}`;
+
+    status.style.color =
+      "#b9e6c5";
+
+  }else if(type === "error"){
+
+    status.textContent =
+      `❌ ${message}`;
+
+    status.style.color =
+      "#ffb4b4";
+
+  }else{
+
+    status.textContent =
+      `⏳ ${message}`;
+
+    status.style.color =
+      "var(--muted)";
+
+  }
+
+}
+
+
+function getCurrentInvitationPayload(){
+
+  const slug =
+    getSlugFromPath();
+
+
+  if(!slug){
+
+    throw new Error(
+      "Slug URL tidak dijumpai. Contoh: /adam-hawa"
+    );
+
+  }
+
+
+  if(
+    !SUPABASE_ANON_KEY ||
+    SUPABASE_ANON_KEY ===
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVkcHhlZ2V6bmZzbHdvbWd5cnBhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc5OTQzMDAsImV4cCI6MjEwMzU3MDMwMH0.rBtmGUvGap2TcHTK8mqGyv8gGrkeuddg_pmEvgTSKI0"
+  ){
+
+    throw new Error(
+      "SUPABASE_ANON_KEY belum diisi."
+    );
+
+  }
+
+
+  const withImage =
+    $("imageToggle")?.checked ??
+    false;
+
+
+  const music =
+    $("musicToggle")?.checked ??
+    false;
+
+
+  /*
+    Penting:
+    uploadedImage ialah data URL tempatan.
+
+    Kita TIDAK simpan data URL tersebut ke Supabase.
+    Hanya remoteImage yang sudah berupa URL boleh disimpan.
+  */
+
+  const posterUrl =
+    safeUrl(
+      remoteImage
+    ) || null;
+
+
+  /*
+    uploadedMusic pula hanya nama fail tempatan.
+
+    Jadi hanya remoteMusic yang berupa URL
+    boleh disimpan sebagai music_url.
+  */
+
+  const musicUrl =
+    safeUrl(
+      remoteMusic
+    ) || null;
+
+
+  return {
+
+    slug,
+
+    partner_1:
+      cleanText(
+        $("name1Input")?.value,
+        "Adam"
+      ),
+
+    partner_2:
+      cleanText(
+        $("name2Input")?.value,
+        "Hawa"
+      ),
+
+    opening_text:
+      cleanText(
+        $("subtitleInput")?.value,
+        "Majlis Kesyukuran & Walimatulurus"
+      ),
+
+    event_date:
+      $("dateInput")?.value ||
+      null,
+
+    event_time:
+      $("timeInput")?.value ||
+      null,
+
+    theme:
+      $("themeInput")?.value ||
+      "aurora",
+
+    emoji_1:
+      getEmojis()[0] ||
+      null,
+
+    emoji_2:
+      getEmojis()[1] ||
+      null,
+
+    emoji_enabled:
+      $("emojiToggle")?.checked ??
+      true,
+
+    show_poster:
+      withImage,
+
+    poster_url:
+      posterUrl,
+
+    location_name:
+      cleanText(
+        $("locationNameInput")?.value,
+        "Lokasi Majlis"
+      ),
+
+    map_type:
+      $("mapTypeInput")?.value ||
+      "google",
+
+    map_url:
+      safeUrl(
+        $("mapUrlInput")?.value
+      ) || null,
+
+    whatsapp_number:
+      normalizePhone(
+        $("rsvpPhoneInput")?.value ||
+        ""
+      ) || null,
+
+    groom_parents:
+      cleanText(
+        $("groomParentsInput")?.value,
+        ""
+      ),
+
+    groom_father_name:
+      cleanText(
+        $("groomFatherName")?.value,
+        ""
+      ),
+
+    groom_father_phone:
+      normalizePhone(
+        $("groomFatherPhone")?.value ||
+        ""
+      ) || null,
+
+    groom_mother_name:
+      cleanText(
+        $("groomMotherName")?.value,
+        ""
+      ),
+
+    groom_mother_phone:
+      normalizePhone(
+        $("groomMotherPhone")?.value ||
+        ""
+      ) || null,
+
+    bride_parents:
+      cleanText(
+        $("brideParentsInput")?.value,
+        ""
+      ),
+
+    bride_father_name:
+      cleanText(
+        $("brideFatherName")?.value,
+        ""
+      ),
+
+    bride_father_phone:
+      normalizePhone(
+        $("brideFatherPhone")?.value ||
+        ""
+      ) || null,
+
+    bride_mother_name:
+      cleanText(
+        $("brideMotherName")?.value,
+        ""
+      ),
+
+    bride_mother_phone:
+      normalizePhone(
+        $("brideMotherPhone")?.value ||
+        ""
+      ) || null,
+
+    schedule:
+      Array.isArray(schedule)
+        ? schedule.map(
+            item => ({
+              time:
+                cleanText(
+                  item?.time,
+                  ""
+                ),
+
+              text:
+                cleanText(
+                  item?.text,
+                  ""
+                )
+            })
+          )
+        : [],
+
+    music_enabled:
+      music,
+
+    music_url:
+      musicUrl
+
+  };
+
+}
+
+
+async function saveInvitationToSupabase(){
+
+  const payload =
+    getCurrentInvitationPayload();
+
+
+  const endpoint =
+    `${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}` +
+    `?on_conflict=slug`;
+
+
+  console.log(
+    "NUR NONA → Supabase payload:",
+    payload
+  );
+
+
+  const response =
+    await fetch(
+      endpoint,
+      {
+        method:"POST",
+
+        headers:{
+
+          apikey:
+            SUPABASE_ANON_KEY,
+
+          Authorization:
+            `Bearer ${SUPABASE_ANON_KEY}`,
+
+          "Content-Type":
+            "application/json",
+
+          Prefer:
+            "resolution=merge-duplicates,return=representation"
+
+        },
+
+        body:
+          JSON.stringify(
+            payload
+          )
+
+      }
+    );
+
+
+  const raw =
+    await response.text();
+
+
+  let result = null;
+
+
+  try{
+
+    result =
+      raw
+        ? JSON.parse(raw)
+        : null;
+
+  }catch{
+
+    result =
+      raw;
+
+  }
+
+
+  if(!response.ok){
+
+    console.error(
+      "NUR NONA → SUPABASE SAVE ERROR:",
+      response.status,
+      result
+    );
+
+
+    const detail =
+      result?.message ||
+      result?.details ||
+      result?.hint ||
+      result?.error ||
+      raw ||
+      "Gagal menyimpan data.";
+
+
+    throw new Error(
+      `Supabase ${response.status}: ${detail}`
+    );
+
+  }
+
+
+  console.log(
+    "NUR NONA → Supabase berjaya:",
+    result
+  );
+
+
+  return result;
+
+}
 
 
 /* =========================================================
@@ -3269,10 +3997,7 @@ function getEmojis(){
     )
   ]
     .slice(0,2)
-    .map(
-      input =>
-        input.value
-    )
+    .map(input => input.value)
     .filter(Boolean);
 
 }
@@ -3288,12 +4013,8 @@ function enforceEmojiLimit(){
     ];
 
 
-  if(
-    checked.length <= 2
-  ){
-
+  if(checked.length <= 2){
     return;
-
   }
 
 
@@ -3301,10 +4022,7 @@ function enforceEmojiLimit(){
     .slice(2)
     .forEach(
       input => {
-
-        input.checked =
-          false;
-
+        input.checked = false;
       }
     );
 
@@ -3315,29 +4033,22 @@ function updateEmoji(){
 
   enforceEmojiLimit();
 
-
   const emojis =
     getEmojis();
 
-
   const first =
-    emojis[0] ||
-    "🤍";
-
+    emojis[0] || "🤍";
 
   const second =
-    emojis[1] ||
+    emojis[1] || first;
+
+
+  $("sparkleText").textContent =
+    `✦ ${first} ${second} ✦`;
+
+
+  $("dateEmoji").textContent =
     first;
-
-
-  $("sparkleText")
-    .textContent =
-      `✦ ${first} ${second} ✦`;
-
-
-  $("dateEmoji")
-    .textContent =
-      first;
 
 }
 
@@ -3351,7 +4062,6 @@ function createEmoji(){
   const toggle =
     $("emojiToggle");
 
-
   const container =
     $("emojiContainer");
 
@@ -3361,9 +4071,7 @@ function createEmoji(){
     !toggle.checked ||
     !container
   ){
-
     return;
-
   }
 
 
@@ -3377,9 +4085,7 @@ function createEmoji(){
 
 
   const element =
-    document.createElement(
-      "span"
-    );
+    document.createElement("span");
 
 
   element.className =
@@ -3389,8 +4095,7 @@ function createEmoji(){
   element.textContent =
     emojis[
       Math.floor(
-        Math.random() *
-        emojis.length
+        Math.random() * emojis.length
       )
     ];
 
@@ -3419,12 +4124,8 @@ function createEmoji(){
   window.setTimeout(
     () => {
 
-      if(
-        element.isConnected
-      ){
-
+      if(element.isConnected){
         element.remove();
-
       }
 
     },
@@ -3436,7 +4137,11 @@ function createEmoji(){
 
 function startEmojiAnimation(){
 
-  stopEmojiAnimation();
+  if(emojiTimer){
+    clearInterval(
+      emojiTimer
+    );
+  }
 
 
   emojiTimer =
@@ -3456,21 +4161,19 @@ function stopEmojiAnimation(){
       emojiTimer
     );
 
-    emojiTimer =
-      null;
+    emojiTimer = null;
 
   }
 
 
-  $("emojiContainer")
-    .innerHTML =
-      "";
+  $("emojiContainer").innerHTML =
+    "";
 
 }
 
 
 /* =========================================================
-   TEXT
+   BASIC TEXT
 ========================================================= */
 
 function updateText(){
@@ -3496,34 +4199,28 @@ function updateText(){
     );
 
 
-  $("displayName1")
-    .textContent =
-      name1;
+  $("displayName1").textContent =
+    name1;
 
 
-  $("displayName2")
-    .textContent =
-      name2;
+  $("displayName2").textContent =
+    name2;
 
 
-  $("coverName1")
-    .textContent =
-      name1;
+  $("coverName1").textContent =
+    name1;
 
 
-  $("coverName2")
-    .textContent =
-      name2;
+  $("coverName2").textContent =
+    name2;
 
 
-  $("coverSubtitle")
-    .textContent =
-      subtitle;
+  $("coverSubtitle").textContent =
+    subtitle;
 
 
-  $("invitationSubtitle")
-    .textContent =
-      subtitle;
+  $("invitationSubtitle").textContent =
+    subtitle;
 
 
   document.title =
@@ -3554,14 +4251,16 @@ function updateImage(){
     $("posterWrapper");
 
 
-  if(
-    !enabled ||
-    !uploadedImage
-  ){
+  const image =
+    uploadedImage ||
+    remoteImage;
 
-    wrapper
-      .classList
-      .add("hidden");
+
+  if(!enabled || !image){
+
+    wrapper.classList.add(
+      "hidden"
+    );
 
 
     $("weddingPoster")
@@ -3582,26 +4281,25 @@ function updateImage(){
   }
 
 
-  $("weddingPoster")
-    .src =
-      uploadedImage;
+  $("weddingPoster").src =
+    image;
 
 
-  wrapper
-    .classList
-    .remove("hidden");
+  wrapper.classList.remove(
+    "hidden"
+  );
 
+
+  /*
+    CSS background menggunakan image URL.
+    Untuk dataURL dan URL biasa, kita encode
+    secara selamat sebagai CSS string.
+  */
 
   const escaped =
-    uploadedImage
-      .replace(
-        /\\/g,
-        "\\\\"
-      )
-      .replace(
-        /"/g,
-        '\\"'
-      );
+    image
+      .replace(/\\/g,"\\\\")
+      .replace(/"/g,'\\"');
 
 
   document.documentElement
@@ -3626,9 +4324,8 @@ function formatDate(){
 
   if(!value){
 
-    $("displayDate")
-      .textContent =
-        "Tarikh Majlis";
+    $("displayDate").textContent =
+      "Tarikh Majlis";
 
     return;
 
@@ -3647,29 +4344,26 @@ function formatDate(){
     )
   ){
 
-    $("displayDate")
-      .textContent =
-        "Tarikh Majlis";
+    $("displayDate").textContent =
+      "Tarikh Majlis";
 
     return;
 
   }
 
 
-  $("displayDate")
-    .textContent =
-      new Intl.DateTimeFormat(
-        "ms-MY",
-        {
-          weekday:"long",
-          day:"numeric",
-          month:"long",
-          year:"numeric",
-          timeZone:
-            "Asia/Kuala_Lumpur"
-        }
-      )
-        .format(date);
+  $("displayDate").textContent =
+    new Intl.DateTimeFormat(
+      "ms-MY",
+      {
+        weekday:"long",
+        day:"numeric",
+        month:"long",
+        year:"numeric",
+        timeZone:
+          "Asia/Kuala_Lumpur"
+      }
+    ).format(date);
 
 }
 
@@ -3702,6 +4396,11 @@ function updateCountdown(){
 
   }
 
+
+  /*
+    Malaysia UTC+8.
+    Elak browser timezone mengubah kiraan.
+  */
 
   const target =
     new Date(
@@ -3885,27 +4584,40 @@ function updateLocation(){
       : "Google Maps";
 
 
-  $("locationText")
-    .textContent =
-      `${name} · ${mapName}`;
+  $("locationText").textContent =
+    `${name} · ${mapName}`;
 
 
-  $("locationButton")
-    .href =
-      url || "#";
+  $("locationButton").href =
+    url || "#";
 
 
-  $("locationButton")
-    .setAttribute(
-      "aria-disabled",
-      url ? "false" : "true"
-    );
+  /*
+    Kalau tiada URL, jangan buka tab kosong.
+  */
+
+  if(url){
+
+    $("locationButton")
+      .removeAttribute(
+        "aria-disabled"
+      );
+
+  }else{
+
+    $("locationButton")
+      .setAttribute(
+        "aria-disabled",
+        "true"
+      );
+
+  }
 
 }
 
 
 /* =========================================================
-   SCHEDULE EDITOR
+   SCHEDULE EDITOR (TELAH DIBAIKI)
 ========================================================= */
 
 function renderScheduleEditor(){
@@ -3913,157 +4625,59 @@ function renderScheduleEditor(){
   const container =
     $("scheduleEditor");
 
-
   container.innerHTML =
     "";
 
-
   schedule.forEach(
-    (
-      item,
-      index
-    ) => {
+    (item, index) => {
 
       const row =
-        document.createElement(
-          "div"
-        );
-
-
-      row.className =
-        "schedule-row";
-
+        document.createElement("div");
+      row.className = "schedule-row";
 
       const timeInput =
-        document.createElement(
-          "input"
-        );
-
-
-      timeInput.type =
-        "text";
-
-
-      timeInput.value =
-        cleanText(
-          item.time
-        );
-
-
-      timeInput.placeholder =
-        "11:00 AM";
-
+        document.createElement("input");
+      timeInput.type = "text";
+      timeInput.value = item.time || "";
+      timeInput.placeholder = "11:00 AM";
 
       const textInput =
-        document.createElement(
-          "input"
-        );
-
-
-      textInput.type =
-        "text";
-
-
-      textInput.value =
-        cleanText(
-          item.text
-        );
-
-
-      textInput.placeholder =
-        "Acara majlis";
-
+        document.createElement("input");
+      textInput.type = "text";
+      textInput.value = item.text || "";
+      textInput.placeholder = "Acara majlis";
 
       const removeButton =
-        document.createElement(
-          "button"
-        );
+        document.createElement("button");
+      removeButton.type = "button";
+      removeButton.className = "remove-btn";
+      removeButton.textContent = "×";
+      removeButton.setAttribute("aria-label", "Buang acara");
 
+      // Kemaskini array schedule dan terus render preview
+      timeInput.oninput = (e) => {
+        schedule[index].time = e.target.value;
+        renderSchedule();
+      };
 
-      removeButton.type =
-        "button";
+      textInput.oninput = (e) => {
+        schedule[index].text = e.target.value;
+        renderSchedule();
+      };
 
+      removeButton.onclick = () => {
+        schedule.splice(index, 1);
+        renderScheduleEditor();
+        renderSchedule();
+      };
 
-      removeButton.className =
-        "remove-btn";
+      row.appendChild(timeInput);
+      row.appendChild(textInput);
+      row.appendChild(removeButton);
 
-
-      removeButton.textContent =
-        "×";
-
-
-      removeButton.setAttribute(
-        "aria-label",
-        "Buang acara"
-      );
-
-
-      timeInput.addEventListener(
-        "input",
-        () => {
-
-          schedule[index].time =
-            timeInput.value;
-
-
-          renderSchedule();
-
-        }
-      );
-
-
-      textInput.addEventListener(
-        "input",
-        () => {
-
-          schedule[index].text =
-            textInput.value;
-
-
-          renderSchedule();
-
-        }
-      );
-
-
-      removeButton.addEventListener(
-        "click",
-        () => {
-
-          schedule.splice(
-            index,
-            1
-          );
-
-
-          renderScheduleEditor();
-
-          renderSchedule();
-
-        }
-      );
-
-
-      row.appendChild(
-        timeInput
-      );
-
-      row.appendChild(
-        textInput
-      );
-
-      row.appendChild(
-        removeButton
-      );
-
-
-      container.appendChild(
-        row
-      );
-
+      container.appendChild(row);
     }
   );
-
 }
 
 
@@ -4267,30 +4881,28 @@ function makeContact(
 
 function updateFamily(){
 
-  $("previewGroomParents")
-    .textContent =
-      cleanText(
-        $("groomParentsInput").value,
-        "Putera kepada keluarga pengantin lelaki"
-      );
+  $("previewGroomParents").textContent =
+    cleanText(
+      $("groomParentsInput").value,
+      "Putera kepada keluarga pengantin lelaki"
+    );
 
 
-  $("previewBrideParents")
-    .textContent =
-      cleanText(
-        $("brideParentsInput").value,
-        "Puteri kepada keluarga pengantin perempuan"
-      );
+  $("previewBrideParents").textContent =
+    cleanText(
+      $("brideParentsInput").value,
+      "Puteri kepada keluarga pengantin perempuan"
+    );
 
 
   $("previewGroomContacts")
     .innerHTML =
-      "";
+    "";
 
 
   $("previewBrideContacts")
     .innerHTML =
-      "";
+    "";
 
 
   makeContact(
@@ -4327,7 +4939,7 @@ function updateFamily(){
    PRICE
 ========================================================= */
 
-function getPrice(){
+function updatePrice(){
 
   const withImage =
     $("imageToggle").checked;
@@ -4345,191 +4957,35 @@ function getPrice(){
 
   const total =
     base +
-    (
-      music
-        ? 60
-        : 0
-    );
+    (music ? 60 : 0);
 
 
-  return {
-    base,
-    total,
-    withImage,
+  $("baseLabel").textContent =
+    withImage
+      ? "Kad dengan gambar"
+      : "Kad tanpa gambar";
+
+
+  $("basePrice").textContent =
+    `RM${base}`;
+
+
+  $("musicPriceLine").style.display =
     music
-  };
-
-}
-
-
-function updatePrice(){
-
-  const price =
-    getPrice();
+      ? "flex"
+      : "none";
 
 
-  $("baseLabel")
-    .textContent =
-      price.withImage
-        ? "Kad dengan gambar"
-        : "Kad tanpa gambar";
-
-
-  $("basePrice")
-    .textContent =
-      `RM${price.base}`;
-
-
-  $("musicPriceLine")
-    .style.display =
-      price.music
-        ? "flex"
-        : "none";
-
-
-  $("totalPrice")
-    .textContent =
-      `RM${price.total}`;
+  $("totalPrice").textContent =
+    `RM${total}`;
 
 
   $("musicArea")
     .classList
     .toggle(
       "hidden",
-      !price.music
+      !music
     );
-
-}
-
-
-/* =========================================================
-   MUSIC
-========================================================= */
-
-function stopMusic(){
-
-  if(musicAudio){
-
-    musicAudio.pause();
-
-    musicAudio.currentTime =
-      0;
-
-  }
-
-
-  $("musicPlayButton")
-    .textContent =
-      "▶";
-
-}
-
-
-function setupMusicFile(
-  file
-){
-
-  if(!file){
-
-    uploadedMusic =
-      "";
-
-    $("musicPlayer")
-      .classList
-      .add("hidden");
-
-    return;
-
-  }
-
-
-  if(
-    !file.type ||
-    !file.type.startsWith(
-      "audio/"
-    )
-  ){
-
-    alert(
-      "Sila pilih fail muzik yang sah."
-    );
-
-    $("musicInput").value =
-      "";
-
-    uploadedMusic =
-      "";
-
-    $("musicPlayer")
-      .classList
-      .add("hidden");
-
-    return;
-
-  }
-
-
-  uploadedMusic =
-    file.name;
-
-
-  if(musicObjectUrl){
-
-    URL.revokeObjectURL(
-      musicObjectUrl
-    );
-
-  }
-
-
-  musicObjectUrl =
-    URL.createObjectURL(
-      file
-    );
-
-
-  if(musicAudio){
-
-    musicAudio.pause();
-
-  }
-
-
-  musicAudio =
-    new Audio(
-      musicObjectUrl
-    );
-
-
-  musicAudio.preload =
-    "metadata";
-
-
-  musicAudio.addEventListener(
-    "ended",
-    () => {
-
-      $("musicPlayButton")
-        .textContent =
-          "▶";
-
-    }
-  );
-
-
-  $("musicFileName")
-    .textContent =
-      uploadedMusic;
-
-
-  $("musicPlayer")
-    .classList
-    .remove("hidden");
-
-
-  $("musicPlayButton")
-    .textContent =
-      "▶";
 
 }
 
@@ -4556,19 +5012,17 @@ function closeDrawers(){
   drawers.forEach(
     drawer => {
 
-      drawer.classList
-        .remove(
-          "active"
-        );
+      drawer.classList.remove(
+        "active"
+      );
 
     }
   );
 
 
-  overlay.classList
-    .remove(
-      "active"
-    );
+  overlay.classList.remove(
+    "active"
+  );
 
 
   document.body.style.overflow =
@@ -4577,23 +5031,19 @@ function closeDrawers(){
 }
 
 
-function openDrawer(
-  drawer
-){
+function openDrawer(drawer){
 
   closeDrawers();
 
 
-  drawer.classList
-    .add(
-      "active"
-    );
+  drawer.classList.add(
+    "active"
+  );
 
 
-  overlay.classList
-    .add(
-      "active"
-    );
+  overlay.classList.add(
+    "active"
+  );
 
 
   document.body.style.overflow =
@@ -4602,43 +5052,40 @@ function openDrawer(
 }
 
 
-$("openSchedule")
-  .addEventListener(
-    "click",
-    () => {
+$("openSchedule").addEventListener(
+  "click",
+  () => {
 
-      openDrawer(
-        $("scheduleDrawer")
-      );
+    openDrawer(
+      $("scheduleDrawer")
+    );
 
-    }
-  );
-
-
-$("openRsvp")
-  .addEventListener(
-    "click",
-    () => {
-
-      openDrawer(
-        $("rsvpDrawer")
-      );
-
-    }
-  );
+  }
+);
 
 
-$("openFamily")
-  .addEventListener(
-    "click",
-    () => {
+$("openRsvp").addEventListener(
+  "click",
+  () => {
 
-      openDrawer(
-        $("familyDrawer")
-      );
+    openDrawer(
+      $("rsvpDrawer")
+    );
 
-    }
-  );
+  }
+);
+
+
+$("openFamily").addEventListener(
+  "click",
+  () => {
+
+    openDrawer(
+      $("familyDrawer")
+    );
+
+  }
+);
 
 
 overlay.addEventListener(
@@ -4683,61 +5130,60 @@ document.addEventListener(
    RSVP
 ========================================================= */
 
-$("sendRsvp")
-  .addEventListener(
-    "click",
-    () => {
+$("sendRsvp").addEventListener(
+  "click",
+  () => {
 
-      const phone =
-        normalizePhone(
-          $("rsvpPhoneInput").value
-        );
-
-
-      if(!phone){
-
-        alert(
-          "Nombor WhatsApp RSVP pengantin belum diisi."
-        );
-
-        return;
-
-      }
+    const phone =
+      normalizePhone(
+        $("rsvpPhoneInput").value
+      );
 
 
-      const name =
-        cleanText(
-          $("guestName").value,
-          "Tetamu"
-        );
+    if(!phone){
+
+      alert(
+        "Nombor WhatsApp RSVP pengantin belum diisi."
+      );
+
+      return;
+
+    }
 
 
-      const attendance =
-        $("attendance").value;
+    const name =
+      cleanText(
+        $("guestName").value,
+        "Tetamu"
+      );
 
 
-      const message =
-        cleanText(
-          $("guestMessage").value,
-          "Tahniah dan semoga berbahagia selalu! 🤍"
-        );
+    const attendance =
+      $("attendance").value;
 
 
-      const name1 =
-        cleanText(
-          $("name1Input").value,
-          "Adam"
-        );
+    const message =
+      cleanText(
+        $("guestMessage").value,
+        "Tahniah dan semoga berbahagia selalu! 🤍"
+      );
 
 
-      const name2 =
-        cleanText(
-          $("name2Input").value,
-          "Hawa"
-        );
+    const name1 =
+      cleanText(
+        $("name1Input").value,
+        "Adam"
+      );
 
 
-      const text =
+    const name2 =
+      cleanText(
+        $("name2Input").value,
+        "Hawa"
+      );
+
+
+    const text =
 `Assalamualaikum ${name1} & ${name2} 🤍
 
 Saya ingin memberikan RSVP untuk majlis anda.
@@ -4758,19 +5204,18 @@ ${message}
 Terima kasih 🤍`;
 
 
-      const url =
-        `https://wa.me/${phone}` +
-        `?text=${encodeURIComponent(text)}`;
+    const url =
+      `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
 
 
-      window.open(
-        url,
-        "_blank",
-        "noopener,noreferrer"
-      );
+    window.open(
+      url,
+      "_blank",
+      "noopener,noreferrer"
+    );
 
-    }
-  );
+  }
+);
 
 
 /* =========================================================
@@ -4784,8 +5229,7 @@ function openCard(){
   }
 
 
-  opened =
-    true;
+  opened = true;
 
 
   $("coverPage")
@@ -4797,309 +5241,279 @@ function openCard(){
 }
 
 
-$("openEnvelope")
-  .addEventListener(
-    "click",
-    openCard
-  );
+/*
+  Klik
+*/
+
+$("openEnvelope").addEventListener(
+  "click",
+  openCard
+);
 
 
-$("openButton")
-  .addEventListener(
-    "click",
-    openCard
-  );
+$("openButton").addEventListener(
+  "click",
+  openCard
+);
 
 
-$("openEnvelope")
-  .addEventListener(
-    "keydown",
-    event => {
+/*
+  Keyboard
+*/
 
-      if(
-        event.key === "Enter" ||
-        event.key === " "
-      ){
+$("openEnvelope").addEventListener(
+  "keydown",
+  event => {
 
-        event.preventDefault();
+    if(
+      event.key === "Enter" ||
+      event.key === " "
+    ){
 
-        openCard();
+      event.preventDefault();
 
-      }
+      openCard();
 
     }
-  );
+
+  }
+);
 
 
-let touchStartY =
-  0;
+/*
+  Swipe up pada cover
+*/
+
+let touchStartY = 0;
 
 
-$("coverPage")
-  .addEventListener(
-    "touchstart",
-    event => {
+$("coverPage").addEventListener(
+  "touchstart",
+  event => {
 
-      touchStartY =
-        event.touches[0]?.clientY ||
-        0;
+    touchStartY =
+      event.touches[0]?.clientY ||
+      0;
 
-    },
-    {
-      passive:true
+  },
+  {
+    passive:true
+  }
+);
+
+
+$("coverPage").addEventListener(
+  "touchend",
+  event => {
+
+    const touchEndY =
+      event.changedTouches[0]?.clientY ||
+      0;
+
+
+    const difference =
+      touchStartY -
+      touchEndY;
+
+
+    if(
+      difference > 60
+    ){
+
+      openCard();
+
     }
-  );
 
-
-$("coverPage")
-  .addEventListener(
-    "touchend",
-    event => {
-
-      const touchEndY =
-        event.changedTouches[0]?.clientY ||
-        0;
-
-
-      const difference =
-        touchStartY -
-        touchEndY;
-
-
-      if(
-        difference > 60
-      ){
-
-        openCard();
-
-      }
-
-    },
-    {
-      passive:true
-    }
-  );
+  },
+  {
+    passive:true
+  }
+);
 
 
 /* =========================================================
    IMAGE UPLOAD
 ========================================================= */
 
-$("imageInput")
-  .addEventListener(
-    "change",
-    event => {
+$("imageInput").addEventListener(
+  "change",
+  event => {
 
-      const file =
-        event.target.files?.[0];
-
-
-      if(!file){
-        return;
-      }
+    const file =
+      event.target.files?.[0];
 
 
-      if(
-        !file.type ||
-        !file.type.startsWith(
-          "image/"
-        )
-      ){
-
-        alert(
-          "Sila pilih fail gambar."
-        );
+    if(!file){
+      return;
+    }
 
 
-        event.target.value =
-          "";
+    if(
+      !file.type ||
+      !file.type.startsWith(
+        "image/"
+      )
+    ){
 
-
-        return;
-
-      }
-
-
-      const reader =
-        new FileReader();
-
-
-      reader.onload =
-        event => {
-
-          uploadedImage =
-            String(
-              event.target.result ||
-              ""
-            );
-
-
-          updateImage();
-
-          updatePrice();
-
-        };
-
-
-      reader.onerror =
-        () => {
-
-          alert(
-            "Gambar tidak dapat dibaca."
-          );
-
-
-          $("imageInput")
-            .value =
-              "";
-
-        };
-
-
-      reader.readAsDataURL(
-        file
+      alert(
+        "Sila pilih fail gambar."
       );
 
-    }
-  );
 
-
-$("removeImage")
-  .addEventListener(
-    "click",
-    () => {
-
-      uploadedImage =
+      event.target.value =
         "";
 
 
-      $("imageInput")
-        .value =
+      return;
+
+    }
+
+
+    const reader =
+      new FileReader();
+
+
+    reader.onload =
+      event => {
+
+        uploadedImage =
+          String(
+            event.target.result ||
+            ""
+          );
+
+
+        remoteImage =
           "";
 
 
-      updateImage();
+        updateImage();
+        updatePrice();
 
-      updatePrice();
+      };
 
-    }
-  );
+
+    reader.onerror =
+      () => {
+
+        alert(
+          "Gambar tidak dapat dibaca."
+        );
+
+
+        $("imageInput").value =
+          "";
+
+      };
+
+
+    reader.readAsDataURL(
+      file
+    );
+
+  }
+);
+
+
+$("removeImage").addEventListener(
+  "click",
+  () => {
+
+    uploadedImage =
+      "";
+
+
+    remoteImage =
+      "";
+
+
+    $("imageInput").value =
+      "";
+
+
+    updateImage();
+    updatePrice();
+
+  }
+);
 
 
 /* =========================================================
-   MUSIC INPUT
+   MUSIC
 ========================================================= */
 
-$("musicInput")
-  .addEventListener(
-    "change",
-    event => {
+$("musicInput").addEventListener(
+  "change",
+  event => {
 
-      const file =
-        event.target.files?.[0];
+    const file =
+      event.target.files?.[0];
 
 
-      setupMusicFile(
-        file
+    if(!file){
+
+      uploadedMusic =
+        "";
+
+      return;
+
+    }
+
+
+    if(
+      !file.type ||
+      !file.type.startsWith(
+        "audio/"
+      )
+    ){
+
+      alert(
+        "Sila pilih fail muzik."
       );
 
-    }
-  );
+
+      event.target.value =
+        "";
 
 
-$("musicPlayButton")
-  .addEventListener(
-    "click",
-    async () => {
-
-      if(!musicAudio){
-
-        alert(
-          "Sila pilih fail muzik dahulu."
-        );
-
-        return;
-
-      }
+      uploadedMusic =
+        "";
 
 
-      if(
-        musicAudio.paused
-      ){
-
-        try{
-
-          await musicAudio.play();
-
-          $("musicPlayButton")
-            .textContent =
-              "⏸";
-
-        }catch{
-
-          alert(
-            "Muzik tidak dapat dimainkan dalam preview ini."
-          );
-
-        }
-
-      }else{
-
-        musicAudio.pause();
-
-        $("musicPlayButton")
-          .textContent =
-            "▶";
-
-      }
+      return;
 
     }
-  );
 
 
-$("musicToggle")
-  .addEventListener(
-    "change",
-    () => {
+    uploadedMusic =
+      file.name;
 
-      updatePrice();
-
-      if(
-        !$("musicToggle").checked
-      ){
-
-        stopMusic();
-
-      }
-
-    }
-  );
+  }
+);
 
 
 /* =========================================================
    ADD SCHEDULE
 ========================================================= */
 
-$("addSchedule")
-  .addEventListener(
-    "click",
-    () => {
+$("addSchedule").addEventListener(
+  "click",
+  () => {
 
-      schedule.push({
+    schedule.push({
 
-        time:"05:00 PM",
+      time:"05:00 PM",
 
-        text:"Acara Tambahan"
+      text:"Acara Tambahan"
 
-      });
+    });
 
 
-      renderScheduleEditor();
+    renderScheduleEditor();
+    renderSchedule();
 
-      renderSchedule();
-
-    }
-  );
+  }
+);
 
 
 /* =========================================================
@@ -5130,17 +5544,15 @@ const textInputIds = [
 textInputIds.forEach(
   id => {
 
-    $(id)
-      .addEventListener(
-        "input",
-        () => {
+    $(id).addEventListener(
+      "input",
+      () => {
 
-          updateText();
+        updateText();
+        updateFamily();
 
-          updateFamily();
-
-        }
-      );
+      }
+    );
 
   }
 );
@@ -5150,24 +5562,21 @@ textInputIds.forEach(
    DATE + TIME
 ========================================================= */
 
-$("dateInput")
-  .addEventListener(
-    "input",
-    () => {
+$("dateInput").addEventListener(
+  "input",
+  () => {
 
-      formatDate();
+    formatDate();
+    updateCountdown();
 
-      updateCountdown();
-
-    }
-  );
+  }
+);
 
 
-$("timeInput")
-  .addEventListener(
-    "input",
-    updateCountdown
-  );
+$("timeInput").addEventListener(
+  "input",
+  updateCountdown
+);
 
 
 /* =========================================================
@@ -5195,16 +5604,20 @@ $("mapTypeInput")
   );
 
 
+/*
+  Jangan biarkan link "#" cuba buka
+  tab baru jika URL kosong.
+*/
+
 $("locationButton")
   .addEventListener(
     "click",
     event => {
 
       if(
-        $("locationButton")
-          .getAttribute(
-            "href"
-          ) === "#"
+        $("locationButton").getAttribute(
+          "href"
+        ) === "#"
       ){
 
         event.preventDefault();
@@ -5219,28 +5632,35 @@ $("locationButton")
    THEME
 ========================================================= */
 
-$("themeInput")
-  .addEventListener(
-    "change",
-    applyTheme
-  );
+$("themeInput").addEventListener(
+  "change",
+  applyTheme
+);
 
 
 /* =========================================================
    IMAGE TOGGLE
 ========================================================= */
 
-$("imageToggle")
-  .addEventListener(
-    "change",
-    () => {
+$("imageToggle").addEventListener(
+  "change",
+  () => {
 
-      updateImage();
+    updateImage();
+    updatePrice();
 
-      updatePrice();
+  }
+);
 
-    }
-  );
+
+/* =========================================================
+   MUSIC TOGGLE
+========================================================= */
+
+$("musicToggle").addEventListener(
+  "change",
+  updatePrice
+);
 
 
 /* =========================================================
@@ -5294,512 +5714,935 @@ document
    EMOJI TOGGLE
 ========================================================= */
 
-$("emojiToggle")
-  .addEventListener(
-    "change",
-    () => {
+$("emojiToggle").addEventListener(
+  "change",
+  () => {
 
-      if(
-        $("emojiToggle").checked
-      ){
+    if(
+      $("emojiToggle").checked
+    ){
 
-        startEmojiAnimation();
+      startEmojiAnimation();
 
-      }else{
+    }else{
 
-        stopEmojiAnimation();
-
-      }
+      stopEmojiAnimation();
 
     }
-  );
+
+  }
+);
 
 
 /* =========================================================
-   ORDER DATA
+   ORDER
+   SUPABASE SAVE → SUCCESS → WHATSAPP
 ========================================================= */
 
-function generateOrderId(){
-
-  const now =
-    new Date();
+let orderSubmitting = false;
 
 
-  const date =
-    [
-      now.getFullYear(),
-      String(
-        now.getMonth() + 1
-      ).padStart(2,"0"),
-      String(
-        now.getDate()
-      ).padStart(2,"0")
-    ].join("");
+$("orderButton").addEventListener(
+  "click",
+  async () => {
 
+    /*
+      Elak user tekan banyak kali.
+    */
 
-  const time =
-    [
-      String(
-        now.getHours()
-      ).padStart(2,"0"),
-      String(
-        now.getMinutes()
-      ).padStart(2,"0"),
-      String(
-        now.getSeconds()
-      ).padStart(2,"0")
-    ].join("");
-
-
-  const random =
-    Math.floor(
-      100 +
-      Math.random() * 900
-    );
-
-
-  return `NN-${date}-${time}-${random}`;
-
-}
-
-
-function formatOrderDate(){
-
-  const value =
-    $("dateInput").value;
-
-
-  if(!value){
-    return "Belum ditetapkan";
-  }
-
-
-  const date =
-    new Date(
-      `${value}T00:00:00+08:00`
-    );
-
-
-  if(
-    Number.isNaN(
-      date.getTime()
-    )
-  ){
-
-    return "Belum ditetapkan";
-
-  }
-
-
-  return new Intl.DateTimeFormat(
-    "ms-MY",
-    {
-      weekday:"long",
-      day:"numeric",
-      month:"long",
-      year:"numeric",
-      timeZone:
-        "Asia/Kuala_Lumpur"
+    if(orderSubmitting){
+      return;
     }
-  ).format(date);
-
-}
 
 
-function getOrderMessage(){
-
-  const price =
-    getPrice();
+    const button =
+      $("orderButton");
 
 
-  const name1 =
-    cleanText(
-      $("name1Input").value,
-      "Adam"
+    orderSubmitting =
+      true;
+
+
+    /*
+      Simpan teks asal button.
+    */
+
+    const originalText =
+      button.textContent;
+
+
+    /*
+      Disable sementara.
+    */
+
+    button.disabled =
+      true;
+
+    button.style.opacity =
+      ".65";
+
+
+    setSupabaseStatus(
+      "Menyimpan tempahan ke Supabase...",
+      "info"
     );
 
 
-  const name2 =
-    cleanText(
-      $("name2Input").value,
-      "Hawa"
-    );
+    try{
+
+      /*
+        =====================================================
+        STEP 1
+        SAVE SUPABASE
+        =====================================================
+      */
+
+      const saved =
+        await saveInvitationToSupabase();
 
 
-  const subtitle =
-    cleanText(
-      $("subtitleInput").value,
-      "Majlis Kesyukuran & Walimatulurus"
-    );
+      console.log(
+        "Supabase save result:",
+        saved
+      );
 
 
-  const theme =
-    $("themeInput")
-      .selectedOptions[0]
-      ?.textContent
-      .trim() ||
-    "Aurora";
+      /*
+        =====================================================
+        STEP 2
+        SUPABASE BERJAYA
+        =====================================================
+      */
+
+      setSupabaseStatus(
+        "Data berjaya disimpan. Membuka WhatsApp...",
+        "success"
+      );
 
 
-  const mapType =
-    $("mapTypeInput")
-      .selectedOptions[0]
-      ?.textContent
-      .trim() ||
-    "Google Maps";
+      /*
+        =====================================================
+        STEP 3
+        BINA MESEJ WHATSAPP
+        =====================================================
+      */
+
+      const name1 =
+        cleanText(
+          $("name1Input").value,
+          "Adam"
+        );
 
 
-  const location =
-    cleanText(
-      $("locationNameInput").value,
-      "Lokasi Majlis"
-    );
+      const name2 =
+        cleanText(
+          $("name2Input").value,
+          "Hawa"
+        );
 
 
-  const mapUrl =
-    safeUrl(
-      $("mapUrlInput").value
-    );
+      const withImage =
+        $("imageToggle").checked;
 
 
-  const rsvp =
-    normalizePhone(
-      $("rsvpPhoneInput").value
-    );
+      const music =
+        $("musicToggle").checked;
 
 
-  const emojis =
-    getEmojis();
+      const base =
+        withImage
+          ? 176
+          : 136;
 
 
-  const orderId =
-    generateOrderId();
+      const total =
+        base +
+        (music ? 60 : 0);
 
 
-  const scheduleText =
-    schedule.length
-      ? schedule
-          .map(
-            (item,index) =>
-              `${index + 1}. ${cleanText(item.time,"—")} — ${cleanText(item.text,"Acara majlis")}`
-          )
-          .join("\n")
-      : "Tiada atur cara";
+      const themeName =
+        $("themeInput")
+          .selectedOptions[0]
+          .textContent
+          .trim();
 
 
-  const familyText =
-`👨‍💼 Lelaki:
-${cleanText($("groomParentsInput").value,"—")}
-- ${cleanText($("groomFatherName").value,"—")} (${cleanText($("groomFatherPhone").value,"—")})
-- ${cleanText($("groomMotherName").value,"—")} (${cleanText($("groomMotherPhone").value,"—")})
-
-👩‍💼 Perempuan:
-${cleanText($("brideParentsInput").value,"—")}
-- ${cleanText($("brideFatherName").value,"—")} (${cleanText($("brideFatherPhone").value,"—")})
-- ${cleanText($("brideMotherName").value,"—")} (${cleanText($("brideMotherPhone").value,"—")})`;
+      const mapType =
+        $("mapTypeInput")
+          .selectedOptions[0]
+          .textContent
+          .trim();
 
 
-  const imageStatus =
-    price.withImage
-      ? (
-          uploadedImage
-            ? "Ya — fail dipilih"
-            : "Ya — belum pilih fail"
-        )
-      : "Tidak";
+      const location =
+        cleanText(
+          $("locationNameInput").value,
+          "Lokasi Majlis"
+        );
 
 
-  const musicStatus =
-    price.music
-      ? (
-          uploadedMusic
-            ? `Ya — ${uploadedMusic}`
-            : "Ya — belum pilih fail"
-        )
-      : "Tidak";
+      const rsvp =
+        cleanText(
+          $("rsvpPhoneInput").value,
+          "Belum diisi"
+        );
 
 
-  const text =
+      const emojis =
+        getEmojis();
+
+
+      const slug =
+        getSlugFromPath();
+
+
+      const text =
 `Assalamualaikum NUR NONA 🤍
 
 Saya nak tempah Undangan Digital.
 
 ━━━━━━━━━━━━━━━━
-🧾 ID TEMPAHAN
-━━━━━━━━━━━━━━━━
-
-${orderId}
-
-━━━━━━━━━━━━━━━━
-💍 MAKLUMAT PENGANTIN
+💍 MAKLUMAT TEMPAHAN
 ━━━━━━━━━━━━━━━━
 
 👰 Pengantin:
 ${name1} & ${name2}
 
-📝 Teks Majlis:
-${subtitle}
-
-📅 Tarikh:
-${formatOrderDate()}
-
-🕐 Masa:
-${$("timeInput").value || "Belum ditetapkan"}
-
-━━━━━━━━━━━━━━━━
-🎨 REKAAN
-━━━━━━━━━━━━━━━━
-
-🎨 Tema:
-${theme}
-
-✨ Emoji:
-${emojis.length ? emojis.join(" & ") : "🤍"}
-
-✨ Emoji jatuh:
-${$("emojiToggle").checked ? "Ya" : "Tidak"}
+🔗 Link:
+${window.location.origin}/${slug}
 
 🖼️ Gambar:
-${imageStatus}
+${withImage ? "Ya — RM176" : "Tidak — RM136"}
 
 🎵 Muzik:
-${musicStatus}
+${music ? "Ya — +RM60" : "Tidak"}
 
-━━━━━━━━━━━━━━━━
-📍 LOKASI
-━━━━━━━━━━━━━━━━
+🎨 Tema:
+${themeName}
 
-📌 Nama:
-${location}
+✨ Emoji:
+${emojis.length
+  ? emojis.join(" & ")
+  : "🤍"}
 
-🗺️ Peta:
+📍 Peta:
 ${mapType}
 
-🔗 Link:
-${mapUrl || "Belum diisi"}
+📌 Lokasi:
+${location}
 
-━━━━━━━━━━━━━━━━
-💌 RSVP
-━━━━━━━━━━━━━━━━
-
-📱 WhatsApp RSVP:
-${rsvp || "Belum diisi"}
-
-━━━━━━━━━━━━━━━━
-📞 KELUARGA
-━━━━━━━━━━━━━━━━
-
-${familyText}
-
-━━━━━━━━━━━━━━━━
-📋 ATUR CARA
-━━━━━━━━━━━━━━━━
-
-${scheduleText}
-
-━━━━━━━━━━━━━━━━
-💰 HARGA
-━━━━━━━━━━━━━━━━
-
-Kad:
-RM${price.base}
-
-Muzik:
-${price.music ? "RM60" : "RM0"}
-
-JUMLAH:
-RM${price.total}
+💰 JUMLAH:
+RM${total}
 
 ━━━━━━━━━━━━━━━━
 
-Saya telah buat pilihan melalui Live Editor NUR NONA. 😊
+📱 WhatsApp RSVP Pengantin:
+${rsvp}
 
-Nota:
-${price.withImage && uploadedImage
-  ? "Saya akan hantar fail gambar jika diperlukan."
-  : "Tiada fail gambar dipilih."}
+💾 Data tempahan telah berjaya disimpan ke sistem NUR NONA.
 
-${price.music && uploadedMusic
-  ? "Saya akan hantar fail muzik jika diperlukan."
-  : "Tiada fail muzik dipilih."}`;
+Saya telah buat pilihan melalui Live Editor. 😊`;
 
 
-  return {
-    text,
-    orderId
-  };
+      /*
+        =====================================================
+        STEP 4
+        BUKA WHATSAPP HANYA SELEPAS SAVE BERJAYA
+        =====================================================
+      */
 
-}
-
-
-/* =========================================================
-   ORDER STATUS
-========================================================= */
-
-function showOrderStatus(
-  message
-){
-
-  const status =
-    $("orderStatus");
+      const url =
+        `https://wa.me/${SELLER_WHATSAPP}` +
+        `?text=${encodeURIComponent(text)}`;
 
 
-  status.textContent =
-    message;
+      /*
+        Sedikit delay supaya user sempat nampak
+        status "Data berjaya disimpan".
+      */
+
+      window.setTimeout(
+        () => {
+
+          window.open(
+            url,
+            "_blank",
+            "noopener,noreferrer"
+          );
+
+        },
+        350
+      );
 
 
-  status.style.display =
-    "block";
+    }catch(error){
 
-}
+      /*
+        =====================================================
+        SUPABASE GAGAL
+        =====================================================
+      */
 
-
-function hideOrderStatus(){
-
-  $("orderStatus")
-    .style
-    .display =
-      "none";
-
-}
+      console.error(
+        "NUR NONA → Tempahan gagal:",
+        error
+      );
 
 
-/* =========================================================
-   ORDER → WHATSAPP
-========================================================= */
-
-$("orderButton")
-  .addEventListener(
-    "click",
-    () => {
-
-      if(orderSubmitting){
-        return;
-      }
+      setSupabaseStatus(
+        error?.message ||
+        "Gagal menyimpan tempahan ke Supabase.",
+        "error"
+      );
 
 
-      const sellerPhone =
-        normalizePhone(
-          SELLER_WHATSAPP
-        );
+      /*
+        PENTING:
+        WhatsApp TIDAK dibuka.
+      */
+
+      alert(
+        "Tempahan belum dihantar.\n\n" +
+        "Data gagal disimpan ke Supabase.\n\n" +
+        (
+          error?.message ||
+          "Sila cuba lagi."
+        )
+      );
 
 
-      if(!sellerPhone){
+    }finally{
 
-        alert(
-          "Nombor WhatsApp seller belum dikonfigurasi."
-        );
-
-        return;
-
-      }
-
+      /*
+        Kembalikan button.
+      */
 
       orderSubmitting =
-        true;
-
-
-      const button =
-        $("orderButton");
-
-
-      const originalText =
-        button.textContent;
+        false;
 
 
       button.disabled =
-        true;
+        false;
 
 
       button.style.opacity =
-        ".65";
+        "";
 
 
-      hideOrderStatus();
+      button.textContent =
+        originalText;
 
+    }
+
+  }
+);
+
+/* =========================================================
+   SUPABASE → EDITOR
+========================================================= */
+
+function hydrateFromSupabase(data){
+
+  if(!data){
+    return;
+  }
+
+
+  /* =======================================================
+     PENGANTIN
+  ======================================================= */
+
+  $("name1Input").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "partner_1",
+          "name1",
+          "groom_name",
+          "groom"
+        ],
+        $("name1Input").value
+      ),
+      "Adam"
+    );
+
+
+  $("name2Input").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "partner_2",
+          "name2",
+          "bride_name",
+          "bride"
+        ],
+        $("name2Input").value
+      ),
+      "Hawa"
+    );
+
+
+  $("subtitleInput").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "opening_text",
+          "subtitle",
+          "walimatulurus_text"
+        ],
+        $("subtitleInput").value
+      ),
+      "Majlis Kesyukuran & Walimatulurus"
+    );
+
+
+  /* =======================================================
+     TARIKH / MASA
+  ======================================================= */
+
+  const remoteDate =
+    firstValue(
+      data,
+      [
+        "event_date",
+        "date"
+      ],
+      $("dateInput").value
+    );
+
+
+  if(remoteDate){
+
+    $("dateInput").value =
+      String(remoteDate)
+        .slice(0,10);
+
+  }
+
+
+  const remoteTime =
+    firstValue(
+      data,
+      [
+        "event_time",
+        "time"
+      ],
+      $("timeInput").value
+    );
+
+
+  if(remoteTime){
+
+    $("timeInput").value =
+      String(remoteTime)
+        .slice(0,5);
+
+  }
+
+
+  /* =======================================================
+     TEMA
+  ======================================================= */
+
+  const remoteTheme =
+    firstValue(
+      data,
+      [
+        "theme",
+        "theme_name"
+      ],
+      $("themeInput").value
+    );
+
+
+  if(
+    THEMES[
+      String(remoteTheme)
+    ]
+  ){
+
+    $("themeInput").value =
+      String(remoteTheme);
+
+  }
+
+
+  /* =======================================================
+     EMOJI
+  ======================================================= */
+
+  const emoji1 =
+    firstValue(
+      data,
+      [
+        "emoji_1"
+      ],
+      ""
+    );
+
+
+  const emoji2 =
+    firstValue(
+      data,
+      [
+        "emoji_2"
+      ],
+      ""
+    );
+
+
+  document
+    .querySelectorAll(
+      ".emoji-check"
+    )
+    .forEach(
+      checkbox => {
+
+        checkbox.checked =
+          false;
+
+      }
+    );
+
+
+  const remoteEmojis =
+    [
+      emoji1,
+      emoji2
+    ]
+      .map(
+        value =>
+          String(
+            value ?? ""
+          )
+            .trim()
+      )
+      .filter(Boolean)
+      .slice(0,2);
+
+
+  document
+    .querySelectorAll(
+      ".emoji-check"
+    )
+    .forEach(
+      checkbox => {
+
+        if(
+          remoteEmojis.includes(
+            checkbox.value
+          )
+        ){
+
+          checkbox.checked =
+            true;
+
+        }
+
+      }
+    );
+
+
+  const emojiEnabled =
+    toBoolean(
+      firstValue(
+        data,
+        [
+          "emoji_enabled",
+          "show_emoji",
+          "emoji_toggle"
+        ],
+        true
+      ),
+      true
+    );
+
+
+  $("emojiToggle").checked =
+    emojiEnabled;
+
+
+  /* =======================================================
+     GAMBAR
+  ======================================================= */
+
+  remoteImage =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "poster_url",
+          "image_url",
+          "photo_url"
+        ],
+        ""
+      )
+    );
+
+
+  const showPoster =
+    toBoolean(
+      firstValue(
+        data,
+        [
+          "show_poster",
+          "image_enabled",
+          "use_image"
+        ],
+        Boolean(remoteImage)
+      ),
+      Boolean(remoteImage)
+    );
+
+
+  $("imageToggle").checked =
+    showPoster;
+
+
+  /* =======================================================
+     LOKASI
+  ======================================================= */
+
+  $("locationNameInput").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "location_name",
+          "venue_name",
+          "location"
+        ],
+        $("locationNameInput").value
+      ),
+      "Lokasi Majlis"
+    );
+
+
+  const remoteMapType =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "map_type"
+        ],
+        $("mapTypeInput").value
+      ),
+      "google"
+    )
+      .toLowerCase();
+
+
+  $("mapTypeInput").value =
+    remoteMapType === "waze"
+      ? "waze"
+      : "google";
+
+
+  let remoteMapUrl =
+    "";
+
+
+  if(
+    $("mapTypeInput").value ===
+    "waze"
+  ){
+
+    remoteMapUrl =
+      firstValue(
+        data,
+        [
+          "waze_url",
+          "location_url",
+          "map_url"
+        ],
+        ""
+      );
+
+  }else{
+
+    remoteMapUrl =
+      firstValue(
+        data,
+        [
+          "google_url",
+          "location_url",
+          "map_url"
+        ],
+        ""
+      );
+
+  }
+
+
+  $("mapUrlInput").value =
+    cleanText(
+      remoteMapUrl
+    );
+
+
+  /* =======================================================
+     RSVP
+  ======================================================= */
+
+  $("rsvpPhoneInput").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "whatsapp_number",
+          "rsvp_phone",
+          "rsvp_whatsapp"
+        ],
+        $("rsvpPhoneInput").value
+      )
+    );
+
+
+  /* =======================================================
+     FAMILY — GROOM
+  ======================================================= */
+
+  $("groomParentsInput").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "groom_parents",
+          "groom_parents_text"
+        ],
+        $("groomParentsInput").value
+      )
+    );
+
+
+  $("groomFatherName").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "groom_father_name"
+        ],
+        $("groomFatherName").value
+      )
+    );
+
+
+  $("groomFatherPhone").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "groom_father_phone"
+        ],
+        $("groomFatherPhone").value
+      )
+    );
+
+
+  $("groomMotherName").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "groom_mother_name"
+        ],
+        $("groomMotherName").value
+      )
+    );
+
+
+  $("groomMotherPhone").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "groom_mother_phone"
+        ],
+        $("groomMotherPhone").value
+      )
+    );
+
+
+  /* =======================================================
+     FAMILY — BRIDE
+  ======================================================= */
+
+  $("brideParentsInput").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "bride_parents",
+          "bride_parents_text"
+        ],
+        $("brideParentsInput").value
+      )
+    );
+
+
+  $("brideFatherName").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "bride_father_name"
+        ],
+        $("brideFatherName").value
+      )
+    );
+
+
+  $("brideFatherPhone").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "bride_father_phone"
+        ],
+        $("brideFatherPhone").value
+      )
+    );
+
+
+  $("brideMotherName").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "bride_mother_name"
+        ],
+        $("brideMotherName").value
+      )
+    );
+
+
+  $("brideMotherPhone").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "bride_mother_phone"
+        ],
+        $("brideMotherPhone").value
+      )
+    );
+
+
+  /* =======================================================
+     SCHEDULE
+  ======================================================= */
+
+  const remoteSchedule =
+    firstValue(
+      data,
+      [
+        "schedule",
+        "schedule_json",
+        "program"
+      ],
+      null
+    );
+
+
+  if(remoteSchedule){
+
+    let parsed =
+      remoteSchedule;
+
+
+    if(
+      typeof parsed === "string"
+    ){
 
       try{
 
-        const order =
-          getOrderMessage();
+        parsed =
+          JSON.parse(
+            parsed
+          );
 
+      }catch{
 
-        const url =
-          `https://wa.me/${sellerPhone}` +
-          `?text=${encodeURIComponent(order.text)}`;
-
-
-        showOrderStatus(
-          `✅ ID ${order.orderId} telah disediakan. WhatsApp sedang dibuka…`
-        );
-
-
-        /*
-          Terus buka WhatsApp.
-          Tiada database.
-          Tiada API.
-          Tiada Supabase.
-        */
-
-        window.open(
-          url,
-          "_blank",
-          "noopener,noreferrer"
-        );
-
-
-      }catch(error){
-
-        console.error(
-          "NUR NONA order error:",
-          error
-        );
-
-
-        showOrderStatus(
-          "❌ Tempahan tidak dapat disediakan. Sila cuba lagi."
-        );
-
-
-        alert(
-          "Maaf, mesej tempahan tidak dapat disediakan."
-        );
-
-      }finally{
-
-        window.setTimeout(
-          () => {
-
-            orderSubmitting =
-              false;
-
-
-            button.disabled =
-              false;
-
-
-            button.style.opacity =
-              "";
-
-
-            button.textContent =
-              originalText;
-
-          },
-          700
-        );
+        parsed = null;
 
       }
 
     }
-  );
 
 
-/* =========================================================
-   INITIALIZE
-========================================================= */
+    if(
+      Array.isArray(parsed)
+    ){
 
-function initialize(){
+      schedule =
+        parsed
+          .map(
+            item => ({
+
+              time:
+                cleanText(
+                  item?.time,
+                  ""
+                ),
+
+              text:
+                cleanText(
+                  item?.text ??
+                  item?.title ??
+                  item?.event,
+                  ""
+                )
+
+            })
+          )
+          .filter(
+            item =>
+              item.time ||
+              item.text
+          );
+
+    }
+
+  }
+
+
+  /* =======================================================
+     MUSIC
+  ======================================================= */
+
+  remoteMusic =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "music_url",
+          "audio_url"
+        ],
+        ""
+      )
+    );
+
+
+  $("musicToggle").checked =
+    toBoolean(
+      firstValue(
+        data,
+        [
+          "music_enabled",
+          "show_music"
+        ],
+        Boolean(remoteMusic)
+      ),
+      Boolean(remoteMusic)
+    );
+
+
+  /*
+    Apply semuanya selepas data masuk.
+  */
 
   applyTheme();
 
@@ -5823,6 +6666,48 @@ function initialize(){
 
   updatePrice();
 
+
+  if(
+    $("emojiToggle").checked
+  ){
+
+    startEmojiAnimation();
+
+  }else{
+
+    stopEmojiAnimation();
+
+  }
+
+}
+
+
+/* =========================================================
+   INITIALIZE DEFAULT
+========================================================= */
+
+function initializeDefaults(){
+
+  applyTheme();
+
+  updateText();
+
+  updateEmoji();
+
+  updateImage();
+
+  formatDate();
+
+  updateLocation();
+
+  updateFamily();
+
+  renderScheduleEditor();
+
+  renderSchedule();
+
+  updatePrice();
+
   startCountdown();
 
   startEmojiAnimation();
@@ -5830,54 +6715,83 @@ function initialize(){
 }
 
 
-initialize();
+/* =========================================================
+   LOAD SUPABASE
+========================================================= */
+
+async function initialize(){
+
+  /*
+    First render editor asal.
+    Jadi Live Editor sentiasa muncul.
+  */
+
+  initializeDefaults();
+
+
+  const slug =
+    getSlugFromPath();
+
+
+  /*
+    Kalau root "/" → demo/default.
+  */
+
+  if(!slug){
+
+    console.log(
+      "NUR NONA: Demo Live Editor aktif."
+    );
+
+    return;
+
+  }
+
+
+  /*
+    Kalau /adam-hawa, /ali-siti,
+    dan sebagainya → ambil data.
+  */
+
+  console.log(
+    `NUR NONA: Memuatkan /${slug} ...`
+  );
+
+
+  const data =
+    await loadInvitationFromSupabase();
+
+
+  if(!data){
+
+    console.warn(
+      `NUR NONA: Data untuk /${slug} tidak ditemui.`
+    );
+
+    return;
+
+  }
+
+
+  console.log(
+    `NUR NONA: Data /${slug} berjaya dimuatkan.`,
+    data
+  );
+
+
+  hydrateFromSupabase(
+    data
+  );
+
+}
 
 
 /* =========================================================
-   CLEANUP
+   START
 ========================================================= */
 
-window.addEventListener(
-  "beforeunload",
-  () => {
-
-    if(countdownTimer){
-
-      clearInterval(
-        countdownTimer
-      );
-
-    }
-
-
-    if(emojiTimer){
-
-      clearInterval(
-        emojiTimer
-      );
-
-    }
-
-
-    if(musicAudio){
-
-      musicAudio.pause();
-
-    }
-
-
-    if(musicObjectUrl){
-
-      URL.revokeObjectURL(
-        musicObjectUrl
-      );
-
-    }
-
-  }
-);
+initialize();
 
 </script>
-
 </body>
-</html>
+</html> 
