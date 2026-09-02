@@ -2342,7 +2342,6 @@ input[type="file"]::file-selector-button{
         id="brideFatherPhone"
         value="60123456789"
         inputmode="tel"
-      >
 
     </div>
 
@@ -3145,129 +3144,231 @@ input[type="file"]::file-selector-button{
 
 /* =========================================================
    NUR NONA — LIVE EDITOR
-   CLEAN + BUG FIXED
+   ORIGINAL DESIGN PRESERVED
+   SUPABASE / SLUG LOADING ENABLED
 ========================================================= */
+
 
 /* =========================================================
    CONFIG
 ========================================================= */
 
 const SELLER_WHATSAPP = "601139517845";
-/* =========================================================
-   SUPABASE CONFIG
-========================================================= */
 
 const SUPABASE_URL =
   "https://bfqyyboemqrdpyjkszoy.supabase.co";
 
+/*
+  MASUKKAN ANON / PUBLISHABLE KEY SUPABASE AWAK DI SINI.
+
+  JANGAN GUNA service_role key dalam browser.
+*/
 const SUPABASE_ANON_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVkcHhlZ2V6bmZzbHdvbWd5cnBhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc5OTQzMDAsImV4cCI6MjEwMzU3MDMwMH0.rBtmGUvGap2TcHTK8mqGyv8gGrkeuddg_pmEvgTSKI0";
-  
+  "PASTE_YOUR_SUPABASE_ANON_KEY_HERE";
+
+const SUPABASE_TABLE =
+  "wedding_invitations";
+
+
 /* =========================================================
    THEMES
 ========================================================= */
 
 const THEMES = {
-  
-  /* =========================================================
-     🌌 AURORA
-     Signature NUR NONA
-     Pink + Sage + Lavender
-     ========================================================= */
-  
-  aurora: {
-    tone1: "#D98B9A",
-    tone2: "#7FA58A",
-    tone3: "#C9B8E8"
+
+  aurora:{
+    tone1:"#D98B9A",
+    tone2:"#7FA58A",
+    tone3:"#C9B8E8"
   },
-  
-  
-  /* =========================================================
-     ☁️ BLUE SKY
-     Biru lembut + Cyan + Putih
-     ========================================================= */
-  
-  blueSky: {
-    tone1: "#4F8CC9",
-    tone2: "#76BFE8",
-    tone3: "#D9EAF8"
+
+  blueSky:{
+    tone1:"#4F8CC9",
+    tone2:"#76BFE8",
+    tone3:"#D9EAF8"
   },
-  
-  
-  /* =========================================================
-     🌿 EVERGREEN
-     Hijau sage + Forest + Mint
-     ========================================================= */
-  
-  evergreen: {
-    tone1: "#52735D",
-    tone2: "#89A88F",
-    tone3: "#DCE9DE"
+
+  evergreen:{
+    tone1:"#52735D",
+    tone2:"#89A88F",
+    tone3:"#DCE9DE"
   },
-  
-  
-  /* =========================================================
-     🌅 SUNRISE
-     Oren + Peach + Gold lembut
-     ========================================================= */
-  
-  sunrise: {
-    tone1: "#E58B62",
-    tone2: "#F2B27F",
-    tone3: "#FFE0B8"
+
+  sunrise:{
+    tone1:"#E58B62",
+    tone2:"#F2B27F",
+    tone3:"#FFE0B8"
   },
-  
-  
-  /* =========================================================
-     🍷 BURGUNDY
-     Burgundy + Rose + Champagne
-     ========================================================= */
-  
-  burgundy: {
-    tone1: "#722F3F",
-    tone2: "#A85D6C",
-    tone3: "#E8C9B8"
+
+  burgundy:{
+    tone1:"#722F3F",
+    tone2:"#A85D6C",
+    tone3:"#E8C9B8"
   },
-  
-  
-  /* =========================================================
-     💜 LAVENDER
-     Purple + Lilac + Sky
-     ========================================================= */
-  
-  lavender: {
-    tone1: "#8067B7",
-    tone2: "#A99BD6",
-    tone3: "#DDE7FA"
+
+  lavender:{
+    tone1:"#8067B7",
+    tone2:"#A99BD6",
+    tone3:"#DDE7FA"
   },
-  
-  
-  /* =========================================================
-     🌸 ROSE
-     Dusty Rose + Blush + Cream
-     ========================================================= */
-  
-  rose: {
-    tone1: "#B86F7D",
-    tone2: "#D99BA7",
-    tone3: "#F8DDD9"
+
+  rose:{
+    tone1:"#B86F7D",
+    tone2:"#D99BA7",
+    tone3:"#F8DDD9"
   }
-  
+
 };
+
 
 /* =========================================================
    HELPERS
 ========================================================= */
 
-const $ = id => document.getElementById(id);
+const $ = id =>
+  document.getElementById(id);
 
-function cleanText(value,fallback=""){
-  const text = String(value ?? "").trim();
+
+function cleanText(
+  value,
+  fallback=""
+){
+
+  const text =
+    String(value ?? "").trim();
+
   return text || fallback;
+
 }
 
+
 function normalizePhone(phone){
-  return String(phone ?? "").replace(/\D/g,"");
+
+  let p =
+    String(phone ?? "")
+      .replace(/\D/g,"");
+
+  if(p.startsWith("00")){
+    p = p.slice(2);
+  }
+
+  /*
+    0123456789
+    ↓
+    60123456789
+  */
+
+  if(p.startsWith("0")){
+    p = "60" + p.slice(1);
+  }
+
+  return p;
+
+}
+
+
+function safeUrl(value){
+
+  const raw =
+    String(value ?? "").trim();
+
+  if(!raw){
+    return "";
+  }
+
+  try{
+
+    const url =
+      new URL(raw);
+
+    if(
+      url.protocol !== "http:" &&
+      url.protocol !== "https:"
+    ){
+      return "";
+    }
+
+    return url.href;
+
+  }catch{
+
+    return "";
+
+  }
+
+}
+
+
+function firstValue(
+  object,
+  keys,
+  fallback=""
+){
+
+  for(const key of keys){
+
+    if(
+      object &&
+      object[key] !== undefined &&
+      object[key] !== null &&
+      String(object[key]).trim() !== ""
+    ){
+
+      return object[key];
+
+    }
+
+  }
+
+  return fallback;
+
+}
+
+
+function toBoolean(
+  value,
+  fallback=false
+){
+
+  if(value === undefined || value === null){
+    return fallback;
+  }
+
+  if(typeof value === "boolean"){
+    return value;
+  }
+
+  const text =
+    String(value)
+      .trim()
+      .toLowerCase();
+
+  if(
+    [
+      "true",
+      "1",
+      "yes",
+      "ya",
+      "on"
+    ].includes(text)
+  ){
+    return true;
+  }
+
+  if(
+    [
+      "false",
+      "0",
+      "no",
+      "tidak",
+      "off"
+    ].includes(text)
+  ){
+    return false;
+  }
+
+  return fallback;
+
 }
 
 
@@ -3277,7 +3378,15 @@ function normalizePhone(phone){
 
 let uploadedImage = "";
 let uploadedMusic = "";
+
+let remoteImage = "";
+let remoteMusic = "";
+
 let countdownTimer = null;
+
+let emojiTimer = null;
+
+let opened = false;
 
 let schedule = [
 
@@ -3310,31 +3419,185 @@ let schedule = [
 
 
 /* =========================================================
+   GET SLUG
+========================================================= */
+
+function getSlugFromPath(){
+
+  const parts =
+    window.location.pathname
+      .split("/")
+      .filter(Boolean);
+
+  if(!parts.length){
+    return "";
+  }
+
+  return decodeURIComponent(
+    parts[0]
+  )
+    .trim()
+    .toLowerCase();
+
+}
+
+
+/* =========================================================
+   SUPABASE REQUEST
+========================================================= */
+
+async function loadInvitationFromSupabase(){
+
+  const slug =
+    getSlugFromPath();
+
+  /*
+    Root:
+      /
+
+    kekalkan demo/default editor.
+  */
+
+  if(!slug){
+    return null;
+  }
+
+
+  /*
+    Elak request jika key belum dimasukkan.
+  */
+
+  if(
+    !SUPABASE_ANON_KEY ||
+    SUPABASE_ANON_KEY ===
+      "PASTE_YOUR_SUPABASE_ANON_KEY_HERE"
+  ){
+
+    console.warn(
+      "NUR NONA: Supabase anon/publishable key belum dimasukkan."
+    );
+
+    return null;
+
+  }
+
+
+  const endpoint =
+    `${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}` +
+    `?slug=eq.${encodeURIComponent(slug)}` +
+    `&select=*` +
+    `&limit=1`;
+
+
+  try{
+
+    const response =
+      await fetch(
+        endpoint,
+        {
+          method:"GET",
+
+          headers:{
+            apikey:
+              SUPABASE_ANON_KEY,
+
+            Authorization:
+              `Bearer ${SUPABASE_ANON_KEY}`,
+
+            Accept:
+              "application/json"
+          }
+        }
+      );
+
+
+    if(!response.ok){
+
+      const errorText =
+        await response.text();
+
+      console.error(
+        "Supabase error:",
+        response.status,
+        errorText
+      );
+
+      throw new Error(
+        `Supabase HTTP ${response.status}`
+      );
+
+    }
+
+
+    const rows =
+      await response.json();
+
+
+    if(!Array.isArray(rows) || !rows.length){
+
+      console.warn(
+        `Tiada data Supabase untuk /${slug}`
+      );
+
+      return null;
+
+    }
+
+
+    return rows[0];
+
+  }catch(error){
+
+    console.error(
+      "Gagal membaca Supabase:",
+      error
+    );
+
+    return null;
+
+  }
+
+}
+
+
+/* =========================================================
    THEME
 ========================================================= */
 
-function applyTheme() {
-  
+function applyTheme(){
+
   const theme =
-    THEMES[$("themeInput").value] ||
+    THEMES[
+      $("themeInput").value
+    ] ||
     THEMES.aurora;
-  
-  document.documentElement.style.setProperty(
-    "--tone1",
-    theme.tone1
-  );
-  
-  document.documentElement.style.setProperty(
-    "--tone2",
-    theme.tone2
-  );
-  
-  document.documentElement.style.setProperty(
-    "--tone3",
-    theme.tone3
-  );
-  
+
+
+  document.documentElement
+    .style
+    .setProperty(
+      "--tone1",
+      theme.tone1
+    );
+
+
+  document.documentElement
+    .style
+    .setProperty(
+      "--tone2",
+      theme.tone2
+    );
+
+
+  document.documentElement
+    .style
+    .setProperty(
+      "--tone3",
+      theme.tone3
+    );
+
 }
+
 
 /* =========================================================
    EMOJI
@@ -3342,14 +3605,11 @@ function applyTheme() {
 
 function getEmojis(){
 
-  const checked =
-    [
-      ...document.querySelectorAll(
-        ".emoji-check:checked"
-      )
-    ];
-
-  return checked
+  return [
+    ...document.querySelectorAll(
+      ".emoji-check:checked"
+    )
+  ]
     .slice(0,2)
     .map(input => input.value)
     .filter(Boolean);
@@ -3366,15 +3626,19 @@ function enforceEmojiLimit(){
       )
     ];
 
+
   if(checked.length <= 2){
     return;
   }
 
+
   checked
     .slice(2)
-    .forEach(input => {
-      input.checked = false;
-    });
+    .forEach(
+      input => {
+        input.checked = false;
+      }
+    );
 
 }
 
@@ -3383,7 +3647,8 @@ function updateEmoji(){
 
   enforceEmojiLimit();
 
-  const emojis = getEmojis();
+  const emojis =
+    getEmojis();
 
   const first =
     emojis[0] || "🤍";
@@ -3391,11 +3656,132 @@ function updateEmoji(){
   const second =
     emojis[1] || first;
 
+
   $("sparkleText").textContent =
     `✦ ${first} ${second} ✦`;
 
+
   $("dateEmoji").textContent =
     first;
+
+}
+
+
+/* =========================================================
+   FALLING EMOJI
+========================================================= */
+
+function createEmoji(){
+
+  const toggle =
+    $("emojiToggle");
+
+  const container =
+    $("emojiContainer");
+
+
+  if(
+    !toggle ||
+    !toggle.checked ||
+    !container
+  ){
+    return;
+  }
+
+
+  const emojis =
+    getEmojis();
+
+
+  if(!emojis.length){
+    return;
+  }
+
+
+  const element =
+    document.createElement("span");
+
+
+  element.className =
+    "falling";
+
+
+  element.textContent =
+    emojis[
+      Math.floor(
+        Math.random() * emojis.length
+      )
+    ];
+
+
+  element.style.left =
+    `${Math.random() * 100}%`;
+
+
+  const duration =
+    Math.random() * 3 + 3;
+
+
+  element.style.animationDuration =
+    `${duration}s`;
+
+
+  element.style.fontSize =
+    `${Math.random() * 8 + 12}px`;
+
+
+  container.appendChild(
+    element
+  );
+
+
+  window.setTimeout(
+    () => {
+
+      if(element.isConnected){
+        element.remove();
+      }
+
+    },
+    duration * 1000 + 500
+  );
+
+}
+
+
+function startEmojiAnimation(){
+
+  if(emojiTimer){
+    clearInterval(
+      emojiTimer
+    );
+  }
+
+
+  emojiTimer =
+    window.setInterval(
+      createEmoji,
+      800
+    );
+
+}
+
+
+function stopEmojiAnimation(){
+
+  if(emojiTimer){
+
+    clearInterval(
+      emojiTimer
+    );
+
+    emojiTimer = null;
+
+  }
+
+
+  $("emojiContainer").innerHTML =
+    "";
 
 }
 
@@ -3412,11 +3798,13 @@ function updateText(){
       "Adam"
     );
 
+
   const name2 =
     cleanText(
       $("name2Input").value,
       "Hawa"
     );
+
 
   const subtitle =
     cleanText(
@@ -3424,23 +3812,30 @@ function updateText(){
       "Majlis Kesyukuran & Walimatulurus"
     );
 
+
   $("displayName1").textContent =
     name1;
+
 
   $("displayName2").textContent =
     name2;
 
+
   $("coverName1").textContent =
     name1;
+
 
   $("coverName2").textContent =
     name2;
 
+
   $("coverSubtitle").textContent =
     subtitle;
 
+
   $("invitationSubtitle").textContent =
     subtitle;
+
 
   document.title =
     `${name1} & ${name2} — Undangan Digital`;
@@ -3457,102 +3852,78 @@ function updateImage(){
   const enabled =
     $("imageToggle").checked;
 
+
   $("imageArea")
-    .classList.toggle(
+    .classList
+    .toggle(
       "hidden",
       !enabled
     );
 
+
   const wrapper =
     $("posterWrapper");
 
-  if(!enabled || !uploadedImage){
 
-    wrapper.classList.add("hidden");
+  const image =
+    uploadedImage ||
+    remoteImage;
 
-    $("weddingPoster").removeAttribute("src");
+
+  if(!enabled || !image){
+
+    wrapper.classList.add(
+      "hidden"
+    );
+
+
+    $("weddingPoster")
+      .removeAttribute(
+        "src"
+      );
+
 
     document.documentElement
       .style
-      .removeProperty("--poster-image");
+      .removeProperty(
+        "--poster-image"
+      );
+
 
     return;
+
   }
 
-  $("weddingPoster").src =
-    uploadedImage;
 
-  wrapper.classList.remove("hidden");
+  $("weddingPoster").src =
+    image;
+
+
+  wrapper.classList.remove(
+    "hidden"
+  );
+
+
+  /*
+    CSS background menggunakan image URL.
+    Untuk dataURL dan URL biasa, kita encode
+    secara selamat sebagai CSS string.
+  */
+
+  const escaped =
+    image
+      .replace(/\\/g,"\\\\")
+      .replace(/"/g,'\\"');
+
 
   document.documentElement
     .style
     .setProperty(
       "--poster-image",
-      `url("${uploadedImage.replace(/"/g,'\\"')}")`
+      `url("${escaped}")`
     );
 
 }
-
-
-/* =========================================================
-   FALLING EMOJI
-========================================================= */
-
-function createEmoji(){
-
-  if(!$("emojiToggle").checked){
-    return;
-  }
-
-  const container =
-    $("emojiContainer");
-
-  const emojis =
-    getEmojis();
-
-  if(!emojis.length){
-    return;
-  }
-
-  const element =
-    document.createElement("span");
-
-  element.className =
-    "falling";
-
-  element.textContent =
-    emojis[
-      Math.floor(
-        Math.random() * emojis.length
-      )
-    ];
-
-  element.style.left =
-    `${Math.random() * 100}%`;
-
-  const duration =
-    Math.random() * 3 + 3;
-
-  element.style.animationDuration =
-    `${duration}s`;
-
-  element.style.fontSize =
-    `${Math.random() * 8 + 12}px`;
-
-  container.appendChild(element);
-
-  window.setTimeout(
-    () => element.remove(),
-    duration * 1000 + 500
-  );
-
-}
-
-const emojiInterval =
-  window.setInterval(
-    createEmoji,
-    800
-  );
 
 
 /* =========================================================
@@ -3564,26 +3935,36 @@ function formatDate(){
   const value =
     $("dateInput").value;
 
+
   if(!value){
 
     $("displayDate").textContent =
       "Tarikh Majlis";
 
     return;
+
   }
+
 
   const date =
     new Date(
-      `${value}T00:00:00`
+      `${value}T00:00:00+08:00`
     );
 
-  if(Number.isNaN(date.getTime())){
+
+  if(
+    Number.isNaN(
+      date.getTime()
+    )
+  ){
 
     $("displayDate").textContent =
       "Tarikh Majlis";
 
     return;
+
   }
+
 
   $("displayDate").textContent =
     new Intl.DateTimeFormat(
@@ -3592,7 +3973,9 @@ function formatDate(){
         weekday:"long",
         day:"numeric",
         month:"long",
-        year:"numeric"
+        year:"numeric",
+        timeZone:
+          "Asia/Kuala_Lumpur"
       }
     ).format(date);
 
@@ -3608,63 +3991,121 @@ function updateCountdown(){
   const date =
     $("dateInput").value;
 
+
   const time =
-    $("timeInput").value || "00:00";
+    $("timeInput").value ||
+    "00:00";
+
 
   if(!date){
 
-    setCountdown(0,0,0,0);
+    setCountdown(
+      0,
+      0,
+      0,
+      0
+    );
 
     return;
+
   }
+
+
+  /*
+    Malaysia UTC+8.
+    Elak browser timezone mengubah kiraan.
+  */
 
   const target =
     new Date(
-      `${date}T${time}:00`
+      `${date}T${time}:00+08:00`
     );
+
 
   const timestamp =
     target.getTime();
 
-  if(Number.isNaN(timestamp)){
 
-    setCountdown(0,0,0,0);
+  if(
+    Number.isNaN(timestamp)
+  ){
+
+    setCountdown(
+      0,
+      0,
+      0,
+      0
+    );
 
     return;
+
   }
 
+
   let diff =
-    timestamp - Date.now();
+    timestamp -
+    Date.now();
+
 
   if(diff <= 0){
 
-    setCountdown(0,0,0,0);
+    setCountdown(
+      0,
+      0,
+      0,
+      0
+    );
 
     return;
+
   }
 
-  const second = 1000;
-  const minute = second * 60;
-  const hour = minute * 60;
-  const day = hour * 24;
+
+  const second =
+    1000;
+
+  const minute =
+    second * 60;
+
+  const hour =
+    minute * 60;
+
+  const day =
+    hour * 24;
+
 
   const days =
-    Math.floor(diff / day);
+    Math.floor(
+      diff / day
+    );
+
 
   diff %= day;
 
+
   const hours =
-    Math.floor(diff / hour);
+    Math.floor(
+      diff / hour
+    );
+
 
   diff %= hour;
 
+
   const minutes =
-    Math.floor(diff / minute);
+    Math.floor(
+      diff / minute
+    );
+
 
   diff %= minute;
 
+
   const seconds =
-    Math.floor(diff / second);
+    Math.floor(
+      diff / second
+    );
+
 
   setCountdown(
     days,
@@ -3684,16 +4125,23 @@ function setCountdown(
 ){
 
   $("days").textContent =
-    String(days).padStart(2,"0");
+    String(days)
+      .padStart(2,"0");
+
 
   $("hours").textContent =
-    String(hours).padStart(2,"0");
+    String(hours)
+      .padStart(2,"0");
+
 
   $("minutes").textContent =
-    String(minutes).padStart(2,"0");
+    String(minutes)
+      .padStart(2,"0");
+
 
   $("seconds").textContent =
-    String(seconds).padStart(2,"0");
+    String(seconds)
+      .padStart(2,"0");
 
 }
 
@@ -3702,11 +4150,15 @@ function startCountdown(){
 
   updateCountdown();
 
+
   if(countdownTimer){
-    window.clearInterval(
+
+    clearInterval(
       countdownTimer
     );
+
   }
+
 
   countdownTimer =
     window.setInterval(
@@ -3729,37 +4181,51 @@ function updateLocation(){
       "Lokasi Majlis"
     );
 
+
   const url =
-    $("mapUrlInput").value.trim();
+    safeUrl(
+      $("mapUrlInput").value
+    );
+
 
   const type =
     $("mapTypeInput").value;
+
 
   const mapName =
     type === "waze"
       ? "Waze"
       : "Google Maps";
 
+
   $("locationText").textContent =
     `${name} · ${mapName}`;
+
 
   $("locationButton").href =
     url || "#";
 
-}
 
+  /*
+    Kalau tiada URL, jangan buka tab kosong.
+  */
 
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
+  if(url){
 
-function escapeHtml(value){
+    $("locationButton")
+      .removeAttribute(
+        "aria-disabled"
+      );
 
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/"/g,"&quot;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;");
+  }else{
+
+    $("locationButton")
+      .setAttribute(
+        "aria-disabled",
+        "true"
+      );
+
+  }
 
 }
 
@@ -3773,41 +4239,87 @@ function renderScheduleEditor(){
   const container =
     $("scheduleEditor");
 
-  container.innerHTML = "";
+
+  container.innerHTML =
+    "";
+
 
   schedule.forEach(
     (item,index) => {
 
       const row =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
+
 
       row.className =
         "schedule-row";
 
-      const timeInput =
-        document.createElement("input");
 
-      timeInput.type = "text";
-      timeInput.value = item.time;
-      timeInput.placeholder = "11:00 AM";
+      const timeInput =
+        document.createElement(
+          "input"
+        );
+
+
+      timeInput.type =
+        "text";
+
+
+      timeInput.value =
+        cleanText(
+          item.time
+        );
+
+
+      timeInput.placeholder =
+        "11:00 AM";
+
 
       const textInput =
-        document.createElement("input");
+        document.createElement(
+          "input"
+        );
 
-      textInput.type = "text";
-      textInput.value = item.text;
-      textInput.placeholder = "Acara majlis";
+
+      textInput.type =
+        "text";
+
+
+      textInput.value =
+        cleanText(
+          item.text
+        );
+
+
+      textInput.placeholder =
+        "Acara majlis";
+
 
       const removeButton =
-        document.createElement("button");
+        document.createElement(
+          "button"
+        );
 
-      removeButton.type = "button";
-      removeButton.className = "remove-btn";
-      removeButton.textContent = "×";
+
+      removeButton.type =
+        "button";
+
+
+      removeButton.className =
+        "remove-btn";
+
+
+      removeButton.textContent =
+        "×";
+
+
       removeButton.setAttribute(
         "aria-label",
         "Buang acara"
       );
+
 
       timeInput.addEventListener(
         "input",
@@ -3816,10 +4328,12 @@ function renderScheduleEditor(){
           schedule[index].time =
             timeInput.value;
 
+
           renderSchedule();
 
         }
       );
+
 
       textInput.addEventListener(
         "input",
@@ -3828,10 +4342,12 @@ function renderScheduleEditor(){
           schedule[index].text =
             textInput.value;
 
+
           renderSchedule();
 
         }
       );
+
 
       removeButton.addEventListener(
         "click",
@@ -3842,17 +4358,30 @@ function renderScheduleEditor(){
             1
           );
 
+
           renderScheduleEditor();
           renderSchedule();
 
         }
       );
 
-      row.appendChild(timeInput);
-      row.appendChild(textInput);
-      row.appendChild(removeButton);
 
-      container.appendChild(row);
+      row.appendChild(
+        timeInput
+      );
+
+      row.appendChild(
+        textInput
+      );
+
+      row.appendChild(
+        removeButton
+      );
+
+
+      container.appendChild(
+        row
+      );
 
     }
   );
@@ -3869,38 +4398,59 @@ function renderSchedule(){
   const container =
     $("scheduleContainer");
 
-  container.innerHTML = "";
+
+  container.innerHTML =
+    "";
+
 
   if(!schedule.length){
 
     const empty =
-      document.createElement("div");
+      document.createElement(
+        "div"
+      );
+
 
     empty.className =
       "drawer-description";
 
+
     empty.textContent =
       "Belum ada atur cara majlis.";
 
-    container.appendChild(empty);
+
+    container.appendChild(
+      empty
+    );
+
 
     return;
+
   }
+
 
   schedule.forEach(
     item => {
 
       const row =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
+
 
       row.className =
         "schedule-item";
 
+
       const time =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
+
 
       time.className =
         "schedule-time";
+
 
       time.textContent =
         cleanText(
@@ -3908,11 +4458,16 @@ function renderSchedule(){
           "—"
         );
 
+
       const text =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
+
 
       text.className =
         "schedule-text";
+
 
       text.textContent =
         cleanText(
@@ -3920,10 +4475,20 @@ function renderSchedule(){
           "Acara majlis"
         );
 
-      row.appendChild(time);
-      row.appendChild(text);
 
-      container.appendChild(row);
+      row.appendChild(
+        time
+      );
+
+
+      row.appendChild(
+        text
+      );
+
+
+      container.appendChild(
+        row
+      );
 
     }
   );
@@ -3942,23 +4507,35 @@ function makeContact(
 ){
 
   const cleanPhone =
-    normalizePhone(phone);
+    normalizePhone(
+      phone
+    );
+
 
   if(!cleanPhone){
     return;
   }
 
+
   const item =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
+
 
   item.className =
     "contact-item";
 
+
   const nameEl =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
+
 
   nameEl.className =
     "contact-name";
+
 
   nameEl.textContent =
     cleanText(
@@ -3966,28 +4543,46 @@ function makeContact(
       "Keluarga"
     );
 
+
   const link =
-    document.createElement("a");
+    document.createElement(
+      "a"
+    );
+
 
   link.className =
     "contact-button";
 
+
   link.href =
     `https://wa.me/${cleanPhone}`;
+
 
   link.target =
     "_blank";
 
+
   link.rel =
     "noopener noreferrer";
+
 
   link.textContent =
     "📞 Hubungi";
 
-  item.appendChild(nameEl);
-  item.appendChild(link);
 
-  container.appendChild(item);
+  item.appendChild(
+    nameEl
+  );
+
+
+  item.appendChild(
+    link
+  );
+
+
+  container.appendChild(
+    item
+  );
 
 }
 
@@ -4000,17 +4595,23 @@ function updateFamily(){
       "Putera kepada keluarga pengantin lelaki"
     );
 
+
   $("previewBrideParents").textContent =
     cleanText(
       $("brideParentsInput").value,
       "Puteri kepada keluarga pengantin perempuan"
     );
 
-  $("previewGroomContacts").innerHTML =
+
+  $("previewGroomContacts")
+    .innerHTML =
     "";
 
-  $("previewBrideContacts").innerHTML =
+
+  $("previewBrideContacts")
+    .innerHTML =
     "";
+
 
   makeContact(
     $("previewGroomContacts"),
@@ -4018,17 +4619,20 @@ function updateFamily(){
     $("groomFatherPhone").value
   );
 
+
   makeContact(
     $("previewGroomContacts"),
     $("groomMotherName").value,
     $("groomMotherPhone").value
   );
 
+
   makeContact(
     $("previewBrideContacts"),
     $("brideFatherName").value,
     $("brideFatherPhone").value
   );
+
 
   makeContact(
     $("previewBrideContacts"),
@@ -4048,36 +4652,45 @@ function updatePrice(){
   const withImage =
     $("imageToggle").checked;
 
+
   const music =
     $("musicToggle").checked;
+
 
   const base =
     withImage
       ? 176
       : 136;
 
+
   const total =
     base +
     (music ? 60 : 0);
+
 
   $("baseLabel").textContent =
     withImage
       ? "Kad dengan gambar"
       : "Kad tanpa gambar";
 
+
   $("basePrice").textContent =
     `RM${base}`;
+
 
   $("musicPriceLine").style.display =
     music
       ? "flex"
       : "none";
 
+
   $("totalPrice").textContent =
     `RM${total}`;
 
+
   $("musicArea")
-    .classList.toggle(
+    .classList
+    .toggle(
       "hidden",
       !music
     );
@@ -4092,10 +4705,13 @@ function updatePrice(){
 const overlay =
   $("overlay");
 
+
 const drawers = [
+
   $("scheduleDrawer"),
   $("rsvpDrawer"),
   $("familyDrawer")
+
 ];
 
 
@@ -4103,15 +4719,19 @@ function closeDrawers(){
 
   drawers.forEach(
     drawer => {
+
       drawer.classList.remove(
         "active"
       );
+
     }
   );
+
 
   overlay.classList.remove(
     "active"
   );
+
 
   document.body.style.overflow =
     "";
@@ -4123,13 +4743,16 @@ function openDrawer(drawer){
 
   closeDrawers();
 
+
   drawer.classList.add(
     "active"
   );
 
+
   overlay.classList.add(
     "active"
   );
+
 
   document.body.style.overflow =
     "hidden";
@@ -4140,9 +4763,11 @@ function openDrawer(drawer){
 $("openSchedule").addEventListener(
   "click",
   () => {
+
     openDrawer(
       $("scheduleDrawer")
     );
+
   }
 );
 
@@ -4150,9 +4775,11 @@ $("openSchedule").addEventListener(
 $("openRsvp").addEventListener(
   "click",
   () => {
+
     openDrawer(
       $("rsvpDrawer")
     );
+
   }
 );
 
@@ -4160,9 +4787,11 @@ $("openRsvp").addEventListener(
 $("openFamily").addEventListener(
   "click",
   () => {
+
     openDrawer(
       $("familyDrawer")
     );
+
   }
 );
 
@@ -4174,7 +4803,9 @@ overlay.addEventListener(
 
 
 document
-  .querySelectorAll("[data-close]")
+  .querySelectorAll(
+    "[data-close]"
+  )
   .forEach(
     button => {
 
@@ -4191,8 +4822,12 @@ document.addEventListener(
   "keydown",
   event => {
 
-    if(event.key === "Escape"){
+    if(
+      event.key === "Escape"
+    ){
+
       closeDrawers();
+
     }
 
   }
@@ -4212,6 +4847,7 @@ $("sendRsvp").addEventListener(
         $("rsvpPhoneInput").value
       );
 
+
     if(!phone){
 
       alert(
@@ -4219,7 +4855,9 @@ $("sendRsvp").addEventListener(
       );
 
       return;
+
     }
+
 
     const name =
       cleanText(
@@ -4227,8 +4865,10 @@ $("sendRsvp").addEventListener(
         "Tetamu"
       );
 
+
     const attendance =
       $("attendance").value;
+
 
     const message =
       cleanText(
@@ -4236,17 +4876,20 @@ $("sendRsvp").addEventListener(
         "Tahniah dan semoga berbahagia selalu! 🤍"
       );
 
+
     const name1 =
       cleanText(
         $("name1Input").value,
         "Adam"
       );
 
+
     const name2 =
       cleanText(
         $("name2Input").value,
         "Hawa"
       );
+
 
     const text =
 `Assalamualaikum ${name1} & ${name2} 🤍
@@ -4268,8 +4911,10 @@ ${message}
 
 Terima kasih 🤍`;
 
+
     const url =
       `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+
 
     window.open(
       url,
@@ -4285,29 +4930,44 @@ Terima kasih 🤍`;
    COVER
 ========================================================= */
 
-let opened = false;
-
-
 function openCard(){
 
   if(opened){
     return;
   }
 
+
   opened = true;
+
 
   $("coverPage")
     .classList
-    .add("opened");
+    .add(
+      "opened"
+    );
 
 }
 
+
+/*
+  Klik
+*/
 
 $("openEnvelope").addEventListener(
   "click",
   openCard
 );
 
+
+$("openButton").addEventListener(
+  "click",
+  openCard
+);
+
+
+/*
+  Keyboard
+*/
 
 $("openEnvelope").addEventListener(
   "keydown",
@@ -4328,9 +4988,54 @@ $("openEnvelope").addEventListener(
 );
 
 
-$("openButton").addEventListener(
-  "click",
-  openCard
+/*
+  Swipe up pada cover
+*/
+
+let touchStartY = 0;
+
+
+$("coverPage").addEventListener(
+  "touchstart",
+  event => {
+
+    touchStartY =
+      event.touches[0]?.clientY ||
+      0;
+
+  },
+  {
+    passive:true
+  }
+);
+
+
+$("coverPage").addEventListener(
+  "touchend",
+  event => {
+
+    const touchEndY =
+      event.changedTouches[0]?.clientY ||
+      0;
+
+
+    const difference =
+      touchStartY -
+      touchEndY;
+
+
+    if(
+      difference > 60
+    ){
+
+      openCard();
+
+    }
+
+  },
+  {
+    passive:true
+  }
 );
 
 
@@ -4345,40 +5050,56 @@ $("imageInput").addEventListener(
     const file =
       event.target.files?.[0];
 
+
     if(!file){
       return;
     }
 
+
     if(
       !file.type ||
-      !file.type.startsWith("image/")
+      !file.type.startsWith(
+        "image/"
+      )
     ){
 
       alert(
         "Sila pilih fail gambar."
       );
 
+
       event.target.value =
         "";
 
+
       return;
+
     }
+
 
     const reader =
       new FileReader();
+
 
     reader.onload =
       event => {
 
         uploadedImage =
           String(
-            event.target.result || ""
+            event.target.result ||
+            ""
           );
+
+
+        remoteImage =
+          "";
+
 
         updateImage();
         updatePrice();
 
       };
+
 
     reader.onerror =
       () => {
@@ -4387,12 +5108,16 @@ $("imageInput").addEventListener(
           "Gambar tidak dapat dibaca."
         );
 
+
         $("imageInput").value =
           "";
 
       };
 
-    reader.readAsDataURL(file);
+
+    reader.readAsDataURL(
+      file
+    );
 
   }
 );
@@ -4405,8 +5130,14 @@ $("removeImage").addEventListener(
     uploadedImage =
       "";
 
+
+    remoteImage =
+      "";
+
+
     $("imageInput").value =
       "";
+
 
     updateImage();
     updatePrice();
@@ -4426,28 +5157,41 @@ $("musicInput").addEventListener(
     const file =
       event.target.files?.[0];
 
+
     if(!file){
-      uploadedMusic = "";
+
+      uploadedMusic =
+        "";
+
       return;
+
     }
+
 
     if(
       !file.type ||
-      !file.type.startsWith("audio/")
+      !file.type.startsWith(
+        "audio/"
+      )
     ){
 
       alert(
         "Sila pilih fail muzik."
       );
 
+
       event.target.value =
         "";
+
 
       uploadedMusic =
         "";
 
+
       return;
+
     }
+
 
     uploadedMusic =
       file.name;
@@ -4465,9 +5209,13 @@ $("addSchedule").addEventListener(
   () => {
 
     schedule.push({
+
       time:"05:00 PM",
+
       text:"Acara Tambahan"
+
     });
+
 
     renderScheduleEditor();
     renderSchedule();
@@ -4477,7 +5225,7 @@ $("addSchedule").addEventListener(
 
 
 /* =========================================================
-   LIVE INPUTS
+   LIVE TEXT INPUTS
 ========================================================= */
 
 const textInputIds = [
@@ -4485,11 +5233,13 @@ const textInputIds = [
   "name1Input",
   "name2Input",
   "subtitleInput",
+
   "groomParentsInput",
   "groomFatherName",
   "groomFatherPhone",
   "groomMotherName",
   "groomMotherPhone",
+
   "brideParentsInput",
   "brideFatherName",
   "brideFatherPhone",
@@ -4533,11 +5283,7 @@ $("dateInput").addEventListener(
 
 $("timeInput").addEventListener(
   "input",
-  () => {
-
-    updateCountdown();
-
-  }
+  updateCountdown
 );
 
 
@@ -4545,22 +5291,49 @@ $("timeInput").addEventListener(
    LOCATION
 ========================================================= */
 
-$("locationNameInput").addEventListener(
-  "input",
-  updateLocation
-);
+$("locationNameInput")
+  .addEventListener(
+    "input",
+    updateLocation
+  );
 
 
-$("mapUrlInput").addEventListener(
-  "input",
-  updateLocation
-);
+$("mapUrlInput")
+  .addEventListener(
+    "input",
+    updateLocation
+  );
 
 
-$("mapTypeInput").addEventListener(
-  "change",
-  updateLocation
-);
+$("mapTypeInput")
+  .addEventListener(
+    "change",
+    updateLocation
+  );
+
+
+/*
+  Jangan biarkan link "#" cuba buka
+  tab baru jika URL kosong.
+*/
+
+$("locationButton")
+  .addEventListener(
+    "click",
+    event => {
+
+      if(
+        $("locationButton").getAttribute(
+          "href"
+        ) === "#"
+      ){
+
+        event.preventDefault();
+
+      }
+
+    }
+  );
 
 
 /* =========================================================
@@ -4603,7 +5376,9 @@ $("musicToggle").addEventListener(
 ========================================================= */
 
 document
-  .querySelectorAll(".emoji-check")
+  .querySelectorAll(
+    ".emoji-check"
+  )
   .forEach(
     checkbox => {
 
@@ -4618,16 +5393,21 @@ document
               )
             ];
 
-          if(checked.length > 2){
+
+          if(
+            checked.length > 2
+          ){
 
             checkbox.checked =
               false;
+
 
             alert(
               "Maksimum 2 emoji sahaja 😊"
             );
 
           }
+
 
           updateEmoji();
 
@@ -4646,10 +5426,15 @@ $("emojiToggle").addEventListener(
   "change",
   () => {
 
-    if(!$("emojiToggle").checked){
+    if(
+      $("emojiToggle").checked
+    ){
 
-      $("emojiContainer").innerHTML =
-        "";
+      startEmojiAnimation();
+
+    }else{
+
+      stopEmojiAnimation();
 
     }
 
@@ -4671,26 +5456,32 @@ $("orderButton").addEventListener(
         "Adam"
       );
 
+
     const name2 =
       cleanText(
         $("name2Input").value,
         "Hawa"
       );
 
+
     const withImage =
       $("imageToggle").checked;
 
+
     const music =
       $("musicToggle").checked;
+
 
     const base =
       withImage
         ? 176
         : 136;
 
+
     const total =
       base +
       (music ? 60 : 0);
+
 
     const themeName =
       $("themeInput")
@@ -4698,11 +5489,13 @@ $("orderButton").addEventListener(
         .textContent
         .trim();
 
+
     const mapType =
       $("mapTypeInput")
         .selectedOptions[0]
         .textContent
         .trim();
+
 
     const location =
       cleanText(
@@ -4710,14 +5503,17 @@ $("orderButton").addEventListener(
         "Lokasi Majlis"
       );
 
+
     const rsvp =
       cleanText(
         $("rsvpPhoneInput").value,
         "Belum diisi"
       );
 
+
     const emojis =
       getEmojis();
+
 
     const text =
 `Assalamualaikum NUR NONA 🤍
@@ -4759,8 +5555,10 @@ ${rsvp}
 
 Saya telah buat pilihan melalui Live Editor. 😊`;
 
+
     const url =
       `https://wa.me/${SELLER_WHATSAPP}?text=${encodeURIComponent(text)}`;
+
 
     window.open(
       url,
@@ -4773,10 +5571,655 @@ Saya telah buat pilihan melalui Live Editor. 😊`;
 
 
 /* =========================================================
-   INITIALIZE
+   SUPABASE → EDITOR
 ========================================================= */
 
-function initialize(){
+function hydrateFromSupabase(data){
+
+  if(!data){
+    return;
+  }
+
+
+  /* =======================================================
+     PENGANTIN
+  ======================================================= */
+
+  $("name1Input").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "partner_1",
+          "name1",
+          "groom_name",
+          "groom"
+        ],
+        $("name1Input").value
+      ),
+      "Adam"
+    );
+
+
+  $("name2Input").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "partner_2",
+          "name2",
+          "bride_name",
+          "bride"
+        ],
+        $("name2Input").value
+      ),
+      "Hawa"
+    );
+
+
+  $("subtitleInput").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "opening_text",
+          "subtitle",
+          "walimatulurus_text"
+        ],
+        $("subtitleInput").value
+      ),
+      "Majlis Kesyukuran & Walimatulurus"
+    );
+
+
+  /* =======================================================
+     TARIKH / MASA
+  ======================================================= */
+
+  const remoteDate =
+    firstValue(
+      data,
+      [
+        "event_date",
+        "date"
+      ],
+      $("dateInput").value
+    );
+
+
+  if(remoteDate){
+
+    $("dateInput").value =
+      String(remoteDate)
+        .slice(0,10);
+
+  }
+
+
+  const remoteTime =
+    firstValue(
+      data,
+      [
+        "event_time",
+        "time"
+      ],
+      $("timeInput").value
+    );
+
+
+  if(remoteTime){
+
+    $("timeInput").value =
+      String(remoteTime)
+        .slice(0,5);
+
+  }
+
+
+  /* =======================================================
+     TEMA
+  ======================================================= */
+
+  const remoteTheme =
+    firstValue(
+      data,
+      [
+        "theme",
+        "theme_name"
+      ],
+      $("themeInput").value
+    );
+
+
+  if(
+    THEMES[
+      String(remoteTheme)
+    ]
+  ){
+
+    $("themeInput").value =
+      String(remoteTheme);
+
+  }
+
+
+  /* =======================================================
+     EMOJI
+  ======================================================= */
+
+  const emoji1 =
+    firstValue(
+      data,
+      [
+        "emoji_1"
+      ],
+      ""
+    );
+
+
+  const emoji2 =
+    firstValue(
+      data,
+      [
+        "emoji_2"
+      ],
+      ""
+    );
+
+
+  document
+    .querySelectorAll(
+      ".emoji-check"
+    )
+    .forEach(
+      checkbox => {
+
+        checkbox.checked =
+          false;
+
+      }
+    );
+
+
+  const remoteEmojis =
+    [
+      emoji1,
+      emoji2
+    ]
+      .map(
+        value =>
+          String(
+            value ?? ""
+          )
+            .trim()
+      )
+      .filter(Boolean)
+      .slice(0,2);
+
+
+  document
+    .querySelectorAll(
+      ".emoji-check"
+    )
+    .forEach(
+      checkbox => {
+
+        if(
+          remoteEmojis.includes(
+            checkbox.value
+          )
+        ){
+
+          checkbox.checked =
+            true;
+
+        }
+
+      }
+    );
+
+
+  const emojiEnabled =
+    toBoolean(
+      firstValue(
+        data,
+        [
+          "emoji_enabled",
+          "show_emoji",
+          "emoji_toggle"
+        ],
+        true
+      ),
+      true
+    );
+
+
+  $("emojiToggle").checked =
+    emojiEnabled;
+
+
+  /* =======================================================
+     GAMBAR
+  ======================================================= */
+
+  remoteImage =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "poster_url",
+          "image_url",
+          "photo_url"
+        ],
+        ""
+      )
+    );
+
+
+  const showPoster =
+    toBoolean(
+      firstValue(
+        data,
+        [
+          "show_poster",
+          "image_enabled",
+          "use_image"
+        ],
+        Boolean(remoteImage)
+      ),
+      Boolean(remoteImage)
+    );
+
+
+  $("imageToggle").checked =
+    showPoster;
+
+
+  /* =======================================================
+     LOKASI
+  ======================================================= */
+
+  $("locationNameInput").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "location_name",
+          "venue_name",
+          "location"
+        ],
+        $("locationNameInput").value
+      ),
+      "Lokasi Majlis"
+    );
+
+
+  const remoteMapType =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "map_type"
+        ],
+        $("mapTypeInput").value
+      ),
+      "google"
+    )
+      .toLowerCase();
+
+
+  $("mapTypeInput").value =
+    remoteMapType === "waze"
+      ? "waze"
+      : "google";
+
+
+  let remoteMapUrl =
+    "";
+
+
+  if(
+    $("mapTypeInput").value ===
+    "waze"
+  ){
+
+    remoteMapUrl =
+      firstValue(
+        data,
+        [
+          "waze_url",
+          "location_url",
+          "map_url"
+        ],
+        ""
+      );
+
+  }else{
+
+    remoteMapUrl =
+      firstValue(
+        data,
+        [
+          "google_url",
+          "location_url",
+          "map_url"
+        ],
+        ""
+      );
+
+  }
+
+
+  $("mapUrlInput").value =
+    cleanText(
+      remoteMapUrl
+    );
+
+
+  /* =======================================================
+     RSVP
+  ======================================================= */
+
+  $("rsvpPhoneInput").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "whatsapp_number",
+          "rsvp_phone",
+          "rsvp_whatsapp"
+        ],
+        $("rsvpPhoneInput").value
+      )
+    );
+
+
+  /* =======================================================
+     FAMILY — GROOM
+  ======================================================= */
+
+  $("groomParentsInput").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "groom_parents",
+          "groom_parents_text"
+        ],
+        $("groomParentsInput").value
+      )
+    );
+
+
+  $("groomFatherName").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "groom_father_name"
+        ],
+        $("groomFatherName").value
+      )
+    );
+
+
+  $("groomFatherPhone").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "groom_father_phone"
+        ],
+        $("groomFatherPhone").value
+      )
+    );
+
+
+  $("groomMotherName").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "groom_mother_name"
+        ],
+        $("groomMotherName").value
+      )
+    );
+
+
+  $("groomMotherPhone").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "groom_mother_phone"
+        ],
+        $("groomMotherPhone").value
+      )
+    );
+
+
+  /* =======================================================
+     FAMILY — BRIDE
+  ======================================================= */
+
+  $("brideParentsInput").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "bride_parents",
+          "bride_parents_text"
+        ],
+        $("brideParentsInput").value
+      )
+    );
+
+
+  $("brideFatherName").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "bride_father_name"
+        ],
+        $("brideFatherName").value
+      )
+    );
+
+
+  $("brideFatherPhone").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "bride_father_phone"
+        ],
+        $("brideFatherPhone").value
+      )
+    );
+
+
+  $("brideMotherName").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "bride_mother_name"
+        ],
+        $("brideMotherName").value
+      )
+    );
+
+
+  $("brideMotherPhone").value =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "bride_mother_phone"
+        ],
+        $("brideMotherPhone").value
+      )
+    );
+
+
+  /* =======================================================
+     SCHEDULE
+  ======================================================= */
+
+  const remoteSchedule =
+    firstValue(
+      data,
+      [
+        "schedule",
+        "schedule_json",
+        "program"
+      ],
+      null
+    );
+
+
+  if(remoteSchedule){
+
+    let parsed =
+      remoteSchedule;
+
+
+    if(
+      typeof parsed === "string"
+    ){
+
+      try{
+
+        parsed =
+          JSON.parse(
+            parsed
+          );
+
+      }catch{
+
+        parsed = null;
+
+      }
+
+    }
+
+
+    if(
+      Array.isArray(parsed)
+    ){
+
+      schedule =
+        parsed
+          .map(
+            item => ({
+
+              time:
+                cleanText(
+                  item?.time,
+                  ""
+                ),
+
+              text:
+                cleanText(
+                  item?.text ??
+                  item?.title ??
+                  item?.event,
+                  ""
+                )
+
+            })
+          )
+          .filter(
+            item =>
+              item.time ||
+              item.text
+          );
+
+    }
+
+  }
+
+
+  /* =======================================================
+     MUSIC
+  ======================================================= */
+
+  remoteMusic =
+    cleanText(
+      firstValue(
+        data,
+        [
+          "music_url",
+          "audio_url"
+        ],
+        ""
+      )
+    );
+
+
+  $("musicToggle").checked =
+    toBoolean(
+      firstValue(
+        data,
+        [
+          "music_enabled",
+          "show_music"
+        ],
+        Boolean(remoteMusic)
+      ),
+      Boolean(remoteMusic)
+    );
+
+
+  /*
+    Apply semuanya selepas data masuk.
+  */
+
+  applyTheme();
+
+  updateText();
+
+  updateEmoji();
+
+  updateImage();
+
+  formatDate();
+
+  updateCountdown();
+
+  updateLocation();
+
+  updateFamily();
+
+  renderScheduleEditor();
+
+  renderSchedule();
+
+  updatePrice();
+
+
+  if(
+    $("emojiToggle").checked
+  ){
+
+    startEmojiAnimation();
+
+  }else{
+
+    stopEmojiAnimation();
+
+  }
+
+}
+
+
+/* =========================================================
+   INITIALIZE DEFAULT
+========================================================= */
+
+function initializeDefaults(){
 
   applyTheme();
 
@@ -4800,6 +6243,79 @@ function initialize(){
 
   startCountdown();
 
+  startEmojiAnimation();
+
+}
+
+
+/* =========================================================
+   LOAD SUPABASE
+========================================================= */
+
+async function initialize(){
+
+  /*
+    First render editor asal.
+    Jadi Live Editor sentiasa muncul.
+  */
+
+  initializeDefaults();
+
+
+  const slug =
+    getSlugFromPath();
+
+
+  /*
+    Kalau root "/" → demo/default.
+  */
+
+  if(!slug){
+
+    console.log(
+      "NUR NONA: Demo Live Editor aktif."
+    );
+
+    return;
+
+  }
+
+
+  /*
+    Kalau /adam-hawa, /ali-siti,
+    dan sebagainya → ambil data.
+  */
+
+  console.log(
+    `NUR NONA: Memuatkan /${slug} ...`
+  );
+
+
+  const data =
+    await loadInvitationFromSupabase();
+
+
+  if(!data){
+
+    console.warn(
+      `NUR NONA: Data untuk /${slug} tidak ditemui.`
+    );
+
+    return;
+
+  }
+
+
+  console.log(
+    `NUR NONA: Data /${slug} berjaya dimuatkan.`,
+    data
+  );
+
+
+  hydrateFromSupabase(
+    data
+  );
+
 }
 
 
@@ -4810,6 +6326,5 @@ function initialize(){
 initialize();
 
 </script>
-
 </body>
 </html>
