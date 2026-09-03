@@ -553,12 +553,22 @@
       color: #c4b5d4;
       text-align: center;
     }
-    /* Admin hidden by default — only show with ?admin=true */
     .admin-only {
       display: none !important;
     }
     body.admin-mode .admin-only {
       display: block !important;
+    }
+    .audio-player-wrapper {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 12px;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    .audio-player-wrapper audio {
+      width: 100%;
+      border-radius: 8px;
     }
     @media(max-width:760px) { .editor-layout { grid-template-columns: 1fr; } .preview-wrap { position: static; } .preview-label { margin-top: 4px; } }
     @media(max-width:390px) { .row { grid-template-columns: 1fr; } .name { font-size: 34px; } .cover-names { font-size: 33px; } .countdown-grid { gap: 5px; } .time { min-width: 52px; } }
@@ -577,6 +587,7 @@
     <!-- EDITOR -->
     <section class="editor">
 
+      <!-- MAKLUMAT PENGANTIN -->
       <div class="section">
         <h2 class="section-title">💍 Maklumat Pengantin</h2>
         <div class="row">
@@ -590,6 +601,7 @@
         </div>
       </div>
 
+      <!-- GAMBAR -->
       <div class="section">
         <h2 class="section-title">🖼️ Gambar</h2>
         <div class="toggle-row">
@@ -602,6 +614,7 @@
         </div>
       </div>
 
+      <!-- TEMA -->
       <div class="section">
         <h2 class="section-title">🎨 Warna Kad</h2>
         <div class="field"><label>Pilih Tema</label>
@@ -617,6 +630,7 @@
         </div>
       </div>
 
+      <!-- EMOJI -->
       <div class="section">
         <h2 class="section-title">✨ Emoji</h2>
         <div class="field"><label>Pilih sehingga 2 emoji</label>
@@ -637,6 +651,7 @@
         </div>
       </div>
 
+      <!-- LOKASI -->
       <div class="section">
         <h2 class="section-title">📍 Lokasi</h2>
         <div class="field"><label>Nama Lokasi</label><input id="locationNameInput" value="Dewan Serbaguna"></div>
@@ -646,95 +661,106 @@
         <div class="field"><label>Link Lokasi</label><input id="mapUrlInput" placeholder="Tampal link Google Maps / Waze"></div>
       </div>
 
+      <!-- RSVP -->
       <div class="section">
         <h2 class="section-title">💌 WhatsApp RSVP</h2>
         <div class="field"><label>Nombor WhatsApp Pengantin</label><input id="rsvpPhoneInput" placeholder="60123456789"></div>
       </div>
 
-      <!-- =============================================================
-           FAMILY — SEMUA OPTIONAL
-      ============================================================== -->
+      <!-- FAMILY -->
       <div class="section">
         <h2 class="section-title">📞 Hubungi Keluarga <span style="font-weight:400;font-size:10px;color:var(--muted);">(Optional)</span></h2>
         <p style="color:var(--muted);font-size:11px;margin-bottom:12px;">✏️ Isi jika ada — kosongkan jika tiada. Boleh letak sesiapa (ibu, ayah, abang, kakak, penjaga, atau "Hubungi Pengantin").</p>
 
         <div style="margin-bottom:16px;padding:12px;border:1px solid rgba(255,255,255,.05);border-radius:12px;">
           <p style="color:var(--muted);font-size:11px;font-weight:700;margin-bottom:8px;">👨‍💼 Pengantin Lelaki</p>
-          <div class="field">
-            <label>Hubungi (Nama & Peranan)</label>
-            <input id="groomParentsInput" placeholder="Contoh: Encik Ahmad (Ayah) — optional">
+          <div class="field"><label>Hubungi (Nama & Peranan)</label><input id="groomParentsInput" placeholder="Contoh: Encik Ahmad (Ayah) — optional"></div>
+          <div class="row">
+            <div class="field"><label>Nama Wakil</label><input id="groomFatherName" placeholder="Contoh: Encik Ahmad (optional)"></div>
+            <div class="field"><label>No. WhatsApp</label><input id="groomFatherPhone" placeholder="60123456789 (optional)"></div>
           </div>
           <div class="row">
-            <div class="field">
-              <label>Nama Wakil</label>
-              <input id="groomFatherName" placeholder="Contoh: Encik Ahmad (optional)">
-            </div>
-            <div class="field">
-              <label>No. WhatsApp</label>
-              <input id="groomFatherPhone" placeholder="60123456789 (optional)">
-            </div>
-          </div>
-          <div class="row">
-            <div class="field">
-              <label>Nama Wakil (Optional)</label>
-              <input id="groomMotherName" placeholder="Contoh: Puan Aminah (optional)">
-            </div>
-            <div class="field">
-              <label>No. WhatsApp</label>
-              <input id="groomMotherPhone" placeholder="60123456789 (optional)">
-            </div>
+            <div class="field"><label>Nama Wakil (Optional)</label><input id="groomMotherName" placeholder="Contoh: Puan Aminah (optional)"></div>
+            <div class="field"><label>No. WhatsApp</label><input id="groomMotherPhone" placeholder="60123456789 (optional)"></div>
           </div>
         </div>
 
         <div style="padding:12px;border:1px solid rgba(255,255,255,.05);border-radius:12px;">
           <p style="color:var(--muted);font-size:11px;font-weight:700;margin-bottom:8px;">👩‍💼 Pengantin Perempuan</p>
-          <div class="field">
-            <label>Hubungi (Nama & Peranan)</label>
-            <input id="brideParentsInput" placeholder="Contoh: Puan Fatimah (Ibu) — optional">
+          <div class="field"><label>Hubungi (Nama & Peranan)</label><input id="brideParentsInput" placeholder="Contoh: Puan Fatimah (Ibu) — optional"></div>
+          <div class="row">
+            <div class="field"><label>Nama Wakil</label><input id="brideFatherName" placeholder="Contoh: Encik Abdullah (optional)"></div>
+            <div class="field"><label>No. WhatsApp</label><input id="brideFatherPhone" placeholder="60123456789 (optional)"></div>
           </div>
           <div class="row">
-            <div class="field">
-              <label>Nama Wakil</label>
-              <input id="brideFatherName" placeholder="Contoh: Encik Abdullah (optional)">
-            </div>
-            <div class="field">
-              <label>No. WhatsApp</label>
-              <input id="brideFatherPhone" placeholder="60123456789 (optional)">
-            </div>
-          </div>
-          <div class="row">
-            <div class="field">
-              <label>Nama Wakil (Optional)</label>
-              <input id="brideMotherName" placeholder="Contoh: Puan Fatimah (optional)">
-            </div>
-            <div class="field">
-              <label>No. WhatsApp</label>
-              <input id="brideMotherPhone" placeholder="60123456789 (optional)">
-            </div>
+            <div class="field"><label>Nama Wakil (Optional)</label><input id="brideMotherName" placeholder="Contoh: Puan Fatimah (optional)"></div>
+            <div class="field"><label>No. WhatsApp</label><input id="brideMotherPhone" placeholder="60123456789 (optional)"></div>
           </div>
         </div>
       </div>
 
+      <!-- ATUR CARA -->
       <div class="section">
         <h2 class="section-title">📋 Atur Cara Majlis</h2>
         <div id="scheduleEditor" class="schedule-editor"></div>
         <button class="small-btn" id="addSchedule" type="button">+ Tambah Atur Cara</button>
       </div>
 
+      <!-- =============================================================
+           MUZIK — 3 PILIHAN + UPLOAD SENDIRI
+      ============================================================== -->
       <div class="section">
         <h2 class="section-title">🎵 Muzik</h2>
+
         <div class="toggle-row">
-          <div class="toggle-info"><strong>Tambah muzik</strong><span>Add-on RM60</span></div>
-          <label class="switch"><input id="musicToggle" type="checkbox"><span class="slider"></span></label>
+          <div class="toggle-info">
+            <strong>Tambah muzik</strong>
+            <span>Add-on RM60</span>
+          </div>
+          <label class="switch">
+            <input id="musicToggle" type="checkbox">
+            <span class="slider"></span>
+          </label>
         </div>
-        <div id="musicArea" class="hidden" style="margin-top:10px">
-          <div class="field"><label>Pilih fail muzik</label><input id="musicInput" type="file" accept="audio/*"></div>
+
+        <div id="musicArea" class="hidden" style="margin-top:10px;">
+
+          <!-- PILIHAN LAGU SEDIA -->
+          <div class="field">
+            <label>Pilih Lagu Sedia</label>
+            <select id="musicPreset">
+              <option value="">— Tiada pilihan —</option>
+              <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">🎹 Lagu Romantik 1</option>
+              <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">🎸 Lagu Santai 2</option>
+              <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">🎻 Lagu Klasik 3</option>
+            </select>
+            <div style="color:var(--muted);font-size:9px;margin-top:4px;">
+              Klik pilihan untuk preview (audio akan main di dalam kad).
+            </div>
+          </div>
+
+          <!-- ATAU UPLOAD SENDIRI -->
+          <div class="field" style="margin-top:6px;">
+            <label>— ATAU Upload Lagu Sendiri —</label>
+            <input id="musicInput" type="file" accept="audio/*">
+            <div style="color:var(--muted);font-size:9px;margin-top:4px;">
+              Upload fail MP3 / WAV / AAC (max ~5MB).
+            </div>
+          </div>
+
+          <!-- AUDIO PLAYER (PREVIEW) -->
+          <div id="audioPlayerWrapper" class="audio-player-wrapper" style="display:none;">
+            <audio id="audioPlayer" controls>
+              <source id="audioSource" src="" type="audio/mpeg">
+              Browser anda tidak support audio player.
+            </audio>
+          </div>
+
         </div>
       </div>
 
       <!-- =============================================================
-           💰 HARGA + BAYAR (BAWAK TERUS KE TNG)
-           ADMIN BUTTON — HANYA NAMPAK BILA ?admin=true
+           HARGA + BAYAR
       ============================================================== -->
       <div class="section">
         <h2 class="section-title">💰 Harga & Dapatkan Link</h2>
@@ -752,8 +778,6 @@
         </div>
 
         <button class="pay-btn" id="buyButton">💚 Saya Nak Beli (RM<span id="buyTotal">136</span>)</button>
-        
-        <!-- CONFIRM BUTTON — HANTAR WHATSAPP KE AWAK -->
         <button class="confirm-btn hidden" id="confirmPayButton">✅ Saya Dah Bayar — Notifikasi NUR NONA</button>
         
         <!-- ADMIN BUTTON — HANYA NAMPAK BILA ?admin=true -->
@@ -865,28 +889,26 @@
   "use strict";
 
   // =============================================================
-  // ⚡ KOD LENGKAP — POLISHED, CLEAN, SIAP GUNA
+  // ⚡ KOD LENGKAP — DENGAN MUZIK (3 PILIHAN + UPLOAD)
   // =============================================================
 
-  // 🔧 CONFIG — Tukar ikut keperluan awak
+  // 🔧 CONFIG
   const SUPABASE_URL = "https://bfqyyboemqrdpyjkszoy.supabase.co";
   const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJmcXl5Ym9lbXFyZHB5amtzem95Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgyNjA5NjUsImV4cCI6MjEwMzgzNjk2NX0.wS5Jv-7XKM5RGx-_AuydL0OfbyNtVgug_4lWoSplnbI";
   const SUPABASE_TABLE = "weddings";
   const SELLER_WHATSAPP = "601139517845";
-
-  // Link TNG — tukar dengan link payment awak
   const TNG_URL = "https://payment.tngdigital.com.my/sc/bDLowiW2MI";
 
-  // Admin mode — aktif bila ada ?admin=true di URL
+  // Admin mode
   const isAdmin = window.location.search.includes('admin=true');
-  if (isAdmin) {
-    document.body.classList.add('admin-mode');
-  }
+  if (isAdmin) document.body.classList.add('admin-mode');
 
   let isPaid = false;
   let generatedSlug = '';
   let waitingForPayment = false;
   let emojiTimer = null;
+  let uploadedMusic = '';
+  let selectedPreset = '';
 
   function $(id) { return document.getElementById(id); }
 
@@ -1107,7 +1129,6 @@
     const qrContainer = $('qrContainer');
     const confirmBtn = $('confirmPayButton');
 
-    // Buka terus link TNG
     window.open(TNG_URL, '_blank');
 
     qrContainer.classList.remove('hidden');
@@ -1174,7 +1195,7 @@
   });
 
   // =============================================================
-  // 8. ORDER — HANYA BOLEH GUNA JIKA SUDAH BAYAR & AKTIF
+  // 8. ORDER
   // =============================================================
   let orderSubmitting = false;
 
@@ -1206,12 +1227,24 @@
     const emojis = [];
     document.querySelectorAll('.emoji-check:checked').forEach(c => emojis.push(c.value));
 
+    // Get music info
+    let musicInfo = 'Tiada muzik';
+    if (music) {
+      const preset = $('musicPreset');
+      const fileInput = $('musicInput');
+      if (preset.value) {
+        musicInfo = `Lagu sedia: ${preset.selectedOptions[0].textContent}`;
+      } else if (fileInput.files && fileInput.files.length > 0) {
+        musicInfo = `Upload sendiri: ${fileInput.files[0].name}`;
+      }
+    }
+
     const link = `${window.location.origin}/${slug}`;
     $('slugDisplay').style.display = 'block';
     $('slugDisplay').textContent = `🔗 Link unik anda: ${link}`;
 
     const msg =
-      `Assalamualaikum NUR NONA 🤍\n\nSaya nak tempah Undangan Digital.\n\n━━━━━━━━━━━━━━━━\n💍 MAKLUMAT TEMPAHAN\n━━━━━━━━━━━━━━━━\n\n👰 Pengantin: ${n1} & ${n2}\n🔗 Link: ${link}\n🖼️ Gambar: ${withImage ? 'Ya — RM176' : 'Tidak — RM136'}\n🎵 Muzik: ${music ? 'Ya — +RM60' : 'Tidak'}\n🎨 Tema: ${theme}\n✨ Emoji: ${emojis.length ? emojis.join(' & ') : '🤍'}\n💰 JUMLAH: RM${total}\n\n💾 Data tempahan telah berjaya disimpan ke sistem NUR NONA.\n✅ Bayaran telah disahkan.`;
+      `Assalamualaikum NUR NONA 🤍\n\nSaya nak tempah Undangan Digital.\n\n━━━━━━━━━━━━━━━━\n💍 MAKLUMAT TEMPAHAN\n━━━━━━━━━━━━━━━━\n\n👰 Pengantin: ${n1} & ${n2}\n🔗 Link: ${link}\n🖼️ Gambar: ${withImage ? 'Ya — RM176' : 'Tidak — RM136'}\n🎵 Muzik: ${music ? 'Ya — +RM60' : 'Tidak'}\n   ${musicInfo}\n🎨 Tema: ${theme}\n✨ Emoji: ${emojis.length ? emojis.join(' & ') : '🤍'}\n💰 JUMLAH: RM${total}\n\n💾 Data tempahan telah berjaya disimpan ke sistem NUR NONA.\n✅ Bayaran telah disahkan.`;
 
     window.open(`https://wa.me/${SELLER_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
     status.textContent = '✅ Data disimpan. WhatsApp dibuka.';
@@ -1263,6 +1296,7 @@
 
     updateEmoji();
     updateFamily();
+    updateMusicPreview();
   }
 
   // =============================================================
@@ -1435,7 +1469,7 @@
   });
 
   // =============================================================
-  // 14. FAMILY — OPTIONAL
+  // 14. FAMILY
   // =============================================================
   function makeContact(container, name, phone) {
     const p = normalizePhone(phone);
@@ -1489,7 +1523,63 @@
   }
 
   // =============================================================
-  // 15. DRAWERS
+  // 15. MUZIK — 3 PILIHAN + UPLOAD
+  // =============================================================
+  function updateMusicPreview() {
+    const toggle = $('musicToggle');
+    const playerWrapper = $('audioPlayerWrapper');
+    const audio = $('audioPlayer');
+    const source = $('audioSource');
+    const preset = $('musicPreset');
+    const fileInput = $('musicInput');
+
+    if (!toggle.checked) {
+      playerWrapper.style.display = 'none';
+      audio.pause();
+      return;
+    }
+
+    let musicUrl = '';
+
+    if (fileInput.files && fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+      if (file.type.startsWith('audio/')) {
+        musicUrl = URL.createObjectURL(file);
+        uploadedMusic = file.name;
+      }
+    } else if (preset.value) {
+      musicUrl = preset.value;
+      selectedPreset = preset.value;
+    }
+
+    if (musicUrl) {
+      source.src = musicUrl;
+      audio.load();
+      playerWrapper.style.display = 'block';
+    } else {
+      playerWrapper.style.display = 'none';
+      audio.pause();
+    }
+  }
+
+  // Event listeners untuk muzik
+  $('musicToggle').addEventListener('change', function() {
+    updateMusicPreview();
+    updatePrice();
+  });
+
+  $('musicPreset').addEventListener('change', function() {
+    $('musicInput').value = '';
+    updateMusicPreview();
+  });
+
+  $('musicInput').addEventListener('change', function() {
+    $('musicPreset').value = '';
+    updateMusicPreview();
+  });
+
+  // =============================================================
+  // 16. DRAWERS
   // =============================================================
   function closeDrawers() {
     document.querySelectorAll('.drawer').forEach(d => d.classList.remove('active'));
@@ -1511,7 +1601,7 @@
   document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', closeDrawers));
 
   // =============================================================
-  // 16. COVER
+  // 17. COVER
   // =============================================================
   let opened = false;
 
@@ -1524,7 +1614,7 @@
   $('openButton').addEventListener('click', openCard);
 
   // =============================================================
-  // 17. LOCATION
+  // 18. LOCATION
   // =============================================================
   $('locationButton').addEventListener('click', function(e) {
     e.preventDefault();
@@ -1534,7 +1624,7 @@
   });
 
   // =============================================================
-  // 18. RSVP
+  // 19. RSVP
   // =============================================================
   $('sendRsvp').addEventListener('click', function() {
     const phone = normalizePhone($('rsvpPhoneInput').value);
@@ -1550,7 +1640,7 @@
   });
 
   // =============================================================
-  // 19. EVENT LISTENERS
+  // 20. EVENT LISTENERS
   // =============================================================
   ['name1Input', 'name2Input', 'subtitleInput', 'dateInput', 'timeInput',
     'locationNameInput', 'mapTypeInput', 'mapUrlInput',
@@ -1572,7 +1662,7 @@
   });
 
   // =============================================================
-  // 20. INIT
+  // 21. INIT
   // =============================================================
   function init() {
     renderScheduleEditor();
