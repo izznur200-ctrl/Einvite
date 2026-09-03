@@ -1177,10 +1177,10 @@ input[type="file"]::file-selector-button{
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px; /* Tambah sedikit ruang antara ikon dan teks tarikh */
+  gap: 8px;
 
   margin: 18px 0;
-  padding: 10px 20px; /* Besarkan sedikit ruang dalam supaya kelihatan seperti pill badge yang seimbang */
+  padding: 10px 20px;
 
   border: 1px solid rgba(255, 255, 255, .15);
   border-radius: 30px;
@@ -1188,8 +1188,8 @@ input[type="file"]::file-selector-button{
   background: rgba(255, 255, 255, .05);
   color: #eef2ed;
 
-  font-size: 13px; /* Naikkan dari 11px supaya selaras dengan saiz teks utama & nav */
-  font-weight: 600; /* Tambah ketebalan supaya tarikh lebih menonjol */
+  font-size: 13px;
+  font-weight: 600;
   letter-spacing: 0.3px;
 }
 
@@ -2330,6 +2330,7 @@ input[type="file"]::file-selector-button{
         id="brideFatherPhone"
         value="60123456789"
         inputmode="tel"
+      >
 
     </div>
 
@@ -3164,11 +3165,6 @@ const SELLER_WHATSAPP = "601139517845";
 const SUPABASE_URL =
   "https://bfqyyboemqrdpyjkszoy.supabase.co";
 
-/*
-  MASUKKAN ANON / PUBLISHABLE KEY SUPABASE AWAK DI SINI.
-
-  JANGAN GUNA service_role key dalam browser.
-*/
 const SUPABASE_ANON_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVkcHhlZ2V6bmZzbHdvbWd5cnBhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc5OTQzMDAsImV4cCI6MjEwMzU3MDMwMH0.rBtmGUvGap2TcHTK8mqGyv8gGrkeuddg_pmEvgTSKI0";
 
@@ -3257,12 +3253,6 @@ function normalizePhone(phone){
   if(p.startsWith("00")){
     p = p.slice(2);
   }
-
-  /*
-    0123456789
-    ↓
-    60123456789
-  */
 
   if(p.startsWith("0")){
     p = "60" + p.slice(1);
@@ -3457,26 +3447,14 @@ async function loadInvitationFromSupabase(){
   const slug =
     getSlugFromPath();
 
-  /*
-    Root:
-      /
-
-    kekalkan demo/default editor.
-  */
-
   if(!slug){
     return null;
   }
 
-
-  /*
-    Elak request jika key belum dimasukkan.
-  */
-
   if(
     !SUPABASE_ANON_KEY ||
     SUPABASE_ANON_KEY ===
-      "PASTE_YOUR_SUPABASE_ANON_KEY_HERE"
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVkcHhlZ2V6bmZzbHdvbWd5cnBhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc5OTQzMDAsImV4cCI6MjEwMzU3MDMwMH0.rBtmGUvGap2TcHTK8mqGyv8gGrkeuddg_pmEvgTSKI0"
   ){
 
     console.warn(
@@ -3564,6 +3542,7 @@ async function loadInvitationFromSupabase(){
   }
 
 }
+
 /* =========================================================
    SUPABASE SAVE / UPSERT
 ========================================================= */
@@ -3650,26 +3629,11 @@ function getCurrentInvitationPayload(){
     false;
 
 
-  /*
-    Penting:
-    uploadedImage ialah data URL tempatan.
-
-    Kita TIDAK simpan data URL tersebut ke Supabase.
-    Hanya remoteImage yang sudah berupa URL boleh disimpan.
-  */
-
   const posterUrl =
     safeUrl(
       remoteImage
     ) || null;
 
-
-  /*
-    uploadedMusic pula hanya nama fail tempatan.
-
-    Jadi hanya remoteMusic yang berupa URL
-    boleh disimpan sebagai music_url.
-  */
 
   const musicUrl =
     safeUrl(
@@ -4290,12 +4254,6 @@ function updateImage(){
   );
 
 
-  /*
-    CSS background menggunakan image URL.
-    Untuk dataURL dan URL biasa, kita encode
-    secara selamat sebagai CSS string.
-  */
-
   const escaped =
     image
       .replace(/\\/g,"\\\\")
@@ -4396,11 +4354,6 @@ function updateCountdown(){
 
   }
 
-
-  /*
-    Malaysia UTC+8.
-    Elak browser timezone mengubah kiraan.
-  */
 
   const target =
     new Date(
@@ -4592,10 +4545,6 @@ function updateLocation(){
     url || "#";
 
 
-  /*
-    Kalau tiada URL, jangan buka tab kosong.
-  */
-
   if(url){
 
     $("locationButton")
@@ -4617,7 +4566,7 @@ function updateLocation(){
 
 
 /* =========================================================
-   SCHEDULE EDITOR (TELAH DIBAIKI)
+   SCHEDULE EDITOR
 ========================================================= */
 
 function renderScheduleEditor(){
@@ -4654,7 +4603,6 @@ function renderScheduleEditor(){
       removeButton.textContent = "×";
       removeButton.setAttribute("aria-label", "Buang acara");
 
-      // Kemaskini array schedule dan terus render preview
       timeInput.oninput = (e) => {
         schedule[index].time = e.target.value;
         renderSchedule();
@@ -5241,10 +5189,6 @@ function openCard(){
 }
 
 
-/*
-  Klik
-*/
-
 $("openEnvelope").addEventListener(
   "click",
   openCard
@@ -5256,10 +5200,6 @@ $("openButton").addEventListener(
   openCard
 );
 
-
-/*
-  Keyboard
-*/
 
 $("openEnvelope").addEventListener(
   "keydown",
@@ -5279,10 +5219,6 @@ $("openEnvelope").addEventListener(
   }
 );
 
-
-/*
-  Swipe up pada cover
-*/
 
 let touchStartY = 0;
 
@@ -5604,11 +5540,6 @@ $("mapTypeInput")
   );
 
 
-/*
-  Jangan biarkan link "#" cuba buka
-  tab baru jika URL kosong.
-*/
-
 $("locationButton")
   .addEventListener(
     "click",
@@ -5736,7 +5667,6 @@ $("emojiToggle").addEventListener(
 
 /* =========================================================
    ORDER
-   SUPABASE SAVE → SUCCESS → WHATSAPP
 ========================================================= */
 
 let orderSubmitting = false;
@@ -5745,10 +5675,6 @@ let orderSubmitting = false;
 $("orderButton").addEventListener(
   "click",
   async () => {
-
-    /*
-      Elak user tekan banyak kali.
-    */
 
     if(orderSubmitting){
       return;
@@ -5763,17 +5689,9 @@ $("orderButton").addEventListener(
       true;
 
 
-    /*
-      Simpan teks asal button.
-    */
-
     const originalText =
       button.textContent;
 
-
-    /*
-      Disable sementara.
-    */
 
     button.disabled =
       true;
@@ -5790,13 +5708,6 @@ $("orderButton").addEventListener(
 
     try{
 
-      /*
-        =====================================================
-        STEP 1
-        SAVE SUPABASE
-        =====================================================
-      */
-
       const saved =
         await saveInvitationToSupabase();
 
@@ -5807,25 +5718,11 @@ $("orderButton").addEventListener(
       );
 
 
-      /*
-        =====================================================
-        STEP 2
-        SUPABASE BERJAYA
-        =====================================================
-      */
-
       setSupabaseStatus(
         "Data berjaya disimpan. Membuka WhatsApp...",
         "success"
       );
 
-
-      /*
-        =====================================================
-        STEP 3
-        BINA MESEJ WHATSAPP
-        =====================================================
-      */
 
       const name1 =
         cleanText(
@@ -5944,22 +5841,10 @@ ${rsvp}
 Saya telah buat pilihan melalui Live Editor. 😊`;
 
 
-      /*
-        =====================================================
-        STEP 4
-        BUKA WHATSAPP HANYA SELEPAS SAVE BERJAYA
-        =====================================================
-      */
-
       const url =
         `https://wa.me/${SELLER_WHATSAPP}` +
         `?text=${encodeURIComponent(text)}`;
 
-
-      /*
-        Sedikit delay supaya user sempat nampak
-        status "Data berjaya disimpan".
-      */
 
       window.setTimeout(
         () => {
@@ -5977,12 +5862,6 @@ Saya telah buat pilihan melalui Live Editor. 😊`;
 
     }catch(error){
 
-      /*
-        =====================================================
-        SUPABASE GAGAL
-        =====================================================
-      */
-
       console.error(
         "NUR NONA → Tempahan gagal:",
         error
@@ -5996,11 +5875,6 @@ Saya telah buat pilihan melalui Live Editor. 😊`;
       );
 
 
-      /*
-        PENTING:
-        WhatsApp TIDAK dibuka.
-      */
-
       alert(
         "Tempahan belum dihantar.\n\n" +
         "Data gagal disimpan ke Supabase.\n\n" +
@@ -6012,10 +5886,6 @@ Saya telah buat pilihan melalui Live Editor. 😊`;
 
 
     }finally{
-
-      /*
-        Kembalikan button.
-      */
 
       orderSubmitting =
         false;
@@ -6047,10 +5917,6 @@ function hydrateFromSupabase(data){
     return;
   }
 
-
-  /* =======================================================
-     PENGANTIN
-  ======================================================= */
 
   $("name1Input").value =
     cleanText(
@@ -6099,10 +5965,6 @@ function hydrateFromSupabase(data){
     );
 
 
-  /* =======================================================
-     TARIKH / MASA
-  ======================================================= */
-
   const remoteDate =
     firstValue(
       data,
@@ -6143,10 +6005,6 @@ function hydrateFromSupabase(data){
   }
 
 
-  /* =======================================================
-     TEMA
-  ======================================================= */
-
   const remoteTheme =
     firstValue(
       data,
@@ -6169,10 +6027,6 @@ function hydrateFromSupabase(data){
 
   }
 
-
-  /* =======================================================
-     EMOJI
-  ======================================================= */
 
   const emoji1 =
     firstValue(
@@ -6265,10 +6119,6 @@ function hydrateFromSupabase(data){
     emojiEnabled;
 
 
-  /* =======================================================
-     GAMBAR
-  ======================================================= */
-
   remoteImage =
     cleanText(
       firstValue(
@@ -6301,10 +6151,6 @@ function hydrateFromSupabase(data){
   $("imageToggle").checked =
     showPoster;
 
-
-  /* =======================================================
-     LOKASI
-  ======================================================= */
 
   $("locationNameInput").value =
     cleanText(
@@ -6383,10 +6229,6 @@ function hydrateFromSupabase(data){
     );
 
 
-  /* =======================================================
-     RSVP
-  ======================================================= */
-
   $("rsvpPhoneInput").value =
     cleanText(
       firstValue(
@@ -6400,10 +6242,6 @@ function hydrateFromSupabase(data){
       )
     );
 
-
-  /* =======================================================
-     FAMILY — GROOM
-  ======================================================= */
 
   $("groomParentsInput").value =
     cleanText(
@@ -6466,10 +6304,6 @@ function hydrateFromSupabase(data){
     );
 
 
-  /* =======================================================
-     FAMILY — BRIDE
-  ======================================================= */
-
   $("brideParentsInput").value =
     cleanText(
       firstValue(
@@ -6530,10 +6364,6 @@ function hydrateFromSupabase(data){
       )
     );
 
-
-  /* =======================================================
-     SCHEDULE
-  ======================================================= */
 
   const remoteSchedule =
     firstValue(
@@ -6609,10 +6439,6 @@ function hydrateFromSupabase(data){
   }
 
 
-  /* =======================================================
-     MUSIC
-  ======================================================= */
-
   remoteMusic =
     cleanText(
       firstValue(
@@ -6639,10 +6465,6 @@ function hydrateFromSupabase(data){
       Boolean(remoteMusic)
     );
 
-
-  /*
-    Apply semuanya selepas data masuk.
-  */
 
   applyTheme();
 
@@ -6721,21 +6543,12 @@ function initializeDefaults(){
 
 async function initialize(){
 
-  /*
-    First render editor asal.
-    Jadi Live Editor sentiasa muncul.
-  */
-
   initializeDefaults();
 
 
   const slug =
     getSlugFromPath();
 
-
-  /*
-    Kalau root "/" → demo/default.
-  */
 
   if(!slug){
 
@@ -6747,11 +6560,6 @@ async function initialize(){
 
   }
 
-
-  /*
-    Kalau /adam-hawa, /ali-siti,
-    dan sebagainya → ambil data.
-  */
 
   console.log(
     `NUR NONA: Memuatkan /${slug} ...`
@@ -6794,4 +6602,4 @@ initialize();
 
 </script>
 </body>
-</html> 
+</html>
