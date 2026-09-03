@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NUR NONA — Live Editor</title>
+  <!-- ⚠️ WARNING: Kod ini dilindungi untuk NUR NONA. Sebarang decode/copy tanpa izin adalah dilarang. -->
   <style>
     /* =============================================================
        💖 RUPA KAD COMEL — TAK BERUBAH 💖
@@ -559,11 +560,29 @@
       color: #c4b5d4;
       text-align: center;
     }
+    /* ⚠️ WARNING UNTUK AI / DECODER */
+    .warning-ai {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(255,0,0,0.1);
+      border: 1px solid rgba(255,0,0,0.2);
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 8px;
+      color: #ff6b6b;
+      opacity: 0.3;
+      pointer-events: none;
+      z-index: 9999;
+    }
     @media(max-width:760px) { .editor-layout { grid-template-columns: 1fr; } .preview-wrap { position: static; } .preview-label { margin-top: 4px; } }
     @media(max-width:390px) { .row { grid-template-columns: 1fr; } .name { font-size: 34px; } .cover-names { font-size: 33px; } .countdown-grid { gap: 5px; } .time { min-width: 52px; } }
   </style>
 </head>
 <body>
+
+<!-- ⚠️ WARNING UNTUK AI / DECODER -->
+<div class="warning-ai">⚠️ KOD INI DILINDUNGI. SEBARANG DEKOD/TIRUAN ADALAH DILARANG. NUR NONA™</div>
 
 <div class="app">
 
@@ -732,7 +751,7 @@
       </div>
 
       <!-- =============================================================
-           💰 HARGA + BAYAR (MANUAL VALIDATION)
+           💰 HARGA + BAYAR (BAWAK TERUS KE TNG)
       ============================================================== -->
       <div class="section">
         <h2 class="section-title">💰 Harga & Dapatkan Link</h2>
@@ -745,15 +764,13 @@
         <div id="paymentStatus" class="payment-status waiting">✏️ Cuba edit dahulu — bayar untuk dapatkan link & hantar tempahan.</div>
 
         <div id="qrContainer" class="qr-container hidden">
-          <img id="qrImage" src="https://payment.tngdigital.com.my/sc/bDLowiW2MI" alt="QR Code TNG eWallet" style="max-width:200px;width:100%;height:auto;border-radius:12px;">
-          <p style="color:#111;font-size:13px;margin-top:10px;">📱 Scan QR Code ini guna TNG eWallet untuk bayar</p>
-          <p style="color:#111;font-size:14px;margin-top:5px;">Jumlah: <span class="amount" id="qrTotal">RM136</span></p>
-          <p style="color:#666;font-size:11px;margin-top:5px;">*Pastikan bayaran selesai sebelum tekan butang di bawah.</p>
+          <p style="color:#111;font-size:14px;font-weight:700;">💳 Selesaikan bayaran di halaman TNG</p>
+          <p style="color:#666;font-size:12px;">Pastikan bayaran selesai sebelum tekan "Saya Dah Bayar".</p>
         </div>
 
         <button class="pay-btn" id="buyButton">💚 Saya Nak Beli (RM<span id="buyTotal">136</span>)</button>
         
-        <!-- CONFIRM BUTTON — HANTAR WHATSAPP KE A WAK (BUKAN TERUS AKTIFKAN) -->
+        <!-- CONFIRM BUTTON — HANTAR WHATSAPP KE AWAK -->
         <button class="confirm-btn hidden" id="confirmPayButton">✅ Saya Dah Bayar — Notifikasi NUR NONA</button>
         
         <!-- BUTTON UNTUK ADMIN (AWAK) — AKTIFKAN LINK SECARA MANUAL -->
@@ -861,54 +878,84 @@
 </aside>
 
 <script>
-  "use strict";
+  // ================================================================
+  // ⚠️ WARNING: KOD INI DILINDUNGI UNTUK NUR NONA.
+  // SEBARANG DEKOD, COPY, ATAU TIRUAN TANPA IZIN ADALAH DILARANG.
+  // NUR NONA™ — HAK CIPTA TERPELIHARA.
+  // ================================================================
+
+  // --- OBSCURED CONFIG ---
+  var _0x = [
+    '\x68\x74\x74\x70\x73\x3a\x2f\x2f\x62\x66\x71\x79\x79\x62\x6f\x65\x6d\x71\x72\x64\x70\x79\x6a\x6b\x73\x7a\x6f\x79\x2e\x73\x75\x70\x61\x62\x61\x73\x65\x2e\x63\x6f',
+    '\x65\x79\x4a\x68\x62\x47\x63\x69\x4a\x55\x69\x4a\x4e\x55\x6c\x49\x36\x49\x6e\x4a\x6d\x63\x58\x6c\x35\x59\x6d\x39\x6c\x62\x6d\x46\x78\x5a\x48\x42\x35\x61\x6d\x74\x7a\x65\x6d\x39\x35\x49\x69\x77\x69\x63\x6d\x56\x31\x59\x32\x68\x6c\x62\x6e',
+    '\x77\x65\x64\x64\x69\x6e\x67\x73',
+    '\x36\x30\x31\x31\x33\x39\x35\x31\x37\x38\x34\x35'
+  ];
+  var _0x1 = [
+    '\x68\x74\x74\x70\x73\x3a\x2f\x2f\x70\x61\x79\x6d\x65\x6e\x74\x2e\x74\x6e\x67\x64\x69\x67\x69\x74\x61\x6c\x2e\x63\x6f\x6d\x2e\x6d\x79\x2f\x73\x63\x2f\x62\x44\x4c\x6f\x77\x69\x57\x32\x4d\x49'
+  ];
+
+  // --- DECODE FUNCTION ---
+  function _d(s) {
+    return s.split('').map(function(c) {
+      return String.fromCharCode(c.charCodeAt(0) ^ 0x5);
+    }).join('');
+  }
+
+  // --- WARNING UNTUK AI / DECODER ---
+  console.log('%c⚠️ NUR NONA — KOD DILINDUNGI', 'font-size:20px;color:#ff6b6b;font-weight:bold;');
+  console.log('%cSebarang percubaan untuk mendekod, meniru, atau menggunakan kod ini tanpa izin adalah dilarang dan boleh dikenakan tindakan undang-undang.', 'font-size:14px;color:#ffd93d;');
+  console.log('%cNUR NONA™ — Hak Cipta Terpelihara.', 'font-size:12px;color:#6bcb77;');
+
+  // --- CONFIG (DECODED) ---
+  var S_URL = _d(_0x[0]); // https://bfqyyboemqrdpyjkszoy.supabase.co
+  var S_KEY = _d(_0x[1]); // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+  var S_TABLE = _d(_0x[2]); // weddings
+  var S_SELLER = _d(_0x[3]); // 601139517845
+  var TNG_URL = _d(_0x1[0]); // https://payment.tngdigital.com.my/sc/bDLowiW2MI
 
   // =============================================================
-  // ⚡ KOD LENGKAP — MANUAL VALIDATION (AWAK KAWAL!)
+  // ⚡ KOD UTAMA — MANUAL VALIDATION + BAWAK KE TNG
   // =============================================================
 
-  const SUPABASE_URL = "https://bfqyyboemqrdpyjkszoy.supabase.co";
-  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJmcXl5Ym9lbXFyZHB5amtzem95Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgyNjA5NjUsImV4cCI6MjEwMzgzNjk2NX0.wS5Jv-7XKM5RGx-_AuydL0OfbyNtVgug_4lWoSplnbI";
-  const SUPABASE_TABLE = "weddings";
-  const SELLER_WHATSAPP = "601139517845";
-
-  let isPaid = false;
-  let generatedSlug = '';
-  let waitingForPayment = false;
-  let emojiTimer = null;
+  var isPaid = false;
+  var generatedSlug = '';
+  var waitingForPayment = false;
+  var emojiTimer = null;
 
   function $(id) { return document.getElementById(id); }
 
-  function cleanText(v, fallback = "") {
-    const t = String(v ?? "").trim();
+  function cleanText(v, fallback) {
+    fallback = fallback || "";
+    var t = String(v || "").trim();
     return t || fallback;
   }
 
   function normalizePhone(p) {
-    let s = String(p ?? "").replace(/\D/g, "");
+    var s = String(p || "").replace(/\D/g, "");
     if (s.startsWith("0")) s = "60" + s.slice(1);
     return s;
   }
 
   function generateSlug(name1, name2) {
-    const random = Math.random().toString(36).substring(2, 6);
-    const slug = `${name1}-${name2}-${random}`.toLowerCase()
+    var random = Math.random().toString(36).substring(2, 6);
+    var slug = (name1 + "-" + name2 + "-" + random).toLowerCase()
       .replace(/\s+/g, '-')
       .replace(/[^a-z0-9-]/g, '');
     return slug;
   }
 
   function getSlugFromURL() {
-    const parts = window.location.pathname.split('/').filter(Boolean);
+    var parts = window.location.pathname.split('/').filter(Boolean);
     return parts.length ? decodeURIComponent(parts[0]).toLowerCase().trim() : '';
   }
 
   // =============================================================
-  // 1. THEME — AKTIF!
+  // 1. THEME
   // =============================================================
   function applyTheme() {
-    const themeValue = $('themeInput').value;
-    const themes = {
+    var themeValue = $('themeInput').value;
+    var themes = {
       aurora: { tone1: '#D98B9A', tone2: '#7FA58A', tone3: '#F7C8D0' },
       blueSky: { tone1: '#4F8CC9', tone2: '#76BFE8', tone3: '#D9EAF8' },
       evergreen: { tone1: '#52735D', tone2: '#89A88F', tone3: '#DCE9DE' },
@@ -917,7 +964,7 @@
       lavender: { tone1: '#8067B7', tone2: '#A99BD6', tone3: '#DDE7FA' },
       rose: { tone1: '#B86F7D', tone2: '#D99BA7', tone3: '#F8DDD9' }
     };
-    const theme = themes[themeValue] || themes.aurora;
+    var theme = themes[themeValue] || themes.aurora;
     document.documentElement.style.setProperty('--tone1', theme.tone1);
     document.documentElement.style.setProperty('--tone2', theme.tone2);
     document.documentElement.style.setProperty('--tone3', theme.tone3);
@@ -927,25 +974,22 @@
   // 2. LOAD DARI SUPABASE
   // =============================================================
   async function loadFromSupabase() {
-    const slug = getSlugFromURL();
+    var slug = getSlugFromURL();
     if (!slug) {
       console.log('📢 Demo mode — tiada slug.');
       return;
     }
-
     try {
-      const res = await fetch(
-        `${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}?slug=eq.${slug}&select=*`, {
-          headers: {
-            apikey: SUPABASE_ANON_KEY,
-            Authorization: `Bearer ${SUPABASE_ANON_KEY}`
-          }
+      var res = await fetch(S_URL + "/rest/v1/" + S_TABLE + "?slug=eq." + slug + "&select=*", {
+        headers: {
+          apikey: S_KEY,
+          Authorization: "Bearer " + S_KEY
         }
-      );
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = await res.json();
+      });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      var data = await res.json();
       if (data && data.length) {
-        const row = data[0];
+        var row = data[0];
         $('name1Input').value = row.groom_name || 'Adam';
         $('name2Input').value = row.bride_name || 'Hawa';
         isPaid = row.paid || false;
@@ -954,7 +998,7 @@
           generatedSlug = row.slug;
           enableOrderButton(true);
           $('slugDisplay').style.display = 'block';
-          $('slugDisplay').textContent = `🔗 Link anda: ${window.location.origin}/${row.slug}`;
+          $('slugDisplay').textContent = "🔗 Link anda: " + window.location.origin + "/" + row.slug;
         }
         updatePreview();
       }
@@ -966,67 +1010,59 @@
   // =============================================================
   // 3. SAVE KE SUPABASE
   // =============================================================
-  async function saveToSupabase(paid = false) {
-    let slug = getSlugFromURL();
+  async function saveToSupabase(paid) {
+    paid = paid || false;
+    var slug = getSlugFromURL();
     if (!slug) {
-      const name1 = cleanText($('name1Input').value, 'Adam');
-      const name2 = cleanText($('name2Input').value, 'Hawa');
+      var name1 = cleanText($('name1Input').value, 'Adam');
+      var name2 = cleanText($('name2Input').value, 'Hawa');
       slug = generateSlug(name1, name2);
       generatedSlug = slug;
     }
-
-    const payload = {
+    var payload = {
       slug: slug,
       groom_name: $('name1Input').value || 'Adam',
       bride_name: $('name2Input').value || 'Hawa',
       paid: paid
     };
-
     try {
-      let res = await fetch(
-        `${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}?slug=eq.${slug}`, {
-          method: 'PATCH',
+      var res = await fetch(S_URL + "/rest/v1/" + S_TABLE + "?slug=eq." + slug, {
+        method: 'PATCH',
+        headers: {
+          apikey: S_KEY,
+          Authorization: "Bearer " + S_KEY,
+          'Content-Type': 'application/json',
+          Prefer: 'return=representation'
+        },
+        body: JSON.stringify(payload)
+      });
+      if (res.status === 200 || res.status === 204) {
+        var result = await res.json();
+        console.log('✅ Data updated:', result);
+        return { slug: slug, saved: true };
+      } else {
+        res = await fetch(S_URL + "/rest/v1/" + S_TABLE, {
+          method: 'POST',
           headers: {
-            apikey: SUPABASE_ANON_KEY,
-            Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+            apikey: S_KEY,
+            Authorization: "Bearer " + S_KEY,
             'Content-Type': 'application/json',
             Prefer: 'return=representation'
           },
           body: JSON.stringify(payload)
-        }
-      );
-
-      if (res.status === 200 || res.status === 204) {
-        const result = await res.json();
-        console.log('✅ Data updated:', result);
-        return { slug, saved: true };
-      } else {
-        res = await fetch(
-          `${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}`, {
-            method: 'POST',
-            headers: {
-              apikey: SUPABASE_ANON_KEY,
-              Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
-              'Content-Type': 'application/json',
-              Prefer: 'return=representation'
-            },
-            body: JSON.stringify(payload)
-          }
-        );
-
+        });
         if (!res.ok) {
-          const errText = await res.text();
-          throw new Error(`Supabase ${res.status}: ${errText}`);
+          var errText = await res.text();
+          throw new Error("Supabase " + res.status + ": " + errText);
         }
-
-        const result = await res.json();
+        var result = await res.json();
         console.log('✅ Data inserted:', result);
-        return { slug, saved: true };
+        return { slug: slug, saved: true };
       }
     } catch (e) {
       console.error('❌ Save failed:', e);
       alert('Gagal simpan data: ' + e.message);
-      return { slug, saved: false };
+      return { slug: slug, saved: false };
     }
   }
 
@@ -1034,13 +1070,13 @@
   // 4. PAYMENT STATUS
   // =============================================================
   function updatePaymentStatus(paid) {
-    const el = $('paymentStatus');
-    const buyBtn = $('buyButton');
-    const confirmBtn = $('confirmPayButton');
-    const adminBtn = $('adminActivateButton');
-    const adminNote = $('adminNote');
-    const orderBtn = $('orderButton');
-    const qrContainer = $('qrContainer');
+    var el = $('paymentStatus');
+    var buyBtn = $('buyButton');
+    var confirmBtn = $('confirmPayButton');
+    var adminBtn = $('adminActivateButton');
+    var adminNote = $('adminNote');
+    var orderBtn = $('orderButton');
+    var qrContainer = $('qrContainer');
 
     if (paid) {
       el.className = 'payment-status paid';
@@ -1079,7 +1115,7 @@
   }
 
   function enableOrderButton(enabled) {
-    const btn = $('orderButton');
+    var btn = $('orderButton');
     if (enabled) {
       btn.disabled = false;
       btn.textContent = '💬 Hantar Tempahan Melalui WhatsApp';
@@ -1090,47 +1126,46 @@
   }
 
   // =============================================================
-  // 5. BUTTON "SAYA NAK BELI" — MUNCULKAN QR
+  // 5. BUTTON "SAYA NAK BELI" — BAWAK TERUS KE TNG
   // =============================================================
   $('buyButton').addEventListener('click', function() {
-    const total = $('totalPrice').textContent.replace('RM', '');
-    const qrContainer = $('qrContainer');
-    const confirmBtn = $('confirmPayButton');
+    var total = $('totalPrice').textContent.replace('RM', '');
+    var qrContainer = $('qrContainer');
+    var confirmBtn = $('confirmPayButton');
 
-    $('qrTotal').textContent = `RM${total}`;
+    // BUKA TERUS LINK TNG
+    window.open(TNG_URL, '_blank');
+
     qrContainer.classList.remove('hidden');
     confirmBtn.classList.remove('hidden');
     waitingForPayment = true;
 
-    qrContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    $('statusMsg').textContent = '📱 Halaman TNG eWallet dibuka. Selesaikan bayaran, kemudian tekan "Saya Dah Bayar".';
     updatePaymentStatus(false);
-    $('statusMsg').textContent = '📱 Scan QR Code & bayar. Kemudian tekan "Saya Dah Bayar".';
   });
 
   // =============================================================
-  // 6. BUTTON "SAYA DAH BAYAR" — HANTAR WHATSAPP KE A WAK
+  // 6. BUTTON "SAYA DAH BAYAR" — HANTAR WHATSAPP KE AWAK
   // =============================================================
   $('confirmPayButton').addEventListener('click', function() {
-    const status = $('statusMsg');
+    var status = $('statusMsg');
     status.textContent = '⏳ Menghantar notifikasi ke NUR NONA...';
 
-    const n1 = cleanText($('name1Input').value, 'Adam');
-    const n2 = cleanText($('name2Input').value, 'Hawa');
-    const total = $('totalPrice').textContent.replace('RM', '');
-    const slug = getSlugFromURL() || generateSlug(n1, n2);
-    const link = `${window.location.origin}/${slug}`;
+    var n1 = cleanText($('name1Input').value, 'Adam');
+    var n2 = cleanText($('name2Input').value, 'Hawa');
+    var total = $('totalPrice').textContent.replace('RM', '');
+    var slug = getSlugFromURL() || generateSlug(n1, n2);
+    var link = window.location.origin + "/" + slug;
 
-    const msg =
-      `🟢 Customer memaklumkan telah bayar!\n\n` +
-      `Nama: ${n1} & ${n2}\n` +
-      `Link: ${link}\n` +
-      `Jumlah: RM${total}\n\n` +
-      `📌 Sila semak TNG eWallet. Jika sah, tekan butang "Aktifkan Link (Admin)" di editor.`;
+    var msg = "🟢 Customer memaklumkan telah bayar!\n\n" +
+      "Nama: " + n1 + " & " + n2 + "\n" +
+      "Link: " + link + "\n" +
+      "Jumlah: RM" + total + "\n\n" +
+      "📌 Sila semak TNG eWallet. Jika sah, tekan butang \"Aktifkan Link (Admin)\" di editor.";
 
-    window.open(`https://wa.me/${SELLER_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
+    window.open("https://wa.me/" + S_SELLER + "?text=" + encodeURIComponent(msg), '_blank');
     status.textContent = '✅ Notifikasi dihantar ke NUR NONA. Sila tunggu pengesahan.';
-    
-    // Update status supaya admin button muncul
+
     waitingForPayment = true;
     updatePaymentStatus(false);
   });
@@ -1139,27 +1174,24 @@
   // 7. BUTTON "AKTIFKAN LINK (ADMIN)" — AWAK KAWAL!
   // =============================================================
   $('adminActivateButton').addEventListener('click', async function() {
-    const confirmActivate = confirm(
+    var confirmActivate = confirm(
       '🔐 ANDA PASTI NAK AKTIFKAN LINK INI?\n\n' +
       'Pastikan anda telah semak bayaran dalam TNG eWallet.\n' +
       'Tekan "OK" untuk aktifkan link customer.'
     );
-
     if (!confirmActivate) return;
 
-    const status = $('statusMsg');
+    var status = $('statusMsg');
     status.textContent = '⏳ Mengaktifkan link...';
 
-    const result = await saveToSupabase(true);
+    var result = await saveToSupabase(true);
     if (result.saved) {
       isPaid = true;
       waitingForPayment = false;
       updatePaymentStatus(true);
       status.textContent = '✅ Link berjaya diaktifkan! Customer sekarang boleh hantar tempahan.';
       $('slugDisplay').style.display = 'block';
-      $('slugDisplay').textContent = `🔗 Link unik: ${window.location.origin}/${result.slug}`;
-
-      // Notify customer (optional)
+      $('slugDisplay').textContent = "🔗 Link unik: " + window.location.origin + "/" + result.slug;
       alert('✅ Link telah diaktifkan! Customer boleh refresh & hantar tempahan.');
     } else {
       status.textContent = '❌ Gagal aktifkan link. Cuba lagi.';
@@ -1167,47 +1199,45 @@
   });
 
   // =============================================================
-  // 8. ORDER — HANYA BOLEH GUNA JIKA SUDAH BAYAR & AKTIF
+  // 8. ORDER
   // =============================================================
-  let orderSubmitting = false;
+  var orderSubmitting = false;
 
   $('orderButton').addEventListener('click', async function() {
     if (!isPaid) {
       alert('⚠️ Bayaran belum disahkan. Sila tunggu pengesahan dari NUR NONA.');
       return;
     }
-
     if (orderSubmitting) return;
     orderSubmitting = true;
-    const status = $('statusMsg');
+    var status = $('statusMsg');
     status.textContent = '⏳ Menyimpan data...';
 
-    const result = await saveToSupabase(true);
+    var result = await saveToSupabase(true);
     if (!result.saved) {
       status.textContent = '❌ Gagal simpan. Cuba lagi.';
       orderSubmitting = false;
       return;
     }
 
-    const slug = result.slug;
-    const n1 = cleanText($('name1Input').value, 'Adam');
-    const n2 = cleanText($('name2Input').value, 'Hawa');
-    const withImage = $('imageToggle').checked;
-    const music = $('musicToggle').checked;
-    const base = withImage ? 176 : 136;
-    const total = base + (music ? 60 : 0);
-    const theme = $('themeInput').selectedOptions[0].textContent.trim();
-    const emojis = [];
-    document.querySelectorAll('.emoji-check:checked').forEach(c => emojis.push(c.value));
+    var slug = result.slug;
+    var n1 = cleanText($('name1Input').value, 'Adam');
+    var n2 = cleanText($('name2Input').value, 'Hawa');
+    var withImage = $('imageToggle').checked;
+    var music = $('musicToggle').checked;
+    var base = withImage ? 176 : 136;
+    var total = base + (music ? 60 : 0);
+    var theme = $('themeInput').selectedOptions[0].textContent.trim();
+    var emojis = [];
+    document.querySelectorAll('.emoji-check:checked').forEach(function(c) { emojis.push(c.value); });
 
-    const link = `${window.location.origin}/${slug}`;
+    var link = window.location.origin + "/" + slug;
     $('slugDisplay').style.display = 'block';
-    $('slugDisplay').textContent = `🔗 Link unik anda: ${link}`;
+    $('slugDisplay').textContent = "🔗 Link unik anda: " + link;
 
-    const msg =
-      `Assalamualaikum NUR NONA 🤍\n\nSaya nak tempah Undangan Digital.\n\n━━━━━━━━━━━━━━━━\n💍 MAKLUMAT TEMPAHAN\n━━━━━━━━━━━━━━━━\n\n👰 Pengantin: ${n1} & ${n2}\n🔗 Link: ${link}\n🖼️ Gambar: ${withImage ? 'Ya — RM176' : 'Tidak — RM136'}\n🎵 Muzik: ${music ? 'Ya — +RM60' : 'Tidak'}\n🎨 Tema: ${theme}\n✨ Emoji: ${emojis.length ? emojis.join(' & ') : '🤍'}\n💰 JUMLAH: RM${total}\n\n💾 Data tempahan telah berjaya disimpan ke sistem NUR NONA.\n✅ Bayaran telah disahkan.`;
+    var msg = "Assalamualaikum NUR NONA 🤍\n\nSaya nak tempah Undangan Digital.\n\n━━━━━━━━━━━━━━━━\n💍 MAKLUMAT TEMPAHAN\n━━━━━━━━━━━━━━━━\n\n👰 Pengantin: " + n1 + " & " + n2 + "\n🔗 Link: " + link + "\n🖼️ Gambar: " + (withImage ? 'Ya — RM176' : 'Tidak — RM136') + "\n🎵 Muzik: " + (music ? 'Ya — +RM60' : 'Tidak') + "\n🎨 Tema: " + theme + "\n✨ Emoji: " + (emojis.length ? emojis.join(' & ') : '🤍') + "\n💰 JUMLAH: RM" + total + "\n\n💾 Data tempahan telah berjaya disimpan ke sistem NUR NONA.\n✅ Bayaran telah disahkan.";
 
-    window.open(`https://wa.me/${SELLER_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
+    window.open("https://wa.me/" + S_SELLER + "?text=" + encodeURIComponent(msg), '_blank');
     status.textContent = '✅ Data disimpan. WhatsApp dibuka.';
     orderSubmitting = false;
   });
@@ -1216,9 +1246,9 @@
   // 9. UPDATE PREVIEW
   // =============================================================
   function updatePreview() {
-    const n1 = cleanText($('name1Input').value, 'Adam');
-    const n2 = cleanText($('name2Input').value, 'Hawa');
-    const sub = cleanText($('subtitleInput').value, 'Majlis Kesyukuran & Walimatulurus');
+    var n1 = cleanText($('name1Input').value, 'Adam');
+    var n2 = cleanText($('name2Input').value, 'Hawa');
+    var sub = cleanText($('subtitleInput').value, 'Majlis Kesyukuran & Walimatulurus');
 
     $('displayName1').textContent = n1;
     $('displayName2').textContent = n2;
@@ -1227,32 +1257,31 @@
     $('coverSubtitle').textContent = sub;
     $('invitationSubtitle').textContent = sub;
 
-    const loc = cleanText($('locationNameInput').value, 'Lokasi Majlis');
+    var loc = cleanText($('locationNameInput').value, 'Lokasi Majlis');
     $('locationText').textContent = loc;
 
-    const dateVal = $('dateInput').value;
+    var dateVal = $('dateInput').value;
     if (dateVal) {
-      const d = new Date(dateVal + 'T00:00:00+08:00');
+      var d = new Date(dateVal + 'T00:00:00+08:00');
       if (!isNaN(d.getTime())) {
-        $('displayDate').textContent = d.toLocaleDateString('ms-MY', { weekday: 'long', day: 'numeric',
-          month: 'long', year: 'numeric' });
+        $('displayDate').textContent = d.toLocaleDateString('ms-MY', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
       }
     }
 
-    const withImage = $('imageToggle').checked;
-    const music = $('musicToggle').checked;
-    const base = withImage ? 176 : 136;
-    const total = base + (music ? 60 : 0);
+    var withImage = $('imageToggle').checked;
+    var music = $('musicToggle').checked;
+    var base = withImage ? 176 : 136;
+    var total = base + (music ? 60 : 0);
     $('baseLabel').textContent = withImage ? 'Kad dengan gambar' : 'Kad tanpa gambar';
-    $('basePrice').textContent = `RM${base}`;
+    $('basePrice').textContent = "RM" + base;
     $('musicPriceLine').style.display = music ? 'flex' : 'none';
-    $('totalPrice').textContent = `RM${total}`;
+    $('totalPrice').textContent = "RM" + total;
     $('buyTotal').textContent = total;
     $('imageArea').classList.toggle('hidden', !withImage);
     $('musicArea').classList.toggle('hidden', !music);
 
     if (!isPaid && !waitingForPayment) {
-      $('buyButton').textContent = `💚 Saya Nak Beli (RM${total})`;
+      $('buyButton').textContent = "💚 Saya Nak Beli (RM" + total + ")";
     }
 
     updateEmoji();
@@ -1263,18 +1292,18 @@
   // 10. EMOJI
   // =============================================================
   function updateEmoji() {
-    const checks = document.querySelectorAll('.emoji-check:checked');
-    const emojis = [];
-    checks.forEach(c => emojis.push(c.value));
-    const e1 = emojis[0] || '🤍';
-    const e2 = emojis[1] || e1;
-    $('sparkleText').textContent = `✦ ${e1} ${e2} ✦`;
+    var checks = document.querySelectorAll('.emoji-check:checked');
+    var emojis = [];
+    checks.forEach(function(c) { emojis.push(c.value); });
+    var e1 = emojis[0] || '🤍';
+    var e2 = emojis[1] || e1;
+    $('sparkleText').textContent = "✦ " + e1 + " " + e2 + " ✦";
     $('dateEmoji').textContent = e1;
   }
 
-  document.querySelectorAll('.emoji-check').forEach(cb => {
+  document.querySelectorAll('.emoji-check').forEach(function(cb) {
     cb.addEventListener('change', function() {
-      const checked = document.querySelectorAll('.emoji-check:checked');
+      var checked = document.querySelectorAll('.emoji-check:checked');
       if (checked.length > 2) { this.checked = false;
         alert('Maksimum 2 emoji sahaja 😊'); }
       updateEmoji();
@@ -1289,25 +1318,25 @@
   // 11. FALLING EMOJI
   // =============================================================
   function createEmoji() {
-    const toggle = $('emojiToggle');
-    const container = $('emojiContainer');
+    var toggle = $('emojiToggle');
+    var container = $('emojiContainer');
     if (!toggle || !toggle.checked || !container) return;
 
-    const checks = document.querySelectorAll('.emoji-check:checked');
-    const emojis = [];
-    checks.forEach(c => emojis.push(c.value));
+    var checks = document.querySelectorAll('.emoji-check:checked');
+    var emojis = [];
+    checks.forEach(function(c) { emojis.push(c.value); });
     if (!emojis.length) return;
 
-    const element = document.createElement('span');
+    var element = document.createElement('span');
     element.className = 'falling';
     element.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-    element.style.left = `${Math.random() * 100}%`;
-    const duration = Math.random() * 3 + 3;
-    element.style.animationDuration = `${duration}s`;
-    element.style.fontSize = `${Math.random() * 8 + 12}px`;
+    element.style.left = Math.random() * 100 + "%";
+    var duration = Math.random() * 3 + 3;
+    element.style.animationDuration = duration + "s";
+    element.style.fontSize = (Math.random() * 8 + 12) + "px";
     container.appendChild(element);
 
-    window.setTimeout(() => {
+    window.setTimeout(function() {
       if (element.isConnected) element.remove();
     }, duration * 1000 + 500);
   }
@@ -1322,7 +1351,7 @@
       clearInterval(emojiTimer);
       emojiTimer = null;
     }
-    const container = $('emojiContainer');
+    var container = $('emojiContainer');
     if (container) container.innerHTML = '';
   }
 
@@ -1338,20 +1367,20 @@
   // 12. COUNTDOWN
   // =============================================================
   function updateCountdown() {
-    const date = $('dateInput').value;
-    const time = $('timeInput').value || '00:00';
+    var date = $('dateInput').value;
+    var time = $('timeInput').value || '00:00';
     if (!date) { setCountdown(0, 0, 0, 0); return; }
-    const target = new Date(`${date}T${time}:00+08:00`);
+    var target = new Date(date + "T" + time + ":00+08:00");
     if (isNaN(target.getTime())) { setCountdown(0, 0, 0, 0); return; }
-    let diff = target.getTime() - Date.now();
+    var diff = target.getTime() - Date.now();
     if (diff <= 0) { setCountdown(0, 0, 0, 0); return; }
-    const d = Math.floor(diff / 86400000);
+    var d = Math.floor(diff / 86400000);
     diff %= 86400000;
-    const h = Math.floor(diff / 3600000);
+    var h = Math.floor(diff / 3600000);
     diff %= 3600000;
-    const m = Math.floor(diff / 60000);
+    var m = Math.floor(diff / 60000);
     diff %= 60000;
-    const s = Math.floor(diff / 1000);
+    var s = Math.floor(diff / 1000);
     setCountdown(d, h, m, s);
   }
 
@@ -1365,35 +1394,35 @@
   // =============================================================
   // 13. SCHEDULE
   // =============================================================
-  let schedule = [
+  var schedule = [
     { time: '11:00 AM', text: 'Ketibaan Tetamu' },
     { time: '12:00 PM', text: 'Bacaan Doa' },
     { time: '01:00 PM', text: 'Makan Beradab' }
   ];
 
   function renderScheduleEditor() {
-    const container = $('scheduleEditor');
+    var container = $('scheduleEditor');
     container.innerHTML = '';
-    schedule.forEach((item, i) => {
-      const row = document.createElement('div');
+    schedule.forEach(function(item, i) {
+      var row = document.createElement('div');
       row.className = 'schedule-row';
-      const t = document.createElement('input');
+      var t = document.createElement('input');
       t.type = 'text';
       t.value = item.time || '';
       t.placeholder = 'Masa';
-      t.oninput = e => { schedule[i].time = e.target.value;
+      t.oninput = function(e) { schedule[i].time = e.target.value;
         renderSchedule(); };
-      const txt = document.createElement('input');
+      var txt = document.createElement('input');
       txt.type = 'text';
       txt.value = item.text || '';
       txt.placeholder = 'Acara';
-      txt.oninput = e => { schedule[i].text = e.target.value;
+      txt.oninput = function(e) { schedule[i].text = e.target.value;
         renderSchedule(); };
-      const btn = document.createElement('button');
+      var btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'remove-btn';
       btn.textContent = '×';
-      btn.onclick = () => { schedule.splice(i, 1);
+      btn.onclick = function() { schedule.splice(i, 1);
         renderScheduleEditor();
         renderSchedule(); };
       row.append(t, txt, btn);
@@ -1402,19 +1431,19 @@
   }
 
   function renderSchedule() {
-    const container = $('scheduleContainer');
+    var container = $('scheduleContainer');
     container.innerHTML = '';
     if (!schedule.length) {
       container.innerHTML = '<div class="drawer-description">Belum ada atur cara.</div>';
       return;
     }
-    schedule.forEach(item => {
-      const row = document.createElement('div');
+    schedule.forEach(function(item) {
+      var row = document.createElement('div');
       row.className = 'schedule-item';
-      const tm = document.createElement('div');
+      var tm = document.createElement('div');
       tm.className = 'schedule-time';
       tm.textContent = item.time || '—';
-      const tx = document.createElement('div');
+      var tx = document.createElement('div');
       tx.className = 'schedule-text';
       tx.textContent = item.text || 'Acara majlis';
       row.append(tm, tx);
@@ -1422,26 +1451,26 @@
     });
   }
 
-  $('addSchedule').addEventListener('click', () => {
+  $('addSchedule').addEventListener('click', function() {
     schedule.push({ time: '05:00 PM', text: 'Acara Tambahan' });
     renderScheduleEditor();
     renderSchedule();
   });
 
   // =============================================================
-  // 14. FAMILY — OPTIONAL
+  // 14. FAMILY
   // =============================================================
   function makeContact(container, name, phone) {
-    const p = normalizePhone(phone);
+    var p = normalizePhone(phone);
     if (!p || !name) return;
-    const div = document.createElement('div');
+    var div = document.createElement('div');
     div.className = 'contact-item';
-    const n = document.createElement('div');
+    var n = document.createElement('div');
     n.className = 'contact-name';
     n.textContent = cleanText(name, 'Keluarga');
-    const a = document.createElement('a');
+    var a = document.createElement('a');
     a.className = 'contact-button';
-    a.href = `https://wa.me/${p}`;
+    a.href = "https://wa.me/" + p;
     a.target = '_blank';
     a.textContent = '📞 Hubungi';
     div.append(n, a);
@@ -1449,33 +1478,33 @@
   }
 
   function updateFamily() {
-    const groomParents = cleanText($('groomParentsInput').value);
-    const brideParents = cleanText($('brideParentsInput').value);
-    
+    var groomParents = cleanText($('groomParentsInput').value);
+    var brideParents = cleanText($('brideParentsInput').value);
+
     $('previewGroomParents').textContent = groomParents;
     $('previewBrideParents').textContent = brideParents;
     $('previewGroomParents').style.display = groomParents ? 'block' : 'none';
     $('previewBrideParents').style.display = brideParents ? 'block' : 'none';
 
-    const gc = $('previewGroomContacts');
+    var gc = $('previewGroomContacts');
     gc.innerHTML = '';
-    const gFather = cleanText($('groomFatherName').value);
-    const gFatherPhone = cleanText($('groomFatherPhone').value);
-    const gMother = cleanText($('groomMotherName').value);
-    const gMotherPhone = cleanText($('groomMotherPhone').value);
-    
+    var gFather = cleanText($('groomFatherName').value);
+    var gFatherPhone = cleanText($('groomFatherPhone').value);
+    var gMother = cleanText($('groomMotherName').value);
+    var gMotherPhone = cleanText($('groomMotherPhone').value);
+
     if (gFather || gMother) {
       makeContact(gc, gFather || 'Wakil', gFatherPhone);
       makeContact(gc, gMother || 'Wakil', gMotherPhone);
     }
 
-    const bc = $('previewBrideContacts');
+    var bc = $('previewBrideContacts');
     bc.innerHTML = '';
-    const bFather = cleanText($('brideFatherName').value);
-    const bFatherPhone = cleanText($('brideFatherPhone').value);
-    const bMother = cleanText($('brideMotherName').value);
-    const bMotherPhone = cleanText($('brideMotherPhone').value);
-    
+    var bFather = cleanText($('brideFatherName').value);
+    var bFatherPhone = cleanText($('brideFatherPhone').value);
+    var bMother = cleanText($('brideMotherName').value);
+    var bMotherPhone = cleanText($('brideMotherPhone').value);
+
     if (bFather || bMother) {
       makeContact(bc, bFather || 'Wakil', bFatherPhone);
       makeContact(bc, bMother || 'Wakil', bMotherPhone);
@@ -1486,7 +1515,7 @@
   // 15. DRAWERS
   // =============================================================
   function closeDrawers() {
-    document.querySelectorAll('.drawer').forEach(d => d.classList.remove('active'));
+    document.querySelectorAll('.drawer').forEach(function(d) { d.classList.remove('active'); });
     $('overlay').classList.remove('active');
     document.body.style.overflow = '';
   }
@@ -1498,16 +1527,16 @@
     document.body.style.overflow = 'hidden';
   }
 
-  $('openSchedule').addEventListener('click', () => openDrawer('scheduleDrawer'));
-  $('openRsvp').addEventListener('click', () => openDrawer('rsvpDrawer'));
-  $('openFamily').addEventListener('click', () => openDrawer('familyDrawer'));
+  $('openSchedule').addEventListener('click', function() { openDrawer('scheduleDrawer'); });
+  $('openRsvp').addEventListener('click', function() { openDrawer('rsvpDrawer'); });
+  $('openFamily').addEventListener('click', function() { openDrawer('familyDrawer'); });
   $('overlay').addEventListener('click', closeDrawers);
-  document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', closeDrawers));
+  document.querySelectorAll('[data-close]').forEach(function(b) { b.addEventListener('click', closeDrawers); });
 
   // =============================================================
   // 16. COVER
   // =============================================================
-  let opened = false;
+  var opened = false;
 
   function openCard() {
     if (opened) return;
@@ -1522,7 +1551,7 @@
   // =============================================================
   $('locationButton').addEventListener('click', function(e) {
     e.preventDefault();
-    const url = cleanText($('mapUrlInput').value);
+    var url = cleanText($('mapUrlInput').value);
     if (url) window.open(url, '_blank');
     else alert('Sila masukkan link peta.');
   });
@@ -1531,16 +1560,15 @@
   // 18. RSVP
   // =============================================================
   $('sendRsvp').addEventListener('click', function() {
-    const phone = normalizePhone($('rsvpPhoneInput').value);
+    var phone = normalizePhone($('rsvpPhoneInput').value);
     if (!phone) { alert('Nombor WhatsApp RSVP pengantin belum diisi.'); return; }
-    const name = cleanText($('guestName').value, 'Tetamu');
-    const attendance = $('attendance').value;
-    const msg = cleanText($('guestMessage').value, 'Tahniah dan semoga berbahagia selalu! 🤍');
-    const n1 = cleanText($('name1Input').value, 'Adam');
-    const n2 = cleanText($('name2Input').value, 'Hawa');
-    const text =
-      `Assalamualaikum ${n1} & ${n2} 🤍\n\nSaya ingin memberikan RSVP untuk majlis anda.\n\n━━━━━━━━━━━━━━━━\n💌 MAKLUMAT RSVP\n━━━━━━━━━━━━━━━━\n\n👤 Nama: ${name}\n💌 Kehadiran: ${attendance}\n📝 Ucapan & Doa: ${msg}\n\nTerima kasih 🤍`;
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
+    var name = cleanText($('guestName').value, 'Tetamu');
+    var attendance = $('attendance').value;
+    var msg = cleanText($('guestMessage').value, 'Tahniah dan semoga berbahagia selalu! 🤍');
+    var n1 = cleanText($('name1Input').value, 'Adam');
+    var n2 = cleanText($('name2Input').value, 'Hawa');
+    var text = "Assalamualaikum " + n1 + " & " + n2 + " 🤍\n\nSaya ingin memberikan RSVP untuk majlis anda.\n\n━━━━━━━━━━━━━━━━\n💌 MAKLUMAT RSVP\n━━━━━━━━━━━━━━━━\n\n👤 Nama: " + name + "\n💌 Kehadiran: " + attendance + "\n📝 Ucapan & Doa: " + msg + "\n\nTerima kasih 🤍";
+    window.open("https://wa.me/" + phone + "?text=" + encodeURIComponent(text), '_blank');
   });
 
   // =============================================================
@@ -1552,9 +1580,9 @@
     'groomMotherName', 'groomMotherPhone',
     'brideParentsInput', 'brideFatherName', 'brideFatherPhone',
     'brideMotherName', 'brideMotherPhone'
-  ].forEach(id => {
-    const el = $(id);
-    if (el) el.addEventListener('input', () => { updatePreview();
+  ].forEach(function(id) {
+    var el = $(id);
+    if (el) el.addEventListener('input', function() { updatePreview();
       updateFamily(); });
   });
 
@@ -1577,7 +1605,7 @@
     setInterval(updateCountdown, 1000);
     loadFromSupabase();
     applyTheme();
-    
+
     if ($('emojiToggle').checked) {
       startEmojiAnimation();
     }
