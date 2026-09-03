@@ -5,10 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NUR NONA — Live Editor</title>
   <style>
-    /* =============================================================
-       💖 RUPA ASAL AWAK — SAYA PULANGKAN SEMULA 100% 💖
-       ============================================================= */
-
+    /* ===== SAMA MACAM SEBELUM — TAK UBAH ===== */
     :root {
       --tone1: #D98B9A;
       --tone2: #7FA58A;
@@ -20,47 +17,25 @@
       --border: rgba(255, 255, 255, .11);
       --radius: 24px;
     }
-
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       min-height: 100vh;
-      background: radial-gradient(circle at 20% 0%, rgba(255, 255, 255, .035), transparent 30%), var(--bg);
+      background: radial-gradient(circle at 20% 0%, rgba(255,255,255,.035), transparent 30%), var(--bg);
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     }
-
-    .app {
-      max-width: 1100px;
-      margin: auto;
-      padding: 16px;
-    }
-
+    .app { max-width: 1100px; margin: auto; padding: 16px; }
     .topbar {
       padding: 18px;
       border: 1px solid var(--border);
       border-radius: 22px;
-      background: rgba(13, 23, 18, .9);
+      background: rgba(13,23,18,.9);
       margin-bottom: 16px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, .3);
+      box-shadow: 0 20px 60px rgba(0,0,0,.3);
     }
-
-    .brand {
-      font-size: 18px;
-      font-weight: 900;
-    }
-
-    .brand small {
-      display: block;
-      margin-top: 4px;
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 500;
-    }
-
+    .brand { font-size: 18px; font-weight: 900; }
+    .brand small { display: block; margin-top: 4px; color: var(--muted); font-size: 11px; font-weight: 500; }
     .editor-layout {
       display: grid;
       grid-template-columns: minmax(280px, 390px) minmax(300px, 460px);
@@ -68,136 +43,63 @@
       align-items: start;
       justify-content: center;
     }
-
     .editor {
       padding: 18px;
       border: 1px solid var(--border);
       border-radius: 24px;
-      background: rgba(13, 23, 18, .9);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, .3);
+      background: rgba(13,23,18,.9);
+      box-shadow: 0 20px 60px rgba(0,0,0,.3);
     }
-
-    .section {
-      margin-bottom: 18px;
-      padding-bottom: 18px;
-      border-bottom: 1px solid rgba(255, 255, 255, .07);
-    }
-
-    .section:last-child {
-      margin-bottom: 0;
-      padding-bottom: 0;
-      border-bottom: 0;
-    }
-
-    .section-title {
-      margin: 0 0 12px;
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: .6px;
-      text-transform: uppercase;
-    }
-
-    .field {
-      margin-bottom: 10px;
-    }
-
-    .field:last-child {
-      margin-bottom: 0;
-    }
-
-    .field label {
-      display: block;
-      margin-bottom: 6px;
-      color: rgba(255, 255, 255, .7);
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-    input,
-    textarea,
-    select {
+    .section { margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,.07); }
+    .section:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: 0; }
+    .section-title { margin: 0 0 12px; font-size: 12px; font-weight: 900; letter-spacing: .6px; text-transform: uppercase; }
+    .field { margin-bottom: 10px; }
+    .field:last-child { margin-bottom: 0; }
+    .field label { display: block; margin-bottom: 6px; color: rgba(255,255,255,.7); font-size: 11px; font-weight: 700; }
+    input, textarea, select {
       width: 100%;
       padding: 11px 12px;
-      border: 1px solid rgba(255, 255, 255, .1);
+      border: 1px solid rgba(255,255,255,.1);
       border-radius: 12px;
       outline: none;
-      background: rgba(255, 255, 255, .045);
+      background: rgba(255,255,255,.045);
       color: white;
       font-size: 13px;
       transition: border-color .2s, box-shadow .2s;
     }
-
-    input::placeholder,
-    textarea::placeholder {
-      color: rgba(255, 255, 255, .35);
-    }
-
-    input:focus,
-    textarea:focus,
-    select:focus {
-      border-color: var(--tone3);
-      box-shadow: 0 0 0 3px rgba(255, 255, 255, .04);
-    }
-
-    input[type="file"] {
-      padding: 9px;
-    }
-
+    input::placeholder, textarea::placeholder { color: rgba(255,255,255,.35); }
+    input:focus, textarea:focus, select:focus { border-color: var(--tone3); box-shadow: 0 0 0 3px rgba(255,255,255,.04); }
+    input[type="file"] { padding: 9px; }
     input[type="file"]::file-selector-button {
       margin-right: 8px;
       padding: 7px 10px;
       border: 0;
       border-radius: 8px;
-      background: rgba(255, 255, 255, .1);
+      background: rgba(255,255,255,.1);
       color: white;
       cursor: pointer;
       font-size: 11px;
     }
-
-    .row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 9px;
-    }
-
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
     .toggle-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
       padding: 12px;
-      border: 1px solid rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255,255,255,.08);
       border-radius: 14px;
-      background: rgba(255, 255, 255, .025);
+      background: rgba(255,255,255,.025);
     }
-
-    .toggle-info strong {
-      display: block;
-      font-size: 12px;
-    }
-
-    .toggle-info span {
-      display: block;
-      margin-top: 3px;
-      color: var(--muted);
-      font-size: 11px;
-    }
-
+    .toggle-info strong { display: block; font-size: 12px; }
+    .toggle-info span { display: block; margin-top: 3px; color: var(--muted); font-size: 11px; }
     .switch {
       position: relative;
       width: 48px;
       height: 27px;
       flex-shrink: 0;
     }
-
-    .switch input {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      opacity: 0;
-      pointer-events: none;
-    }
-
+    .switch input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
     .slider {
       position: absolute;
       inset: 0;
@@ -206,7 +108,6 @@
       cursor: pointer;
       transition: .2s;
     }
-
     .slider:before {
       content: "";
       position: absolute;
@@ -218,77 +119,35 @@
       background: white;
       transition: .2s;
     }
-
-    .switch input:checked+.slider {
-      background: linear-gradient(135deg, var(--tone1), var(--tone2));
-    }
-
-    .switch input:checked+.slider:before {
-      transform: translateX(21px);
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    .emoji-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 9px;
-    }
-
+    .switch input:checked + .slider { background: linear-gradient(135deg, var(--tone1), var(--tone2)); }
+    .switch input:checked + .slider:before { transform: translateX(21px); }
+    .hidden { display: none !important; }
+    .emoji-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
     .emoji-choice {
       display: flex;
       align-items: center;
       gap: 8px;
       padding: 10px;
-      border: 1px solid rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255,255,255,.08);
       border-radius: 12px;
-      background: rgba(255, 255, 255, .025);
+      background: rgba(255,255,255,.025);
       cursor: pointer;
     }
-
-    .emoji-choice input {
-      width: auto;
-      accent-color: var(--tone1);
-      cursor: pointer;
-    }
-
-    .emoji-choice span {
-      font-size: 19px;
-    }
-
-    .schedule-editor {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .schedule-row {
-      display: grid;
-      grid-template-columns: 82px minmax(0, 1fr) 32px;
-      gap: 6px;
-    }
-
-    .schedule-row input {
-      min-width: 0;
-    }
-
+    .emoji-choice input { width: auto; accent-color: var(--tone1); cursor: pointer; }
+    .emoji-choice span { font-size: 19px; }
+    .schedule-editor { display: flex; flex-direction: column; gap: 8px; }
+    .schedule-row { display: grid; grid-template-columns: 82px minmax(0,1fr) 32px; gap: 6px; }
+    .schedule-row input { min-width: 0; }
     .remove-btn {
-      border: 1px solid rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255,255,255,.08);
       border-radius: 10px;
-      background: rgba(255, 255, 255, .04);
+      background: rgba(255,255,255,.04);
       color: #fff;
       cursor: pointer;
       transition: .2s;
     }
-
-    .remove-btn:hover {
-      background: rgba(255, 255, 255, .08);
-    }
-
-    .small-btn,
-    .primary-btn {
+    .remove-btn:hover { background: rgba(255,255,255,.08); }
+    .small-btn, .primary-btn, .pay-btn {
       width: 100%;
       padding: 12px;
       border: 0;
@@ -298,91 +157,62 @@
       font-weight: 800;
       transition: transform .15s, opacity .15s;
     }
-
-    .small-btn:active,
-    .primary-btn:active {
-      transform: scale(.985);
-    }
-
+    .small-btn:active, .primary-btn:active, .pay-btn:active { transform: scale(.985); }
     .small-btn {
       margin-top: 9px;
-      border: 1px solid rgba(255, 255, 255, .1);
-      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.04);
       color: white;
     }
-
     .primary-btn {
       margin-top: 10px;
       background: linear-gradient(135deg, var(--tone1), var(--tone2));
       color: white;
     }
-
+    .primary-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    .pay-btn {
+      margin-top: 10px;
+      background: linear-gradient(135deg, #00a86b, #00d48b);
+      color: white;
+      font-size: 14px;
+    }
+    .pay-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
     .price-box {
       padding: 14px;
-      border: 1px solid rgba(255, 255, 255, .1);
+      border: 1px solid rgba(255,255,255,.1);
       border-radius: 16px;
-      background: linear-gradient(135deg, rgba(217, 139, 154, .12), rgba(127, 165, 138, .1));
+      background: linear-gradient(135deg, rgba(217,139,154,.12), rgba(127,165,138,.1));
     }
-
-    .price-line {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 7px;
-      color: rgba(255, 255, 255, .72);
-      font-size: 11px;
-    }
-
-    .price-total {
-      display: flex;
-      justify-content: space-between;
-      padding-top: 9px;
-      border-top: 1px solid rgba(255, 255, 255, .1);
-      font-size: 15px;
-      font-weight: 900;
-    }
-
-    .preview-wrap {
-      position: sticky;
-      top: 14px;
-    }
-
-    .preview-label {
-      margin: 0 0 8px 5px;
-      color: var(--muted);
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
+    .price-line { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 7px; color: rgba(255,255,255,.72); font-size: 11px; }
+    .price-total { display: flex; justify-content: space-between; padding-top: 9px; border-top: 1px solid rgba(255,255,255,.1); font-size: 15px; font-weight: 900; }
+    .preview-wrap { position: sticky; top: 14px; }
+    .preview-label { margin: 0 0 8px 5px; color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
     .phone {
       width: 100%;
       max-width: 460px;
       margin: auto;
       padding: 8px;
-      border: 1px solid rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255,255,255,.08);
       border-radius: 34px;
       background: #030705;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, .55);
+      box-shadow: 0 30px 80px rgba(0,0,0,.55);
     }
-
-    .phone-screen {
-      position: relative;
-      overflow: hidden;
-      border-radius: 28px;
-    }
-
+    .phone-screen { position: relative; overflow: hidden; border-radius: 28px; }
     .wedding-card {
       position: relative;
       min-height: 680px;
       overflow: hidden;
       padding: 42px 20px 26px;
-      border: 1px solid rgba(255, 255, 255, .12);
+      border: 1px solid rgba(255,255,255,.12);
       border-radius: 28px;
-      background: linear-gradient(160deg, rgba(17, 29, 22, .96), rgba(7, 15, 11, .98));
+      background: linear-gradient(160deg, rgba(17,29,22,.96), rgba(7,15,11,.98));
     }
-
     .card-bg {
       position: absolute;
       inset: -5%;
@@ -395,7 +225,6 @@
       transform: scale(1.05);
       pointer-events: none;
     }
-
     .aurora {
       position: absolute;
       inset: -30%;
@@ -405,14 +234,10 @@
       opacity: .95;
       filter: blur(25px) saturate(1.2);
     }
-
-    .aurora:before,
-    .aurora-middle,
-    .aurora-bottom {
+    .aurora:before, .aurora-middle, .aurora-bottom {
       position: absolute;
       border-radius: 50%;
     }
-
     .aurora:before {
       content: "";
       width: 90%;
@@ -424,7 +249,6 @@
       transform: rotate(-18deg);
       animation: auroraOne 10s ease-in-out infinite alternate;
     }
-
     .aurora-middle {
       width: 100%;
       height: 55%;
@@ -435,7 +259,6 @@
       transform: rotate(8deg);
       animation: auroraTwo 12s ease-in-out infinite alternate;
     }
-
     .aurora-bottom {
       width: 95%;
       height: 58%;
@@ -446,25 +269,9 @@
       transform: rotate(22deg);
       animation: auroraThree 11s ease-in-out infinite alternate;
     }
-
-    @keyframes auroraOne {
-      to {
-        transform: translate(70px, 15px) rotate(8deg) scale(1.08);
-      }
-    }
-
-    @keyframes auroraTwo {
-      to {
-        transform: translate(-10px, 35px) rotate(12deg) scale(1.08);
-      }
-    }
-
-    @keyframes auroraThree {
-      to {
-        transform: translate(-70px, -10px) rotate(-8deg) scale(1.07);
-      }
-    }
-
+    @keyframes auroraOne { to { transform: translate(70px,15px) rotate(8deg) scale(1.08); } }
+    @keyframes auroraTwo { to { transform: translate(-10px,35px) rotate(12deg) scale(1.08); } }
+    @keyframes auroraThree { to { transform: translate(-70px,-10px) rotate(-8deg) scale(1.07); } }
     .aurora-ribbon {
       position: absolute;
       z-index: 2;
@@ -473,19 +280,13 @@
       left: -28%;
       top: 29%;
       border-radius: 50%;
-      background: linear-gradient(105deg, transparent 4%, rgba(217, 139, 154, .16) 20%, rgba(247, 200, 208, .28) 37%, rgba(255, 255, 255, .07) 49%, rgba(127, 165, 138, .28) 63%, transparent 96%);
+      background: linear-gradient(105deg, transparent 4%, rgba(217,139,154,.16) 20%, rgba(247,200,208,.28) 37%, rgba(255,255,255,.07) 49%, rgba(127,165,138,.28) 63%, transparent 96%);
       filter: blur(15px);
       transform: rotate(-13deg);
       animation: ribbonMove 9s ease-in-out infinite alternate;
       pointer-events: none;
     }
-
-    @keyframes ribbonMove {
-      to {
-        transform: translateX(35px) rotate(-7deg);
-      }
-    }
-
+    @keyframes ribbonMove { to { transform: translateX(35px) rotate(-7deg); } }
     .aurora-line {
       position: absolute;
       z-index: 3;
@@ -493,21 +294,19 @@
       height: 90px;
       left: -22%;
       top: 42%;
-      border-top: 1px solid rgba(247, 200, 208, .22);
-      border-bottom: 1px solid rgba(127, 165, 138, .2);
+      border-top: 1px solid rgba(247,200,208,.22);
+      border-bottom: 1px solid rgba(127,165,138,.2);
       filter: blur(7px);
       transform: rotate(-12deg);
       pointer-events: none;
     }
-
     .vignette {
       position: absolute;
       inset: 0;
       z-index: 3;
       pointer-events: none;
-      background: radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, .16) 65%, rgba(0, 0, 0, .48) 100%);
+      background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,.16) 65%, rgba(0,0,0,.48) 100%);
     }
-
     .cover {
       position: absolute;
       inset: 0;
@@ -519,18 +318,12 @@
       padding: 25px;
       text-align: center;
       overflow: hidden;
-      background: radial-gradient(ellipse at 20% 15%, rgba(217, 139, 154, .22), transparent 38%), radial-gradient(ellipse at 90% 85%, rgba(127, 165, 138, .2), transparent 40%), linear-gradient(145deg, #101b15, #07100c);
+      background: radial-gradient(ellipse at 20% 15%, rgba(217,139,154,.22), transparent 38%), radial-gradient(ellipse at 90% 85%, rgba(127,165,138,.2), transparent 40%), linear-gradient(145deg, #101b15, #07100c);
       border-radius: 28px;
-      transition: transform .85s cubic-bezier(.4, 0, .2, 1), opacity .85s ease;
+      transition: transform .85s cubic-bezier(.4,0,.2,1), opacity .85s ease;
       touch-action: pan-y;
     }
-
-    .cover.opened {
-      transform: translateY(-100%);
-      opacity: 0;
-      pointer-events: none;
-    }
-
+    .cover.opened { transform: translateY(-100%); opacity: 0; pointer-events: none; }
     .cover-heart {
       width: 84px;
       height: 59px;
@@ -538,40 +331,17 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      border: 2px solid rgba(255, 255, 255, .65);
+      border: 2px solid rgba(255,255,255,.65);
       border-radius: 8px;
-      background: rgba(255, 244, 232, .92);
-      box-shadow: 0 15px 45px rgba(0, 0, 0, .4);
+      background: rgba(255,244,232,.92);
+      box-shadow: 0 15px 45px rgba(0,0,0,.4);
       animation: float 2.4s ease-in-out infinite alternate;
       cursor: pointer;
     }
-
-    .cover-heart span {
-      font-size: 25px;
-      animation: pulse .8s ease-in-out infinite alternate;
-    }
-
-    @keyframes float {
-      to {
-        transform: translateY(-8px);
-      }
-    }
-
-    @keyframes pulse {
-      to {
-        transform: scale(1.12);
-      }
-    }
-
-    .cover-label {
-      margin: 0 0 8px;
-      color: rgba(255, 255, 255, .7);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-
+    .cover-heart span { font-size: 25px; animation: pulse .8s ease-in-out infinite alternate; }
+    @keyframes float { to { transform: translateY(-8px); } }
+    @keyframes pulse { to { transform: scale(1.12); } }
+    .cover-label { margin: 0 0 8px; color: rgba(255,255,255,.7); font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; }
     .cover-names {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
@@ -581,15 +351,7 @@
       line-height: 1.15;
       overflow-wrap: anywhere;
     }
-
-    .cover-subtitle {
-      margin: 10px 0 34px;
-      max-width: 270px;
-      color: rgba(255, 255, 255, .62);
-      font-size: 12px;
-      line-height: 1.5;
-    }
-
+    .cover-subtitle { margin: 10px 0 34px; max-width: 270px; color: rgba(255,255,255,.62); font-size: 12px; line-height: 1.5; }
     .open-button {
       display: flex;
       flex-direction: column;
@@ -597,87 +359,22 @@
       gap: 9px;
       border: 0;
       background: transparent;
-      color: rgba(255, 255, 255, .82);
+      color: rgba(255,255,255,.82);
       cursor: pointer;
       font-size: 9px;
       font-weight: 800;
       letter-spacing: 2px;
       animation: openPulse 1.5s ease-in-out infinite;
     }
-
-    @keyframes openPulse {
-      0%,
-      100% {
-        opacity: .55;
-      }
-      50% {
-        opacity: 1;
-      }
-    }
-
-    .content {
-      position: relative;
-      z-index: 6;
-      text-align: center;
-    }
-
-    .opening {
-      margin: 0;
-      color: rgba(231, 238, 232, .78);
-      font-size: 10px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-
-    .sparkles {
-      margin: 8px 0;
-      color: var(--tone3);
-      font-size: 10px;
-      letter-spacing: 3px;
-    }
-
-    .invitation-subtitle {
-      margin: 0 0 15px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .poster-wrapper {
-      width: 90%;
-      max-width: 300px;
-      margin: 0 auto 17px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, .13);
-      border-radius: 18px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, .5);
-    }
-
-    .poster {
-      width: 100%;
-      height: 180px;
-      display: block;
-      object-fit: cover;
-    }
-
-    .name {
-      margin: 5px 0;
-      color: white;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 36px;
-      font-style: italic;
-      font-weight: 400;
-      line-height: 1.03;
-      overflow-wrap: anywhere;
-    }
-
-    .and {
-      margin: 5px 0;
-      color: var(--tone3);
-      font-family: Georgia, serif;
-      font-size: 16px;
-      font-style: italic;
-    }
-
+    @keyframes openPulse { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+    .content { position: relative; z-index: 6; text-align: center; }
+    .opening { margin: 0; color: rgba(231,238,232,.78); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; }
+    .sparkles { margin: 8px 0; color: var(--tone3); font-size: 10px; letter-spacing: 3px; }
+    .invitation-subtitle { margin: 0 0 15px; color: var(--muted); font-size: 12px; }
+    .poster-wrapper { width: 90%; max-width: 300px; margin: 0 auto 17px; overflow: hidden; border: 1px solid rgba(255,255,255,.13); border-radius: 18px; box-shadow: 0 20px 50px rgba(0,0,0,.5); }
+    .poster { width: 100%; height: 180px; display: block; object-fit: cover; }
+    .name { margin: 5px 0; color: white; font-family: Georgia, "Times New Roman", serif; font-size: 36px; font-style: italic; font-weight: 400; line-height: 1.03; overflow-wrap: anywhere; }
+    .and { margin: 5px 0; color: var(--tone3); font-family: Georgia, serif; font-size: 16px; font-style: italic; }
     .date {
       display: inline-flex;
       align-items: center;
@@ -685,55 +382,20 @@
       gap: 8px;
       margin: 18px 0;
       padding: 10px 20px;
-      border: 1px solid rgba(255, 255, 255, .15);
+      border: 1px solid rgba(255,255,255,.15);
       border-radius: 30px;
-      background: rgba(255, 255, 255, .05);
+      background: rgba(255,255,255,.05);
       color: #eef2ed;
       font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.3px;
     }
-
-    .countdown {
-      margin: 7px 0 27px;
-    }
-
-    .countdown-title {
-      margin: 0 0 11px;
-      color: var(--muted);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 2px;
-    }
-
-    .countdown-grid {
-      display: flex;
-      justify-content: center;
-      gap: 7px;
-    }
-
-    .time {
-      min-width: 57px;
-      padding: 9px 3px;
-      border: 1px solid rgba(255, 255, 255, .1);
-      border-radius: 12px;
-      background: rgba(255, 255, 255, .035);
-    }
-
-    .time-number {
-      font-size: 18px;
-      font-weight: 800;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .time-label {
-      display: block;
-      margin-top: 2px;
-      color: var(--muted);
-      font-size: 9px;
-      text-transform: uppercase;
-    }
-
+    .countdown { margin: 7px 0 27px; }
+    .countdown-title { margin: 0 0 11px; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: 2px; }
+    .countdown-grid { display: flex; justify-content: center; gap: 7px; }
+    .time { min-width: 57px; padding: 9px 3px; border: 1px solid rgba(255,255,255,.1); border-radius: 12px; background: rgba(255,255,255,.035); }
+    .time-number { font-size: 18px; font-weight: 800; font-variant-numeric: tabular-nums; }
+    .time-label { display: block; margin-top: 2px; color: var(--muted); font-size: 9px; text-transform: uppercase; }
     .nav {
       width: 100%;
       margin-bottom: 10px;
@@ -741,71 +403,23 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border: 1px solid rgba(255, 255, 255, .1);
+      border: 1px solid rgba(255,255,255,.1);
       border-radius: 30px;
-      background: rgba(255, 255, 255, .035);
+      background: rgba(255,255,255,.035);
       color: white;
       text-decoration: none;
       cursor: pointer;
       font-size: 12px;
       transition: transform .15s, background .2s;
     }
-
-    .nav:hover {
-      background: rgba(255, 255, 255, .055);
-    }
-
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .nav-arrow {
-      color: var(--tone3);
-    }
-
-    .footer {
-      padding: 23px 0 4px;
-      color: #65746b;
-      font-size: 10px;
-      letter-spacing: 1.4px;
-    }
-
-    .footer strong {
-      color: #c8d5cc;
-    }
-
-    .emoji-container {
-      position: absolute;
-      inset: 0;
-      z-index: 4;
-      overflow: hidden;
-      pointer-events: none;
-    }
-
-    .falling {
-      position: absolute;
-      top: -30px;
-      animation: fall linear forwards;
-      will-change: transform, opacity;
-    }
-
-    @keyframes fall {
-      0% {
-        transform: translateY(0) rotate(0);
-        opacity: 0;
-      }
-      10%,
-      85% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(700px) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
+    .nav:hover { background: rgba(255,255,255,.055); }
+    .nav-left { display: flex; align-items: center; gap: 10px; }
+    .nav-arrow { color: var(--tone3); }
+    .footer { padding: 23px 0 4px; color: #65746b; font-size: 10px; letter-spacing: 1.4px; }
+    .footer strong { color: #c8d5cc; }
+    .emoji-container { position: absolute; inset: 0; z-index: 4; overflow: hidden; pointer-events: none; }
+    .falling { position: absolute; top: -30px; animation: fall linear forwards; will-change: transform, opacity; }
+    @keyframes fall { 0% { transform: translateY(0) rotate(0); opacity: 0; } 10%,85% { opacity: 1; } 100% { transform: translateY(700px) rotate(360deg); opacity: 0; } }
     .drawer {
       position: fixed;
       top: 5%;
@@ -817,16 +431,12 @@
       padding: 20px 18px;
       overflow-y: auto;
       background: linear-gradient(160deg, #101b15, #07100c);
-      border-left: 1px solid rgba(255, 255, 255, .08);
+      border-left: 1px solid rgba(255,255,255,.08);
       border-radius: 18px;
-      box-shadow: -10px 20px 60px rgba(0, 0, 0, .6);
-      transition: right .35s cubic-bezier(.4, 0, .2, 1);
+      box-shadow: -10px 20px 60px rgba(0,0,0,.6);
+      transition: right .35s cubic-bezier(.4,0,.2,1);
     }
-
-    .drawer.active {
-      right: 0;
-    }
-
+    .drawer.active { right: 0; }
     .drawer-header {
       display: flex;
       align-items: center;
@@ -834,506 +444,452 @@
       margin-bottom: 14px;
       padding: 12px 10px;
       border-radius: 12px;
-      background: rgba(255, 255, 255, .025);
-      border: 1px solid rgba(255, 255, 255, .06);
+      background: rgba(255,255,255,.025);
+      border: 1px solid rgba(255,255,255,.06);
     }
-
-    .drawer-title {
-      font-size: 14px;
-      font-weight: 900;
-    }
-
-    .close {
-      width: 36px;
-      height: 36px;
-      border: 1px solid rgba(255, 255, 255, .06);
-      border-radius: 10px;
-      background: rgba(255, 255, 255, .03);
-      color: white;
-      cursor: pointer;
-      font-size: 20px;
-    }
-
-    .drawer-description {
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.5;
-    }
-
-    .schedule-item {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 10px;
-      padding: 10px;
-      border: 1px solid rgba(255, 255, 255, .05);
-      border-radius: 10px;
-      background: rgba(255, 255, 255, .02);
-    }
-
-    .schedule-time {
-      min-width: 80px;
-      color: var(--tone3);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .schedule-text {
-      color: rgba(255, 255, 255, .78);
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 9px;
-      padding: 10px;
-      border: 1px solid rgba(255, 255, 255, .05);
-      border-radius: 10px;
-      background: rgba(255, 255, 255, .02);
-    }
-
-    .contact-name {
-      color: rgba(255, 255, 255, .78);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .contact-button {
-      padding: 8px 12px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, var(--tone1), var(--tone2));
-      color: white;
-      text-decoration: none;
-      font-size: 9px;
-      font-weight: 800;
-    }
-
-    .family-heading {
-      margin: 16px 0 5px;
-      font-size: 14px;
-    }
-
-    .family-parents {
-      margin: 0 0 10px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.5;
-    }
-
+    .drawer-title { font-size: 14px; font-weight: 900; }
+    .close { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,.06); border-radius: 10px; background: rgba(255,255,255,.03); color: white; cursor: pointer; font-size: 20px; }
+    .drawer-description { color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .schedule-item { display: flex; gap: 12px; margin-bottom: 10px; padding: 10px; border: 1px solid rgba(255,255,255,.05); border-radius: 10px; background: rgba(255,255,255,.02); }
+    .schedule-time { min-width: 80px; color: var(--tone3); font-size: 13px; font-weight: 700; }
+    .schedule-text { color: rgba(255,255,255,.78); font-size: 13px; line-height: 1.5; }
+    .contact-item { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 9px; padding: 10px; border: 1px solid rgba(255,255,255,.05); border-radius: 10px; background: rgba(255,255,255,.02); }
+    .contact-name { color: rgba(255,255,255,.78); font-size: 13px; font-weight: 700; }
+    .contact-button { padding: 8px 12px; border-radius: 20px; background: linear-gradient(135deg, var(--tone1), var(--tone2)); color: white; text-decoration: none; font-size: 9px; font-weight: 800; }
+    .family-heading { margin: 16px 0 5px; font-size: 14px; }
+    .family-parents { margin: 0 0 10px; color: var(--muted); font-size: 12px; line-height: 1.5; }
     .overlay {
       position: fixed;
       inset: 0;
       z-index: 998;
-      background: rgba(0, 0, 0, .55);
+      background: rgba(0,0,0,.55);
       opacity: 0;
       visibility: hidden;
       transition: .3s;
       backdrop-filter: blur(3px);
     }
-
-    .overlay.active {
-      opacity: 1;
-      visibility: visible;
+    .overlay.active { opacity: 1; visibility: visible; }
+    .payment-status {
+      padding: 10px 12px;
+      border-radius: 12px;
+      margin-top: 10px;
+      font-size: 12px;
+      text-align: center;
     }
-
-    @media(max-width:760px) {
-      .editor-layout {
-        grid-template-columns: 1fr;
-      }
-      .preview-wrap {
-        position: static;
-      }
-      .preview-label {
-        margin-top: 4px;
-      }
+    .payment-status.paid {
+      background: rgba(0, 200, 100, .15);
+      border: 1px solid rgba(0, 200, 100, .3);
+      color: #8fdfb0;
     }
-
-    @media(max-width:390px) {
-      .row {
-        grid-template-columns: 1fr;
-      }
-      .name {
-        font-size: 34px;
-      }
-      .cover-names {
-        font-size: 33px;
-      }
-      .countdown-grid {
-        gap: 5px;
-      }
-      .time {
-        min-width: 52px;
-      }
+    .payment-status.unpaid {
+      background: rgba(255, 150, 50, .1);
+      border: 1px solid rgba(255, 150, 50, .2);
+      color: #f5b87e;
     }
+    .payment-status.waiting {
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .1);
+      color: var(--muted);
+    }
+    .qr-container {
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      text-align: center;
+      margin: 15px 0;
+    }
+    .qr-container img {
+      max-width: 200px;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+    .qr-container p {
+      color: #111;
+      font-size: 13px;
+      margin: 10px 0 0;
+    }
+    @media(max-width:760px) { .editor-layout { grid-template-columns: 1fr; } .preview-wrap { position: static; } .preview-label { margin-top: 4px; } }
+    @media(max-width:390px) { .row { grid-template-columns: 1fr; } .name { font-size: 34px; } .cover-names { font-size: 33px; } .countdown-grid { gap: 5px; } .time { min-width: 52px; } }
   </style>
 </head>
-
 <body>
 
-  <div class="app">
+<div class="app">
 
-    <header class="topbar">
-      <div class="brand">
-        NUR NONA ✦ Live Editor
-        <small>Edit → Preview → Hantar Tempahan WhatsApp</small>
+  <header class="topbar">
+    <div class="brand">NUR NONA ✦ Live Editor <small>Edit → Preview → Hantar Tempahan WhatsApp</small></div>
+  </header>
+
+  <div class="editor-layout">
+
+    <!-- EDITOR -->
+    <section class="editor">
+
+      <div class="section">
+        <h2 class="section-title">💍 Maklumat Pengantin</h2>
+        <div class="row">
+          <div class="field"><label>Nama Pengantin Lelaki</label><input id="name1Input" value="Adam"></div>
+          <div class="field"><label>Nama Pengantin Perempuan</label><input id="name2Input" value="Hawa"></div>
+        </div>
+        <div class="field"><label>Teks Majlis</label><input id="subtitleInput" value="Majlis Kesyukuran &amp; Walimatulurus"></div>
+        <div class="row">
+          <div class="field"><label>Tarikh</label><input id="dateInput" type="date" value="2027-10-11"></div>
+          <div class="field"><label>Masa</label><input id="timeInput" type="time" value="11:00"></div>
+        </div>
       </div>
-    </header>
 
-    <div class="editor-layout">
+      <div class="section">
+        <h2 class="section-title">🖼️ Gambar</h2>
+        <div class="toggle-row">
+          <div class="toggle-info"><strong>Guna gambar pengantin</strong><span>Aktifkan jika customer mahu gambar.</span></div>
+          <label class="switch"><input id="imageToggle" type="checkbox"><span class="slider"></span></label>
+        </div>
+        <div id="imageArea" class="hidden" style="margin-top:10px">
+          <div class="field"><label>Pilih gambar dari telefon</label><input id="imageInput" type="file" accept="image/*"></div>
+          <button class="small-btn" id="removeImage" type="button">Buang Gambar</button>
+        </div>
+      </div>
 
-      <!-- ===================================================
-      EDITOR
-      ==================================================== -->
+      <div class="section">
+        <h2 class="section-title">🎨 Warna Kad</h2>
+        <div class="field"><label>Pilih Tema</label>
+          <select id="themeInput">
+            <option value="aurora">🌌 Aurora</option><option value="blueSky">☁️ Blue Sky</option>
+            <option value="evergreen">🌿 Evergreen</option><option value="sunrise">🌅 Sunrise</option>
+            <option value="burgundy">🍷 Burgundy</option><option value="lavender">💜 Lavender</option>
+            <option value="rose">🌸 Rose</option>
+          </select>
+        </div>
+      </div>
 
-      <section class="editor">
-
-        <div class="section">
-          <h2 class="section-title">💍 Maklumat Pengantin</h2>
-          <div class="row">
-            <div class="field"><label>Nama Pengantin Lelaki</label><input id="name1Input" value="Adam"></div>
-            <div class="field"><label>Nama Pengantin Perempuan</label><input id="name2Input" value="Hawa"></div>
-          </div>
-          <div class="field"><label>Teks Majlis</label><input id="subtitleInput" value="Majlis Kesyukuran &amp; Walimatulurus"></div>
-          <div class="row">
-            <div class="field"><label>Tarikh</label><input id="dateInput" type="date" value="2027-10-11"></div>
-            <div class="field"><label>Masa</label><input id="timeInput" type="time" value="11:00"></div>
+      <div class="section">
+        <h2 class="section-title">✨ Emoji</h2>
+        <div class="field"><label>Pilih sehingga 2 emoji</label>
+          <div class="emoji-grid">
+            <label class="emoji-choice"><input class="emoji-check" type="checkbox" value="🤍" checked><span>🤍</span></label>
+            <label class="emoji-choice"><input class="emoji-check" type="checkbox" value="✨"><span>✨</span></label>
+            <label class="emoji-choice"><input class="emoji-check" type="checkbox" value="🌸"><span>🌸</span></label>
+            <label class="emoji-choice"><input class="emoji-check" type="checkbox" value="🍃"><span>🍃</span></label>
+            <label class="emoji-choice"><input class="emoji-check" type="checkbox" value="🍓"><span>🍓</span></label>
+            <label class="emoji-choice"><input class="emoji-check" type="checkbox" value="💙"><span>💙</span></label>
+            <label class="emoji-choice"><input class="emoji-check" type="checkbox" value="🌿"><span>🌿</span></label>
+            <label class="emoji-choice"><input class="emoji-check" type="checkbox" value="💐"><span>💐</span></label>
           </div>
         </div>
+        <div class="toggle-row">
+          <div class="toggle-info"><strong>Emoji jatuh</strong><span>Animasi emoji di dalam kad.</span></div>
+          <label class="switch"><input id="emojiToggle" type="checkbox" checked><span class="slider"></span></label>
+        </div>
+      </div>
 
-        <div class="section">
-          <h2 class="section-title">🖼️ Gambar</h2>
-          <div class="toggle-row">
-            <div class="toggle-info"><strong>Guna gambar pengantin</strong><span>Aktifkan jika customer mahu gambar.</span></div>
-            <label class="switch"><input id="imageToggle" type="checkbox"><span class="slider"></span></label>
-          </div>
-          <div id="imageArea" class="hidden" style="margin-top:10px">
-            <div class="field"><label>Pilih gambar dari telefon</label><input id="imageInput" type="file" accept="image/*"></div>
-            <button class="small-btn" id="removeImage" type="button">Buang Gambar</button>
-          </div>
+      <div class="section">
+        <h2 class="section-title">📍 Lokasi</h2>
+        <div class="field"><label>Nama Lokasi</label><input id="locationNameInput" value="Dewan Serbaguna"></div>
+        <div class="field"><label>Pilihan Peta</label>
+          <select id="mapTypeInput"><option value="google">Google Maps</option><option value="waze">Waze</option></select>
+        </div>
+        <div class="field"><label>Link Lokasi</label><input id="mapUrlInput" placeholder="Tampal link Google Maps / Waze"></div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">💌 WhatsApp RSVP</h2>
+        <div class="field"><label>Nombor WhatsApp Pengantin</label><input id="rsvpPhoneInput" placeholder="60123456789"></div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">📞 Hubungi Keluarga</h2>
+        <div class="field"><label>Pengantin Lelaki — Ibu &amp; Ayah</label><input id="groomParentsInput" value="Putera kepada Encik Ahmad &amp; Puan Aminah"></div>
+        <div class="row">
+          <div class="field"><label>Nama Ayah</label><input id="groomFatherName" value="Encik Ahmad"></div>
+          <div class="field"><label>No. WhatsApp</label><input id="groomFatherPhone" value="60123456789"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label>Nama Ibu</label><input id="groomMotherName" value="Puan Aminah"></div>
+          <div class="field"><label>No. WhatsApp</label><input id="groomMotherPhone" value="60123456789"></div>
+        </div>
+        <div class="field"><label>Pengantin Perempuan — Ibu &amp; Ayah</label><input id="brideParentsInput" value="Puteri kepada Encik Abdullah &amp; Puan Fatimah"></div>
+        <div class="row">
+          <div class="field"><label>Nama Ayah</label><input id="brideFatherName" value="Encik Abdullah"></div>
+          <div class="field"><label>No. WhatsApp</label><input id="brideFatherPhone" value="60123456789"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label>Nama Ibu</label><input id="brideMotherName" value="Puan Fatimah"></div>
+          <div class="field"><label>No. WhatsApp</label><input id="brideMotherPhone" value="60123456789"></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">📋 Atur Cara Majlis</h2>
+        <div id="scheduleEditor" class="schedule-editor"></div>
+        <button class="small-btn" id="addSchedule" type="button">+ Tambah Atur Cara</button>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">🎵 Muzik</h2>
+        <div class="toggle-row">
+          <div class="toggle-info"><strong>Tambah muzik</strong><span>Add-on RM60</span></div>
+          <label class="switch"><input id="musicToggle" type="checkbox"><span class="slider"></span></label>
+        </div>
+        <div id="musicArea" class="hidden" style="margin-top:10px">
+          <div class="field"><label>Pilih fail muzik</label><input id="musicInput" type="file" accept="audio/*"></div>
+        </div>
+      </div>
+
+      <!-- =============================================================
+           💰 HARGA + BAYAR (EDIT DULU, BAYAR KEMUDIAN)
+      ============================================================== -->
+      <div class="section">
+        <h2 class="section-title">💰 Harga & Dapatkan Link</h2>
+        <div class="price-box">
+          <div class="price-line"><span id="baseLabel">Kad tanpa gambar</span><strong id="basePrice">RM136</strong></div>
+          <div class="price-line" id="musicPriceLine" style="display:none"><span>Muzik</span><strong>RM60</strong></div>
+          <div class="price-total"><span>Jumlah</span><span id="totalPrice">RM136</span></div>
         </div>
 
-        <div class="section">
-          <h2 class="section-title">🎨 Warna Kad</h2>
-          <div class="field"><label>Pilih Tema</label>
-            <select id="themeInput">
-              <option value="aurora">🌌 Aurora</option><option value="blueSky">☁️ Blue Sky</option>
-              <option value="evergreen">🌿 Evergreen</option><option value="sunrise">🌅 Sunrise</option>
-              <option value="burgundy">🍷 Burgundy</option><option value="lavender">💜 Lavender</option>
-              <option value="rose">🌸 Rose</option>
-            </select>
-          </div>
+        <!-- Status Bayaran -->
+        <div id="paymentStatus" class="payment-status waiting">
+          ✏️ Cuba edit dahulu — bayar untuk dapatkan link & hantar tempahan.
         </div>
 
-        <div class="section">
-          <h2 class="section-title">✨ Emoji</h2>
-          <div class="field"><label>Pilih sehingga 2 emoji</label>
-            <div class="emoji-grid">
-              <label class="emoji-choice"><input class="emoji-check" type="checkbox" value="🤍" checked><span>🤍</span></label>
-              <label class="emoji-choice"><input class="emoji-check" type="checkbox" value="✨"><span>✨</span></label>
-              <label class="emoji-choice"><input class="emoji-check" type="checkbox" value="🌸"><span>🌸</span></label>
-              <label class="emoji-choice"><input class="emoji-check" type="checkbox" value="🍃"><span>🍃</span></label>
-              <label class="emoji-choice"><input class="emoji-check" type="checkbox" value="🍓"><span>🍓</span></label>
-              <label class="emoji-choice"><input class="emoji-check" type="checkbox" value="💙"><span>💙</span></label>
-              <label class="emoji-choice"><input class="emoji-check" type="checkbox" value="🌿"><span>🌿</span></label>
-              <label class="emoji-choice"><input class="emoji-check" type="checkbox" value="💐"><span>💐</span></label>
-            </div>
-          </div>
-          <div class="toggle-row">
-            <div class="toggle-info"><strong>Emoji jatuh</strong><span>Animasi emoji di dalam kad.</span></div>
-            <label class="switch"><input id="emojiToggle" type="checkbox" checked><span class="slider"></span></label>
-          </div>
+        <!-- QR Code TNG — akan muncul bila customer tekan "Saya Nak Beli" -->
+        <div id="qrContainer" class="qr-container hidden">
+          <img id="qrImage" src="https://example.com/tng-qr-code.png" alt="QR Code TNG eWallet" style="max-width:200px;width:100%;height:auto;border-radius:12px;">
+          <p style="color:#111;font-size:13px;margin-top:10px;">📱 Scan QR Code ini guna TNG eWallet untuk bayar</p>
+          <p style="color:#666;font-size:11px;">Jumlah: <strong id="qrTotal">RM136</strong></p>
         </div>
 
-        <div class="section">
-          <h2 class="section-title">📍 Lokasi</h2>
-          <div class="field"><label>Nama Lokasi</label><input id="locationNameInput" value="Dewan Serbaguna"></div>
-          <div class="field"><label>Pilihan Peta</label>
-            <select id="mapTypeInput"><option value="google">Google Maps</option><option value="waze">Waze</option></select>
-          </div>
-          <div class="field"><label>Link Lokasi</label><input id="mapUrlInput" placeholder="Tampal link Google Maps / Waze"></div>
-        </div>
+        <!-- Button "Saya Nak Beli & Dapatkan Link" -->
+        <button class="pay-btn" id="buyButton">
+          💚 Saya Nak Beli & Dapatkan Link (RM<span id="buyTotal">136</span>)
+        </button>
 
-        <div class="section">
-          <h2 class="section-title">💌 WhatsApp RSVP</h2>
-          <div class="field"><label>Nombor WhatsApp Pengantin</label><input id="rsvpPhoneInput" placeholder="60123456789"></div>
-        </div>
+        <!-- Button "Hantar Tempahan" — akan aktif lepas bayar -->
+        <button class="primary-btn" id="orderButton" disabled>
+          🔒 Hantar Tempahan — Sila bayar dahulu
+        </button>
 
-        <div class="section">
-          <h2 class="section-title">📞 Hubungi Keluarga</h2>
-          <div class="field"><label>Pengantin Lelaki — Ibu &amp; Ayah</label><input id="groomParentsInput" value="Putera kepada Encik Ahmad &amp; Puan Aminah"></div>
-          <div class="row">
-            <div class="field"><label>Nama Ayah</label><input id="groomFatherName" value="Encik Ahmad"></div>
-            <div class="field"><label>No. WhatsApp</label><input id="groomFatherPhone" value="60123456789"></div>
-          </div>
-          <div class="row">
-            <div class="field"><label>Nama Ibu</label><input id="groomMotherName" value="Puan Aminah"></div>
-            <div class="field"><label>No. WhatsApp</label><input id="groomMotherPhone" value="60123456789"></div>
-          </div>
-          <div class="field"><label>Pengantin Perempuan — Ibu &amp; Ayah</label><input id="brideParentsInput" value="Puteri kepada Encik Abdullah &amp; Puan Fatimah"></div>
-          <div class="row">
-            <div class="field"><label>Nama Ayah</label><input id="brideFatherName" value="Encik Abdullah"></div>
-            <div class="field"><label>No. WhatsApp</label><input id="brideFatherPhone" value="60123456789"></div>
-          </div>
-          <div class="row">
-            <div class="field"><label>Nama Ibu</label><input id="brideMotherName" value="Puan Fatimah"></div>
-            <div class="field"><label>No. WhatsApp</label><input id="brideMotherPhone" value="60123456789"></div>
-          </div>
-        </div>
+        <div id="statusMsg" style="margin-top:9px;font-size:11px;color:var(--muted);text-align:center;"></div>
+        <div id="slugDisplay" style="margin-top:6px;font-size:10px;color:var(--muted);text-align:center;display:none;"></div>
+      </div>
 
-        <div class="section">
-          <h2 class="section-title">📋 Atur Cara Majlis</h2>
-          <div id="scheduleEditor" class="schedule-editor"></div>
-          <button class="small-btn" id="addSchedule" type="button">+ Tambah Atur Cara</button>
-        </div>
+    </section>
 
-        <div class="section">
-          <h2 class="section-title">🎵 Muzik</h2>
-          <div class="toggle-row">
-            <div class="toggle-info"><strong>Tambah muzik</strong><span>Add-on RM60</span></div>
-            <label class="switch"><input id="musicToggle" type="checkbox"><span class="slider"></span></label>
-          </div>
-          <div id="musicArea" class="hidden" style="margin-top:10px">
-            <div class="field"><label>Pilih fail muzik</label><input id="musicInput" type="file" accept="audio/*"></div>
-          </div>
-        </div>
-
-        <div class="section">
-          <h2 class="section-title">💰 Harga</h2>
-          <div class="price-box">
-            <div class="price-line"><span id="baseLabel">Kad tanpa gambar</span><strong id="basePrice">RM136</strong></div>
-            <div class="price-line" id="musicPriceLine" style="display:none"><span>Muzik</span><strong>RM60</strong></div>
-            <div class="price-total"><span>Jumlah</span><span id="totalPrice">RM136</span></div>
-          </div>
-          <button class="primary-btn" id="orderButton">💬 Hantar Tempahan Melalui WhatsApp</button>
-          <div id="statusMsg" style="margin-top:9px;font-size:11px;color:var(--muted);text-align:center;"></div>
-        </div>
-
-      </section>
-
-      <!-- ===================================================
-      LIVE PREVIEW
-      ==================================================== -->
-
-      <section class="preview-wrap">
-
-        <p class="preview-label">Live Preview</p>
-
-        <div class="phone">
-
-          <div class="phone-screen">
-
-            <main class="wedding-card" id="weddingCard">
-
-              <!-- COVER -->
-              <section class="cover" id="coverPage">
-                <div class="cover-heart" id="openEnvelope"><span>🤍</span></div>
-                <p class="cover-label">Undangan Digital</p>
-                <h1 class="cover-names"><span id="coverName1">Adam</span> &amp; <span id="coverName2">Hawa</span></h1>
-                <p class="cover-subtitle" id="coverSubtitle">Majlis Kesyukuran &amp; Walimatulurus</p>
-                <button class="open-button" id="openButton" type="button"><span>KLIK ATAU LERET KE ATAS UNTUK BUKA</span><span>▲</span></button>
-              </section>
-
-              <div class="card-bg"></div>
-
-              <div class="aurora">
-                <div class="aurora-middle"></div>
-                <div class="aurora-bottom"></div>
+    <!-- PREVIEW -->
+    <section class="preview-wrap">
+      <p class="preview-label">Live Preview</p>
+      <div class="phone">
+        <div class="phone-screen">
+          <main class="wedding-card" id="weddingCard">
+            <section class="cover" id="coverPage">
+              <div class="cover-heart" id="openEnvelope"><span>🤍</span></div>
+              <p class="cover-label">Undangan Digital</p>
+              <h1 class="cover-names"><span id="coverName1">Adam</span> &amp; <span id="coverName2">Hawa</span></h1>
+              <p class="cover-subtitle" id="coverSubtitle">Majlis Kesyukuran &amp; Walimatulurus</p>
+              <button class="open-button" id="openButton" type="button"><span>KLIK ATAU LERET KE ATAS UNTUK BUKA</span><span>▲</span></button>
+            </section>
+            <div class="card-bg"></div>
+            <div class="aurora"><div class="aurora-middle"></div><div class="aurora-bottom"></div></div>
+            <div class="aurora-ribbon"></div><div class="aurora-line"></div><div class="vignette"></div>
+            <div class="emoji-container" id="emojiContainer"></div>
+            <section class="content">
+              <p class="opening">Dengan Penuh Kesyukuran</p>
+              <p class="sparkles" id="sparkleText">✦ 🤍 ✦</p>
+              <p class="invitation-subtitle" id="invitationSubtitle">Majlis Kesyukuran &amp; Walimatulurus</p>
+              <div class="poster-wrapper hidden" id="posterWrapper">
+                <img class="poster" id="weddingPoster" alt="Foto pengantin">
               </div>
-
-              <div class="aurora-ribbon"></div>
-              <div class="aurora-line"></div>
-              <div class="vignette"></div>
-
-              <div class="emoji-container" id="emojiContainer"></div>
-
-              <!-- CONTENT -->
-              <section class="content">
-
-                <p class="opening">Dengan Penuh Kesyukuran</p>
-                <p class="sparkles" id="sparkleText">✦ 🤍 ✦</p>
-                <p class="invitation-subtitle" id="invitationSubtitle">Majlis Kesyukuran &amp; Walimatulurus</p>
-
-                <div class="poster-wrapper hidden" id="posterWrapper">
-                  <img class="poster" id="weddingPoster" alt="Foto pengantin">
+              <h2 class="name" id="displayName1">Adam</h2>
+              <p class="and">&amp;</p>
+              <h2 class="name" id="displayName2">Hawa</h2>
+              <div class="date"><span id="dateEmoji">🤍</span><span id="displayDate">Tarikh Majlis</span></div>
+              <section class="countdown">
+                <p class="countdown-title">MAJLIS BERMULA DALAM</p>
+                <div class="countdown-grid">
+                  <div class="time"><div class="time-number" id="days">00</div><span class="time-label">Hari</span></div>
+                  <div class="time"><div class="time-number" id="hours">00</div><span class="time-label">Jam</span></div>
+                  <div class="time"><div class="time-number" id="minutes">00</div><span class="time-label">Min</span></div>
+                  <div class="time"><div class="time-number" id="seconds">00</div><span class="time-label">Saat</span></div>
                 </div>
-
-                <h2 class="name" id="displayName1">Adam</h2>
-                <p class="and">&amp;</p>
-                <h2 class="name" id="displayName2">Hawa</h2>
-
-                <div class="date"><span id="dateEmoji">🤍</span><span id="displayDate">Tarikh Majlis</span></div>
-
-                <section class="countdown">
-                  <p class="countdown-title">MAJLIS BERMULA DALAM</p>
-                  <div class="countdown-grid">
-                    <div class="time"><div class="time-number" id="days">00</div><span class="time-label">Hari</span></div>
-                    <div class="time"><div class="time-number" id="hours">00</div><span class="time-label">Jam</span></div>
-                    <div class="time"><div class="time-number" id="minutes">00</div><span class="time-label">Min</span></div>
-                    <div class="time"><div class="time-number" id="seconds">00</div><span class="time-label">Saat</span></div>
-                  </div>
-                </section>
-
-                <button class="nav" id="openSchedule" type="button">
-                  <span class="nav-left">📋 <span>Atur Cara Majlis</span></span>
-                  <span class="nav-arrow">➔</span>
-                </button>
-
-                <a class="nav" id="locationButton" href="#" target="_blank" rel="noopener noreferrer">
-                  <span class="nav-left">📍 <span id="locationText">Lokasi Majlis</span></span>
-                  <span class="nav-arrow">➔</span>
-                </a>
-
-                <button class="nav" id="openRsvp" type="button">
-                  <span class="nav-left">💌 <span>RSVP &amp; Ucapan</span></span>
-                  <span class="nav-arrow">➔</span>
-                </button>
-
-                <button class="nav" id="openFamily" type="button">
-                  <span class="nav-left">📞 <span>Hubungi Keluarga</span></span>
-                  <span class="nav-arrow">➔</span>
-                </button>
-
-                <footer class="footer">Crafted with ✦ by <strong>NUR NONA</strong></footer>
-
               </section>
-
-            </main>
-
-          </div>
-
+              <button class="nav" id="openSchedule" type="button">
+                <span class="nav-left">📋 <span>Atur Cara Majlis</span></span>
+                <span class="nav-arrow">➔</span>
+              </button>
+              <a class="nav" id="locationButton" href="#" target="_blank" rel="noopener noreferrer">
+                <span class="nav-left">📍 <span id="locationText">Lokasi Majlis</span></span>
+                <span class="nav-arrow">➔</span>
+              </a>
+              <button class="nav" id="openRsvp" type="button">
+                <span class="nav-left">💌 <span>RSVP &amp; Ucapan</span></span>
+                <span class="nav-arrow">➔</span>
+              </button>
+              <button class="nav" id="openFamily" type="button">
+                <span class="nav-left">📞 <span>Hubungi Keluarga</span></span>
+                <span class="nav-arrow">➔</span>
+              </button>
+              <footer class="footer">Crafted with ✦ by <strong>NUR NONA</strong></footer>
+            </section>
+          </main>
         </div>
-
-      </section>
-
-    </div>
+      </div>
+    </section>
 
   </div>
+</div>
 
-  <!-- OVERLAY -->
-  <div class="overlay" id="overlay"></div>
+<!-- OVERLAY & DRAWERS (sama) -->
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="scheduleDrawer">
+  <div class="drawer-header"><div class="drawer-title">📋 ATUR CARA MAJLIS</div><button class="close" type="button" data-close>×</button></div>
+  <p class="drawer-description">Susunan acara majlis.</p>
+  <div id="scheduleContainer"></div>
+</aside>
+<aside class="drawer" id="rsvpDrawer">
+  <div class="drawer-header"><div class="drawer-title">💌 RSVP &amp; UCAPAN</div><button class="close" type="button" data-close>×</button></div>
+  <p class="drawer-description">Isi maklumat untuk menghantar RSVP kepada pengantin.</p>
+  <div class="field"><label>Nama</label><input id="guestName" placeholder="Nama anda"></div>
+  <div class="field"><label>Kehadiran</label><select id="attendance"><option>Hadir</option><option>Tidak dapat hadir</option></select></div>
+  <div class="field"><label>Ucapan &amp; Doa</label><textarea id="guestMessage" placeholder="Tulis ucapan dan doa anda..."></textarea></div>
+  <button class="primary-btn" id="sendRsvp" type="button">💬 Hantar Melalui WhatsApp</button>
+</aside>
+<aside class="drawer" id="familyDrawer">
+  <div class="drawer-header"><div class="drawer-title">📞 HUBUNGI KELUARGA</div><button class="close" type="button" data-close>×</button></div>
+  <p class="drawer-description">Sebarang pertanyaan berkaitan majlis boleh diajukan kepada keluarga pengantin.</p>
+  <h3 class="family-heading">👨‍💼 Pengantin Lelaki</h3>
+  <p class="family-parents" id="previewGroomParents">Putera kepada Encik Ahmad &amp; Puan Aminah</p>
+  <div id="previewGroomContacts"></div>
+  <h3 class="family-heading">👩‍💼 Pengantin Perempuan</h3>
+  <p class="family-parents" id="previewBrideParents">Puteri kepada Encik Abdullah &amp; Puan Fatimah</p>
+  <div id="previewBrideContacts"></div>
+</aside>
 
-  <!-- SCHEDULE DRAWER -->
-  <aside class="drawer" id="scheduleDrawer">
-    <div class="drawer-header"><div class="drawer-title">📋 ATUR CARA MAJLIS</div><button class="close" type="button" data-close>×</button></div>
-    <p class="drawer-description">Susunan acara majlis.</p>
-    <div id="scheduleContainer"></div>
-  </aside>
+<script>
+  "use strict";
 
-  <!-- RSVP DRAWER -->
-  <aside class="drawer" id="rsvpDrawer">
-    <div class="drawer-header"><div class="drawer-title">💌 RSVP &amp; UCAPAN</div><button class="close" type="button" data-close>×</button></div>
-    <p class="drawer-description">Isi maklumat untuk menghantar RSVP kepada pengantin.</p>
-    <div class="field"><label>Nama</label><input id="guestName" placeholder="Nama anda"></div>
-    <div class="field"><label>Kehadiran</label><select id="attendance"><option>Hadir</option><option>Tidak dapat hadir</option></select></div>
-    <div class="field"><label>Ucapan &amp; Doa</label><textarea id="guestMessage" placeholder="Tulis ucapan dan doa anda..."></textarea></div>
-    <button class="primary-btn" id="sendRsvp" type="button">💬 Hantar Melalui WhatsApp</button>
-  </aside>
+  // =============================================================
+  // ⚡ MODEL: EDIT DULU, BAYAR KEMUDIAN
+  // =============================================================
 
-  <!-- FAMILY DRAWER -->
-  <aside class="drawer" id="familyDrawer">
-    <div class="drawer-header"><div class="drawer-title">📞 HUBUNGI KELUARGA</div><button class="close" type="button" data-close>×</button></div>
-    <p class="drawer-description">Sebarang pertanyaan berkaitan majlis boleh diajukan kepada keluarga pengantin.</p>
-    <h3 class="family-heading">👨‍💼 Pengantin Lelaki</h3>
-    <p class="family-parents" id="previewGroomParents">Putera kepada Encik Ahmad &amp; Puan Aminah</p>
-    <div id="previewGroomContacts"></div>
-    <h3 class="family-heading">👩‍💼 Pengantin Perempuan</h3>
-    <p class="family-parents" id="previewBrideParents">Puteri kepada Encik Abdullah &amp; Puan Fatimah</p>
-    <div id="previewBrideContacts"></div>
-  </aside>
+  const SUPABASE_URL = "https://bfqyyboemqrdpyjkszoy.supabase.co";
+  const SUPABASE_ANON_KEY =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVkcHhlZ2V6bmZzbHdvbWd5cnBhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc5OTQzMDAsImV4cCI6MjEwMzU3MDMwMH0.rBtmGUvGap2TcHTK8mqGyv8gGrkeuddg_pmEvgTSKI0";
+  const SUPABASE_TABLE = "weddings";
+  const SELLER_WHATSAPP = "601139517845";
 
-  <script>
-    "use strict";
+  // QR Code TNG — TUKAR DENGAN QR AWAK
+  const TNG_QR_URL = "https://example.com/tng-qr-code.png";
 
-    // =============================================================
-    // ⚡ JAVASCRIPT YANG DI-DEBUG — SYNC DENGAN TABLE "weddings"
-    //    TAPI RUPA KAD TAK BERUBAH! 😊
-    // =============================================================
+  let isPaid = false;
+  let generatedSlug = '';
 
-    // 🔧 CONFIG — Tukar dengan key Supabase awak
-    const SUPABASE_URL = "https://bfqyyboemqrdpyjkszoy.supabase.co";
-    const SUPABASE_ANON_KEY =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVkcHhlZ2V6bmZzbHdvbWd5cnBhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc5OTQzMDAsImV4cCI6MjEwMzU3MDMwMH0.rBtmGUvGap2TcHTK8mqGyv8gGrkeuddg_pmEvgTSKI0";
-    const SUPABASE_TABLE = "weddings"; // ✅ guna table awak
+  function $(id) { return document.getElementById(id); }
 
-    const SELLER_WHATSAPP = "601139517845";
+  function cleanText(v, fallback = "") {
+    const t = String(v ?? "").trim();
+    return t || fallback;
+  }
 
-    // Helpers
-    function $(id) { return document.getElementById(id); }
+  function normalizePhone(p) {
+    let s = String(p ?? "").replace(/\D/g, "");
+    if (s.startsWith("0")) s = "60" + s.slice(1);
+    return s;
+  }
 
-    function cleanText(v, fallback = "") {
-      const t = String(v ?? "").trim();
-      return t || fallback;
+  function generateSlug(name1, name2) {
+    const random = Math.random().toString(36).substring(2, 6);
+    const slug = `${name1}-${name2}-${random}`.toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[^a-z0-9-]/g, '');
+    return slug;
+  }
+
+  function getSlugFromURL() {
+    const parts = window.location.pathname.split('/').filter(Boolean);
+    return parts.length ? decodeURIComponent(parts[0]).toLowerCase().trim() : '';
+  }
+
+  // =============================================================
+  // 1. LOAD DARI SUPABASE
+  // =============================================================
+  async function loadFromSupabase() {
+    const slug = getSlugFromURL();
+    if (!slug) {
+      console.log('📢 Demo mode — tiada slug.');
+      return;
     }
 
-    function normalizePhone(p) {
-      let s = String(p ?? "").replace(/\D/g, "");
-      if (s.startsWith("0")) s = "60" + s.slice(1);
-      return s;
-    }
-
-    function getSlug() {
-      const parts = window.location.pathname.split('/').filter(Boolean);
-      return parts.length ? decodeURIComponent(parts[0]).toLowerCase().trim() : '';
-    }
-
-    // =============================================================
-    // 1. LOAD DARI SUPABASE
-    // =============================================================
-    async function loadFromSupabase() {
-      const slug = getSlug();
-      if (!slug) {
-        console.log('📢 Demo mode — tiada slug.');
-        return;
-      }
-
-      try {
-        const res = await fetch(
-          `${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}?slug=eq.${slug}&select=*`, {
-            headers: {
-              apikey: SUPABASE_ANON_KEY,
-              Authorization: `Bearer ${SUPABASE_ANON_KEY}`
-            }
+    try {
+      const res = await fetch(
+        `${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}?slug=eq.${slug}&select=*`, {
+          headers: {
+            apikey: SUPABASE_ANON_KEY,
+            Authorization: `Bearer ${SUPABASE_ANON_KEY}`
           }
-        );
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        if (data && data.length) {
-          const row = data[0];
-          // Isi ke editor — guna column dalam table "weddings"
-          $('name1Input').value = row.groom_name || 'Adam';
-          $('name2Input').value = row.bride_name || 'Hawa';
-          // Boleh tambah field lain ikut keperluan
-          updatePreview();
         }
-      } catch (e) {
-        console.warn('⚠️ Gagal load dari Supabase:', e);
+      );
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      if (data && data.length) {
+        const row = data[0];
+        $('name1Input').value = row.groom_name || 'Adam';
+        $('name2Input').value = row.bride_name || 'Hawa';
+        isPaid = row.paid || false;
+        updatePaymentStatus(isPaid);
+        if (isPaid) {
+          generatedSlug = row.slug;
+          enableOrderButton(true);
+          $('slugDisplay').style.display = 'block';
+          $('slugDisplay').textContent = `🔗 Link anda: ${window.location.origin}/${row.slug}`;
+        }
+        updatePreview();
       }
+    } catch (e) {
+      console.warn('⚠️ Gagal load dari Supabase:', e);
+    }
+  }
+
+  // =============================================================
+  // 2. SAVE KE SUPABASE
+  // =============================================================
+  async function saveToSupabase(paid = false) {
+    let slug = getSlugFromURL();
+    if (!slug) {
+      const name1 = cleanText($('name1Input').value, 'Adam');
+      const name2 = cleanText($('name2Input').value, 'Hawa');
+      slug = generateSlug(name1, name2);
+      generatedSlug = slug;
     }
 
-    // =============================================================
-    // 2. SAVE KE SUPABASE (UPSERT guna PATCH)
-    // =============================================================
-    async function saveToSupabase() {
-      const slug = getSlug();
-      if (!slug) {
-        alert('⚠️ Sila guna link dengan slug.\nContoh: nurnona.com/adam-hawa');
-        return false;
-      }
+    const payload = {
+      slug: slug,
+      groom_name: $('name1Input').value || 'Adam',
+      bride_name: $('name2Input').value || 'Hawa',
+      paid: paid
+    };
 
-      const payload = {
-        slug: slug,
-        groom_name: $('name1Input').value || 'Adam',
-        bride_name: $('name2Input').value || 'Hawa',
-        // Nanti boleh tambah field lain macam tarikh, tema, dll.
-      };
+    try {
+      let res = await fetch(
+        `${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}?slug=eq.${slug}`, {
+          method: 'PATCH',
+          headers: {
+            apikey: SUPABASE_ANON_KEY,
+            Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+            'Content-Type': 'application/json',
+            Prefer: 'return=representation'
+          },
+          body: JSON.stringify(payload)
+        }
+      );
 
-      try {
-        const res = await fetch(
-          `${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}?slug=eq.${slug}`, {
-            method: 'PATCH',
+      if (res.status === 200 || res.status === 204) {
+        const result = await res.json();
+        console.log('✅ Data updated:', result);
+        return { slug, saved: true };
+      } else {
+        res = await fetch(
+          `${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}`, {
+            method: 'POST',
             headers: {
               apikey: SUPABASE_ANON_KEY,
               Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
@@ -1350,348 +906,425 @@
         }
 
         const result = await res.json();
-        console.log('✅ Data saved:', result);
-        return true;
-      } catch (e) {
-        console.error('❌ Save failed:', e);
-        alert('Gagal simpan data: ' + e.message);
-        return false;
+        console.log('✅ Data inserted:', result);
+        return { slug, saved: true };
       }
+    } catch (e) {
+      console.error('❌ Save failed:', e);
+      alert('Gagal simpan data: ' + e.message);
+      return { slug, saved: false };
+    }
+  }
+
+  // =============================================================
+  // 3. PAYMENT STATUS
+  // =============================================================
+  function updatePaymentStatus(paid) {
+    const el = $('paymentStatus');
+    const buyBtn = $('buyButton');
+    const orderBtn = $('orderButton');
+    const qrContainer = $('qrContainer');
+
+    if (paid) {
+      el.className = 'payment-status paid';
+      el.textContent = '✅ Sudah Dibayar — Link Aktif! Anda boleh hantar tempahan sekarang.';
+      buyBtn.disabled = true;
+      buyBtn.textContent = '✅ Sudah Dibayar';
+      orderBtn.disabled = false;
+      orderBtn.textContent = '💬 Hantar Tempahan Melalui WhatsApp';
+      qrContainer.classList.add('hidden');
+      enableOrderButton(true);
+    } else {
+      el.className = 'payment-status waiting';
+      el.textContent = '✏️ Cuba edit dahulu — bayar untuk dapatkan link & hantar tempahan.';
+      buyBtn.disabled = false;
+      buyBtn.textContent = `💚 Saya Nak Beli & Dapatkan Link (RM${$('totalPrice').textContent.replace('RM', '')})`;
+      orderBtn.disabled = true;
+      orderBtn.textContent = '🔒 Hantar Tempahan — Sila bayar dahulu';
+      qrContainer.classList.add('hidden');
+      enableOrderButton(false);
+    }
+  }
+
+  function enableOrderButton(enabled) {
+    const btn = $('orderButton');
+    if (enabled) {
+      btn.disabled = false;
+      btn.textContent = '💬 Hantar Tempahan Melalui WhatsApp';
+    } else {
+      btn.disabled = true;
+      btn.textContent = '🔒 Hantar Tempahan — Sila bayar dahulu';
+    }
+  }
+
+  // =============================================================
+  // 4. BUTTON "SAYA NAK BELI"
+  // =============================================================
+  $('buyButton').addEventListener('click', async function() {
+    const status = $('statusMsg');
+    const qrContainer = $('qrContainer');
+    const total = $('totalPrice').textContent.replace('RM', '');
+
+    // Tunjukkan QR Code
+    qrContainer.classList.remove('hidden');
+    $('qrTotal').textContent = `RM${total}`;
+    $('qrImage').src = TNG_QR_URL;
+
+    // Scroll ke QR
+    qrContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    // Tanya customer
+    const confirmPay = confirm(
+      `💚 ANDA PASTI NAK BELI?\n\n` +
+      `Jumlah: RM${total}\n\n` +
+      `📱 Sila scan QR Code TNG eWallet yang telah dipaparkan.\n` +
+      `Pastikan anda selesaikan bayaran sebelum tekan "OK".\n\n` +
+      `*Saya akan sahkan bayaran & aktifkan link untuk anda.*`
+    );
+
+    if (!confirmPay) {
+      status.textContent = '❌ Bayaran dibatalkan. Sila scan QR & bayar dahulu.';
+      return;
     }
 
-    // =============================================================
-    // 3. UPDATE PREVIEW (semua rupa kekal!)
-    // =============================================================
-    function updatePreview() {
-      const n1 = cleanText($('name1Input').value, 'Adam');
-      const n2 = cleanText($('name2Input').value, 'Hawa');
-      const sub = cleanText($('subtitleInput').value, 'Majlis Kesyukuran & Walimatulurus');
+    // Simpan status "paid" = true
+    status.textContent = '⏳ Menyimpan status bayaran...';
+    const result = await saveToSupabase(true);
+    if (result.saved) {
+      isPaid = true;
+      updatePaymentStatus(true);
+      status.textContent = '✅ Bayaran disahkan! Link anda sekarang aktif.';
+      $('slugDisplay').style.display = 'block';
+      $('slugDisplay').textContent = `🔗 Link unik anda: ${window.location.origin}/${result.slug}`;
 
-      // Nama
-      $('displayName1').textContent = n1;
-      $('displayName2').textContent = n2;
-      $('coverName1').textContent = n1;
-      $('coverName2').textContent = n2;
-      $('coverSubtitle').textContent = sub;
-      $('invitationSubtitle').textContent = sub;
+      // Hantar WhatsApp ke seller (awak) — notification
+      const sellerMsg =
+        `🟢 Customer telah bayar!\n\n` +
+        `Nama: ${cleanText($('name1Input').value)} & ${cleanText($('name2Input').value)}\n` +
+        `Link: ${window.location.origin}/${result.slug}\n` +
+        `Jumlah: RM${total}\n\n` +
+        `Sila semak TNG eWallet dan aktifkan link.`;
+      window.open(`https://wa.me/${SELLER_WHATSAPP}?text=${encodeURIComponent(sellerMsg)}`, '_blank');
+    } else {
+      status.textContent = '❌ Gagal menyimpan status. Cuba lagi.';
+    }
+  });
 
-      // Lokasi
-      const loc = cleanText($('locationNameInput').value, 'Lokasi Majlis');
-      $('locationText').textContent = loc;
+  // =============================================================
+  // 5. ORDER — HANYA BOLEH GUNA JIKA SUDAH BAYAR
+  // =============================================================
+  let orderSubmitting = false;
 
-      // Tarikh
-      const dateVal = $('dateInput').value;
-      if (dateVal) {
-        const d = new Date(dateVal + 'T00:00:00+08:00');
-        if (!isNaN(d.getTime())) {
-          $('displayDate').textContent = d.toLocaleDateString('ms-MY', { weekday: 'long', day: 'numeric',
-            month: 'long', year: 'numeric' });
-        }
-      }
-
-      // Harga
-      const withImage = $('imageToggle').checked;
-      const music = $('musicToggle').checked;
-      const base = withImage ? 176 : 136;
-      const total = base + (music ? 60 : 0);
-      $('baseLabel').textContent = withImage ? 'Kad dengan gambar' : 'Kad tanpa gambar';
-      $('basePrice').textContent = `RM${base}`;
-      $('musicPriceLine').style.display = music ? 'flex' : 'none';
-      $('totalPrice').textContent = `RM${total}`;
-
-      // Image area
-      $('imageArea').classList.toggle('hidden', !withImage);
-      $('musicArea').classList.toggle('hidden', !music);
-
-      // Emoji
-      updateEmoji();
+  $('orderButton').addEventListener('click', async function() {
+    if (!isPaid) {
+      alert('⚠️ Sila bayar dahulu sebelum menghantar tempahan.\n\nKlik butang "Saya Nak Beli & Dapatkan Link" untuk bayar.');
+      return;
     }
 
-    // =============================================================
-    // 4. EMOJI
-    // =============================================================
-    function updateEmoji() {
-      const checks = document.querySelectorAll('.emoji-check:checked');
-      const emojis = [];
-      checks.forEach(c => emojis.push(c.value));
-      const e1 = emojis[0] || '🤍';
-      const e2 = emojis[1] || e1;
-      $('sparkleText').textContent = `✦ ${e1} ${e2} ✦`;
-      $('dateEmoji').textContent = e1;
-    }
+    if (orderSubmitting) return;
+    orderSubmitting = true;
+    const status = $('statusMsg');
+    status.textContent = '⏳ Menyimpan data...';
 
-    document.querySelectorAll('.emoji-check').forEach(cb => {
-      cb.addEventListener('change', function() {
-        const checked = document.querySelectorAll('.emoji-check:checked');
-        if (checked.length > 2) { this.checked = false;
-          alert('Maksimum 2 emoji sahaja 😊'); }
-        updateEmoji();
-      });
-    });
-
-    // =============================================================
-    // 5. COUNTDOWN
-    // =============================================================
-    function updateCountdown() {
-      const date = $('dateInput').value;
-      const time = $('timeInput').value || '00:00';
-      if (!date) {
-        setCountdown(0, 0, 0, 0);
-        return;
-      }
-      const target = new Date(`${date}T${time}:00+08:00`);
-      if (isNaN(target.getTime())) { setCountdown(0, 0, 0, 0); return; }
-      let diff = target.getTime() - Date.now();
-      if (diff <= 0) { setCountdown(0, 0, 0, 0); return; }
-      const d = Math.floor(diff / 86400000);
-      diff %= 86400000;
-      const h = Math.floor(diff / 3600000);
-      diff %= 3600000;
-      const m = Math.floor(diff / 60000);
-      diff %= 60000;
-      const s = Math.floor(diff / 1000);
-      setCountdown(d, h, m, s);
-    }
-
-    function setCountdown(d, h, m, s) {
-      $('days').textContent = String(d).padStart(2, '0');
-      $('hours').textContent = String(h).padStart(2, '0');
-      $('minutes').textContent = String(m).padStart(2, '0');
-      $('seconds').textContent = String(s).padStart(2, '0');
-    }
-
-    // =============================================================
-    // 6. SCHEDULE (simple version)
-    // =============================================================
-    let schedule = [
-      { time: '11:00 AM', text: 'Ketibaan Tetamu' },
-      { time: '12:00 PM', text: 'Bacaan Doa' },
-      { time: '01:00 PM', text: 'Makan Beradab' }
-    ];
-
-    function renderScheduleEditor() {
-      const container = $('scheduleEditor');
-      container.innerHTML = '';
-      schedule.forEach((item, i) => {
-        const row = document.createElement('div');
-        row.className = 'schedule-row';
-        const t = document.createElement('input');
-        t.type = 'text';
-        t.value = item.time || '';
-        t.placeholder = 'Masa';
-        t.oninput = e => { schedule[i].time = e.target.value;
-          renderSchedule(); };
-        const txt = document.createElement('input');
-        txt.type = 'text';
-        txt.value = item.text || '';
-        txt.placeholder = 'Acara';
-        txt.oninput = e => { schedule[i].text = e.target.value;
-          renderSchedule(); };
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'remove-btn';
-        btn.textContent = '×';
-        btn.onclick = () => { schedule.splice(i, 1);
-          renderScheduleEditor();
-          renderSchedule(); };
-        row.append(t, txt, btn);
-        container.append(row);
-      });
-    }
-
-    function renderSchedule() {
-      const container = $('scheduleContainer');
-      container.innerHTML = '';
-      if (!schedule.length) {
-        container.innerHTML = '<div class="drawer-description">Belum ada atur cara.</div>';
-        return;
-      }
-      schedule.forEach(item => {
-        const row = document.createElement('div');
-        row.className = 'schedule-item';
-        const tm = document.createElement('div');
-        tm.className = 'schedule-time';
-        tm.textContent = item.time || '—';
-        const tx = document.createElement('div');
-        tx.className = 'schedule-text';
-        tx.textContent = item.text || 'Acara majlis';
-        row.append(tm, tx);
-        container.append(row);
-      });
-    }
-
-    $('addSchedule').addEventListener('click', () => {
-      schedule.push({ time: '05:00 PM', text: 'Acara Tambahan' });
-      renderScheduleEditor();
-      renderSchedule();
-    });
-
-    // =============================================================
-    // 7. FAMILY PREVIEW
-    // =============================================================
-    function makeContact(container, name, phone) {
-      const p = normalizePhone(phone);
-      if (!p) return;
-      const div = document.createElement('div');
-      div.className = 'contact-item';
-      const n = document.createElement('div');
-      n.className = 'contact-name';
-      n.textContent = cleanText(name, 'Keluarga');
-      const a = document.createElement('a');
-      a.className = 'contact-button';
-      a.href = `https://wa.me/${p}`;
-      a.target = '_blank';
-      a.textContent = '📞 Hubungi';
-      div.append(n, a);
-      container.append(div);
-    }
-
-    function updateFamily() {
-      $('previewGroomParents').textContent = cleanText($('groomParentsInput').value, 'Putera kepada keluarga pengantin lelaki');
-      $('previewBrideParents').textContent = cleanText($('brideParentsInput').value, 'Puteri kepada keluarga pengantin perempuan');
-      const gc = $('previewGroomContacts');
-      gc.innerHTML = '';
-      makeContact(gc, $('groomFatherName').value, $('groomFatherPhone').value);
-      makeContact(gc, $('groomMotherName').value, $('groomMotherPhone').value);
-      const bc = $('previewBrideContacts');
-      bc.innerHTML = '';
-      makeContact(bc, $('brideFatherName').value, $('brideFatherPhone').value);
-      makeContact(bc, $('brideMotherName').value, $('brideMotherPhone').value);
-    }
-
-    // =============================================================
-    // 8. DRAWERS
-    // =============================================================
-    function closeDrawers() {
-      document.querySelectorAll('.drawer').forEach(d => d.classList.remove('active'));
-      $('overlay').classList.remove('active');
-      document.body.style.overflow = '';
-    }
-
-    function openDrawer(id) {
-      closeDrawers();
-      $(id).classList.add('active');
-      $('overlay').classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    $('openSchedule').addEventListener('click', () => openDrawer('scheduleDrawer'));
-    $('openRsvp').addEventListener('click', () => openDrawer('rsvpDrawer'));
-    $('openFamily').addEventListener('click', () => openDrawer('familyDrawer'));
-    $('overlay').addEventListener('click', closeDrawers);
-    document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', closeDrawers));
-
-    // =============================================================
-    // 9. COVER / BUKA KAD
-    // =============================================================
-    let opened = false;
-
-    function openCard() {
-      if (opened) return;
-      opened = true;
-      $('coverPage').classList.add('opened');
-    }
-    $('openEnvelope').addEventListener('click', openCard);
-    $('openButton').addEventListener('click', openCard);
-
-    // =============================================================
-    // 10. LOCATION BUTTON
-    // =============================================================
-    $('locationButton').addEventListener('click', function(e) {
-      e.preventDefault();
-      const url = cleanText($('mapUrlInput').value);
-      if (url) window.open(url, '_blank');
-      else alert('Sila masukkan link peta.');
-    });
-
-    // =============================================================
-    // 11. RSVP SEND
-    // =============================================================
-    $('sendRsvp').addEventListener('click', function() {
-      const phone = normalizePhone($('rsvpPhoneInput').value);
-      if (!phone) { alert('Nombor WhatsApp RSVP pengantin belum diisi.'); return; }
-      const name = cleanText($('guestName').value, 'Tetamu');
-      const attendance = $('attendance').value;
-      const msg = cleanText($('guestMessage').value, 'Tahniah dan semoga berbahagia selalu! 🤍');
-      const n1 = cleanText($('name1Input').value, 'Adam');
-      const n2 = cleanText($('name2Input').value, 'Hawa');
-      const text =
-        `Assalamualaikum ${n1} & ${n2} 🤍\n\nSaya ingin memberikan RSVP untuk majlis anda.\n\n━━━━━━━━━━━━━━━━\n💌 MAKLUMAT RSVP\n━━━━━━━━━━━━━━━━\n\n👤 Nama: ${name}\n💌 Kehadiran: ${attendance}\n📝 Ucapan & Doa: ${msg}\n\nTerima kasih 🤍`;
-      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
-    });
-
-    // =============================================================
-    // 12. ORDER (HANTAR TEMPAHAN)
-    // =============================================================
-    let orderSubmitting = false;
-
-    $('orderButton').addEventListener('click', async function() {
-      if (orderSubmitting) return;
-      orderSubmitting = true;
-      const status = $('statusMsg');
-      status.textContent = '⏳ Menyimpan data...';
-
-      const saved = await saveToSupabase();
-      if (!saved) {
-        status.textContent = '❌ Gagal simpan. Cuba lagi.';
-        orderSubmitting = false;
-        return;
-      }
-
-      const n1 = cleanText($('name1Input').value, 'Adam');
-      const n2 = cleanText($('name2Input').value, 'Hawa');
-      const withImage = $('imageToggle').checked;
-      const music = $('musicToggle').checked;
-      const base = withImage ? 176 : 136;
-      const total = base + (music ? 60 : 0);
-      const theme = $('themeInput').selectedOptions[0].textContent.trim();
-      const emojis = [];
-      document.querySelectorAll('.emoji-check:checked').forEach(c => emojis.push(c.value));
-      const slug = getSlug();
-
-      const msg =
-        `Assalamualaikum NUR NONA 🤍\n\nSaya nak tempah Undangan Digital.\n\n━━━━━━━━━━━━━━━━\n💍 MAKLUMAT TEMPAHAN\n━━━━━━━━━━━━━━━━\n\n👰 Pengantin: ${n1} & ${n2}\n🔗 Link: ${window.location.origin}/${slug}\n🖼️ Gambar: ${withImage ? 'Ya — RM176' : 'Tidak — RM136'}\n🎵 Muzik: ${music ? 'Ya — +RM60' : 'Tidak'}\n🎨 Tema: ${theme}\n✨ Emoji: ${emojis.length ? emojis.join(' & ') : '🤍'}\n💰 JUMLAH: RM${total}\n\n💾 Data tempahan telah berjaya disimpan ke sistem NUR NONA.\nSaya telah buat pilihan melalui Live Editor. 😊`;
-
-      window.open(`https://wa.me/${SELLER_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
-      status.textContent = '✅ Data disimpan. WhatsApp dibuka.';
+    const result = await saveToSupabase(true);
+    if (!result.saved) {
+      status.textContent = '❌ Gagal simpan. Cuba lagi.';
       orderSubmitting = false;
-    });
-
-    // =============================================================
-    // 13. EVENT LISTENERS UNTUK LIVE UPDATE
-    // =============================================================
-    ['name1Input', 'name2Input', 'subtitleInput', 'dateInput', 'timeInput',
-      'locationNameInput', 'mapTypeInput', 'mapUrlInput',
-      'groomParentsInput', 'groomFatherName', 'groomFatherPhone',
-      'groomMotherName', 'groomMotherPhone',
-      'brideParentsInput', 'brideFatherName', 'brideFatherPhone',
-      'brideMotherName', 'brideMotherPhone'
-    ].forEach(id => {
-      const el = $(id);
-      if (el) el.addEventListener('input', () => { updatePreview();
-        updateFamily(); });
-    });
-
-    $('imageToggle').addEventListener('change', updatePreview);
-    $('musicToggle').addEventListener('change', updatePreview);
-    $('themeInput').addEventListener('change', updatePreview);
-
-    // =============================================================
-    // 14. INIT
-    // =============================================================
-    function init() {
-      renderScheduleEditor();
-      renderSchedule();
-      updatePreview();
-      updateFamily();
-      updateCountdown();
-      setInterval(updateCountdown, 1000);
-      // Load data dari Supabase
-      loadFromSupabase();
+      return;
     }
 
-    init();
-  </script>
+    const slug = result.slug;
+    const n1 = cleanText($('name1Input').value, 'Adam');
+    const n2 = cleanText($('name2Input').value, 'Hawa');
+    const withImage = $('imageToggle').checked;
+    const music = $('musicToggle').checked;
+    const base = withImage ? 176 : 136;
+    const total = base + (music ? 60 : 0);
+    const theme = $('themeInput').selectedOptions[0].textContent.trim();
+    const emojis = [];
+    document.querySelectorAll('.emoji-check:checked').forEach(c => emojis.push(c.value));
 
+    const link = `${window.location.origin}/${slug}`;
+    $('slugDisplay').style.display = 'block';
+    $('slugDisplay').textContent = `🔗 Link unik anda: ${link}`;
+
+    const msg =
+      `Assalamualaikum NUR NONA 🤍\n\nSaya nak tempah Undangan Digital.\n\n━━━━━━━━━━━━━━━━\n💍 MAKLUMAT TEMPAHAN\n━━━━━━━━━━━━━━━━\n\n👰 Pengantin: ${n1} & ${n2}\n🔗 Link: ${link}\n🖼️ Gambar: ${withImage ? 'Ya — RM176' : 'Tidak — RM136'}\n🎵 Muzik: ${music ? 'Ya — +RM60' : 'Tidak'}\n🎨 Tema: ${theme}\n✨ Emoji: ${emojis.length ? emojis.join(' & ') : '🤍'}\n💰 JUMLAH: RM${total}\n\n💾 Data tempahan telah berjaya disimpan ke sistem NUR NONA.\n✅ Bayaran telah disahkan.`;
+
+    window.open(`https://wa.me/${SELLER_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
+    status.textContent = '✅ Data disimpan. WhatsApp dibuka.';
+    orderSubmitting = false;
+  });
+
+  // =============================================================
+  // 6. UPDATE PREVIEW
+  // =============================================================
+  function updatePreview() {
+    const n1 = cleanText($('name1Input').value, 'Adam');
+    const n2 = cleanText($('name2Input').value, 'Hawa');
+    const sub = cleanText($('subtitleInput').value, 'Majlis Kesyukuran & Walimatulurus');
+
+    $('displayName1').textContent = n1;
+    $('displayName2').textContent = n2;
+    $('coverName1').textContent = n1;
+    $('coverName2').textContent = n2;
+    $('coverSubtitle').textContent = sub;
+    $('invitationSubtitle').textContent = sub;
+
+    const loc = cleanText($('locationNameInput').value, 'Lokasi Majlis');
+    $('locationText').textContent = loc;
+
+    const dateVal = $('dateInput').value;
+    if (dateVal) {
+      const d = new Date(dateVal + 'T00:00:00+08:00');
+      if (!isNaN(d.getTime())) {
+        $('displayDate').textContent = d.toLocaleDateString('ms-MY', { weekday: 'long', day: 'numeric',
+          month: 'long', year: 'numeric' });
+      }
+    }
+
+    const withImage = $('imageToggle').checked;
+    const music = $('musicToggle').checked;
+    const base = withImage ? 176 : 136;
+    const total = base + (music ? 60 : 0);
+    $('baseLabel').textContent = withImage ? 'Kad dengan gambar' : 'Kad tanpa gambar';
+    $('basePrice').textContent = `RM${base}`;
+    $('musicPriceLine').style.display = music ? 'flex' : 'none';
+    $('totalPrice').textContent = `RM${total}`;
+    $('buyTotal').textContent = total;
+    $('imageArea').classList.toggle('hidden', !withImage);
+    $('musicArea').classList.toggle('hidden', !music);
+
+    // Update buy button text
+    if (!isPaid) {
+      $('buyButton').textContent = `💚 Saya Nak Beli & Dapatkan Link (RM${total})`;
+    }
+
+    updateEmoji();
+  }
+
+  // =============================================================
+  // 7. EMOJI, COUNTDOWN, SCHEDULE, FAMILY, DRAWERS, COVER (sama)
+  // =============================================================
+  function updateEmoji() {
+    const checks = document.querySelectorAll('.emoji-check:checked');
+    const emojis = [];
+    checks.forEach(c => emojis.push(c.value));
+    const e1 = emojis[0] || '🤍';
+    const e2 = emojis[1] || e1;
+    $('sparkleText').textContent = `✦ ${e1} ${e2} ✦`;
+    $('dateEmoji').textContent = e1;
+  }
+
+  document.querySelectorAll('.emoji-check').forEach(cb => {
+    cb.addEventListener('change', function() {
+      const checked = document.querySelectorAll('.emoji-check:checked');
+      if (checked.length > 2) { this.checked = false;
+        alert('Maksimum 2 emoji sahaja 😊'); }
+      updateEmoji();
+    });
+  });
+
+  function updateCountdown() {
+    const date = $('dateInput').value;
+    const time = $('timeInput').value || '00:00';
+    if (!date) { setCountdown(0, 0, 0, 0); return; }
+    const target = new Date(`${date}T${time}:00+08:00`);
+    if (isNaN(target.getTime())) { setCountdown(0, 0, 0, 0); return; }
+    let diff = target.getTime() - Date.now();
+    if (diff <= 0) { setCountdown(0, 0, 0, 0); return; }
+    const d = Math.floor(diff / 86400000);
+    diff %= 86400000;
+    const h = Math.floor(diff / 3600000);
+    diff %= 3600000;
+    const m = Math.floor(diff / 60000);
+    diff %= 60000;
+    const s = Math.floor(diff / 1000);
+    setCountdown(d, h, m, s);
+  }
+
+  function setCountdown(d, h, m, s) {
+    $('days').textContent = String(d).padStart(2, '0');
+    $('hours').textContent = String(h).padStart(2, '0');
+    $('minutes').textContent = String(m).padStart(2, '0');
+    $('seconds').textContent = String(s).padStart(2, '0');
+  }
+
+  let schedule = [
+    { time: '11:00 AM', text: 'Ketibaan Tetamu' },
+    { time: '12:00 PM', text: 'Bacaan Doa' },
+    { time: '01:00 PM', text: 'Makan Beradab' }
+  ];
+
+  function renderScheduleEditor() {
+    const container = $('scheduleEditor');
+    container.innerHTML = '';
+    schedule.forEach((item, i) => {
+      const row = document.createElement('div');
+      row.className = 'schedule-row';
+      const t = document.createElement('input');
+      t.type = 'text';
+      t.value = item.time || '';
+      t.placeholder = 'Masa';
+      t.oninput = e => { schedule[i].time = e.target.value;
+        renderSchedule(); };
+      const txt = document.createElement('input');
+      txt.type = 'text';
+      txt.value = item.text || '';
+      txt.placeholder = 'Acara';
+      txt.oninput = e => { schedule[i].text = e.target.value;
+        renderSchedule(); };
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'remove-btn';
+      btn.textContent = '×';
+      btn.onclick = () => { schedule.splice(i, 1);
+        renderScheduleEditor();
+        renderSchedule(); };
+      row.append(t, txt, btn);
+      container.append(row);
+    });
+  }
+
+  function renderSchedule() {
+    const container = $('scheduleContainer');
+    container.innerHTML = '';
+    if (!schedule.length) {
+      container.innerHTML = '<div class="drawer-description">Belum ada atur cara.</div>';
+      return;
+    }
+    schedule.forEach(item => {
+      const row = document.createElement('div');
+      row.className = 'schedule-item';
+      const tm = document.createElement('div');
+      tm.className = 'schedule-time';
+      tm.textContent = item.time || '—';
+      const tx = document.createElement('div');
+      tx.className = 'schedule-text';
+      tx.textContent = item.text || 'Acara majlis';
+      row.append(tm, tx);
+      container.append(row);
+    });
+  }
+
+  $('addSchedule').addEventListener('click', () => {
+    schedule.push({ time: '05:00 PM', text: 'Acara Tambahan' });
+    renderScheduleEditor();
+    renderSchedule();
+  });
+
+  function makeContact(container, name, phone) {
+    const p = normalizePhone(phone);
+    if (!p) return;
+    const div = document.createElement('div');
+    div.className = 'contact-item';
+    const n = document.createElement('div');
+    n.className = 'contact-name';
+    n.textContent = cleanText(name, 'Keluarga');
+    const a = document.createElement('a');
+    a.className = 'contact-button';
+    a.href = `https://wa.me/${p}`;
+    a.target = '_blank';
+    a.textContent = '📞 Hubungi';
+    div.append(n, a);
+    container.append(div);
+  }
+
+  function updateFamily() {
+    $('previewGroomParents').textContent = cleanText($('groomParentsInput').value, 'Putera kepada keluarga pengantin lelaki');
+    $('previewBrideParents').textContent = cleanText($('brideParentsInput').value, 'Puteri kepada keluarga pengantin perempuan');
+    const gc = $('previewGroomContacts');
+    gc.innerHTML = '';
+    makeContact(gc, $('groomFatherName').value, $('groomFatherPhone').value);
+    makeContact(gc, $('groomMotherName').value, $('groomMotherPhone').value);
+    const bc = $('previewBrideContacts');
+    bc.innerHTML = '';
+    makeContact(bc, $('brideFatherName').value, $('brideFatherPhone').value);
+    makeContact(bc, $('brideMotherName').value, $('brideMotherPhone').value);
+  }
+
+  function closeDrawers() {
+    document.querySelectorAll('.drawer').forEach(d => d.classList.remove('active'));
+    $('overlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function openDrawer(id) {
+    closeDrawers();
+    $(id).classList.add('active');
+    $('overlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  $('openSchedule').addEventListener('click', () => openDrawer('scheduleDrawer'));
+  $('openRsvp').addEventListener('click', () => openDrawer('rsvpDrawer'));
+  $('openFamily').addEventListener('click', () => openDrawer('familyDrawer'));
+  $('overlay').addEventListener('click', closeDrawers);
+  document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', closeDrawers));
+
+  let opened = false;
+
+  function openCard() {
+    if (opened) return;
+    opened = true;
+    $('coverPage').classList.add('opened');
+  }
+  $('openEnvelope').addEventListener('click', openCard);
+  $('openButton').addEventListener('click', openCard);
+
+  $('locationButton').addEventListener('click', function(e) {
+    e.preventDefault();
+    const url = cleanText($('mapUrlInput').value);
+    if (url) window.open(url, '_blank');
+    else alert('Sila masukkan link peta.');
+  });
+
+  $('sendRsvp').addEventListener('click', function() {
+    const phone = normalizePhone($('rsvpPhoneInput').value);
+    if (!phone) { alert('Nombor WhatsApp RSVP pengantin belum diisi.'); return; }
+    const name = cleanText($('guestName').value, 'Tetamu');
+    const attendance = $('attendance').value;
+    const msg = cleanText($('guestMessage').value, 'Tahniah dan semoga berbahagia selalu! 🤍');
+    const n1 = cleanText($('name1Input').value, 'Adam');
+    const n2 = cleanText($('name2Input').value, 'Hawa');
+    const text =
+      `Assalamualaikum ${n1} & ${n2} 🤍\n\nSaya ingin memberikan RSVP untuk majlis anda.\n\n━━━━━━━━━━━━━━━━\n💌 MAKLUMAT RSVP\n━━━━━━━━━━━━━━━━\n\n👤 Nama: ${name}\n💌 Kehadiran: ${attendance}\n📝 Ucapan & Doa: ${msg}\n\nTerima kasih 🤍`;
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
+  });
+
+  // =============================================================
+  // 8. EVENT LISTENERS
+  // =============================================================
+  ['name1Input', 'name2Input', 'subtitleInput', 'dateInput', 'timeInput',
+    'locationNameInput', 'mapTypeInput', 'mapUrlInput',
+    'groomParentsInput', 'groomFatherName', 'groomFatherPhone',
+    'groomMotherName', 'groomMotherPhone',
+    'brideParentsInput', 'brideFatherName', 'brideFatherPhone',
+    'brideMotherName', 'brideMotherPhone'
+  ].forEach(id => {
+    const el = $(id);
+    if (el) el.addEventListener('input', () => { updatePreview();
+      updateFamily(); });
+  });
+
+  $('imageToggle').addEventListener('change', updatePreview);
+  $('musicToggle').addEventListener('change', updatePreview);
+  $('themeInput').addEventListener('change', updatePreview);
+
+  // =============================================================
+  // 9. INIT
+  // =============================================================
+  function init() {
+    renderScheduleEditor();
+    renderSchedule();
+    updatePreview();
+    updateFamily();
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+    loadFromSupabase();
+  }
+
+  init();
+</script>
 </body>
 </html>
