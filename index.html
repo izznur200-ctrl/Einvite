@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NUR NONA — Live Editor</title>
   <style>
-    /* ===== SAMA MACAM SEBELUM — TAK UBAH ===== */
+    /* ===== SEMUA STYLE SAMA — TAK BERUBAH ===== */
     :root {
       --tone1: #D98B9A;
       --tone2: #7FA58A;
@@ -423,9 +423,24 @@
     .nav-arrow { color: var(--tone3); }
     .footer { padding: 23px 0 4px; color: #65746b; font-size: 10px; letter-spacing: 1.4px; }
     .footer strong { color: #c8d5cc; }
-    .emoji-container { position: absolute; inset: 0; z-index: 4; overflow: hidden; pointer-events: none; }
-    .falling { position: absolute; top: -30px; animation: fall linear forwards; will-change: transform, opacity; }
-    @keyframes fall { 0% { transform: translateY(0) rotate(0); opacity: 0; } 10%,85% { opacity: 1; } 100% { transform: translateY(700px) rotate(360deg); opacity: 0; } }
+    .emoji-container {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .falling {
+      position: absolute;
+      top: -30px;
+      animation: fall linear forwards;
+      will-change: transform, opacity;
+    }
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0); opacity: 0; }
+      10%,85% { opacity: 1; }
+      100% { transform: translateY(700px) rotate(360deg); opacity: 0; }
+    }
     .drawer {
       position: fixed;
       top: 5%;
@@ -614,74 +629,29 @@
         <div class="field"><label>Nombor WhatsApp Pengantin</label><input id="rsvpPhoneInput" placeholder="60123456789"></div>
       </div>
 
-      <!-- =============================================================
-           FAMILY — SEMUA OPTIONAL (Boleh isi mak/ayah/nenek/moyang 😂)
-      ============================================================== -->
+      <!-- FAMILY — OPTIONAL -->
       <div class="section">
         <h2 class="section-title">📞 Hubungi Keluarga <span style="font-weight:400;font-size:10px;color:var(--muted);">(Optional)</span></h2>
-        
-        <p style="color:var(--muted);font-size:11px;margin-bottom:12px;">
-          ✏️ Isi jika ada — kosongkan jika tiada. Boleh letak sesiapa (ibu, ayah, nenek, atuk, penjaga, dll).
-        </p>
+        <p style="color:var(--muted);font-size:11px;margin-bottom:12px;">✏️ Isi jika ada — kosongkan jika tiada. Boleh letak sesiapa (ibu, ayah, nenek, atuk, penjaga, dll).</p>
 
-        <div class="field">
-          <label>Pengantin Lelaki — Wakil Keluarga</label>
-          <input 
-            id="groomParentsInput" 
-            placeholder="Contoh: Putera kepada Encik Ahmad & Puan Aminah (optional)"
-          >
-        </div>
-
+        <div class="field"><label>Pengantin Lelaki — Wakil Keluarga</label><input id="groomParentsInput" placeholder="Contoh: Putera kepada Encik Ahmad & Puan Aminah (optional)"></div>
         <div class="row">
-          <div class="field">
-            <label>Nama Wakil 1</label>
-            <input id="groomFatherName" placeholder="Contoh: Encik Ahmad (optional)">
-          </div>
-          <div class="field">
-            <label>No. WhatsApp</label>
-            <input id="groomFatherPhone" placeholder="60123456789 (optional)">
-          </div>
+          <div class="field"><label>Nama Wakil 1</label><input id="groomFatherName" placeholder="Contoh: Encik Ahmad (optional)"></div>
+          <div class="field"><label>No. WhatsApp</label><input id="groomFatherPhone" placeholder="60123456789 (optional)"></div>
         </div>
-
         <div class="row">
-          <div class="field">
-            <label>Nama Wakil 2</label>
-            <input id="groomMotherName" placeholder="Contoh: Puan Aminah (optional)">
-          </div>
-          <div class="field">
-            <label>No. WhatsApp</label>
-            <input id="groomMotherPhone" placeholder="60123456789 (optional)">
-          </div>
+          <div class="field"><label>Nama Wakil 2</label><input id="groomMotherName" placeholder="Contoh: Puan Aminah (optional)"></div>
+          <div class="field"><label>No. WhatsApp</label><input id="groomMotherPhone" placeholder="60123456789 (optional)"></div>
         </div>
 
-        <div class="field" style="margin-top:12px;">
-          <label>Pengantin Perempuan — Wakil Keluarga</label>
-          <input 
-            id="brideParentsInput" 
-            placeholder="Contoh: Puteri kepada Encik Abdullah & Puan Fatimah (optional)"
-          >
-        </div>
-
+        <div class="field" style="margin-top:12px;"><label>Pengantin Perempuan — Wakil Keluarga</label><input id="brideParentsInput" placeholder="Contoh: Puteri kepada Encik Abdullah & Puan Fatimah (optional)"></div>
         <div class="row">
-          <div class="field">
-            <label>Nama Wakil 1</label>
-            <input id="brideFatherName" placeholder="Contoh: Encik Abdullah (optional)">
-          </div>
-          <div class="field">
-            <label>No. WhatsApp</label>
-            <input id="brideFatherPhone" placeholder="60123456789 (optional)">
-          </div>
+          <div class="field"><label>Nama Wakil 1</label><input id="brideFatherName" placeholder="Contoh: Encik Abdullah (optional)"></div>
+          <div class="field"><label>No. WhatsApp</label><input id="brideFatherPhone" placeholder="60123456789 (optional)"></div>
         </div>
-
         <div class="row">
-          <div class="field">
-            <label>Nama Wakil 2</label>
-            <input id="brideMotherName" placeholder="Contoh: Puan Fatimah (optional)">
-          </div>
-          <div class="field">
-            <label>No. WhatsApp</label>
-            <input id="brideMotherPhone" placeholder="60123456789 (optional)">
-          </div>
+          <div class="field"><label>Nama Wakil 2</label><input id="brideMotherName" placeholder="Contoh: Puan Fatimah (optional)"></div>
+          <div class="field"><label>No. WhatsApp</label><input id="brideMotherPhone" placeholder="60123456789 (optional)"></div>
         </div>
       </div>
 
@@ -702,9 +672,7 @@
         </div>
       </div>
 
-      <!-- =============================================================
-           💰 HARGA + BAYAR (QR KELUAR DULU)
-      ============================================================== -->
+      <!-- HARGA + BAYAR -->
       <div class="section">
         <h2 class="section-title">💰 Harga & Dapatkan Link</h2>
         <div class="price-box">
@@ -713,9 +681,7 @@
           <div class="price-total"><span>Jumlah</span><span id="totalPrice">RM136</span></div>
         </div>
 
-        <div id="paymentStatus" class="payment-status waiting">
-          ✏️ Cuba edit dahulu — bayar untuk dapatkan link & hantar tempahan.
-        </div>
+        <div id="paymentStatus" class="payment-status waiting">✏️ Cuba edit dahulu — bayar untuk dapatkan link & hantar tempahan.</div>
 
         <div id="qrContainer" class="qr-container hidden">
           <img id="qrImage" src="https://example.com/tng-qr-code.png" alt="QR Code TNG eWallet" style="max-width:200px;width:100%;height:auto;border-radius:12px;">
@@ -724,17 +690,9 @@
           <p style="color:#666;font-size:11px;margin-top:5px;">*Pastikan bayaran selesai sebelum tekan butang di bawah.</p>
         </div>
 
-        <button class="pay-btn" id="buyButton">
-          💚 Saya Nak Beli (RM<span id="buyTotal">136</span>)
-        </button>
-
-        <button class="confirm-btn hidden" id="confirmPayButton">
-          ✅ Saya Dah Bayar — Sahkan & Dapatkan Link
-        </button>
-
-        <button class="primary-btn" id="orderButton" disabled>
-          🔒 Hantar Tempahan — Sila bayar dahulu
-        </button>
+        <button class="pay-btn" id="buyButton">💚 Saya Nak Beli (RM<span id="buyTotal">136</span>)</button>
+        <button class="confirm-btn hidden" id="confirmPayButton">✅ Saya Dah Bayar — Sahkan & Dapatkan Link</button>
+        <button class="primary-btn" id="orderButton" disabled>🔒 Hantar Tempahan — Sila bayar dahulu</button>
 
         <div id="statusMsg" style="margin-top:9px;font-size:11px;color:var(--muted);text-align:center;"></div>
         <div id="slugDisplay" style="margin-top:6px;font-size:10px;color:var(--muted);text-align:center;display:none;"></div>
@@ -835,10 +793,9 @@
   "use strict";
 
   // =============================================================
-  // ⚡ KOD PENUH — SEMUA LENGKAP!
+  // ⚡ KOD LENGKAP — DENGAN EMOJI JATUH!
   // =============================================================
 
-  // ⭐ TUKEY LINK QR TNG DEKAT SINI
   const TNG_QR_URL = "https://payment.tngdigital.com.my/sc/bDLowiW2MI";
 
   const SUPABASE_URL = "https://bfqyyboemqrdpyjkszoy.supabase.co";
@@ -849,6 +806,7 @@
   let isPaid = false;
   let generatedSlug = '';
   let waitingForPayment = false;
+  let emojiTimer = null;
 
   function $(id) { return document.getElementById(id); }
 
@@ -1182,7 +1140,7 @@
     }
 
     updateEmoji();
-    updateFamily(); // ← preview keluarga akan update & hanya muncul jika ada data
+    updateFamily();
   }
 
   // =============================================================
@@ -1204,11 +1162,66 @@
       if (checked.length > 2) { this.checked = false;
         alert('Maksimum 2 emoji sahaja 😊'); }
       updateEmoji();
+      // Restart emoji animation bila emoji berubah
+      if ($('emojiToggle').checked) {
+        stopEmojiAnimation();
+        startEmojiAnimation();
+      }
     });
   });
 
   // =============================================================
-  // 9. COUNTDOWN
+  // 9. FALLING EMOJI — INI YANG HILANG TADI! 🎉
+  // =============================================================
+  function createEmoji() {
+    const toggle = $('emojiToggle');
+    const container = $('emojiContainer');
+    if (!toggle || !toggle.checked || !container) return;
+
+    const checks = document.querySelectorAll('.emoji-check:checked');
+    const emojis = [];
+    checks.forEach(c => emojis.push(c.value));
+    if (!emojis.length) return;
+
+    const element = document.createElement('span');
+    element.className = 'falling';
+    element.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    element.style.left = `${Math.random() * 100}%`;
+    const duration = Math.random() * 3 + 3;
+    element.style.animationDuration = `${duration}s`;
+    element.style.fontSize = `${Math.random() * 8 + 12}px`;
+    container.appendChild(element);
+
+    window.setTimeout(() => {
+      if (element.isConnected) element.remove();
+    }, duration * 1000 + 500);
+  }
+
+  function startEmojiAnimation() {
+    if (emojiTimer) clearInterval(emojiTimer);
+    emojiTimer = window.setInterval(createEmoji, 800);
+  }
+
+  function stopEmojiAnimation() {
+    if (emojiTimer) {
+      clearInterval(emojiTimer);
+      emojiTimer = null;
+    }
+    const container = $('emojiContainer');
+    if (container) container.innerHTML = '';
+  }
+
+  // Toggle Emoji Jatuh
+  $('emojiToggle').addEventListener('change', function() {
+    if (this.checked) {
+      startEmojiAnimation();
+    } else {
+      stopEmojiAnimation();
+    }
+  });
+
+  // =============================================================
+  // 10. COUNTDOWN
   // =============================================================
   function updateCountdown() {
     const date = $('dateInput').value;
@@ -1236,7 +1249,7 @@
   }
 
   // =============================================================
-  // 10. SCHEDULE
+  // 11. SCHEDULE
   // =============================================================
   let schedule = [
     { time: '11:00 AM', text: 'Ketibaan Tetamu' },
@@ -1302,7 +1315,7 @@
   });
 
   // =============================================================
-  // 11. FAMILY — SEMUA OPTIONAL & HANYA MUNCUL JIKA ADA DATA
+  // 12. FAMILY
   // =============================================================
   function makeContact(container, name, phone) {
     const p = normalizePhone(phone);
@@ -1327,8 +1340,6 @@
     
     $('previewGroomParents').textContent = groomParents;
     $('previewBrideParents').textContent = brideParents;
-    
-    // Sembunyikan jika kosong
     $('previewGroomParents').style.display = groomParents ? 'block' : 'none';
     $('previewBrideParents').style.display = brideParents ? 'block' : 'none';
 
@@ -1358,7 +1369,7 @@
   }
 
   // =============================================================
-  // 12. DRAWERS
+  // 13. DRAWERS
   // =============================================================
   function closeDrawers() {
     document.querySelectorAll('.drawer').forEach(d => d.classList.remove('active'));
@@ -1380,7 +1391,7 @@
   document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', closeDrawers));
 
   // =============================================================
-  // 13. COVER
+  // 14. COVER
   // =============================================================
   let opened = false;
 
@@ -1393,7 +1404,7 @@
   $('openButton').addEventListener('click', openCard);
 
   // =============================================================
-  // 14. LOCATION
+  // 15. LOCATION
   // =============================================================
   $('locationButton').addEventListener('click', function(e) {
     e.preventDefault();
@@ -1403,7 +1414,7 @@
   });
 
   // =============================================================
-  // 15. RSVP
+  // 16. RSVP
   // =============================================================
   $('sendRsvp').addEventListener('click', function() {
     const phone = normalizePhone($('rsvpPhoneInput').value);
@@ -1419,7 +1430,7 @@
   });
 
   // =============================================================
-  // 16. EVENT LISTENERS
+  // 17. EVENT LISTENERS
   // =============================================================
   ['name1Input', 'name2Input', 'subtitleInput', 'dateInput', 'timeInput',
     'locationNameInput', 'mapTypeInput', 'mapUrlInput',
@@ -1438,7 +1449,7 @@
   $('themeInput').addEventListener('change', updatePreview);
 
   // =============================================================
-  // 17. INIT
+  // 18. INIT
   // =============================================================
   function init() {
     renderScheduleEditor();
@@ -1448,6 +1459,11 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
     loadFromSupabase();
+    
+    // Start emoji animation if toggle is on
+    if ($('emojiToggle').checked) {
+      startEmojiAnimation();
+    }
   }
 
   init();
