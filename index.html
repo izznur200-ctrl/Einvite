@@ -147,7 +147,7 @@
       transition: .2s;
     }
     .remove-btn:hover { background: rgba(255,255,255,.08); }
-    .small-btn, .primary-btn, .pay-btn {
+    .small-btn, .primary-btn, .pay-btn, .confirm-btn {
       width: 100%;
       padding: 12px;
       border: 0;
@@ -157,7 +157,7 @@
       font-weight: 800;
       transition: transform .15s, opacity .15s;
     }
-    .small-btn:active, .primary-btn:active, .pay-btn:active { transform: scale(.985); }
+    .small-btn:active, .primary-btn:active, .pay-btn:active, .confirm-btn:active { transform: scale(.985); }
     .small-btn {
       margin-top: 9px;
       border: 1px solid rgba(255,255,255,.1);
@@ -182,6 +182,12 @@
     .pay-btn:disabled {
       opacity: 0.5;
       cursor: not-allowed;
+    }
+    .confirm-btn {
+      margin-top: 10px;
+      background: linear-gradient(135deg, #f59e0b, #f97316);
+      color: white;
+      font-size: 14px;
     }
     .price-box {
       padding: 14px;
@@ -509,6 +515,17 @@
       font-size: 13px;
       margin: 10px 0 0;
     }
+    .qr-container .amount {
+      color: #00a86b;
+      font-size: 18px;
+      font-weight: 800;
+    }
+    .note {
+      color: var(--muted);
+      font-size: 10px;
+      margin-top: 4px;
+      font-style: italic;
+    }
     @media(max-width:760px) { .editor-layout { grid-template-columns: 1fr; } .preview-wrap { position: static; } .preview-label { margin-top: 4px; } }
     @media(max-width:390px) { .row { grid-template-columns: 1fr; } .name { font-size: 34px; } .cover-names { font-size: 33px; } .countdown-grid { gap: 5px; } .time { min-width: 52px; } }
   </style>
@@ -597,25 +614,74 @@
         <div class="field"><label>Nombor WhatsApp Pengantin</label><input id="rsvpPhoneInput" placeholder="60123456789"></div>
       </div>
 
+      <!-- =============================================================
+           FAMILY — SEMUA OPTIONAL (Boleh isi mak/ayah/nenek/moyang 😂)
+      ============================================================== -->
       <div class="section">
-        <h2 class="section-title">📞 Hubungi Keluarga</h2>
-        <div class="field"><label>Pengantin Lelaki — Ibu &amp; Ayah</label><input id="groomParentsInput" value="Putera kepada Encik Ahmad &amp; Puan Aminah"></div>
-        <div class="row">
-          <div class="field"><label>Nama Ayah</label><input id="groomFatherName" value="Encik Ahmad"></div>
-          <div class="field"><label>No. WhatsApp</label><input id="groomFatherPhone" value="60123456789"></div>
+        <h2 class="section-title">📞 Hubungi Keluarga <span style="font-weight:400;font-size:10px;color:var(--muted);">(Optional)</span></h2>
+        
+        <p style="color:var(--muted);font-size:11px;margin-bottom:12px;">
+          ✏️ Isi jika ada — kosongkan jika tiada. Boleh letak sesiapa (ibu, ayah, nenek, atuk, penjaga, dll).
+        </p>
+
+        <div class="field">
+          <label>Pengantin Lelaki — Wakil Keluarga</label>
+          <input 
+            id="groomParentsInput" 
+            placeholder="Contoh: Putera kepada Encik Ahmad & Puan Aminah (optional)"
+          >
         </div>
+
         <div class="row">
-          <div class="field"><label>Nama Ibu</label><input id="groomMotherName" value="Puan Aminah"></div>
-          <div class="field"><label>No. WhatsApp</label><input id="groomMotherPhone" value="60123456789"></div>
+          <div class="field">
+            <label>Nama Wakil 1</label>
+            <input id="groomFatherName" placeholder="Contoh: Encik Ahmad (optional)">
+          </div>
+          <div class="field">
+            <label>No. WhatsApp</label>
+            <input id="groomFatherPhone" placeholder="60123456789 (optional)">
+          </div>
         </div>
-        <div class="field"><label>Pengantin Perempuan — Ibu &amp; Ayah</label><input id="brideParentsInput" value="Puteri kepada Encik Abdullah &amp; Puan Fatimah"></div>
+
         <div class="row">
-          <div class="field"><label>Nama Ayah</label><input id="brideFatherName" value="Encik Abdullah"></div>
-          <div class="field"><label>No. WhatsApp</label><input id="brideFatherPhone" value="60123456789"></div>
+          <div class="field">
+            <label>Nama Wakil 2</label>
+            <input id="groomMotherName" placeholder="Contoh: Puan Aminah (optional)">
+          </div>
+          <div class="field">
+            <label>No. WhatsApp</label>
+            <input id="groomMotherPhone" placeholder="60123456789 (optional)">
+          </div>
         </div>
+
+        <div class="field" style="margin-top:12px;">
+          <label>Pengantin Perempuan — Wakil Keluarga</label>
+          <input 
+            id="brideParentsInput" 
+            placeholder="Contoh: Puteri kepada Encik Abdullah & Puan Fatimah (optional)"
+          >
+        </div>
+
         <div class="row">
-          <div class="field"><label>Nama Ibu</label><input id="brideMotherName" value="Puan Fatimah"></div>
-          <div class="field"><label>No. WhatsApp</label><input id="brideMotherPhone" value="60123456789"></div>
+          <div class="field">
+            <label>Nama Wakil 1</label>
+            <input id="brideFatherName" placeholder="Contoh: Encik Abdullah (optional)">
+          </div>
+          <div class="field">
+            <label>No. WhatsApp</label>
+            <input id="brideFatherPhone" placeholder="60123456789 (optional)">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label>Nama Wakil 2</label>
+            <input id="brideMotherName" placeholder="Contoh: Puan Fatimah (optional)">
+          </div>
+          <div class="field">
+            <label>No. WhatsApp</label>
+            <input id="brideMotherPhone" placeholder="60123456789 (optional)">
+          </div>
         </div>
       </div>
 
@@ -637,7 +703,7 @@
       </div>
 
       <!-- =============================================================
-           💰 HARGA + BAYAR (EDIT DULU, BAYAR KEMUDIAN)
+           💰 HARGA + BAYAR (QR KELUAR DULU)
       ============================================================== -->
       <div class="section">
         <h2 class="section-title">💰 Harga & Dapatkan Link</h2>
@@ -647,24 +713,25 @@
           <div class="price-total"><span>Jumlah</span><span id="totalPrice">RM136</span></div>
         </div>
 
-        <!-- Status Bayaran -->
         <div id="paymentStatus" class="payment-status waiting">
           ✏️ Cuba edit dahulu — bayar untuk dapatkan link & hantar tempahan.
         </div>
 
-        <!-- QR Code TNG — akan muncul bila customer tekan "Saya Nak Beli" -->
         <div id="qrContainer" class="qr-container hidden">
           <img id="qrImage" src="https://example.com/tng-qr-code.png" alt="QR Code TNG eWallet" style="max-width:200px;width:100%;height:auto;border-radius:12px;">
           <p style="color:#111;font-size:13px;margin-top:10px;">📱 Scan QR Code ini guna TNG eWallet untuk bayar</p>
-          <p style="color:#666;font-size:11px;">Jumlah: <strong id="qrTotal">RM136</strong></p>
+          <p style="color:#111;font-size:14px;margin-top:5px;">Jumlah: <span class="amount" id="qrTotal">RM136</span></p>
+          <p style="color:#666;font-size:11px;margin-top:5px;">*Pastikan bayaran selesai sebelum tekan butang di bawah.</p>
         </div>
 
-        <!-- Button "Saya Nak Beli & Dapatkan Link" -->
         <button class="pay-btn" id="buyButton">
-          💚 Saya Nak Beli & Dapatkan Link (RM<span id="buyTotal">136</span>)
+          💚 Saya Nak Beli (RM<span id="buyTotal">136</span>)
         </button>
 
-        <!-- Button "Hantar Tempahan" — akan aktif lepas bayar -->
+        <button class="confirm-btn hidden" id="confirmPayButton">
+          ✅ Saya Dah Bayar — Sahkan & Dapatkan Link
+        </button>
+
         <button class="primary-btn" id="orderButton" disabled>
           🔒 Hantar Tempahan — Sila bayar dahulu
         </button>
@@ -738,7 +805,7 @@
   </div>
 </div>
 
-<!-- OVERLAY & DRAWERS (sama) -->
+<!-- OVERLAY & DRAWERS -->
 <div class="overlay" id="overlay"></div>
 <aside class="drawer" id="scheduleDrawer">
   <div class="drawer-header"><div class="drawer-title">📋 ATUR CARA MAJLIS</div><button class="close" type="button" data-close>×</button></div>
@@ -757,10 +824,10 @@
   <div class="drawer-header"><div class="drawer-title">📞 HUBUNGI KELUARGA</div><button class="close" type="button" data-close>×</button></div>
   <p class="drawer-description">Sebarang pertanyaan berkaitan majlis boleh diajukan kepada keluarga pengantin.</p>
   <h3 class="family-heading">👨‍💼 Pengantin Lelaki</h3>
-  <p class="family-parents" id="previewGroomParents">Putera kepada Encik Ahmad &amp; Puan Aminah</p>
+  <p class="family-parents" id="previewGroomParents"></p>
   <div id="previewGroomContacts"></div>
   <h3 class="family-heading">👩‍💼 Pengantin Perempuan</h3>
-  <p class="family-parents" id="previewBrideParents">Puteri kepada Encik Abdullah &amp; Puan Fatimah</p>
+  <p class="family-parents" id="previewBrideParents"></p>
   <div id="previewBrideContacts"></div>
 </aside>
 
@@ -768,20 +835,20 @@
   "use strict";
 
   // =============================================================
-  // ⚡ MODEL: EDIT DULU, BAYAR KEMUDIAN
+  // ⚡ KOD PENUH — SEMUA LENGKAP!
   // =============================================================
 
+  // ⭐ TUKEY LINK QR TNG DEKAT SINI
+  const TNG_QR_URL = "https://payment.tngdigital.com.my/sc/bDLowiW2MI";
+
   const SUPABASE_URL = "https://bfqyyboemqrdpyjkszoy.supabase.co";
-  const SUPABASE_ANON_KEY =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJmcXl5Ym9lbXFyZHB5amtzem95Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgyNjA5NjUsImV4cCI6MjEwMzgzNjk2NX0.wS5Jv-7XKM5RGx-_AuydL0OfbyNtVgug_4lWoSplnbI";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJmcXl5Ym9lbXFyZHB5amtzem95Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgyNjA5NjUsImV4cCI6MjEwMzgzNjk2NX0.wS5Jv-7XKM5RGx-_AuydL0OfbyNtVgug_4lWoSplnbI";
   const SUPABASE_TABLE = "weddings";
   const SELLER_WHATSAPP = "601139517845";
 
-  // QR Code TNG — TUKAR DENGAN QR AWAK
-  const TNG_QR_URL = "https://payment.tngdigital.com.my/sc/bDLowiW2MI";
-
   let isPaid = false;
   let generatedSlug = '';
+  let waitingForPayment = false;
 
   function $(id) { return document.getElementById(id); }
 
@@ -922,26 +989,36 @@
   function updatePaymentStatus(paid) {
     const el = $('paymentStatus');
     const buyBtn = $('buyButton');
+    const confirmBtn = $('confirmPayButton');
     const orderBtn = $('orderButton');
     const qrContainer = $('qrContainer');
 
     if (paid) {
       el.className = 'payment-status paid';
       el.textContent = '✅ Sudah Dibayar — Link Aktif! Anda boleh hantar tempahan sekarang.';
-      buyBtn.disabled = true;
-      buyBtn.textContent = '✅ Sudah Dibayar';
+      buyBtn.classList.add('hidden');
+      confirmBtn.classList.add('hidden');
+      qrContainer.classList.add('hidden');
       orderBtn.disabled = false;
       orderBtn.textContent = '💬 Hantar Tempahan Melalui WhatsApp';
-      qrContainer.classList.add('hidden');
       enableOrderButton(true);
+    } else if (waitingForPayment) {
+      el.className = 'payment-status waiting';
+      el.textContent = '⏳ Sila scan QR dan selesaikan bayaran. Kemudian tekan "Saya Dah Bayar".';
+      buyBtn.classList.add('hidden');
+      confirmBtn.classList.remove('hidden');
+      qrContainer.classList.remove('hidden');
+      orderBtn.disabled = true;
+      orderBtn.textContent = '🔒 Hantar Tempahan — Sila bayar dahulu';
+      enableOrderButton(false);
     } else {
       el.className = 'payment-status waiting';
       el.textContent = '✏️ Cuba edit dahulu — bayar untuk dapatkan link & hantar tempahan.';
-      buyBtn.disabled = false;
-      buyBtn.textContent = `💚 Saya Nak Beli & Dapatkan Link (RM${$('totalPrice').textContent.replace('RM', '')})`;
+      buyBtn.classList.remove('hidden');
+      confirmBtn.classList.add('hidden');
+      qrContainer.classList.add('hidden');
       orderBtn.disabled = true;
       orderBtn.textContent = '🔒 Hantar Tempahan — Sila bayar dahulu';
-      qrContainer.classList.add('hidden');
       enableOrderButton(false);
     }
   }
@@ -958,51 +1035,56 @@
   }
 
   // =============================================================
-  // 4. BUTTON "SAYA NAK BELI"
+  // 4. BUTTON "SAYA NAK BELI" — MUNCULKAN QR
   // =============================================================
-  $('buyButton').addEventListener('click', async function() {
-    const status = $('statusMsg');
-    const qrContainer = $('qrContainer');
+  $('buyButton').addEventListener('click', function() {
     const total = $('totalPrice').textContent.replace('RM', '');
+    const qrContainer = $('qrContainer');
+    const confirmBtn = $('confirmPayButton');
 
-    // Tunjukkan QR Code
-    qrContainer.classList.remove('hidden');
-    $('qrTotal').textContent = `RM${total}`;
     $('qrImage').src = TNG_QR_URL;
+    $('qrTotal').textContent = `RM${total}`;
+    qrContainer.classList.remove('hidden');
+    confirmBtn.classList.remove('hidden');
+    waitingForPayment = true;
 
-    // Scroll ke QR
     qrContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    updatePaymentStatus(false);
+    $('statusMsg').textContent = '📱 Scan QR Code & bayar. Kemudian tekan "Saya Dah Bayar".';
+  });
 
-    // Tanya customer
+  // =============================================================
+  // 5. BUTTON "SAYA DAH BAYAR" — CONFIRM & AKTIFKAN LINK
+  // =============================================================
+  $('confirmPayButton').addEventListener('click', async function() {
+    const status = $('statusMsg');
+    status.textContent = '⏳ Menyimpan status bayaran...';
+
     const confirmPay = confirm(
-      `💚 ANDA PASTI NAK BELI?\n\n` +
-      `Jumlah: RM${total}\n\n` +
-      `📱 Sila scan QR Code TNG eWallet yang telah dipaparkan.\n` +
-      `Pastikan anda selesaikan bayaran sebelum tekan "OK".\n\n` +
-      `*Saya akan sahkan bayaran & aktifkan link untuk anda.*`
+      '✅ PASTIKAN ANDA TELAH BAYAR?\n\n' +
+      'Tekan "OK" untuk sahkan bayaran dan aktifkan link anda.\n' +
+      'Tekan "Batal" jika belum selesai bayar.'
     );
 
     if (!confirmPay) {
-      status.textContent = '❌ Bayaran dibatalkan. Sila scan QR & bayar dahulu.';
+      status.textContent = '❌ Sila selesaikan bayaran dahulu.';
       return;
     }
 
-    // Simpan status "paid" = true
-    status.textContent = '⏳ Menyimpan status bayaran...';
     const result = await saveToSupabase(true);
     if (result.saved) {
       isPaid = true;
+      waitingForPayment = false;
       updatePaymentStatus(true);
       status.textContent = '✅ Bayaran disahkan! Link anda sekarang aktif.';
       $('slugDisplay').style.display = 'block';
       $('slugDisplay').textContent = `🔗 Link unik anda: ${window.location.origin}/${result.slug}`;
 
-      // Hantar WhatsApp ke seller (awak) — notification
       const sellerMsg =
         `🟢 Customer telah bayar!\n\n` +
         `Nama: ${cleanText($('name1Input').value)} & ${cleanText($('name2Input').value)}\n` +
         `Link: ${window.location.origin}/${result.slug}\n` +
-        `Jumlah: RM${total}\n\n` +
+        `Jumlah: RM${$('totalPrice').textContent.replace('RM', '')}\n\n` +
         `Sila semak TNG eWallet dan aktifkan link.`;
       window.open(`https://wa.me/${SELLER_WHATSAPP}?text=${encodeURIComponent(sellerMsg)}`, '_blank');
     } else {
@@ -1011,13 +1093,13 @@
   });
 
   // =============================================================
-  // 5. ORDER — HANYA BOLEH GUNA JIKA SUDAH BAYAR
+  // 6. ORDER — HANYA BOLEH GUNA JIKA SUDAH BAYAR
   // =============================================================
   let orderSubmitting = false;
 
   $('orderButton').addEventListener('click', async function() {
     if (!isPaid) {
-      alert('⚠️ Sila bayar dahulu sebelum menghantar tempahan.\n\nKlik butang "Saya Nak Beli & Dapatkan Link" untuk bayar.');
+      alert('⚠️ Sila bayar dahulu sebelum menghantar tempahan.\n\nKlik butang "Saya Nak Beli" untuk bayar.');
       return;
     }
 
@@ -1057,7 +1139,7 @@
   });
 
   // =============================================================
-  // 6. UPDATE PREVIEW
+  // 7. UPDATE PREVIEW
   // =============================================================
   function updatePreview() {
     const n1 = cleanText($('name1Input').value, 'Adam');
@@ -1095,16 +1177,16 @@
     $('imageArea').classList.toggle('hidden', !withImage);
     $('musicArea').classList.toggle('hidden', !music);
 
-    // Update buy button text
-    if (!isPaid) {
-      $('buyButton').textContent = `💚 Saya Nak Beli & Dapatkan Link (RM${total})`;
+    if (!isPaid && !waitingForPayment) {
+      $('buyButton').textContent = `💚 Saya Nak Beli (RM${total})`;
     }
 
     updateEmoji();
+    updateFamily(); // ← preview keluarga akan update & hanya muncul jika ada data
   }
 
   // =============================================================
-  // 7. EMOJI, COUNTDOWN, SCHEDULE, FAMILY, DRAWERS, COVER (sama)
+  // 8. EMOJI
   // =============================================================
   function updateEmoji() {
     const checks = document.querySelectorAll('.emoji-check:checked');
@@ -1125,6 +1207,9 @@
     });
   });
 
+  // =============================================================
+  // 9. COUNTDOWN
+  // =============================================================
   function updateCountdown() {
     const date = $('dateInput').value;
     const time = $('timeInput').value || '00:00';
@@ -1150,6 +1235,9 @@
     $('seconds').textContent = String(s).padStart(2, '0');
   }
 
+  // =============================================================
+  // 10. SCHEDULE
+  // =============================================================
   let schedule = [
     { time: '11:00 AM', text: 'Ketibaan Tetamu' },
     { time: '12:00 PM', text: 'Bacaan Doa' },
@@ -1213,9 +1301,12 @@
     renderSchedule();
   });
 
+  // =============================================================
+  // 11. FAMILY — SEMUA OPTIONAL & HANYA MUNCUL JIKA ADA DATA
+  // =============================================================
   function makeContact(container, name, phone) {
     const p = normalizePhone(phone);
-    if (!p) return;
+    if (!p || !name) return;
     const div = document.createElement('div');
     div.className = 'contact-item';
     const n = document.createElement('div');
@@ -1231,18 +1322,44 @@
   }
 
   function updateFamily() {
-    $('previewGroomParents').textContent = cleanText($('groomParentsInput').value, 'Putera kepada keluarga pengantin lelaki');
-    $('previewBrideParents').textContent = cleanText($('brideParentsInput').value, 'Puteri kepada keluarga pengantin perempuan');
+    const groomParents = cleanText($('groomParentsInput').value);
+    const brideParents = cleanText($('brideParentsInput').value);
+    
+    $('previewGroomParents').textContent = groomParents;
+    $('previewBrideParents').textContent = brideParents;
+    
+    // Sembunyikan jika kosong
+    $('previewGroomParents').style.display = groomParents ? 'block' : 'none';
+    $('previewBrideParents').style.display = brideParents ? 'block' : 'none';
+
     const gc = $('previewGroomContacts');
     gc.innerHTML = '';
-    makeContact(gc, $('groomFatherName').value, $('groomFatherPhone').value);
-    makeContact(gc, $('groomMotherName').value, $('groomMotherPhone').value);
+    const gFather = cleanText($('groomFatherName').value);
+    const gFatherPhone = cleanText($('groomFatherPhone').value);
+    const gMother = cleanText($('groomMotherName').value);
+    const gMotherPhone = cleanText($('groomMotherPhone').value);
+    
+    if (gFather || gMother) {
+      makeContact(gc, gFather || 'Wakil', gFatherPhone);
+      makeContact(gc, gMother || 'Wakil', gMotherPhone);
+    }
+
     const bc = $('previewBrideContacts');
     bc.innerHTML = '';
-    makeContact(bc, $('brideFatherName').value, $('brideFatherPhone').value);
-    makeContact(bc, $('brideMotherName').value, $('brideMotherPhone').value);
+    const bFather = cleanText($('brideFatherName').value);
+    const bFatherPhone = cleanText($('brideFatherPhone').value);
+    const bMother = cleanText($('brideMotherName').value);
+    const bMotherPhone = cleanText($('brideMotherPhone').value);
+    
+    if (bFather || bMother) {
+      makeContact(bc, bFather || 'Wakil', bFatherPhone);
+      makeContact(bc, bMother || 'Wakil', bMotherPhone);
+    }
   }
 
+  // =============================================================
+  // 12. DRAWERS
+  // =============================================================
   function closeDrawers() {
     document.querySelectorAll('.drawer').forEach(d => d.classList.remove('active'));
     $('overlay').classList.remove('active');
@@ -1262,6 +1379,9 @@
   $('overlay').addEventListener('click', closeDrawers);
   document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', closeDrawers));
 
+  // =============================================================
+  // 13. COVER
+  // =============================================================
   let opened = false;
 
   function openCard() {
@@ -1272,6 +1392,9 @@
   $('openEnvelope').addEventListener('click', openCard);
   $('openButton').addEventListener('click', openCard);
 
+  // =============================================================
+  // 14. LOCATION
+  // =============================================================
   $('locationButton').addEventListener('click', function(e) {
     e.preventDefault();
     const url = cleanText($('mapUrlInput').value);
@@ -1279,6 +1402,9 @@
     else alert('Sila masukkan link peta.');
   });
 
+  // =============================================================
+  // 15. RSVP
+  // =============================================================
   $('sendRsvp').addEventListener('click', function() {
     const phone = normalizePhone($('rsvpPhoneInput').value);
     if (!phone) { alert('Nombor WhatsApp RSVP pengantin belum diisi.'); return; }
@@ -1293,7 +1419,7 @@
   });
 
   // =============================================================
-  // 8. EVENT LISTENERS
+  // 16. EVENT LISTENERS
   // =============================================================
   ['name1Input', 'name2Input', 'subtitleInput', 'dateInput', 'timeInput',
     'locationNameInput', 'mapTypeInput', 'mapUrlInput',
@@ -1312,7 +1438,7 @@
   $('themeInput').addEventListener('change', updatePreview);
 
   // =============================================================
-  // 9. INIT
+  // 17. INIT
   // =============================================================
   function init() {
     renderScheduleEditor();
