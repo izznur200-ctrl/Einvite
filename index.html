@@ -570,6 +570,59 @@
       width: 100%;
       border-radius: 8px;
     }
+
+    /* ============================================================
+       AYAT SKEMA — DALAM DRAWER
+    ============================================================ */
+    .skema {
+      padding: 16px 14px;
+      margin-bottom: 18px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,224,184,.12);
+      text-align: center;
+      line-height: 1.8;
+      color: rgba(255,255,255,.85);
+      font-size: 13px;
+    }
+    .skema .assalam {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--tone3);
+      margin-bottom: 6px;
+    }
+    .skema .divider {
+      display: block;
+      margin: 12px auto 10px;
+      width: 40px;
+      height: 1px;
+      background: rgba(255,224,184,.2);
+    }
+    .skema .nama-pengantin {
+      color: #fff;
+      font-weight: 700;
+      font-size: 16px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic;
+      display: block;
+      line-height: 1.4;
+    }
+    .skema .nama-pengantin.lelaki { margin-bottom: 2px; }
+    .skema .nama-pengantin.perempuan { margin-top: 2px; }
+    .skema .and-symbol {
+      display: block;
+      font-size: 18px;
+      color: var(--tone3);
+      font-family: Georgia, serif;
+      font-style: italic;
+      line-height: 1.2;
+    }
+    .skema .penutup {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
     @media(max-width:760px) { .editor-layout { grid-template-columns: 1fr; } .preview-wrap { position: static; } .preview-label { margin-top: 4px; } }
     @media(max-width:390px) { .row { grid-template-columns: 1fr; } .name { font-size: 34px; } .cover-names { font-size: 33px; } .countdown-grid { gap: 5px; } .time { min-width: 52px; } }
   </style>
@@ -584,7 +637,9 @@
 
   <div class="editor-layout">
 
-    <!-- EDITOR -->
+    <!-- ============================================================
+         EDITOR
+    ============================================================ -->
     <section class="editor">
 
       <!-- MAKLUMAT PENGANTIN -->
@@ -594,10 +649,41 @@
           <div class="field"><label>Nama Pengantin Lelaki</label><input id="name1Input" value="Adam"></div>
           <div class="field"><label>Nama Pengantin Perempuan</label><input id="name2Input" value="Hawa"></div>
         </div>
+
+        <div class="row">
+          <div class="field"><label>Ayat Skema — Nama Penuh Lelaki</label><input id="skemaNama1Input" value="Muhammad Adam bin Abdullah"></div>
+          <div class="field"><label>Ayat Skema — Nama Penuh Perempuan</label><input id="skemaNama2Input" value="Hawa binti Ahmad"></div>
+        </div>
+
         <div class="field"><label>Teks Majlis</label><input id="subtitleInput" value="Majlis Kesyukuran &amp; Walimatulurus"></div>
         <div class="row">
           <div class="field"><label>Tarikh</label><input id="dateInput" type="date" value="2027-10-11"></div>
           <div class="field"><label>Masa</label><input id="timeInput" type="time" value="11:00"></div>
+        </div>
+      </div>
+
+      <!-- ⭐ AYAT SKEMA — FULLY EDITABLE -->
+      <div class="section">
+        <h2 class="section-title">📜 Ayat Skema (Drawer)</h2>
+        
+        <div class="field">
+          <label>🕌 Ucapan Pembuka</label>
+          <input id="skemaAssalamInput" value="Assalamualaikum Warahmatullahi Wabarakatuh">
+        </div>
+
+        <div class="field">
+          <label>📄 Teks Jemputan (Intro)</label>
+          <textarea id="skemaIntroInput" rows="2">Dengan segala hormatnya, kami menjemput tuan/puan serta keluarga ke Majlis Kesyukuran &amp; Walimatulurus</textarea>
+        </div>
+
+        <div class="field">
+          <label>📝 Teks Penutup</label>
+          <textarea id="skemaPenutupInput" rows="2">Kehadiran tuan/puan amat dialu-alukan. Doa restu dipohon. Terima kasih.</textarea>
+        </div>
+
+        <div class="field">
+          <label>✏️ Nama Panggilan Pengantin (dalam skema)</label>
+          <input id="skemaPanggilanInput" value="Adam &amp; Hawa">
         </div>
       </div>
 
@@ -706,12 +792,9 @@
         <button class="small-btn" id="addSchedule" type="button">+ Tambah Atur Cara</button>
       </div>
 
-      <!-- =============================================================
-           MUZIK — 3 PILIHAN + UPLOAD SENDIRI
-      ============================================================== -->
+      <!-- MUZIK -->
       <div class="section">
         <h2 class="section-title">🎵 Muzik</h2>
-
         <div class="toggle-row">
           <div class="toggle-info">
             <strong>Tambah muzik</strong>
@@ -722,46 +805,24 @@
             <span class="slider"></span>
           </label>
         </div>
-
         <div id="musicArea" class="hidden" style="margin-top:10px;">
-
-          <!-- PILIHAN LAGU SEDIA -->
           <div class="field">
-            <label>Pilih Lagu Sedia</label>
-            <select id="musicPreset">
-              <option value="">— Tiada pilihan —</option>
-              <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">🎹 Lagu Romantik 1</option>
-              <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">🎸 Lagu Santai 2</option>
-              <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">🎻 Lagu Klasik 3</option>
-            </select>
-            <div style="color:var(--muted);font-size:9px;margin-top:4px;">
-              Klik pilihan untuk preview (audio akan main di dalam kad).
-            </div>
-          </div>
-
-          <!-- ATAU UPLOAD SENDIRI -->
-          <div class="field" style="margin-top:6px;">
-            <label>— ATAU Upload Lagu Sendiri —</label>
+            <label>🎵 Upload Lagu Anda</label>
             <input id="musicInput" type="file" accept="audio/*">
             <div style="color:var(--muted);font-size:9px;margin-top:4px;">
-              Upload fail MP3 / WAV / AAC (max ~5MB).
+              Pilih fail MP3 / WAV / AAC dari telefon anda (max ~5MB).
             </div>
           </div>
-
-          <!-- AUDIO PLAYER (PREVIEW) -->
           <div id="audioPlayerWrapper" class="audio-player-wrapper" style="display:none;">
             <audio id="audioPlayer" controls>
               <source id="audioSource" src="" type="audio/mpeg">
               Browser anda tidak support audio player.
             </audio>
           </div>
-
         </div>
       </div>
 
-      <!-- =============================================================
-           HARGA + BAYAR
-      ============================================================== -->
+      <!-- HARGA + BAYAR -->
       <div class="section">
         <h2 class="section-title">💰 Harga & Dapatkan Link</h2>
         <div class="price-box">
@@ -771,7 +832,6 @@
         </div>
 
         <div id="paymentStatus" class="payment-status waiting">✏️ Cuba edit dahulu — bayar untuk dapatkan link & hantar tempahan.</div>
-
         <div id="qrContainer" class="qr-container hidden">
           <p style="color:#111;font-size:14px;font-weight:700;">💳 Selesaikan bayaran di halaman TNG</p>
           <p style="color:#666;font-size:12px;">Pastikan bayaran selesai sebelum tekan "Saya Dah Bayar".</p>
@@ -780,7 +840,6 @@
         <button class="pay-btn" id="buyButton">💚 Saya Nak Beli (RM<span id="buyTotal">136</span>)</button>
         <button class="confirm-btn hidden" id="confirmPayButton">✅ Saya Dah Bayar — Notifikasi NUR NONA</button>
         
-        <!-- ADMIN BUTTON — HANYA NAMPAK BILA ?admin=true -->
         <div class="admin-only">
           <button class="admin-btn" id="adminActivateButton">🔓 Aktifkan Link (Admin)</button>
           <div class="admin-note" id="adminNote" style="display:none;">
@@ -789,14 +848,15 @@
         </div>
 
         <button class="primary-btn" id="orderButton" disabled>🔒 Hantar Tempahan — Sila bayar dahulu</button>
-
         <div id="statusMsg" style="margin-top:9px;font-size:11px;color:var(--muted);text-align:center;"></div>
         <div id="slugDisplay" style="margin-top:6px;font-size:10px;color:var(--muted);text-align:center;display:none;"></div>
       </div>
 
     </section>
 
-    <!-- PREVIEW -->
+    <!-- ============================================================
+         PREVIEW
+    ============================================================ -->
     <section class="preview-wrap">
       <p class="preview-label">Live Preview</p>
       <div class="phone">
@@ -861,11 +921,42 @@
 
 <!-- OVERLAY & DRAWERS -->
 <div class="overlay" id="overlay"></div>
+
+<!-- ⭐ DRAWER: ATUR CARA + AYAT SKEMA -->
 <aside class="drawer" id="scheduleDrawer">
-  <div class="drawer-header"><div class="drawer-title">📋 ATUR CARA MAJLIS</div><button class="close" type="button" data-close>×</button></div>
-  <p class="drawer-description">Susunan acara majlis.</p>
+  <div class="drawer-header"><div class="drawer-title">📋 Majlis & Atur Cara</div><button class="close" type="button" data-close>×</button></div>
+
+  <!-- AYAT SKEMA — SEMUA BOLEH EDIT -->
+  <div class="skema" id="skemaContainer">
+    <div class="assalam" id="skemaAssalamDisplay">Assalamualaikum Warahmatullahi Wabarakatuh</div>
+
+    <div id="skemaIntroDisplay">
+      Dengan segala hormatnya,<br>
+      kami menjemput tuan/puan serta keluarga<br>
+      ke Majlis Kesyukuran &amp; Walimatulurus
+    </div>
+
+    <br>
+
+    <span class="nama-pengantin lelaki" id="skemaNama1Display">Muhammad Adam bin Abdullah</span>
+    <span class="and-symbol">&amp;</span>
+    <span class="nama-pengantin perempuan" id="skemaNama2Display">Hawa binti Ahmad</span>
+
+    <span class="divider"></span>
+
+    📍 <span id="skemaLokasi">Dewan Serbaguna</span><br>
+    📅 <span id="skemaTarikh">11 Oktober 2027</span>
+
+    <div class="penutup" id="skemaPenutupDisplay">
+      Kehadiran tuan/puan amat dialu-alukan.<br>
+      Doa restu dipohon. Terima kasih.
+    </div>
+  </div>
+
+  <p class="drawer-description" style="text-align:center;font-size:11px;color:var(--muted);margin-top:-6px;">─── 📋 SUSUNAN ACARA ───</p>
   <div id="scheduleContainer"></div>
 </aside>
+
 <aside class="drawer" id="rsvpDrawer">
   <div class="drawer-header"><div class="drawer-title">💌 RSVP &amp; UCAPAN</div><button class="close" type="button" data-close>×</button></div>
   <p class="drawer-description">Isi maklumat untuk menghantar RSVP kepada pengantin.</p>
@@ -874,6 +965,7 @@
   <div class="field"><label>Ucapan &amp; Doa</label><textarea id="guestMessage" placeholder="Tulis ucapan dan doa anda..."></textarea></div>
   <button class="primary-btn" id="sendRsvp" type="button">💬 Hantar Melalui WhatsApp</button>
 </aside>
+
 <aside class="drawer" id="familyDrawer">
   <div class="drawer-header"><div class="drawer-title">📞 HUBUNGI KELUARGA</div><button class="close" type="button" data-close>×</button></div>
   <p class="drawer-description">Sebarang pertanyaan berkaitan majlis boleh diajukan kepada keluarga pengantin.</p>
@@ -886,138 +978,218 @@
 </aside>
 
 <script>
-  "use strict";
+"use strict";
 
-  // =============================================================
-  // ⚡ KOD LENGKAP — DENGAN MUZIK (3 PILIHAN + UPLOAD)
-  // =============================================================
+// =============================================================
+// ⚡ KOD LENGKAP — DENGAN SUPABASE STORAGE + FULLY EDITABLE SKEMA
+// =============================================================
 
-  // 🔧 CONFIG
-  const SUPABASE_URL = "https://bfqyyboemqrdpyjkszoy.supabase.co";
-  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJmcXl5Ym9lbXFyZHB5amtzem95Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgyNjA5NjUsImV4cCI6MjEwMzgzNjk2NX0.wS5Jv-7XKM5RGx-_AuydL0OfbyNtVgug_4lWoSplnbI";
-  const SUPABASE_TABLE = "weddings";
-  const SELLER_WHATSAPP = "601139517845";
-  const TNG_URL = "https://payment.tngdigital.com.my/sc/bDLowiW2MI";
+// 🔧 CONFIG
+const SUPABASE_URL = "https://bfqyyboemqrdpyjkszoy.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJmcXl5Ym9lbXFyZHB5amtzem95Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgyNjA5NjUsImV4cCI6MjEwMzgzNjk2NX0.wS5Jv-7XKM5RGx-_AuydL0OfbyNtVgug_4lWoSplnbI";
+const SUPABASE_TABLE = "weddings";
+const SUPABASE_BUCKET = "images";
+const SELLER_WHATSAPP = "601139517845";
+const TNG_URL = "https://payment.tngdigital.com.my/sc/bDLowiW2MI";
 
-  // Admin mode
-  const isAdmin = window.location.search.includes('admin=true');
-  if (isAdmin) document.body.classList.add('admin-mode');
+// Admin mode
+let isAdmin = window.location.search.includes('admin=true') || localStorage.getItem('nur_nona_admin') === 'true';
+if (isAdmin) document.body.classList.add('admin-mode');
 
-  let isPaid = false;
-  let generatedSlug = '';
-  let waitingForPayment = false;
-  let emojiTimer = null;
-  let uploadedMusic = '';
-  let selectedPreset = '';
+let isPaid = false;
+let generatedSlug = '';
+let waitingForPayment = false;
+let emojiTimer = null;
+let uploadedImageUrl = '';
+let uploadedMusicUrl = '';
+let confirmSubmitting = false;
+let orderSubmitting = false;
 
-  function $(id) { return document.getElementById(id); }
+function $(id) { return document.getElementById(id); }
 
-  function cleanText(v, fallback = "") {
-    const t = String(v ?? "").trim();
-    return t || fallback;
-  }
+function cleanText(v, fallback = "") {
+  const t = String(v ?? "").trim();
+  return t || fallback;
+}
 
-  function normalizePhone(p) {
-    let s = String(p ?? "").replace(/\D/g, "");
-    if (s.startsWith("0")) s = "60" + s.slice(1);
-    return s;
-  }
+function normalizePhone(p) {
+  let s = String(p ?? "").replace(/\D/g, "");
+  if (s.startsWith("0")) s = "60" + s.slice(1);
+  return s;
+}
 
-  function generateSlug(name1, name2) {
-    const random = Math.random().toString(36).substring(2, 6);
-    const slug = `${name1}-${name2}-${random}`.toLowerCase()
-      .replace(/\s+/g, '-')
-      .replace(/[^a-z0-9-]/g, '');
-    return slug;
-  }
+function generateSlug(name1, name2) {
+  const random = Math.random().toString(36).substring(2, 6);
+  const slug = `${name1}-${name2}-${random}`.toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]/g, '');
+  return slug;
+}
 
-  function getSlugFromURL() {
-    const parts = window.location.pathname.split('/').filter(Boolean);
-    return parts.length ? decodeURIComponent(parts[0]).toLowerCase().trim() : '';
-  }
+function getSlugFromURL() {
+  const parts = window.location.pathname.split('/').filter(Boolean);
+  return parts.length ? decodeURIComponent(parts[0]).toLowerCase().trim() : '';
+}
 
-  // =============================================================
-  // 1. THEME
-  // =============================================================
-  function applyTheme() {
-    const themeValue = $('themeInput').value;
-    const themes = {
-      aurora: { tone1: '#D98B9A', tone2: '#7FA58A', tone3: '#F7C8D0' },
-      blueSky: { tone1: '#4F8CC9', tone2: '#76BFE8', tone3: '#D9EAF8' },
-      evergreen: { tone1: '#52735D', tone2: '#89A88F', tone3: '#DCE9DE' },
-      sunrise: { tone1: '#E58B62', tone2: '#F2B27F', tone3: '#FFE0B8' },
-      burgundy: { tone1: '#722F3F', tone2: '#A85D6C', tone3: '#E8C9B8' },
-      lavender: { tone1: '#8067B7', tone2: '#A99BD6', tone3: '#DDE7FA' },
-      rose: { tone1: '#B86F7D', tone2: '#D99BA7', tone3: '#F8DDD9' }
-    };
-    const theme = themes[themeValue] || themes.aurora;
-    document.documentElement.style.setProperty('--tone1', theme.tone1);
-    document.documentElement.style.setProperty('--tone2', theme.tone2);
-    document.documentElement.style.setProperty('--tone3', theme.tone3);
-  }
+// =============================================================
+// 1. UPLOAD KE SUPABASE STORAGE
+// =============================================================
+async function uploadToStorage(file, folder = 'images') {
+  const slug = getSlugFromURL() || 'demo';
+  const fileExt = file.name.split('.').pop();
+  const fileName = `${slug}/${Date.now()}.${fileExt}`;
+  const filePath = `${folder}/${fileName}`;
 
-  // =============================================================
-  // 2. LOAD DARI SUPABASE
-  // =============================================================
-  async function loadFromSupabase() {
-    const slug = getSlugFromURL();
-    if (!slug) {
-      console.log('📢 Demo mode — tiada slug.');
-      return;
-    }
-    try {
-      const res = await fetch(
-        `${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}?slug=eq.${slug}&select=*`, {
-          headers: {
-            apikey: SUPABASE_ANON_KEY,
-            Authorization: `Bearer ${SUPABASE_ANON_KEY}`
-          }
-        }
-      );
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = await res.json();
-      if (data && data.length) {
-        const row = data[0];
-        $('name1Input').value = row.groom_name || 'Adam';
-        $('name2Input').value = row.bride_name || 'Hawa';
-        isPaid = row.paid || false;
-        updatePaymentStatus(isPaid);
-        if (isPaid) {
-          generatedSlug = row.slug;
-          enableOrderButton(true);
-          $('slugDisplay').style.display = 'block';
-          $('slugDisplay').textContent = `🔗 Link anda: ${window.location.origin}/${row.slug}`;
-        }
-        updatePreview();
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/storage/v1/object/${SUPABASE_BUCKET}/${filePath}`,
+      {
+        method: 'POST',
+        headers: {
+          apikey: SUPABASE_ANON_KEY,
+          Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+          'Content-Type': file.type,
+        },
+        body: file
       }
-    } catch (e) {
-      console.warn('⚠️ Gagal load dari Supabase:', e);
+    );
+
+    if (!res.ok) {
+      const err = await res.text();
+      throw new Error(`Upload failed: ${res.status} - ${err}`);
     }
+
+    const publicUrl = `${SUPABASE_URL}/storage/v1/object/public/${SUPABASE_BUCKET}/${filePath}`;
+    console.log('✅ Upload berjaya:', publicUrl);
+    return publicUrl;
+  } catch (e) {
+    console.error('❌ Upload gagal:', e);
+    alert('Gagal upload fail: ' + e.message);
+    return null;
+  }
+}
+
+// =============================================================
+// 2. THEME
+// =============================================================
+function applyTheme() {
+  const themeValue = $('themeInput').value;
+  const themes = {
+    aurora: { tone1: '#D98B9A', tone2: '#7FA58A', tone3: '#F7C8D0' },
+    blueSky: { tone1: '#4F8CC9', tone2: '#76BFE8', tone3: '#D9EAF8' },
+    evergreen: { tone1: '#52735D', tone2: '#89A88F', tone3: '#DCE9DE' },
+    sunrise: { tone1: '#E58B62', tone2: '#F2B27F', tone3: '#FFE0B8' },
+    burgundy: { tone1: '#722F3F', tone2: '#A85D6C', tone3: '#E8C9B8' },
+    lavender: { tone1: '#8067B7', tone2: '#A99BD6', tone3: '#DDE7FA' },
+    rose: { tone1: '#B86F7D', tone2: '#D99BA7', tone3: '#F8DDD9' }
+  };
+  const theme = themes[themeValue] || themes.aurora;
+  document.documentElement.style.setProperty('--tone1', theme.tone1);
+  document.documentElement.style.setProperty('--tone2', theme.tone2);
+  document.documentElement.style.setProperty('--tone3', theme.tone3);
+}
+
+// =============================================================
+// 3. LOAD DARI SUPABASE
+// =============================================================
+async function loadFromSupabase() {
+  const slug = getSlugFromURL();
+  if (!slug) {
+    console.log('📢 Demo mode — tiada slug.');
+    return;
+  }
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}?slug=eq.${slug}&select=*`, {
+        headers: {
+          apikey: SUPABASE_ANON_KEY,
+          Authorization: `Bearer ${SUPABASE_ANON_KEY}`
+        }
+      }
+    );
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    if (data && data.length) {
+      const row = data[0];
+      $('name1Input').value = row.groom_name || 'Adam';
+      $('name2Input').value = row.bride_name || 'Hawa';
+      $('skemaNama1Input').value = row.groom_full || 'Muhammad Adam bin Abdullah';
+      $('skemaNama2Input').value = row.bride_full || 'Hawa binti Ahmad';
+      
+      if (row.poster_url) {
+        uploadedImageUrl = row.poster_url;
+        $('imageToggle').checked = true;
+        updateImagePreview();
+        updateVisibility();
+      }
+      if (row.music_url) {
+        uploadedMusicUrl = row.music_url;
+        $('musicToggle').checked = true;
+        updateMusicPreview();
+        updateVisibility();
+      }
+
+      isPaid = row.paid || false;
+      updatePaymentStatus(isPaid);
+      if (isPaid) {
+        generatedSlug = row.slug;
+        enableOrderButton(true);
+        $('slugDisplay').style.display = 'block';
+        $('slugDisplay').textContent = `🔗 Link anda: ${window.location.origin}/${row.slug}`;
+      }
+      updatePreview();
+      updateSkema();
+      updateVisibility();
+    }
+  } catch (e) {
+    console.warn('⚠️ Gagal load dari Supabase:', e);
+  }
+}
+
+// =============================================================
+// 4. SAVE KE SUPABASE
+// =============================================================
+async function saveToSupabase(paid = false) {
+  let slug = getSlugFromURL();
+  if (!slug) {
+    const name1 = cleanText($('name1Input').value, 'Adam');
+    const name2 = cleanText($('name2Input').value, 'Hawa');
+    slug = generateSlug(name1, name2);
+    generatedSlug = slug;
   }
 
-  // =============================================================
-  // 3. SAVE KE SUPABASE
-  // =============================================================
-  async function saveToSupabase(paid = false) {
-    let slug = getSlugFromURL();
-    if (!slug) {
-      const name1 = cleanText($('name1Input').value, 'Adam');
-      const name2 = cleanText($('name2Input').value, 'Hawa');
-      slug = generateSlug(name1, name2);
-      generatedSlug = slug;
-    }
+  const payload = {
+    slug: slug,
+    groom_name: $('name1Input').value || 'Adam',
+    bride_name: $('name2Input').value || 'Hawa',
+    groom_full: $('skemaNama1Input').value || 'Muhammad Adam bin Abdullah',
+    bride_full: $('skemaNama2Input').value || 'Hawa binti Ahmad',
+    poster_url: uploadedImageUrl || null,
+    music_url: uploadedMusicUrl || null,
+    paid: paid
+  };
 
-    const payload = {
-      slug: slug,
-      groom_name: $('name1Input').value || 'Adam',
-      bride_name: $('name2Input').value || 'Hawa',
-      paid: paid
-    };
+  try {
+    let res = await fetch(
+      `${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}?slug=eq.${slug}`, {
+        method: 'PATCH',
+        headers: {
+          apikey: SUPABASE_ANON_KEY,
+          Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+          'Content-Type': 'application/json',
+          Prefer: 'return=representation'
+        },
+        body: JSON.stringify(payload)
+      }
+    );
 
-    try {
-      let res = await fetch(
-        `${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}?slug=eq.${slug}`, {
-          method: 'PATCH',
+    if (res.status === 200 || res.status === 204) {
+      console.log('✅ Data updated (or no change)');
+      return { slug, saved: true };
+    } else {
+      res = await fetch(
+        `${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}`, {
+          method: 'POST',
           headers: {
             apikey: SUPABASE_ANON_KEY,
             Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
@@ -1028,658 +1200,756 @@
         }
       );
 
-      if (res.status === 200 || res.status === 204) {
-        const result = await res.json();
-        console.log('✅ Data updated:', result);
-        return { slug, saved: true };
-      } else {
-        res = await fetch(
-          `${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}`, {
-            method: 'POST',
-            headers: {
-              apikey: SUPABASE_ANON_KEY,
-              Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
-              'Content-Type': 'application/json',
-              Prefer: 'return=representation'
-            },
-            body: JSON.stringify(payload)
-          }
-        );
-
-        if (!res.ok) {
-          const errText = await res.text();
-          throw new Error(`Supabase ${res.status}: ${errText}`);
-        }
-
-        const result = await res.json();
-        console.log('✅ Data inserted:', result);
-        return { slug, saved: true };
+      if (!res.ok) {
+        const errText = await res.text();
+        throw new Error(`Supabase ${res.status}: ${errText}`);
       }
-    } catch (e) {
-      console.error('❌ Save failed:', e);
-      alert('Gagal simpan data: ' + e.message);
-      return { slug, saved: false };
+
+      const result = await res.json();
+      console.log('✅ Data inserted:', result);
+      return { slug, saved: true };
     }
+  } catch (e) {
+    console.error('❌ Save failed:', e);
+    alert('Gagal simpan data: ' + e.message);
+    return { slug, saved: false };
   }
+}
 
-  // =============================================================
-  // 4. PAYMENT STATUS
-  // =============================================================
-  function updatePaymentStatus(paid) {
-    const el = $('paymentStatus');
-    const buyBtn = $('buyButton');
-    const confirmBtn = $('confirmPayButton');
-    const adminBtn = $('adminActivateButton');
-    const adminNote = $('adminNote');
-    const orderBtn = $('orderButton');
-    const qrContainer = $('qrContainer');
+// =============================================================
+// 5. PAYMENT STATUS
+// =============================================================
+function updatePaymentStatus(paid) {
+  const el = $('paymentStatus');
+  const buyBtn = $('buyButton');
+  const confirmBtn = $('confirmPayButton');
+  const adminBtn = $('adminActivateButton');
+  const adminNote = $('adminNote');
+  const orderBtn = $('orderButton');
+  const qrContainer = $('qrContainer');
 
-    if (paid) {
-      el.className = 'payment-status paid';
-      el.textContent = '✅ Sudah Dibayar — Link Aktif! Anda boleh hantar tempahan sekarang.';
-      buyBtn.classList.add('hidden');
-      confirmBtn.classList.add('hidden');
-      if (adminBtn) adminBtn.classList.add('hidden');
-      if (adminNote) adminNote.style.display = 'none';
-      qrContainer.classList.add('hidden');
-      orderBtn.disabled = false;
-      orderBtn.textContent = '💬 Hantar Tempahan Melalui WhatsApp';
-      enableOrderButton(true);
-    } else if (waitingForPayment) {
-      el.className = 'payment-status waiting';
-      el.textContent = '⏳ Notifikasi telah dihantar ke NUR NONA. Sila tunggu pengesahan bayaran.';
-      buyBtn.classList.add('hidden');
-      confirmBtn.classList.add('hidden');
-      if (adminBtn && isAdmin) adminBtn.classList.remove('hidden');
-      if (adminNote && isAdmin) adminNote.style.display = 'block';
-      qrContainer.classList.remove('hidden');
-      orderBtn.disabled = true;
-      orderBtn.textContent = '🔒 Menunggu pengesahan bayaran...';
-      enableOrderButton(false);
-    } else {
-      el.className = 'payment-status waiting';
-      el.textContent = '✏️ Cuba edit dahulu — bayar untuk dapatkan link & hantar tempahan.';
-      buyBtn.classList.remove('hidden');
-      confirmBtn.classList.add('hidden');
-      if (adminBtn) adminBtn.classList.add('hidden');
-      if (adminNote) adminNote.style.display = 'none';
-      qrContainer.classList.add('hidden');
-      orderBtn.disabled = true;
-      orderBtn.textContent = '🔒 Hantar Tempahan — Sila bayar dahulu';
-      enableOrderButton(false);
-    }
-  }
-
-  function enableOrderButton(enabled) {
-    const btn = $('orderButton');
-    if (enabled) {
-      btn.disabled = false;
-      btn.textContent = '💬 Hantar Tempahan Melalui WhatsApp';
-    } else {
-      btn.disabled = true;
-      btn.textContent = '🔒 Hantar Tempahan — Sila bayar dahulu';
-    }
-  }
-
-  // =============================================================
-  // 5. BUTTON "SAYA NAK BELI" — BAWAK TERUS KE TNG
-  // =============================================================
-  $('buyButton').addEventListener('click', function() {
-    const total = $('totalPrice').textContent.replace('RM', '');
-    const qrContainer = $('qrContainer');
-    const confirmBtn = $('confirmPayButton');
-
-    window.open(TNG_URL, '_blank');
-
+  if (paid) {
+    el.className = 'payment-status paid';
+    el.textContent = '✅ Sudah Dibayar — Link Aktif! Anda boleh hantar tempahan sekarang.';
+    buyBtn.classList.add('hidden');
+    confirmBtn.classList.add('hidden');
+    if (adminBtn) adminBtn.classList.add('hidden');
+    if (adminNote) adminNote.style.display = 'none';
+    qrContainer.classList.add('hidden');
+    orderBtn.disabled = false;
+    orderBtn.textContent = '💬 Hantar Tempahan Melalui WhatsApp';
+    enableOrderButton(true);
+  } else if (waitingForPayment) {
+    el.className = 'payment-status waiting';
+    el.textContent = '⏳ Notifikasi telah dihantar ke NUR NONA. Sila tunggu pengesahan bayaran.';
+    buyBtn.classList.add('hidden');
+    confirmBtn.classList.add('hidden');
+    if (adminBtn && isAdmin) adminBtn.classList.remove('hidden');
+    if (adminNote && isAdmin) adminNote.style.display = 'block';
     qrContainer.classList.remove('hidden');
-    confirmBtn.classList.remove('hidden');
-    waitingForPayment = true;
+    orderBtn.disabled = true;
+    orderBtn.textContent = '🔒 Menunggu pengesahan bayaran...';
+    enableOrderButton(false);
+  } else {
+    el.className = 'payment-status waiting';
+    el.textContent = '✏️ Cuba edit dahulu — bayar untuk dapatkan link & hantar tempahan.';
+    buyBtn.classList.remove('hidden');
+    confirmBtn.classList.add('hidden');
+    if (adminBtn) adminBtn.classList.add('hidden');
+    if (adminNote) adminNote.style.display = 'none';
+    qrContainer.classList.add('hidden');
+    orderBtn.disabled = true;
+    orderBtn.textContent = '🔒 Hantar Tempahan — Sila bayar dahulu';
+    enableOrderButton(false);
+  }
+}
 
-    $('statusMsg').textContent = '📱 Halaman TNG eWallet dibuka. Selesaikan bayaran, kemudian tekan "Saya Dah Bayar".';
-    updatePaymentStatus(false);
-  });
+function enableOrderButton(enabled) {
+  const btn = $('orderButton');
+  if (enabled) {
+    btn.disabled = false;
+    btn.textContent = '💬 Hantar Tempahan Melalui WhatsApp';
+  } else {
+    btn.disabled = true;
+    btn.textContent = '🔒 Hantar Tempahan — Sila bayar dahulu';
+  }
+}
 
-  // =============================================================
-  // 6. BUTTON "SAYA DAH BAYAR" — HANTAR WHATSAPP KE AWAK
-  // =============================================================
-  $('confirmPayButton').addEventListener('click', function() {
-    const status = $('statusMsg');
-    status.textContent = '⏳ Menghantar notifikasi ke NUR NONA...';
+// =============================================================
+// 6. BUTTON "SAYA NAK BELI"
+// =============================================================
+$('buyButton').addEventListener('click', function() {
+  const total = $('totalPrice').textContent.replace('RM', '');
+  const qrContainer = $('qrContainer');
+  const confirmBtn = $('confirmPayButton');
 
-    const n1 = cleanText($('name1Input').value, 'Adam');
-    const n2 = cleanText($('name2Input').value, 'Hawa');
-    const total = $('totalPrice').textContent.replace('RM', '');
-    const slug = getSlugFromURL() || generateSlug(n1, n2);
-    const link = `${window.location.origin}/${slug}`;
+  window.open(TNG_URL, '_blank');
 
-    const msg =
-      `🟢 Customer memaklumkan telah bayar!\n\n` +
-      `Nama: ${n1} & ${n2}\n` +
-      `Link: ${link}\n` +
-      `Jumlah: RM${total}\n\n` +
-      `📌 Sila semak TNG eWallet. Jika sah, tekan butang "Aktifkan Link (Admin)" di editor.`;
+  qrContainer.classList.remove('hidden');
+  confirmBtn.classList.remove('hidden');
+  waitingForPayment = true;
 
-    window.open(`https://wa.me/${SELLER_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
-    status.textContent = '✅ Notifikasi dihantar ke NUR NONA. Sila tunggu pengesahan.';
+  $('statusMsg').textContent = '📱 Halaman TNG eWallet dibuka. Selesaikan bayaran, kemudian tekan "Saya Dah Bayar".';
+  updatePaymentStatus(false);
+});
 
-    waitingForPayment = true;
-    updatePaymentStatus(false);
-  });
+// =============================================================
+// 7. BUTTON "SAYA DAH BAYAR" — DENGAN SPAM PROTECTION
+// =============================================================
+$('confirmPayButton').addEventListener('click', function() {
+  if (confirmSubmitting) return;
+  confirmSubmitting = true;
+  this.disabled = true;
+  this.textContent = '⏳ Menghantar...';
 
-  // =============================================================
-  // 7. BUTTON "AKTIFKAN LINK (ADMIN)" — AWAK KAWAL!
-  // =============================================================
-  $('adminActivateButton').addEventListener('click', async function() {
-    const confirmActivate = confirm(
-      '🔐 ANDA PASTI NAK AKTIFKAN LINK INI?\n\n' +
-      'Pastikan anda telah semak bayaran dalam TNG eWallet.\n' +
-      'Tekan "OK" untuk aktifkan link customer.'
-    );
-    if (!confirmActivate) return;
+  const status = $('statusMsg');
+  status.textContent = '⏳ Menghantar notifikasi ke NUR NONA...';
 
-    const status = $('statusMsg');
-    status.textContent = '⏳ Mengaktifkan link...';
+  const n1 = cleanText($('name1Input').value, 'Adam');
+  const n2 = cleanText($('name2Input').value, 'Hawa');
+  const total = $('totalPrice').textContent.replace('RM', '');
+  const slug = getSlugFromURL() || generateSlug(n1, n2);
+  const link = `${window.location.origin}/${slug}`;
 
-    const result = await saveToSupabase(true);
-    if (result.saved) {
-      isPaid = true;
-      waitingForPayment = false;
-      updatePaymentStatus(true);
-      status.textContent = '✅ Link berjaya diaktifkan! Customer sekarang boleh hantar tempahan.';
-      $('slugDisplay').style.display = 'block';
-      $('slugDisplay').textContent = `🔗 Link unik: ${window.location.origin}/${result.slug}`;
-      alert('✅ Link telah diaktifkan! Customer boleh refresh & hantar tempahan.');
-    } else {
-      status.textContent = '❌ Gagal aktifkan link. Cuba lagi.';
-    }
-  });
+  const msg =
+    `🟢 Customer memaklumkan telah bayar!\n\n` +
+    `Nama: ${n1} & ${n2}\n` +
+    `Link: ${link}\n` +
+    `Jumlah: RM${total}\n\n` +
+    `📌 Sila semak TNG eWallet. Jika sah, tekan butang "Aktifkan Link (Admin)" di editor.`;
 
-  // =============================================================
-  // 8. ORDER
-  // =============================================================
-  let orderSubmitting = false;
+  window.open(`https://wa.me/${SELLER_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
+  status.textContent = '✅ Notifikasi dihantar ke NUR NONA. Sila tunggu pengesahan.';
 
-  $('orderButton').addEventListener('click', async function() {
-    if (!isPaid) {
-      alert('⚠️ Bayaran belum disahkan. Sila tunggu pengesahan dari NUR NONA.');
-      return;
-    }
-    if (orderSubmitting) return;
-    orderSubmitting = true;
-    const status = $('statusMsg');
-    status.textContent = '⏳ Menyimpan data...';
+  waitingForPayment = true;
+  updatePaymentStatus(false);
 
-    const result = await saveToSupabase(true);
-    if (!result.saved) {
-      status.textContent = '❌ Gagal simpan. Cuba lagi.';
-      orderSubmitting = false;
-      return;
-    }
+  setTimeout(() => {
+    confirmSubmitting = false;
+    this.disabled = false;
+    this.textContent = '✅ Saya Dah Bayar — Notifikasi NUR NONA';
+  }, 5000);
+});
 
-    const slug = result.slug;
-    const n1 = cleanText($('name1Input').value, 'Adam');
-    const n2 = cleanText($('name2Input').value, 'Hawa');
-    const withImage = $('imageToggle').checked;
-    const music = $('musicToggle').checked;
-    const base = withImage ? 176 : 136;
-    const total = base + (music ? 60 : 0);
-    const theme = $('themeInput').selectedOptions[0].textContent.trim();
-    const emojis = [];
-    document.querySelectorAll('.emoji-check:checked').forEach(c => emojis.push(c.value));
+// =============================================================
+// 8. BUTTON "AKTIFKAN LINK (ADMIN)"
+// =============================================================
+$('adminActivateButton').addEventListener('click', async function() {
+  const confirmActivate = confirm(
+    '🔐 ANDA PASTI NAK AKTIFKAN LINK INI?\n\n' +
+    'Pastikan anda telah semak bayaran dalam TNG eWallet.\n' +
+    'Tekan "OK" untuk aktifkan link customer.'
+  );
+  if (!confirmActivate) return;
 
-    // Get music info
-    let musicInfo = 'Tiada muzik';
-    if (music) {
-      const preset = $('musicPreset');
-      const fileInput = $('musicInput');
-      if (preset.value) {
-        musicInfo = `Lagu sedia: ${preset.selectedOptions[0].textContent}`;
-      } else if (fileInput.files && fileInput.files.length > 0) {
-        musicInfo = `Upload sendiri: ${fileInput.files[0].name}`;
-      }
-    }
+  const status = $('statusMsg');
+  status.textContent = '⏳ Mengaktifkan link...';
 
-    const link = `${window.location.origin}/${slug}`;
+  const result = await saveToSupabase(true);
+  if (result.saved) {
+    isPaid = true;
+    waitingForPayment = false;
+    updatePaymentStatus(true);
+    status.textContent = '✅ Link berjaya diaktifkan! Customer sekarang boleh hantar tempahan.';
     $('slugDisplay').style.display = 'block';
-    $('slugDisplay').textContent = `🔗 Link unik anda: ${link}`;
+    $('slugDisplay').textContent = `🔗 Link unik: ${window.location.origin}/${result.slug}`;
+    localStorage.setItem('nur_nona_admin', 'true');
+    alert('✅ Link telah diaktifkan! Customer boleh refresh & hantar tempahan.');
+  } else {
+    status.textContent = '❌ Gagal aktifkan link. Cuba lagi.';
+  }
+});
 
-    const msg =
-      `Assalamualaikum NUR NONA 🤍\n\nSaya nak tempah Undangan Digital.\n\n━━━━━━━━━━━━━━━━\n💍 MAKLUMAT TEMPAHAN\n━━━━━━━━━━━━━━━━\n\n👰 Pengantin: ${n1} & ${n2}\n🔗 Link: ${link}\n🖼️ Gambar: ${withImage ? 'Ya — RM176' : 'Tidak — RM136'}\n🎵 Muzik: ${music ? 'Ya — +RM60' : 'Tidak'}\n   ${musicInfo}\n🎨 Tema: ${theme}\n✨ Emoji: ${emojis.length ? emojis.join(' & ') : '🤍'}\n💰 JUMLAH: RM${total}\n\n💾 Data tempahan telah berjaya disimpan ke sistem NUR NONA.\n✅ Bayaran telah disahkan.`;
+// =============================================================
+// 9. ORDER
+// =============================================================
+$('orderButton').addEventListener('click', async function() {
+  if (!isPaid) {
+    alert('⚠️ Bayaran belum disahkan. Sila tunggu pengesahan dari NUR NONA.');
+    return;
+  }
+  if (orderSubmitting) return;
+  orderSubmitting = true;
+  const status = $('statusMsg');
+  status.textContent = '⏳ Menyimpan data...';
 
-    window.open(`https://wa.me/${SELLER_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
-    status.textContent = '✅ Data disimpan. WhatsApp dibuka.';
+  const result = await saveToSupabase(true);
+  if (!result.saved) {
+    status.textContent = '❌ Gagal simpan. Cuba lagi.';
     orderSubmitting = false;
-  });
-
-  // =============================================================
-  // 9. UPDATE PREVIEW
-  // =============================================================
-  function updatePreview() {
-    const n1 = cleanText($('name1Input').value, 'Adam');
-    const n2 = cleanText($('name2Input').value, 'Hawa');
-    const sub = cleanText($('subtitleInput').value, 'Majlis Kesyukuran & Walimatulurus');
-
-    $('displayName1').textContent = n1;
-    $('displayName2').textContent = n2;
-    $('coverName1').textContent = n1;
-    $('coverName2').textContent = n2;
-    $('coverSubtitle').textContent = sub;
-    $('invitationSubtitle').textContent = sub;
-
-    const loc = cleanText($('locationNameInput').value, 'Lokasi Majlis');
-    $('locationText').textContent = loc;
-
-    const dateVal = $('dateInput').value;
-    if (dateVal) {
-      const d = new Date(dateVal + 'T00:00:00+08:00');
-      if (!isNaN(d.getTime())) {
-        $('displayDate').textContent = d.toLocaleDateString('ms-MY', { weekday: 'long', day: 'numeric',
-          month: 'long', year: 'numeric' });
-      }
-    }
-
-    const withImage = $('imageToggle').checked;
-    const music = $('musicToggle').checked;
-    const base = withImage ? 176 : 136;
-    const total = base + (music ? 60 : 0);
-    $('baseLabel').textContent = withImage ? 'Kad dengan gambar' : 'Kad tanpa gambar';
-    $('basePrice').textContent = `RM${base}`;
-    $('musicPriceLine').style.display = music ? 'flex' : 'none';
-    $('totalPrice').textContent = `RM${total}`;
-    $('buyTotal').textContent = total;
-    $('imageArea').classList.toggle('hidden', !withImage);
-    $('musicArea').classList.toggle('hidden', !music);
-
-    if (!isPaid && !waitingForPayment) {
-      $('buyButton').textContent = `💚 Saya Nak Beli (RM${total})`;
-    }
-
-    updateEmoji();
-    updateFamily();
-    updateMusicPreview();
+    return;
   }
 
-  // =============================================================
-  // 10. EMOJI
-  // =============================================================
-  function updateEmoji() {
-    const checks = document.querySelectorAll('.emoji-check:checked');
-    const emojis = [];
-    checks.forEach(c => emojis.push(c.value));
-    const e1 = emojis[0] || '🤍';
-    const e2 = emojis[1] || e1;
-    $('sparkleText').textContent = `✦ ${e1} ${e2} ✦`;
-    $('dateEmoji').textContent = e1;
-  }
+  const slug = result.slug;
+  const n1 = cleanText($('name1Input').value, 'Adam');
+  const n2 = cleanText($('name2Input').value, 'Hawa');
+  const withImage = $('imageToggle').checked && uploadedImageUrl;
+  const music = $('musicToggle').checked && uploadedMusicUrl;
+  const base = withImage ? 176 : 136;
+  const total = base + (music ? 60 : 0);
+  const theme = $('themeInput').selectedOptions[0].textContent.trim();
+  const emojis = [];
+  document.querySelectorAll('.emoji-check:checked').forEach(c => emojis.push(c.value));
 
-  document.querySelectorAll('.emoji-check').forEach(cb => {
-    cb.addEventListener('change', function() {
-      const checked = document.querySelectorAll('.emoji-check:checked');
-      if (checked.length > 2) { this.checked = false;
-        alert('Maksimum 2 emoji sahaja 😊'); }
-      updateEmoji();
-      if ($('emojiToggle').checked) {
-        stopEmojiAnimation();
-        startEmojiAnimation();
-      }
-    });
-  });
-
-  // =============================================================
-  // 11. FALLING EMOJI
-  // =============================================================
-  function createEmoji() {
-    const toggle = $('emojiToggle');
-    const container = $('emojiContainer');
-    if (!toggle || !toggle.checked || !container) return;
-
-    const checks = document.querySelectorAll('.emoji-check:checked');
-    const emojis = [];
-    checks.forEach(c => emojis.push(c.value));
-    if (!emojis.length) return;
-
-    const element = document.createElement('span');
-    element.className = 'falling';
-    element.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-    element.style.left = `${Math.random() * 100}%`;
-    const duration = Math.random() * 3 + 3;
-    element.style.animationDuration = `${duration}s`;
-    element.style.fontSize = `${Math.random() * 8 + 12}px`;
-    container.appendChild(element);
-
-    window.setTimeout(() => {
-      if (element.isConnected) element.remove();
-    }, duration * 1000 + 500);
-  }
-
-  function startEmojiAnimation() {
-    if (emojiTimer) clearInterval(emojiTimer);
-    emojiTimer = window.setInterval(createEmoji, 800);
-  }
-
-  function stopEmojiAnimation() {
-    if (emojiTimer) {
-      clearInterval(emojiTimer);
-      emojiTimer = null;
-    }
-    const container = $('emojiContainer');
-    if (container) container.innerHTML = '';
-  }
-
-  $('emojiToggle').addEventListener('change', function() {
-    if (this.checked) {
-      startEmojiAnimation();
-    } else {
-      stopEmojiAnimation();
-    }
-  });
-
-  // =============================================================
-  // 12. COUNTDOWN
-  // =============================================================
-  function updateCountdown() {
-    const date = $('dateInput').value;
-    const time = $('timeInput').value || '00:00';
-    if (!date) { setCountdown(0, 0, 0, 0); return; }
-    const target = new Date(`${date}T${time}:00+08:00`);
-    if (isNaN(target.getTime())) { setCountdown(0, 0, 0, 0); return; }
-    let diff = target.getTime() - Date.now();
-    if (diff <= 0) { setCountdown(0, 0, 0, 0); return; }
-    const d = Math.floor(diff / 86400000);
-    diff %= 86400000;
-    const h = Math.floor(diff / 3600000);
-    diff %= 3600000;
-    const m = Math.floor(diff / 60000);
-    diff %= 60000;
-    const s = Math.floor(diff / 1000);
-    setCountdown(d, h, m, s);
-  }
-
-  function setCountdown(d, h, m, s) {
-    $('days').textContent = String(d).padStart(2, '0');
-    $('hours').textContent = String(h).padStart(2, '0');
-    $('minutes').textContent = String(m).padStart(2, '0');
-    $('seconds').textContent = String(s).padStart(2, '0');
-  }
-
-  // =============================================================
-  // 13. SCHEDULE
-  // =============================================================
-  let schedule = [
-    { time: '11:00 AM', text: 'Ketibaan Tetamu' },
-    { time: '12:00 PM', text: 'Bacaan Doa' },
-    { time: '01:00 PM', text: 'Makan Beradab' }
-  ];
-
-  function renderScheduleEditor() {
-    const container = $('scheduleEditor');
-    container.innerHTML = '';
-    schedule.forEach((item, i) => {
-      const row = document.createElement('div');
-      row.className = 'schedule-row';
-      const t = document.createElement('input');
-      t.type = 'text';
-      t.value = item.time || '';
-      t.placeholder = 'Masa';
-      t.oninput = e => { schedule[i].time = e.target.value;
-        renderSchedule(); };
-      const txt = document.createElement('input');
-      txt.type = 'text';
-      txt.value = item.text || '';
-      txt.placeholder = 'Acara';
-      txt.oninput = e => { schedule[i].text = e.target.value;
-        renderSchedule(); };
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'remove-btn';
-      btn.textContent = '×';
-      btn.onclick = () => { schedule.splice(i, 1);
-        renderScheduleEditor();
-        renderSchedule(); };
-      row.append(t, txt, btn);
-      container.append(row);
-    });
-  }
-
-  function renderSchedule() {
-    const container = $('scheduleContainer');
-    container.innerHTML = '';
-    if (!schedule.length) {
-      container.innerHTML = '<div class="drawer-description">Belum ada atur cara.</div>';
-      return;
-    }
-    schedule.forEach(item => {
-      const row = document.createElement('div');
-      row.className = 'schedule-item';
-      const tm = document.createElement('div');
-      tm.className = 'schedule-time';
-      tm.textContent = item.time || '—';
-      const tx = document.createElement('div');
-      tx.className = 'schedule-text';
-      tx.textContent = item.text || 'Acara majlis';
-      row.append(tm, tx);
-      container.append(row);
-    });
-  }
-
-  $('addSchedule').addEventListener('click', () => {
-    schedule.push({ time: '05:00 PM', text: 'Acara Tambahan' });
-    renderScheduleEditor();
-    renderSchedule();
-  });
-
-  // =============================================================
-  // 14. FAMILY
-  // =============================================================
-  function makeContact(container, name, phone) {
-    const p = normalizePhone(phone);
-    if (!p || !name) return;
-    const div = document.createElement('div');
-    div.className = 'contact-item';
-    const n = document.createElement('div');
-    n.className = 'contact-name';
-    n.textContent = cleanText(name, 'Keluarga');
-    const a = document.createElement('a');
-    a.className = 'contact-button';
-    a.href = `https://wa.me/${p}`;
-    a.target = '_blank';
-    a.textContent = '📞 Hubungi';
-    div.append(n, a);
-    container.append(div);
-  }
-
-  function updateFamily() {
-    const groomParents = cleanText($('groomParentsInput').value);
-    const brideParents = cleanText($('brideParentsInput').value);
-
-    $('previewGroomParents').textContent = groomParents;
-    $('previewBrideParents').textContent = brideParents;
-    $('previewGroomParents').style.display = groomParents ? 'block' : 'none';
-    $('previewBrideParents').style.display = brideParents ? 'block' : 'none';
-
-    const gc = $('previewGroomContacts');
-    gc.innerHTML = '';
-    const gFather = cleanText($('groomFatherName').value);
-    const gFatherPhone = cleanText($('groomFatherPhone').value);
-    const gMother = cleanText($('groomMotherName').value);
-    const gMotherPhone = cleanText($('groomMotherPhone').value);
-
-    if (gFather || gMother) {
-      makeContact(gc, gFather || 'Wakil', gFatherPhone);
-      makeContact(gc, gMother || 'Wakil', gMotherPhone);
-    }
-
-    const bc = $('previewBrideContacts');
-    bc.innerHTML = '';
-    const bFather = cleanText($('brideFatherName').value);
-    const bFatherPhone = cleanText($('brideFatherPhone').value);
-    const bMother = cleanText($('brideMotherName').value);
-    const bMotherPhone = cleanText($('brideMotherPhone').value);
-
-    if (bFather || bMother) {
-      makeContact(bc, bFather || 'Wakil', bFatherPhone);
-      makeContact(bc, bMother || 'Wakil', bMotherPhone);
-    }
-  }
-
-  // =============================================================
-  // 15. MUZIK — 3 PILIHAN + UPLOAD
-  // =============================================================
-  function updateMusicPreview() {
-    const toggle = $('musicToggle');
-    const playerWrapper = $('audioPlayerWrapper');
-    const audio = $('audioPlayer');
-    const source = $('audioSource');
-    const preset = $('musicPreset');
+  let musicInfo = 'Tiada muzik';
+  if (music && uploadedMusicUrl) {
     const fileInput = $('musicInput');
-
-    if (!toggle.checked) {
-      playerWrapper.style.display = 'none';
-      audio.pause();
-      return;
-    }
-
-    let musicUrl = '';
-
     if (fileInput.files && fileInput.files.length > 0) {
-      const file = fileInput.files[0];
-      if (file.type.startsWith('audio/')) {
-        musicUrl = URL.createObjectURL(file);
-        uploadedMusic = file.name;
-      }
-    } else if (preset.value) {
-      musicUrl = preset.value;
-      selectedPreset = preset.value;
-    }
-
-    if (musicUrl) {
-      source.src = musicUrl;
-      audio.load();
-      playerWrapper.style.display = 'block';
+      musicInfo = `Upload sendiri: ${fileInput.files[0].name}`;
     } else {
-      playerWrapper.style.display = 'none';
-      audio.pause();
+      musicInfo = 'Lagu dari Storage';
     }
   }
 
-  // Event listeners untuk muzik
-  $('musicToggle').addEventListener('change', function() {
-    updateMusicPreview();
-    updatePrice();
-  });
+  const link = `${window.location.origin}/${slug}`;
+  $('slugDisplay').style.display = 'block';
+  $('slugDisplay').textContent = `🔗 Link unik anda: ${link}`;
 
-  $('musicPreset').addEventListener('change', function() {
-    $('musicInput').value = '';
-    updateMusicPreview();
-  });
+  const msg =
+    `Assalamualaikum NUR NONA 🤍\n\nSaya nak tempah Undangan Digital.\n\n━━━━━━━━━━━━━━━━\n💍 MAKLUMAT TEMPAHAN\n━━━━━━━━━━━━━━━━\n\n👰 Pengantin: ${n1} & ${n2}\n🔗 Link: ${link}\n🖼️ Gambar: ${withImage ? 'Ya — RM176' : 'Tidak — RM136'}\n🎵 Muzik: ${music ? 'Ya — +RM60' : 'Tidak'}\n   ${musicInfo}\n🎨 Tema: ${theme}\n✨ Emoji: ${emojis.length ? emojis.join(' & ') : '🤍'}\n💰 JUMLAH: RM${total}\n\n💾 Data tempahan telah berjaya disimpan ke sistem NUR NONA.\n✅ Bayaran telah disahkan.`;
 
-  $('musicInput').addEventListener('change', function() {
-    $('musicPreset').value = '';
-    updateMusicPreview();
-  });
+  window.open(`https://wa.me/${SELLER_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
+  status.textContent = '✅ Data disimpan. WhatsApp dibuka.';
+  orderSubmitting = false;
+});
 
-  // =============================================================
-  // 16. DRAWERS
-  // =============================================================
-  function closeDrawers() {
-    document.querySelectorAll('.drawer').forEach(d => d.classList.remove('active'));
-    $('overlay').classList.remove('active');
-    document.body.style.overflow = '';
+// =============================================================
+// 10. UPDATE SKEMA — FULLY EDITABLE
+// =============================================================
+function updateSkema() {
+  const assalam = cleanText($('skemaAssalamInput').value, 'Assalamualaikum Warahmatullahi Wabarakatuh');
+  const intro = cleanText($('skemaIntroInput').value, 'Dengan segala hormatnya, kami menjemput tuan/puan serta keluarga ke Majlis Kesyukuran & Walimatulurus');
+  const penutup = cleanText($('skemaPenutupInput').value, 'Kehadiran tuan/puan amat dialu-alukan. Doa restu dipohon. Terima kasih.');
+  const panggilan = cleanText($('skemaPanggilanInput').value, 'Adam & Hawa');
+
+  const nama1 = cleanText($('skemaNama1Input').value, 'Muhammad Adam bin Abdullah');
+  const nama2 = cleanText($('skemaNama2Input').value, 'Hawa binti Ahmad');
+  const lokasi = cleanText($('locationNameInput').value, 'Dewan Serbaguna');
+  const tarikh = $('displayDate').textContent || 'Tarikh Majlis';
+
+  $('skemaAssalamDisplay').textContent = assalam;
+  $('skemaIntroDisplay').innerHTML = intro.replace(/\n/g, '<br>');
+  $('skemaNama1Display').textContent = nama1;
+  $('skemaNama2Display').textContent = nama2;
+  $('skemaLokasi').textContent = lokasi;
+  $('skemaTarikh').textContent = tarikh;
+  $('skemaPenutupDisplay').innerHTML = penutup.replace(/\n/g, '<br>');
+
+  // Update nama panggilan dalam cover
+  const names = panggilan.split('&').map(s => s.trim());
+  if (names.length >= 2) {
+    $('coverName1').textContent = names[0];
+    $('coverName2').textContent = names[1];
+    $('displayName1').textContent = names[0];
+    $('displayName2').textContent = names[1];
+  }
+}
+
+// =============================================================
+// 11. UPDATE PREVIEW
+// =============================================================
+function updatePreview() {
+  const n1 = cleanText($('name1Input').value, 'Adam');
+  const n2 = cleanText($('name2Input').value, 'Hawa');
+  const sub = cleanText($('subtitleInput').value, 'Majlis Kesyukuran & Walimatulurus');
+
+  $('displayName1').textContent = n1;
+  $('displayName2').textContent = n2;
+  $('coverName1').textContent = n1;
+  $('coverName2').textContent = n2;
+  $('coverSubtitle').textContent = sub;
+  $('invitationSubtitle').textContent = sub;
+
+  const skemaN1 = cleanText($('skemaNama1Input').value, 'Muhammad Adam bin Abdullah');
+  const skemaN2 = cleanText($('skemaNama2Input').value, 'Hawa binti Ahmad');
+  $('skemaNama1Display').textContent = skemaN1;
+  $('skemaNama2Display').textContent = skemaN2;
+
+  const loc = cleanText($('locationNameInput').value, 'Lokasi Majlis');
+  $('locationText').textContent = loc;
+  $('skemaLokasi').textContent = loc;
+
+  const dateVal = $('dateInput').value;
+  if (dateVal) {
+    const d = new Date(dateVal + 'T00:00:00+08:00');
+    if (!isNaN(d.getTime())) {
+      const formatted = d.toLocaleDateString('ms-MY', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+      $('displayDate').textContent = formatted;
+      $('skemaTarikh').textContent = formatted;
+    }
   }
 
-  function openDrawer(id) {
-    closeDrawers();
-    $(id).classList.add('active');
-    $('overlay').classList.add('active');
-    document.body.style.overflow = 'hidden';
+  const withImage = $('imageToggle').checked && uploadedImageUrl;
+  const music = $('musicToggle').checked && uploadedMusicUrl;
+  const base = withImage ? 176 : 136;
+  const total = base + (music ? 60 : 0);
+  $('baseLabel').textContent = withImage ? 'Kad dengan gambar' : 'Kad tanpa gambar';
+  $('basePrice').textContent = `RM${base}`;
+  $('musicPriceLine').style.display = music ? 'flex' : 'none';
+  $('totalPrice').textContent = `RM${total}`;
+  $('buyTotal').textContent = total;
+  $('imageArea').classList.toggle('hidden', !$('imageToggle').checked);
+  $('musicArea').classList.toggle('hidden', !$('musicToggle').checked);
+
+  if (!isPaid && !waitingForPayment) {
+    $('buyButton').textContent = `💚 Saya Nak Beli (RM${total})`;
   }
 
-  $('openSchedule').addEventListener('click', () => openDrawer('scheduleDrawer'));
-  $('openRsvp').addEventListener('click', () => openDrawer('rsvpDrawer'));
-  $('openFamily').addEventListener('click', () => openDrawer('familyDrawer'));
-  $('overlay').addEventListener('click', closeDrawers);
-  document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', closeDrawers));
+  updateEmoji();
+  updateFamily();
+  updateImagePreview();
+  updateMusicPreview();
+  updateSkema();
+}
 
-  // =============================================================
-  // 17. COVER
-  // =============================================================
-  let opened = false;
+// =============================================================
+// 12. GAMBAR PREVIEW
+// =============================================================
+function updateImagePreview() {
+  const wrapper = $('posterWrapper');
+  const img = $('weddingPoster');
 
-  function openCard() {
-    if (opened) return;
-    opened = true;
-    $('coverPage').classList.add('opened');
+  if ($('imageToggle').checked && uploadedImageUrl) {
+    img.src = uploadedImageUrl;
+    wrapper.classList.remove('hidden');
+    document.documentElement.style.setProperty('--poster-image', `url("${uploadedImageUrl}")`);
+  } else {
+    wrapper.classList.add('hidden');
+    img.removeAttribute('src');
+    document.documentElement.style.removeProperty('--poster-image');
   }
-  $('openEnvelope').addEventListener('click', openCard);
-  $('openButton').addEventListener('click', openCard);
+}
 
-  // =============================================================
-  // 18. LOCATION
-  // =============================================================
-  $('locationButton').addEventListener('click', function(e) {
-    e.preventDefault();
-    const url = cleanText($('mapUrlInput').value);
-    if (url) window.open(url, '_blank');
-    else alert('Sila masukkan link peta.');
-  });
+// =============================================================
+// 13. EMOJI
+// =============================================================
+function updateEmoji() {
+  const checks = document.querySelectorAll('.emoji-check:checked');
+  const emojis = [];
+  checks.forEach(c => emojis.push(c.value));
+  const e1 = emojis[0] || '🤍';
+  const e2 = emojis[1] || e1;
+  $('sparkleText').textContent = `✦ ${e1} ${e2} ✦`;
+  $('dateEmoji').textContent = e1;
+}
 
-  // =============================================================
-  // 19. RSVP
-  // =============================================================
-  $('sendRsvp').addEventListener('click', function() {
-    const phone = normalizePhone($('rsvpPhoneInput').value);
-    if (!phone) { alert('Nombor WhatsApp RSVP pengantin belum diisi.'); return; }
-    const name = cleanText($('guestName').value, 'Tetamu');
-    const attendance = $('attendance').value;
-    const msg = cleanText($('guestMessage').value, 'Tahniah dan semoga berbahagia selalu! 🤍');
-    const n1 = cleanText($('name1Input').value, 'Adam');
-    const n2 = cleanText($('name2Input').value, 'Hawa');
-    const text =
-      `Assalamualaikum ${n1} & ${n2} 🤍\n\nSaya ingin memberikan RSVP untuk majlis anda.\n\n━━━━━━━━━━━━━━━━\n💌 MAKLUMAT RSVP\n━━━━━━━━━━━━━━━━\n\n👤 Nama: ${name}\n💌 Kehadiran: ${attendance}\n📝 Ucapan & Doa: ${msg}\n\nTerima kasih 🤍`;
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
-  });
-
-  // =============================================================
-  // 20. EVENT LISTENERS
-  // =============================================================
-  ['name1Input', 'name2Input', 'subtitleInput', 'dateInput', 'timeInput',
-    'locationNameInput', 'mapTypeInput', 'mapUrlInput',
-    'groomParentsInput', 'groomFatherName', 'groomFatherPhone',
-    'groomMotherName', 'groomMotherPhone',
-    'brideParentsInput', 'brideFatherName', 'brideFatherPhone',
-    'brideMotherName', 'brideMotherPhone'
-  ].forEach(id => {
-    const el = $(id);
-    if (el) el.addEventListener('input', () => { updatePreview();
-      updateFamily(); });
-  });
-
-  $('imageToggle').addEventListener('change', updatePreview);
-  $('musicToggle').addEventListener('change', updatePreview);
-  $('themeInput').addEventListener('change', function() {
-    applyTheme();
-    updatePreview();
-  });
-
-  // =============================================================
-  // 21. INIT
-  // =============================================================
-  function init() {
-    renderScheduleEditor();
-    renderSchedule();
-    updatePreview();
-    updateFamily();
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-    loadFromSupabase();
-    applyTheme();
-
+document.querySelectorAll('.emoji-check').forEach(cb => {
+  cb.addEventListener('change', function() {
+    const checked = document.querySelectorAll('.emoji-check:checked');
+    if (checked.length > 2) { this.checked = false;
+      alert('Maksimum 2 emoji sahaja 😊'); }
+    updateEmoji();
     if ($('emojiToggle').checked) {
+      stopEmojiAnimation();
       startEmojiAnimation();
     }
+  });
+});
+
+// =============================================================
+// 14. FALLING EMOJI
+// =============================================================
+function createEmoji() {
+  const toggle = $('emojiToggle');
+  const container = $('emojiContainer');
+  if (!toggle || !toggle.checked || !container) return;
+
+  const checks = document.querySelectorAll('.emoji-check:checked');
+  const emojis = [];
+  checks.forEach(c => emojis.push(c.value));
+  if (!emojis.length) return;
+
+  const element = document.createElement('span');
+  element.className = 'falling';
+  element.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+  element.style.left = `${Math.random() * 100}%`;
+  const duration = Math.random() * 3 + 3;
+  element.style.animationDuration = `${duration}s`;
+  element.style.fontSize = `${Math.random() * 8 + 12}px`;
+  container.appendChild(element);
+
+  window.setTimeout(() => {
+    if (element.isConnected) element.remove();
+  }, duration * 1000 + 500);
+}
+
+function startEmojiAnimation() {
+  if (emojiTimer) clearInterval(emojiTimer);
+  emojiTimer = window.setInterval(createEmoji, 800);
+}
+
+function stopEmojiAnimation() {
+  if (emojiTimer) {
+    clearInterval(emojiTimer);
+    emojiTimer = null;
+  }
+  const container = $('emojiContainer');
+  if (container) container.innerHTML = '';
+}
+
+$('emojiToggle').addEventListener('change', function() {
+  if (this.checked) {
+    startEmojiAnimation();
+  } else {
+    stopEmojiAnimation();
+  }
+});
+
+// =============================================================
+// 15. VISIBILITY
+// =============================================================
+function updateVisibility() {
+  const withImage = $('imageToggle').checked;
+  const music = $('musicToggle').checked;
+
+  const imageArea = $('imageArea');
+  if (imageArea) {
+    imageArea.classList.toggle('hidden', !withImage);
   }
 
-  init();
+  const musicArea = $('musicArea');
+  if (musicArea) {
+    musicArea.classList.toggle('hidden', !music);
+  }
+
+  updateImagePreview();
+  updateMusicPreview();
+}
+
+$('imageToggle').addEventListener('change', function() {
+  updateVisibility();
+  updatePreview();
+});
+
+$('musicToggle').addEventListener('change', function() {
+  updateVisibility();
+  updatePreview();
+});
+
+// =============================================================
+// 16. COUNTDOWN
+// =============================================================
+function updateCountdown() {
+  const date = $('dateInput').value;
+  const time = $('timeInput').value || '00:00';
+  if (!date) { setCountdown(0, 0, 0, 0); return; }
+  const target = new Date(`${date}T${time}:00+08:00`);
+  if (isNaN(target.getTime())) { setCountdown(0, 0, 0, 0); return; }
+  let diff = target.getTime() - Date.now();
+  if (diff <= 0) { setCountdown(0, 0, 0, 0); return; }
+  const d = Math.floor(diff / 86400000);
+  diff %= 86400000;
+  const h = Math.floor(diff / 3600000);
+  diff %= 3600000;
+  const m = Math.floor(diff / 60000);
+  diff %= 60000;
+  const s = Math.floor(diff / 1000);
+  setCountdown(d, h, m, s);
+}
+
+function setCountdown(d, h, m, s) {
+  $('days').textContent = String(d).padStart(2, '0');
+  $('hours').textContent = String(h).padStart(2, '0');
+  $('minutes').textContent = String(m).padStart(2, '0');
+  $('seconds').textContent = String(s).padStart(2, '0');
+}
+
+// =============================================================
+// 17. SCHEDULE
+// =============================================================
+let schedule = [
+  { time: '11:00 AM', text: 'Ketibaan Tetamu' },
+  { time: '12:00 PM', text: 'Bacaan Doa' },
+  { time: '01:00 PM', text: 'Makan Beradab' }
+];
+
+function renderScheduleEditor() {
+  const container = $('scheduleEditor');
+  container.innerHTML = '';
+  schedule.forEach((item, i) => {
+    const row = document.createElement('div');
+    row.className = 'schedule-row';
+    const t = document.createElement('input');
+    t.type = 'text';
+    t.value = item.time || '';
+    t.placeholder = 'Masa';
+    t.oninput = e => { schedule[i].time = e.target.value;
+      renderSchedule(); };
+    const txt = document.createElement('input');
+    txt.type = 'text';
+    txt.value = item.text || '';
+    txt.placeholder = 'Acara';
+    txt.oninput = e => { schedule[i].text = e.target.value;
+      renderSchedule(); };
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'remove-btn';
+    btn.textContent = '×';
+    btn.onclick = () => { schedule.splice(i, 1);
+      renderScheduleEditor();
+      renderSchedule(); };
+    row.append(t, txt, btn);
+    container.append(row);
+  });
+}
+
+function renderSchedule() {
+  const container = $('scheduleContainer');
+  container.innerHTML = '';
+  if (!schedule.length) {
+    container.innerHTML = '<div class="drawer-description">Belum ada atur cara.</div>';
+    return;
+  }
+  schedule.forEach(item => {
+    const row = document.createElement('div');
+    row.className = 'schedule-item';
+    const tm = document.createElement('div');
+    tm.className = 'schedule-time';
+    tm.textContent = item.time || '—';
+    const tx = document.createElement('div');
+    tx.className = 'schedule-text';
+    tx.textContent = item.text || 'Acara majlis';
+    row.append(tm, tx);
+    container.append(row);
+  });
+}
+
+$('addSchedule').addEventListener('click', () => {
+  schedule.push({ time: '05:00 PM', text: 'Acara Tambahan' });
+  renderScheduleEditor();
+  renderSchedule();
+});
+
+// =============================================================
+// 18. FAMILY
+// =============================================================
+function makeContact(container, name, phone) {
+  const p = normalizePhone(phone);
+  if (!p || !name) return;
+  const div = document.createElement('div');
+  div.className = 'contact-item';
+  const n = document.createElement('div');
+  n.className = 'contact-name';
+  n.textContent = cleanText(name, 'Keluarga');
+  const a = document.createElement('a');
+  a.className = 'contact-button';
+  a.href = `https://wa.me/${p}`;
+  a.target = '_blank';
+  a.textContent = '📞 Hubungi';
+  div.append(n, a);
+  container.append(div);
+}
+
+function updateFamily() {
+  const groomParents = cleanText($('groomParentsInput').value);
+  const brideParents = cleanText($('brideParentsInput').value);
+
+  $('previewGroomParents').textContent = groomParents;
+  $('previewBrideParents').textContent = brideParents;
+  $('previewGroomParents').style.display = groomParents ? 'block' : 'none';
+  $('previewBrideParents').style.display = brideParents ? 'block' : 'none';
+
+  const gc = $('previewGroomContacts');
+  gc.innerHTML = '';
+  const gFather = cleanText($('groomFatherName').value);
+  const gFatherPhone = cleanText($('groomFatherPhone').value);
+  const gMother = cleanText($('groomMotherName').value);
+  const gMotherPhone = cleanText($('groomMotherPhone').value);
+
+  if (gFather || gMother) {
+    makeContact(gc, gFather || 'Wakil', gFatherPhone);
+    makeContact(gc, gMother || 'Wakil', gMotherPhone);
+  }
+
+  const bc = $('previewBrideContacts');
+  bc.innerHTML = '';
+  const bFather = cleanText($('brideFatherName').value);
+  const bFatherPhone = cleanText($('brideFatherPhone').value);
+  const bMother = cleanText($('brideMotherName').value);
+  const bMotherPhone = cleanText($('brideMotherPhone').value);
+
+  if (bFather || bMother) {
+    makeContact(bc, bFather || 'Wakil', bFatherPhone);
+    makeContact(bc, bMother || 'Wakil', bMotherPhone);
+  }
+}
+
+// =============================================================
+// 19. MUZIK
+// =============================================================
+function updateMusicPreview() {
+  const toggle = $('musicToggle');
+  const playerWrapper = $('audioPlayerWrapper');
+  const audio = $('audioPlayer');
+  const source = $('audioSource');
+
+  if (!toggle || !toggle.checked || !uploadedMusicUrl) {
+    if (playerWrapper) playerWrapper.style.display = 'none';
+    if (audio) audio.pause();
+    return;
+  }
+
+  if (uploadedMusicUrl) {
+    source.src = uploadedMusicUrl;
+    audio.load();
+    playerWrapper.style.display = 'block';
+  } else {
+    playerWrapper.style.display = 'none';
+    audio.pause();
+  }
+}
+
+$('imageInput').addEventListener('change', async function() {
+  const file = this.files[0];
+  if (!file) return;
+  if (!file.type.startsWith('image/')) {
+    alert('Sila pilih fail gambar.');
+    this.value = '';
+    return;
+  }
+  const url = await uploadToStorage(file, 'images');
+  if (url) {
+    uploadedImageUrl = url;
+    updateImagePreview();
+    updatePreview();
+  }
+});
+
+$('musicInput').addEventListener('change', async function() {
+  const file = this.files[0];
+  if (!file) return;
+  if (!file.type.startsWith('audio/')) {
+    alert('Sila pilih fail audio.');
+    this.value = '';
+    return;
+  }
+  const url = await uploadToStorage(file, 'audio');
+  if (url) {
+    uploadedMusicUrl = url;
+    updateMusicPreview();
+    updatePreview();
+  }
+});
+
+$('removeImage').addEventListener('click', function() {
+  uploadedImageUrl = '';
+  $('imageInput').value = '';
+  updateImagePreview();
+  updatePreview();
+});
+
+// =============================================================
+// 20. DRAWERS
+// =============================================================
+function closeDrawers() {
+  document.querySelectorAll('.drawer').forEach(d => d.classList.remove('active'));
+  $('overlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function openDrawer(id) {
+  closeDrawers();
+  $(id).classList.add('active');
+  $('overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+$('openSchedule').addEventListener('click', () => openDrawer('scheduleDrawer'));
+$('openRsvp').addEventListener('click', () => openDrawer('rsvpDrawer'));
+$('openFamily').addEventListener('click', () => openDrawer('familyDrawer'));
+$('overlay').addEventListener('click', closeDrawers);
+document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', closeDrawers));
+
+// =============================================================
+// 21. COVER
+// =============================================================
+let opened = false;
+
+function openCard() {
+  if (opened) return;
+  opened = true;
+  $('coverPage').classList.add('opened');
+}
+$('openEnvelope').addEventListener('click', openCard);
+$('openButton').addEventListener('click', openCard);
+
+// =============================================================
+// 22. LOCATION
+// =============================================================
+$('locationButton').addEventListener('click', function(e) {
+  e.preventDefault();
+  const url = cleanText($('mapUrlInput').value);
+  if (url) window.open(url, '_blank');
+  else alert('Sila masukkan link peta.');
+});
+
+// =============================================================
+// 23. RSVP
+// =============================================================
+$('sendRsvp').addEventListener('click', function() {
+  const phone = normalizePhone($('rsvpPhoneInput').value);
+  if (!phone) { alert('Nombor WhatsApp RSVP pengantin belum diisi.'); return; }
+  const name = cleanText($('guestName').value, 'Tetamu');
+  const attendance = $('attendance').value;
+  const msg = cleanText($('guestMessage').value, 'Tahniah dan semoga berbahagia selalu! 🤍');
+  const n1 = cleanText($('name1Input').value, 'Adam');
+  const n2 = cleanText($('name2Input').value, 'Hawa');
+  const text =
+    `Assalamualaikum ${n1} & ${n2} 🤍\n\nSaya ingin memberikan RSVP untuk majlis anda.\n\n━━━━━━━━━━━━━━━━\n💌 MAKLUMAT RSVP\n━━━━━━━━━━━━━━━━\n\n👤 Nama: ${name}\n💌 Kehadiran: ${attendance}\n📝 Ucapan & Doa: ${msg}\n\nTerima kasih 🤍`;
+  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
+});
+
+// =============================================================
+// 24. EVENT LISTENERS — SEMUA INPUT
+// =============================================================
+const allInputs = [
+  'name1Input', 'name2Input', 'skemaNama1Input', 'skemaNama2Input',
+  'skemaAssalamInput', 'skemaIntroInput', 'skemaPenutupInput', 'skemaPanggilanInput',
+  'subtitleInput', 'dateInput', 'timeInput',
+  'locationNameInput', 'mapTypeInput', 'mapUrlInput',
+  'groomParentsInput', 'groomFatherName', 'groomFatherPhone',
+  'groomMotherName', 'groomMotherPhone',
+  'brideParentsInput', 'brideFatherName', 'brideFatherPhone',
+  'brideMotherName', 'brideMotherPhone'
+];
+
+allInputs.forEach(id => {
+  const el = $(id);
+  if (el) {
+    el.addEventListener('input', () => {
+      updatePreview();
+      updateFamily();
+    });
+  }
+});
+
+$('themeInput').addEventListener('change', function() {
+  applyTheme();
+  updatePreview();
+});
+
+// =============================================================
+// 25. INIT
+// =============================================================
+function init() {
+  renderScheduleEditor();
+  renderSchedule();
+  updatePreview();
+  updateSkema();
+  updateFamily();
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+  loadFromSupabase();
+  applyTheme();
+  updateVisibility();
+
+  if ($('emojiToggle').checked) {
+    startEmojiAnimation();
+  }
+}
+
+init();
 </script>
+
 </body>
 </html>
